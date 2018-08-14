@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.code.mvvm.widget.CustomHeightRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dynamic_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <com.code.mvvm.widget.CustomHeightImageView
+        android:id="@+id/iv_pic_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/tv_material_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_pic_image"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="3dp"
+        android:maxLines="2"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</com.code.mvvm.widget.CustomHeightRelativeLayout>
+
+

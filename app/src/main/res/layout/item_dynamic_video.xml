@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_lesson"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/img_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/video_img"
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_height="match_parent" />
+
+        <include layout="@layout/layout_tuangou_xiao" />
+
+        <ImageView
+            android:id="@+id/fufei_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/fufeibiaoqian"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/yifu_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/video_img"
+            android:layout_alignTop="@+id/video_img"
+            android:src="@drawable/yifubiaoqian"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/video_time"
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:layout_alignBottom="@+id/video_img"
+            android:layout_alignLeft="@+id/video_img"
+            android:background="#B3333333"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textColor="#ffffff"
+            android:textSize="10sp" />
+
+        <ImageView
+            android:id="@+id/live_type_icon_imv"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/jingjiang_shipin_xiao"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

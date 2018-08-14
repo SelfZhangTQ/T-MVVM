@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="navigation_bar">#FFFFFF</color>
+    <color name="navigation_bar_active">#fb7299</color>
+    <color name="navigation_bar_inactive">#999999</color>
+</resources>

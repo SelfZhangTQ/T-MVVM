@@ -1,0 +1,6 @@
+include ':app',
+        ':basiccomponent:tablayout',
+        ':basiclibrary',
+        ':basiccomponent:bottomnavigationbar',
+        ':basiccomponent:refreshlibrary',
+        ':basiccomponent:network'

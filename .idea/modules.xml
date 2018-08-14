@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/artproject.iml" filepath="$PROJECT_DIR$/artproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basiccomponent/basiccomponent.iml" filepath="$PROJECT_DIR$/basiccomponent/basiccomponent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basiclibrary/basiclibrary.iml" filepath="$PROJECT_DIR$/basiclibrary/basiclibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basiccomponent/bottomnavigationbar/bottomnavigationbar.iml" filepath="$PROJECT_DIR$/basiccomponent/bottomnavigationbar/bottomnavigationbar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basiccomponent/network/network.iml" filepath="$PROJECT_DIR$/basiccomponent/network/network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basiccomponent/refreshlibrary/refreshlibrary.iml" filepath="$PROJECT_DIR$/basiccomponent/refreshlibrary/refreshlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basiccomponent/tablayout/tablayout.iml" filepath="$PROJECT_DIR$/basiccomponent/tablayout/tablayout.iml" />
+    </modules>
+  </component>
+</project>

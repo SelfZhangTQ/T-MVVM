@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/space_10"
+    android:paddingTop="@dimen/space_10"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/iv_classify"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerInParent="true" />
+
+        <ImageView
+            android:id="@+id/answer_home_new_imv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="invisible"
+            android:src="@drawable/answer_new_red_icon" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_classify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/dark"
+        android:text="图库"
+        android:textSize="@dimen/text_size_12" />
+</LinearLayout>

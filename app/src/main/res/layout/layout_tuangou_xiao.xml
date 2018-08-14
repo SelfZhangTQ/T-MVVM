@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tuanggou_tag_ly"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/video_img"
+    android:layout_alignTop="@+id/video_img"
+    android:orientation="horizontal"
+    android:visibility="gone">
+
+    <ImageView
+        android:id="@+id/tuangou_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tuangou_xiao"/>
+
+    <TextView
+        android:id="@+id/tv_shengyu_time"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#9f090a"
+        android:gravity="center"
+        android:paddingLeft="3dp"
+        android:maxLines="1"
+        android:paddingRight="3dp"
+        android:textColor="#ffffff"
+        android:textSize="10sp"/>
+</LinearLayout>
+

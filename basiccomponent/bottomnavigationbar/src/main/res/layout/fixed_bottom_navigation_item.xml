@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fixed_bottom_navigation_container"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="?selectableItemBackgroundBorderless"
+    android:paddingLeft="@dimen/fixed_width_padding"
+    android:paddingRight="@dimen/fixed_width_padding"
+    android:paddingBottom="3dp"
+    >
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal|top">
+
+        <ImageView
+            android:id="@+id/fixed_bottom_navigation_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:contentDescription="icon"
+            android:gravity="center"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/fixed_bottom_navigation_badge"
+            style="@style/BadgeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginLeft="37dp"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/fixed_bottom_navigation_title"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:lines="1"
+         android:text="首页"
+        android:textSize="@dimen/fixed_label_inactive" />
+    <!--android:scaleX="@dimen/fixed_label_active_to_inactive_ratio"-->
+    <!--android:scaleY="@dimen/fixed_label_active_to_inactive_ratio"-->
+
+</FrameLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 字体大小 -->
+    <dimen name="text_size_9">9sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_13">13sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_15">15sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <!-- 分隔线 -->
+    <dimen name="line_hight">1px</dimen>
+    <dimen name="line_hight3">10dp</dimen>
+    <!-- 边距 -->
+    <dimen name="list_margin_size">15dp</dimen>
+
+    <!-- 标题配置 -->
+
+    <!-- 首页Gallery高度 -->
+
+    <!-- 来自选择图片页面 -->
+
+    <!-- 普通用户头布局高度 -->
+
+    <!-- 精讲列表item图片 -->
+    <dimen name="concise_three_layout_margin">12dp</dimen>
+    <dimen name="concise_three_img_margin">8dp</dimen>
+    <dimen name="concise_img_margin_top">16dp</dimen>
+    <dimen name="concise_img_margin_bottom">8dp</dimen>
+
+    <!--通用-->
+    <dimen name="space_15">15.0dip</dimen>
+    <dimen name="space_13">13.0dip</dimen>
+    <dimen name="space_10">10.0dip</dimen>
+    <dimen name="space_7">7.0dip</dimen>
+    <dimen name="space_4">4.0dip</dimen>
+
+    <!-- 考点详情信息按钮 -->
+
+    <!-- 批改 -->
+
+
+    <!-- 头像 -->
+    <dimen name="header_size_list_card">40dp</dimen>
+    <!-- 搜索 -->
+
+    <!-- 语音长度 -->
+    <!-- 范例图 -->
+    <!-- 间距 -->
+    <!-- tag Dialog间距 -->
+
+    <!-- 图片裁剪按钮size -->
+
+    <!-- 我的批改列表item size -->
+
+    <!-- 批改语音标签在详情页显示时的点尺寸 -->
+
+    <!-- 批改列表item间距 -->
+    <!-- 作品详情赞列表长度 -->
+    <!-- 赞头像实际展示长度 -->
+    <!--打分键盘高度-->
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <!--轮播图圆点大小间距-->
+
+    <!-- collection_detail_item -->
+    <!-- Curriculum live video small-->
+</resources>

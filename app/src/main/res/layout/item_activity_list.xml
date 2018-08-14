@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/activity_list_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_10"
+        android:layout_marginRight="@dimen/space_10"
+        android:layout_marginTop="@dimen/space_10"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/activity_list_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_list_imageview"
+        android:layout_marginBottom="@dimen/space_7"
+        android:layout_marginLeft="@dimen/space_13"
+        android:layout_marginRight="@dimen/space_13"
+        android:layout_marginTop="@dimen/space_4"
+        android:text="美院帮,帮上美院"
+        android:textColor="#333333"
+        android:textSize="@dimen/text_size_14" />
+
+    <RelativeLayout
+        android:id="@+id/item_rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_list_textview"
+        android:layout_marginBottom="@dimen/space_15">
+
+        <TextView
+            android:id="@+id/content_type_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="3dp"
+            android:text="美院帮大咖改画"
+            android:textSize="@dimen/text_size_14" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/state_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/item_rl"
+        android:layout_alignTop="@id/item_rl"
+        android:layout_below="@+id/activity_list_textview"
+        android:layout_marginLeft="@dimen/space_10"
+        android:layout_toRightOf="@id/item_rl"
+        android:gravity="center_vertical"
+        android:text="进行中"
+        android:textColor="#333333"
+        android:textSize="@dimen/text_size_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_10"
+        android:layout_below="@+id/item_rl"
+        android:background="#E8E8E8" />
+</RelativeLayout>
