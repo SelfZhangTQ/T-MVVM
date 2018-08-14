@@ -4,7 +4,7 @@ package com.code.mvvm.core.data.source;
 import com.basiclibrary.helper.RxSchedulers;
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.core.data.BaseRepository;
-import com.code.mvvm.core.data.pojo.banner.BannerAdListVo;
+import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.home.HomeListVo;
 
 import rx.Observable;
@@ -19,7 +19,7 @@ public class HomeRepository extends BaseRepository {
     }
 
     private Observable<HomeListVo> mHomeListObservable;
-    private Observable<BannerAdListVo> mBannerObservable;
+    private Observable<BannerListVo> mBannerObservable;
 
     public void loadHomeData(String id, final OnResultCallBack listener) {
         mHomeListObservable = apiService.getHomeData(id);
@@ -52,8 +52,8 @@ public class HomeRepository extends BaseRepository {
         mBannerObservable = apiService.getBannerData(posType, f_catalog_id, s_catalog_id, t_catalog_id, province);
 
 //        apiService.getBannerData(posType, f_catalog_id, s_catalog_id, t_catalog_id, province).
-//                compose(RxSchedulers.<BannerAdListVo>io_main()).
-//                subscribe(new RxSubscriber<BannerAdListVo>() {
+//                compose(RxSchedulers.<BannerListVo>io_main()).
+//                subscribe(new RxSubscriber<BannerListVo>() {
 //                    @Override
 //                    protected void onNoNetWork() {
 //                        super.onNoNetWork();
@@ -61,7 +61,7 @@ public class HomeRepository extends BaseRepository {
 //                    }
 //
 //                    @Override
-//                    public void onSuccess(BannerAdListVo headAdList) {
+//                    public void onSuccess(BannerListVo headAdList) {
 //                        listener.onNext(headAdList);
 //                    }
 //

@@ -27,7 +27,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     api project(':basiccomponent:bottomnavigationbar')
-    api project(':basiccomponent:refreshlibrary')
+//    api project(':basiccomponent:refreshlibrary')
     api project(':basiccomponent:network')
     api project(':basiccomponent:tablayout')
     implementation "android.arch.lifecycle:extensions:1.1.0"

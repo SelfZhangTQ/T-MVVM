@@ -34,7 +34,9 @@ public class MaterialFragment extends BaseViewPagerFragment<MaterialViewModel> {
         mViewModel.getMaterialType().observe(this, new Observer<MaterialTypeVo>() {
             @Override
             public void onChanged(@Nullable MaterialTypeVo materialTypeVo) {
-                setData(materialTypeVo);
+                if (materialTypeVo != null) {
+                    setData(materialTypeVo);
+                }
             }
         });
     }

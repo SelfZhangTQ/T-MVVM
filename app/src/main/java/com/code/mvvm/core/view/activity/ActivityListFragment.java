@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.viewmodel.ActivityViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -22,11 +23,13 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getActivityList().observe(this, new Observer<com.code.mvvm.core.data.pojo.activity.ActivityListVo>() {
+        mViewModel.getActivityList().observe(this, new Observer<ActivityListVo>() {
             @Override
-            public void onChanged(@Nullable com.code.mvvm.core.data.pojo.activity.ActivityListVo activityListVo) {
-                lastid = activityListVo.data.get(activityListVo.data.size() - 1).newsid;
-                setData(activityListVo.data);
+            public void onChanged(@Nullable ActivityListVo activityListVo) {
+                if (activityListVo != null) {
+                    lastid = activityListVo.data.get(activityListVo.data.size() - 1).newsid;
+                    setData(activityListVo.data);
+                }
 
             }
         });

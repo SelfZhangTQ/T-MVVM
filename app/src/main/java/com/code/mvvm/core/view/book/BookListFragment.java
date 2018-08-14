@@ -31,10 +31,10 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
     protected void dataObserver() {
         mViewModel.getBookList().observe(this, new Observer<BookListVo>() {
             @Override
-            public void onChanged(@Nullable BookListVo bookListObject) {
-                if (bookListObject.data.content.size() > 0) {
-                    lastid = bookListObject.data.content.get(bookListObject.data.content.size() - 1).bookid;
-                    setData(bookListObject.data.content);
+            public void onChanged(@Nullable BookListVo bookListVo) {
+                if (bookListVo.data.content.size() > 0) {
+                    lastid = bookListVo.data.content.get(bookListVo.data.content.size() - 1).bookid;
+                    setData(bookListVo.data.content);
                 }
             }
         });

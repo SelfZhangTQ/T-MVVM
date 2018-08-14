@@ -26,13 +26,17 @@ public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
     public void initView(Bundle state) {
         super.initView(state);
         titleName = new ArrayList<>();
+        getTabData();
+    }
+
+    @Override
+    protected void dataObserver() {
         mViewModel.getBookType().observe(this, new Observer<BookTypeVo>() {
             @Override
-            public void onChanged(@Nullable BookTypeVo bookClassObject) {
-                setData(bookClassObject);
+            public void onChanged(@Nullable BookTypeVo bookTypeVo) {
+                setData(bookTypeVo);
             }
         });
-        getTabData();
     }
 
     @Override
@@ -61,12 +65,12 @@ public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
     }
 
 
-    private void setData(BookTypeVo lessonTypeObject) {
-        mArrTitles = new String[lessonTypeObject.data.f_catalog.size()];
+    private void setData(BookTypeVo bookTypeVo) {
+        mArrTitles = new String[bookTypeVo.data.f_catalog.size()];
         titleName.clear();
-        for (int j = 0; j < lessonTypeObject.data.f_catalog.size(); j++) {
-            titleName.add(lessonTypeObject.data.f_catalog.get(j));
-            mArrTitles[j] = (lessonTypeObject.data.f_catalog.get(j).f_catalog_name);
+        for (int j = 0; j < bookTypeVo.data.f_catalog.size(); j++) {
+            titleName.add(bookTypeVo.data.f_catalog.get(j));
+            mArrTitles[j] = (bookTypeVo.data.f_catalog.get(j).f_catalog_name);
         }
         initFragment();
         setAdapter();

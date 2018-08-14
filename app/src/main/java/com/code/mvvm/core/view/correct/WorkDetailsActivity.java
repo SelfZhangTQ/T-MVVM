@@ -10,9 +10,9 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.code.mvvm.R;
 import com.code.mvvm.base.LifecycleActivity;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
-import com.code.mvvm.core.data.pojo.correct.CorrectDetailVo;
-import com.code.mvvm.core.data.pojo.correct.CorrectInfoVo;
-import com.code.mvvm.core.data.pojo.correct.CorrectRecommentVo;
+import com.code.mvvm.core.data.pojo.correct.WorkDetailVo;
+import com.code.mvvm.core.data.pojo.correct.WorkInfoVo;
+import com.code.mvvm.core.data.pojo.correct.WorkRecommentVo;
 import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
 import com.code.mvvm.core.data.pojo.live.LiveRecommendVo;
 import com.code.mvvm.core.view.common.TypeItemView;
@@ -20,7 +20,7 @@ import com.code.mvvm.core.view.correct.viewholder.CorrectPicViewBinder;
 import com.code.mvvm.core.view.correct.viewholder.CorrectRemItemViewBinder;
 import com.code.mvvm.core.view.home.viewholder.HomeCourseItemView;
 import com.code.mvvm.core.view.home.viewholder.HomeLiveItemView;
-import com.code.mvvm.core.viewmodel.CorrectViewModel;
+import com.code.mvvm.core.viewmodel.WorkViewModel;
 import com.trecyclerview.TRecyclerView;
 import com.trecyclerview.multitype.Items;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -29,16 +29,16 @@ import java.lang.ref.WeakReference;
 
 
 /**
- * @author：zhangtianqiu on 18/7/16 18:06
+ * @author：tqzhang on 18/7/16 18:06
  */
-public class CorrectDetailsActivity extends LifecycleActivity<CorrectViewModel> {
+public class WorkDetailsActivity extends LifecycleActivity<WorkViewModel> {
 
     protected TRecyclerView mRecyclerView;
     private MultiTypeAdapter adapter;
     protected Items items = new Items();
     private String correctId;
 
-    private WeakReference<CorrectDetailsActivity> weakReference;
+    private WeakReference<WorkDetailsActivity> weakReference;
 
     @Override
     protected void onStateRefresh() {
@@ -54,7 +54,10 @@ public class CorrectDetailsActivity extends LifecycleActivity<CorrectViewModel> 
     public void initViews(Bundle savedInstanceState) {
         super.initViews(savedInstanceState);
         weakReference = new WeakReference<>(this);
-        correctId = getIntent().getStringExtra("correctid");
+        if (getIntent() != null) {
+            correctId = getIntent().getStringExtra("correct_id");
+        }
+
         initAdapter();
         initRecyclerView();
         getNetWorkData();
@@ -69,46 +72,46 @@ public class CorrectDetailsActivity extends LifecycleActivity<CorrectViewModel> 
 
     private void initAdapter() {
         adapter = new MultiTypeAdapter();
-        adapter.register(CorrectDetailVo.class, new CorrectPicViewBinder(weakReference.get()));
+        adapter.register(WorkDetailVo.class, new CorrectPicViewBinder(weakReference.get()));
         adapter.register(CourseInfoVo.class, new HomeCourseItemView(weakReference.get()));
         adapter.register(LiveRecommendVo.class, new HomeLiveItemView(weakReference.get()));
-        adapter.register(CorrectInfoVo.class, new CorrectRemItemViewBinder(weakReference.get()));
+        adapter.register(WorkInfoVo.class, new CorrectRemItemViewBinder(weakReference.get()));
         adapter.register(TypeVo.class, new TypeItemView());
 
     }
 
     @Override
-    protected CorrectViewModel createViewModelProviders() {
-        return VMProviders(this, CorrectViewModel.class);
+    protected WorkViewModel createViewModelProviders() {
+        return VMProviders(this, WorkViewModel.class);
     }
 
     @Override
     protected void dataObserver() {
-        mViewModel.getCorrectDetailData().observe(this, new Observer<CorrectDetailVo>() {
+        mViewModel.getWorkDetailData().observe(this, new Observer<WorkDetailVo>() {
             @Override
-            public void onChanged(@Nullable CorrectDetailVo correctDetailVo) {
-                items.add(correctDetailVo);
+            public void onChanged(@Nullable WorkDetailVo workDetailVo) {
+                items.add(workDetailVo);
                 adapter.setItems(items);
                 mRecyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
         });
 
-        mViewModel.getCorrectRecommentData().observe(this, new Observer<CorrectRecommentVo>() {
+        mViewModel.getWorkRecommentData().observe(this, new Observer<WorkRecommentVo>() {
             @Override
-            public void onChanged(@Nullable CorrectRecommentVo correctRecommentVo) {
-                if (correctRecommentVo == null) {
+            public void onChanged(@Nullable WorkRecommentVo workRecommentVo) {
+                if (workRecommentVo == null) {
                     return;
                 }
-                if (correctRecommentVo.data.course.size() > 0) {
-                    if (correctRecommentVo.data.live.size() > 0) {
+                if (workRecommentVo.data.course.size() > 0) {
+                    if (workRecommentVo.data.live.size() > 0) {
                         items.add(new TypeVo("直播推荐"));
-                        items.addAll(correctRecommentVo.data.live);
+                        items.addAll(workRecommentVo.data.live);
                     }
                     items.add(new TypeVo("视频课程"));
-                    items.addAll(correctRecommentVo.data.course);
+                    items.addAll(workRecommentVo.data.course);
                     items.add(new TypeVo("精彩批改"));
-                    items.addAll(correctRecommentVo.data.content);
+                    items.addAll(workRecommentVo.data.content);
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -116,12 +119,12 @@ public class CorrectDetailsActivity extends LifecycleActivity<CorrectViewModel> 
     }
 
     private void getNetWorkData() {
-        mViewModel.getCorrectMergeData(correctId);
+        mViewModel.getWorkMergeData(correctId);
     }
 
-    public static void start(Context context, String correctid) {
-        Intent starter = new Intent(context, CorrectDetailsActivity.class);
-        starter.putExtra("correctid", correctid);
+    public static void start(Context context, String correctId) {
+        Intent starter = new Intent(context, WorkDetailsActivity.class);
+        starter.putExtra("correct_id", correctId);
         context.startActivity(starter);
     }
 }

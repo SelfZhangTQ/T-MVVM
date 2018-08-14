@@ -25,7 +25,7 @@ import com.code.mvvm.core.view.qa.QAListFragment;
 /**
  * @author：zhangtianqiu on 18/7/2 14:17
  */
-public class CommonActivity extends BaseActivity {
+public class CommonActivity extends BaseActivity implements View.OnClickListener {
     public final static String MATERIAL = "MaterialFragment";
     public final static String FOLLOWDRAW = "FollowDrawingFragment";
     public final static String ARTIALE = "ArticleFragment";
@@ -36,8 +36,7 @@ public class CommonActivity extends BaseActivity {
     public final static String QA = "QAListFragment";
 
 
-    private String tag;
-    private String title;
+    private String typeFragment;
 
     private FragmentTransaction ft;
 
@@ -65,40 +64,33 @@ public class CommonActivity extends BaseActivity {
         FragmentManager fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
         showFragment();
-        barBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        barBack.setOnClickListener(this);
     }
 
     private void getIntentData() {
         Intent intent = getIntent();
         if (intent != null) {
-            tag = intent.getStringExtra("tag");
-            title = intent.getStringExtra("title");
+            typeFragment = intent.getStringExtra("type_fragment");
+            String titleName = intent.getStringExtra("title_name");
+            barTitle.setText(titleName);
         }
-        barTitle.setText(title);
+
     }
 
     private void showFragment() {
-        switch (tag) {
-            //素材
+        switch (typeFragment) {
             case MATERIAL:
                 commitFragment(new MaterialFragment());
                 break;
-            //精讲
             case ARTIALE:
                 commitFragment(new ArticleFragment());
                 break;
-            //跟着画
             case FOLLOWDRAW:
                 commitFragment(new FollowDrawFragment());
                 break;
             case TRICKS:
                 commitFragment(new DynamicFragment());
-                break; //课程
+                break;
             case BOOK:
                 commitFragment(new BookFragment());
                 break;
@@ -111,6 +103,8 @@ public class CommonActivity extends BaseActivity {
             case QA:
                 commitFragment(new QAListFragment());
                 break;
+            default:
+                break;
         }
 
     }
@@ -119,10 +113,15 @@ public class CommonActivity extends BaseActivity {
         ft.replace(R.id.fragment_content, baseFragment).commit();
     }
 
-    public static void start(Context context, String tag, String title) {
+    public static void start(Context context, String typeFragment, String titleName) {
         Intent starter = new Intent(context, CommonActivity.class);
-        starter.putExtra("tag", tag);
-        starter.putExtra("title", title);
+        starter.putExtra("type_fragment", typeFragment);
+        starter.putExtra("title_name", titleName);
         context.startActivity(starter);
+    }
+
+    @Override
+    public void onClick(View v) {
+        finish();
     }
 }

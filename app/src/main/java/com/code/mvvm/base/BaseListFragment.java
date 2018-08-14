@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
-import com.code.mvvm.core.data.pojo.banner.BannerAdListVo;
+import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.viewmodel.BaseViewModel;
 import com.code.mvvm.util.DiffCallback;
 import com.trecyclerview.TRecyclerView;
@@ -71,11 +71,13 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends Lifecycl
         mRecyclerView.addOnScrollStateListener(new OnScrollStateListener() {
             @Override
             public void onScrollStateChanged(int state) {
-                if (getActivity() != null) {
-                    if (state == RecyclerView.SCROLL_STATE_IDLE) {
-                        Glide.with(getActivity()).resumeRequests();
-                    } else {
-                        Glide.with(getActivity()).pauseRequests();
+                if (state == RecyclerView.SCROLL_STATE_IDLE) {
+                    if (activity != null) {
+                        Glide.with(activity).resumeRequests();
+                    }
+                } else {
+                    if (activity != null) {
+                        Glide.with(activity).pauseRequests();
                     }
                 }
             }
@@ -123,7 +125,7 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends Lifecycl
         addHeaderData();
     }
 
-    protected void setBannerData(BannerAdListVo headAdList) {
+    protected void setBannerData(BannerListVo headAdList) {
         if (isRefresh) {
             newItems.add(headAdList);
         } else {

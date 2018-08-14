@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
-import com.code.mvvm.core.data.pojo.banner.BannerAdListVo;
+import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.trecyclerview.multitype.AbsItemView;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * @author：zhangtianqiu on 18/6/21 18:00
  */
-public class BannerItemView extends AbsItemView<BannerAdListVo, BannerItemView.ViewHolder> {
+public class BannerItemView extends AbsItemView<BannerListVo, BannerItemView.ViewHolder> {
     private Context mContext;
 
     public BannerItemView(Context context) {
@@ -36,7 +36,7 @@ public class BannerItemView extends AbsItemView<BannerAdListVo, BannerItemView.V
 
 
     @Override
-    protected void onBindViewHolder(@NonNull BannerItemView.ViewHolder holder, @NonNull final BannerAdListVo bannerAdListVo) {
+    protected void onBindViewHolder(@NonNull BannerItemView.ViewHolder holder, @NonNull final BannerListVo bannerAdListVo) {
         holder.mBannerView.delayTime(5).setBannerView(new BannerView.OnBindView() {
             @Override
             public List<ImageView> bindView() {

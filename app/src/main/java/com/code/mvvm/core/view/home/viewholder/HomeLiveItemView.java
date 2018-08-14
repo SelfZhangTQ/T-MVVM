@@ -23,8 +23,7 @@ import com.trecyclerview.multitype.AbsItemView;
  */
 public class HomeLiveItemView extends AbsItemView<LiveRecommendVo, HomeLiveItemView.ViewHolder> {
 
-
-    private int commonWidth;
+    private int commonWidth=0;
 
     private Context mContext;
 
@@ -35,8 +34,10 @@ public class HomeLiveItemView extends AbsItemView<LiveRecommendVo, HomeLiveItemV
     @Override
     protected @NonNull
     ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        commonWidth = (int) (((float) DisplayUtil.getScreenWidth(App.Instance())
-                - DisplayUtil.dp2px(App.Instance(), 20)) / 2);
+        if (commonWidth == 0) {
+            commonWidth = (int) (((float) DisplayUtil.getScreenWidth(App.Instance())
+                    - DisplayUtil.dp2px(App.Instance(), 20)) / 2);
+        }
         return new ViewHolder(inflater.inflate(R.layout.item_live_view, parent, false));
     }
 
@@ -77,7 +78,6 @@ public class HomeLiveItemView extends AbsItemView<LiveRecommendVo, HomeLiveItemV
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             mLiveState = itemView.findViewById(R.id.iv_live_state);
             mLiveImage = itemView.findViewById(R.id.iv_live_image);
             mUserIcon = itemView.findViewById(R.id.iv_user_icon);

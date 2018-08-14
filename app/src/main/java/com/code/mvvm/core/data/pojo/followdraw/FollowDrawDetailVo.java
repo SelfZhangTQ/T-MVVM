@@ -33,7 +33,6 @@ public class FollowDrawDetailVo {
     }
 
     public static class DataBean {
-        public HomeListVo.DataBean.Coin cointask;
         private String title;
         private String hits;
         private String cmtcount;

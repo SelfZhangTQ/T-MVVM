@@ -11,6 +11,9 @@ import com.code.mvvm.core.data.pojo.material.MatreialSubjectVo;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @author：tqzhang
+ */
 public class HomeListVo extends BaseObject implements Serializable {
 
     public DataBean data;
@@ -22,13 +25,7 @@ public class HomeListVo extends BaseObject implements Serializable {
         public List<BookVo> publishingbook;
         public List<MatreialSubjectVo> matreialsubject;
         public List<LiveRecommendVo> live_recommend;
-        public List<LiveOnlineBean> live_online;
-        public Coin cointask;
 
-        public static class Coin implements Serializable {
-            public String cointcount;
-            public String tasktype;
-        }
         public static class LessonBean implements Serializable {
             /**
              * lessonid : 10074

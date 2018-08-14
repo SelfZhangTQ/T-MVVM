@@ -20,8 +20,7 @@ public class LiveListFragment extends BaseListFragment<LiveViewModel> {
 
 
     public static LiveListFragment newInstance() {
-        LiveListFragment fragment = new LiveListFragment();
-        return fragment;
+        return new LiveListFragment();
     }
 
     @Override
@@ -33,10 +32,10 @@ public class LiveListFragment extends BaseListFragment<LiveViewModel> {
     protected void dataObserver() {
         mViewModel.getLiveList().observe(this, new Observer<LiveListVo>() {
             @Override
-            public void onChanged(@Nullable LiveListVo liveListObject) {
-                if (liveListObject != null && liveListObject.data!= null) {
-                    lastid = liveListObject.data.get(liveListObject.data.size() - 1).liveid;
-                    setData(liveListObject.data);
+            public void onChanged(@Nullable LiveListVo liveListVo) {
+                if (liveListVo != null && liveListVo.data!= null) {
+                    lastid = liveListVo.data.get(liveListVo.data.size() - 1).liveid;
+                    setData(liveListVo.data);
                 }
             }
         });

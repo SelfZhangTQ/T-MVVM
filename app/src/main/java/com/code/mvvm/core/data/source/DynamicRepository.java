@@ -3,7 +3,6 @@ package com.code.mvvm.core.data.source;
 import com.basiclibrary.helper.RxSchedulers;
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.core.data.BaseRepository;
-import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.data.pojo.dynamic.DynamicListVo;
 import com.code.mvvm.network.RxSubscriber;
 

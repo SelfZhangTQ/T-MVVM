@@ -10,8 +10,8 @@ import com.basiclibrary.base.BaseActivity;
 import com.basiclibrary.helper.RxSchedulers;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
-import com.code.mvvm.core.data.pojo.course.LessonDetailRemVideoVo;
-import com.code.mvvm.core.data.pojo.course.LessonDetailVo;
+import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
+import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.core.data.pojo.live.LiveDetailsVo;
 import com.code.mvvm.core.view.course.CourseRecommendViewBinder;
 import com.code.mvvm.network.ApiService;
@@ -43,7 +43,7 @@ public class LiveDetailsActivity extends BaseActivity {
     private String teacherId;
     private String fCatalogId;
     private String sCatalogId;
-    private LessonDetailVo.DataEntity lessonData = null;
+    private CourseDetailVo.DataEntity lessonData = null;
 
     private boolean liveType;
 
@@ -169,7 +169,7 @@ public class LiveDetailsActivity extends BaseActivity {
 //                .subscribeOn(Schedulers.io())
 //                .unsubscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Subscriber<LessonDetailRemVideoVo>() {
+//                .subscribe(new Subscriber<CourseDetailRemVideoVo>() {
 //
 //                    @Override
 //                    public void onStart() {
@@ -187,7 +187,7 @@ public class LiveDetailsActivity extends BaseActivity {
 //                    }
 //
 //                    @Override
-//                    public void onNext(LessonDetailRemVideoVo lessonDetailAboutVideoBean) {
+//                    public void onNext(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
 //                        if (lessonDetailAboutVideoBean != null && lessonDetailAboutVideoBean.errno == 0) {
 //                            setData(lessonDetailAboutVideoBean);
 //                        }
@@ -196,10 +196,10 @@ public class LiveDetailsActivity extends BaseActivity {
     }
 
 
-    private void setData(LessonDetailRemVideoVo lessonDetailAboutVideoBean) {
+    private void setData(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
         Items items = new Items();
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(LessonDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendViewBinder());
+        adapter.register(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendViewBinder());
         mRecyclerView.setAdapter(adapter);
         for (int i = 0; i < lessonDetailAboutVideoBean.getData().getCourse_list().size(); i++) {
             items.add(lessonDetailAboutVideoBean.getData().getCourse_list().get(i));

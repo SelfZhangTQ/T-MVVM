@@ -13,13 +13,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.App;
 import com.code.mvvm.R;
-import com.code.mvvm.core.data.pojo.course.LessonDetailRemVideoVo;
+import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.trecyclerview.multitype.AbsItemView;
 
 /**
  * @author：zhangtianqiu on 18/7/16 17:37
  */
-public class CourseRecommendViewBinder extends AbsItemView<LessonDetailRemVideoVo.DataBean.CourseListBean, CourseRecommendViewBinder.ViewHolder> {
+public class CourseRecommendViewBinder extends AbsItemView<CourseDetailRemVideoVo.DataBean.CourseListBean, CourseRecommendViewBinder.ViewHolder> {
 
     @NonNull
     @Override
@@ -29,7 +29,7 @@ public class CourseRecommendViewBinder extends AbsItemView<LessonDetailRemVideoV
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull LessonDetailRemVideoVo.DataBean.CourseListBean entity) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull CourseDetailRemVideoVo.DataBean.CourseListBean entity) {
         Glide.with(App.Instance()).load(entity.getThumb_url()).into(holder.iv_lesson_img);
         holder.tv_lesson_title.setText(entity.getTitle());
         float mPrice = 0;

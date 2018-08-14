@@ -13,8 +13,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.App;
 import com.code.mvvm.R;
-import com.code.mvvm.core.data.pojo.correct.CorrectInfoVo;
-import com.code.mvvm.core.view.correct.CorrectDetailsActivity;
+import com.code.mvvm.core.data.pojo.correct.WorkInfoVo;
+import com.code.mvvm.core.view.correct.WorkDetailsActivity;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.glide.GlideRoundTransform;
 import com.code.mvvm.util.DisplayUtil;
@@ -25,7 +25,7 @@ import com.trecyclerview.multitype.AbsItemView;
 /**
  * @author：zhangtianqiu on 18/6/27 19:14
  */
-public class CorrectRemItemViewBinder extends AbsItemView<CorrectInfoVo, CorrectRemItemViewBinder.ViewHolder> {
+public class CorrectRemItemViewBinder extends AbsItemView<WorkInfoVo, CorrectRemItemViewBinder.ViewHolder> {
     private int commonwidth = (int) (((float) DisplayUtil.getScreenWidth(App.Instance())
             - 30 * DisplayUtil.getDisplayDensity(App.Instance())) / 2);
 
@@ -43,7 +43,7 @@ public class CorrectRemItemViewBinder extends AbsItemView<CorrectInfoVo, Correct
 
 
     @Override
-    protected void onBindViewHolder(@NonNull CorrectRemItemViewBinder.ViewHolder holder, @NonNull final CorrectInfoVo data) {
+    protected void onBindViewHolder(@NonNull CorrectRemItemViewBinder.ViewHolder holder, @NonNull final WorkInfoVo data) {
         String mStatus = "0";
         if (mStatus.equals(data.status)) {
             float dv = (float) data.source_pic.img.l.h / (float) data.source_pic.img.l.w;
@@ -81,7 +81,7 @@ public class CorrectRemItemViewBinder extends AbsItemView<CorrectInfoVo, Correct
         holder.mCHRootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CorrectDetailsActivity.start(mContext, data.correctid);
+                WorkDetailsActivity.start(mContext, data.correctid);
             }
         });
     }

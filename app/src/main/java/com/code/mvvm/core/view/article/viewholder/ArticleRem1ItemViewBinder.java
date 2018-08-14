@@ -2,6 +2,7 @@ package com.code.mvvm.core.view.article.viewholder;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,18 +22,20 @@ import com.trecyclerview.multitype.AbsItemView;
  * @author：zhangtianqiu on 18/6/19 15:16
  */
 public class ArticleRem1ItemViewBinder extends AbsItemView<ArticleInfoVo, ArticleRem1ItemViewBinder.ViewHolder> {
-    private int commonWidth;
+    private int commonWidth = 0;
 
     private Context mContext;
 
     public ArticleRem1ItemViewBinder(Context context) {
-        mContext = context;
+        this.mContext = context;
     }
 
     @Override
     protected @NonNull
     ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        commonWidth = (int) ((float) DisplayUtil.getScreenWidth(App.Instance()));
+        if (commonWidth == 0) {
+            commonWidth = (int) ((float) DisplayUtil.getScreenWidth(App.Instance()));
+        }
         return new ViewHolder(inflater.inflate(R.layout.item_article_type1, parent, false));
     }
 
@@ -48,7 +51,7 @@ public class ArticleRem1ItemViewBinder extends AbsItemView<ArticleInfoVo, Articl
                 .into(holder.ivPic);
         holder.tvHits.setText(matreialsubject.hits);
         holder.tvTitle.setText(matreialsubject.title);
-        if (matreialsubject.stick_date != null && !"".equals(matreialsubject.stick_date) && Integer.valueOf(matreialsubject.stick_date) > 0) {
+        if (!TextUtils.isEmpty(matreialsubject.stick_date) && Integer.valueOf(matreialsubject.stick_date) > 0) {
             holder.tvTagTop.setVisibility(View.VISIBLE);
         } else {
             holder.tvTagTop.setVisibility(View.GONE);

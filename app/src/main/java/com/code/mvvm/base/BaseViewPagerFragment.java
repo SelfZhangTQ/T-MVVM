@@ -55,6 +55,9 @@ public abstract class BaseViewPagerFragment<T extends BaseViewModel> extends Lif
         mFragments = new ArrayList<>();
     }
 
+    /**
+     * init adapter
+     */
     protected void setAdapter() {
         mTitles.addAll(Arrays.asList(createPageTitle()));
         adapter = new ViewPagerAdapter(getChildFragmentManager(), createFragments(), mTitles);
@@ -78,6 +81,10 @@ public abstract class BaseViewPagerFragment<T extends BaseViewModel> extends Lif
     protected abstract List<BaseFragment> createFragments();
 
 
+    /**
+     * set title
+     * @param titleName
+     */
     protected void setTitle(String titleName) {
         mTitleBar.setVisibility(View.VISIBLE);
         mTitle.setText(titleName);

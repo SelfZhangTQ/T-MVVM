@@ -11,14 +11,14 @@ import com.code.mvvm.network.RxSubscriber;
  * @author：zhangtianqiu on 18/8/2 13:36
  */
 public class LiveRepository extends BaseRepository {
-    public void loadLiveList(String f_catalog_id, String id, String rn, final OnResultCallBack<LiveListVo> onResultCallBack) {
-        apiService.getLiveList(f_catalog_id, id, rn)
+    public void loadLiveList(String mCatalogId, String id, String rn, final OnResultCallBack<LiveListVo> onResultCallBack) {
+        apiService.getLiveList(mCatalogId, id, rn)
                 .compose(RxSchedulers.<LiveListVo>io_main())
                 .subscribe(new RxSubscriber<LiveListVo>() {
 
                     @Override
-                    public void onSuccess(LiveListVo liveListObject) {
-                        onResultCallBack.onNext(liveListObject);
+                    public void onSuccess(LiveListVo liveListVo) {
+                        onResultCallBack.onNext(liveListVo);
 
                     }
 
@@ -35,8 +35,8 @@ public class LiveRepository extends BaseRepository {
                 .subscribe(new RxSubscriber<LiveListVo>() {
 
                     @Override
-                    public void onSuccess(LiveListVo liveListObject) {
-                        onResultCallBack.onNext(liveListObject);
+                    public void onSuccess(LiveListVo liveListVo) {
+                        onResultCallBack.onNext(liveListVo);
                     }
 
                     @Override
@@ -57,8 +57,8 @@ public class LiveRepository extends BaseRepository {
                }
 
                @Override
-               public void onSuccess(LiveTypeVo bookClassObject) {
-                   listener.onNext(bookClassObject);
+               public void onSuccess(LiveTypeVo liveTypeVo) {
+                   listener.onNext(liveTypeVo);
                }
 
                @Override

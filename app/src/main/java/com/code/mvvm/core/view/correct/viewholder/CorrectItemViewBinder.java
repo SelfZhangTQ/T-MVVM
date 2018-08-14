@@ -14,7 +14,7 @@ import com.code.mvvm.App;
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseViewHolder;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
-import com.code.mvvm.core.view.correct.CorrectDetailsActivity;
+import com.code.mvvm.core.view.correct.WorkDetailsActivity;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.glide.GlideRoundTransform;
 import com.code.mvvm.util.DisplayUtil;
@@ -78,7 +78,7 @@ public class CorrectItemViewBinder extends AbsItemView<WorksListVo.Works, Correc
         holder.mCHRootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CorrectDetailsActivity.start(mContext, data.correct.correctid);
+                WorkDetailsActivity.start(mContext, data.correct.correctid);
             }
         });
     }

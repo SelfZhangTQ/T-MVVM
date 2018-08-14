@@ -23,7 +23,7 @@ import rx.subscriptions.CompositeSubscription;
 public abstract class BaseFragment extends Fragment {
     private View rootView;
 
-    private FragmentActivity activity;
+    protected FragmentActivity activity;
 
     protected LoadManager loadManager;
 

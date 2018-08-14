@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.LifecycleFragment;
-import com.code.mvvm.core.data.pojo.banner.BannerAdListVo;
+import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.viewmodel.BaseViewModel;
 import com.code.mvvm.util.DiffCallback;
 import com.code.mvvm.util.DisplayUtil;
@@ -109,7 +109,7 @@ public abstract class SwipeListFragment<T extends BaseViewModel> extends Lifecyc
     protected void onRefreshAction() {
     }
 
-    protected void setBannerData(BannerAdListVo headAdList) {
+    protected void setBannerData(BannerListVo headAdList) {
         if (isRefresh) {
             newItems.add(headAdList);
         } else {

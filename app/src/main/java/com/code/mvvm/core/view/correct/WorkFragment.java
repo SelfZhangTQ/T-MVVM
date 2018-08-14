@@ -1,4 +1,4 @@
-package com.code.mvvm.core.view.swipe;
+package com.code.mvvm.core.view.correct;
 
 import android.arch.lifecycle.Observer;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
+import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.viewmodel.WorkViewModel;
@@ -13,59 +14,59 @@ import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：zhangtianqiu on 18/6/26 17:02
+ * @author：tqzhang
  */
-//public class WorkFragment extends BaseListFragment<WorkViewModel> {
-public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {
+public class WorkFragment extends BaseListFragment<WorkViewModel> {
     private String utime;
 
-    public static SwipeCorrectFragment newInstance() {
-        return new SwipeCorrectFragment();
+    public static WorkFragment newInstance() {
+        return new WorkFragment();
     }
-
 
     @Override
     public void initView(Bundle state) {
         super.initView(state);
+        setTitle("作品");
+    }
+
+    @Override
+    protected void dataObserver() {
         mViewModel.getBannerData().observe(this, new Observer<BannerListVo>() {
             @Override
-            public void onChanged(@Nullable BannerListVo headAdList) {
-                if (headAdList != null) {
-                    setBannerData(headAdList);
+            public void onChanged(@Nullable BannerListVo bannerListVo) {
+                if (bannerListVo != null) {
+                    setBannerData(bannerListVo);
                 }
             }
         });
         mViewModel.getWorkData().observe(this, new Observer<WorksListVo>() {
             @Override
-            public void onChanged(@Nullable WorksListVo worksListHotObject) {
-                if (worksListHotObject == null) {
+            public void onChanged(@Nullable WorksListVo worksListVo) {
+                if (worksListVo == null) {
                     return;
                 }
-                lastid = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).tid;
-                utime = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).utime;
+                lastid = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
+                utime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
                 if (isRefresh) {
-                    newItems.addAll(worksListHotObject.data.content);
+                    newItems.addAll(worksListVo.data.content);
                     oldItems.clear();
                     oldItems.addAll(newItems);
                     notifyDataSetChanged();
-                    mSwipeRefreshLayout.setRefreshing(false);
-//                    mRecyclerView.refreshComplete();
+                    mRecyclerView.refreshComplete();
                 } else {
-                    setData(worksListHotObject.data.content);
+                    setData(worksListVo.data.content);
                 }
 
             }
         });
         mViewModel.getWorkMoreData().observe(this, new Observer<WorksListVo>() {
             @Override
-            public void onChanged(@Nullable WorksListVo worksListHotObject) {
-                lastid = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).tid;
-                utime = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).utime;
-                setData(worksListHotObject.data.content);
+            public void onChanged(@Nullable WorksListVo worksListVo) {
+                lastid = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
+                utime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
+                setData(worksListVo.data.content);
             }
         });
-
-
     }
 
     @Override
@@ -80,21 +81,22 @@ public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {
 
     @Override
     protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getSwipeCorrectAdapter(getActivity());
+        return AdapterPool.newInstance().getWorkAdapter(getActivity());
     }
 
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
         getAdData();
-        getCorrectData();
+        getWorkData();
         mViewModel.getRequestMerge();
     }
 
     @Override
     protected void onRefreshAction() {
+        super.onRefreshAction();
         getAdData();
-        getCorrectData();
+        getWorkData();
         mViewModel.getRequestMerge();
     }
 
@@ -105,10 +107,13 @@ public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {
 
     @Override
     protected void onStateRefresh() {
-
+        super.onStateRefresh();
+        getAdData();
+        getWorkData();
+        mViewModel.getRequestMerge();
     }
 
-    private void getCorrectData() {
+    private void getWorkData() {
         mViewModel.getWorkData("80", "20");
     }
 

@@ -37,16 +37,16 @@ public class BookViewModel extends BaseViewModel<BookRepository> {
         return mBookType;
     }
 
-    public void getBookList(String f_catalog_id, String lastId, String rn) {
-        mRepository.loadBookList(f_catalog_id, lastId, rn, new OnResultCallBack<BookListVo>() {
+    public void getBookList(String mCatalogId, String lastId, String rn) {
+        mRepository.loadBookList(mCatalogId, lastId, rn, new OnResultCallBack<BookListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
             }
 
             @Override
-            public void onNext(BookListVo bookListObject) {
-                mBookData.postValue(bookListObject);
+            public void onNext(BookListVo bookListVo) {
+                mBookData.postValue(bookListVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }
 
@@ -65,8 +65,8 @@ public class BookViewModel extends BaseViewModel<BookRepository> {
             }
 
             @Override
-            public void onNext(BookTypeVo bookClassObject) {
-                mBookType.postValue(bookClassObject);
+            public void onNext(BookTypeVo bookTypeVo) {
+                mBookType.postValue(bookTypeVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }
 

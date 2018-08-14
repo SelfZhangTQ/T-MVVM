@@ -52,7 +52,6 @@ public class HomeCourseItemView extends AbsItemView<CourseInfoVo, HomeCourseItem
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull final CourseInfoVo courseListBean) {
-
         holder.mVideoLayout.setLayoutParams(params);
         holder.mVideoImage.setScaleType(ImageView.ScaleType.FIT_XY);
         Glide.with(mContext).load(courseListBean.thumb_url).placeholder(R.color.white).into(holder.mVideoImage);

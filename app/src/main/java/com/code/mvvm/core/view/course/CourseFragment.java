@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author：zhangtianqiu on 18/6/30 11:13
+ * @author：tqzhang
  */
 public class CourseFragment extends BaseViewPagerFragment<CourseViewModel> {
     private List<CourseTypeVo.DataBean> titleName;
@@ -27,13 +27,17 @@ public class CourseFragment extends BaseViewPagerFragment<CourseViewModel> {
         super.initView(state);
         setTitle("课程");
         titleName = new ArrayList<>();
+        getTabData();
+    }
+
+    @Override
+    protected void dataObserver() {
         mViewModel.getCourseType().observe(this, new Observer<CourseTypeVo>() {
             @Override
-            public void onChanged(@Nullable CourseTypeVo lessonTypeObject) {
-                setData(lessonTypeObject);
+            public void onChanged(@Nullable CourseTypeVo courseTypeVo) {
+                setData(courseTypeVo);
             }
         });
-        getTabData();
     }
 
     @Override
@@ -59,20 +63,19 @@ public class CourseFragment extends BaseViewPagerFragment<CourseViewModel> {
 
     private void getTabData() {
         mViewModel.getCourseTypeData();
-
     }
 
 
-    private void setData(CourseTypeVo lessonTypeObject) {
-        mArrTitles = new String[lessonTypeObject.data.size() + 1];
+    private void setData(CourseTypeVo courseTypeVo) {
+        mArrTitles = new String[courseTypeVo.data.size() + 1];
         titleName.clear();
         CourseTypeVo.DataBean dataBean = new CourseTypeVo.DataBean();
         dataBean.name = ("推荐");
         mArrTitles[0] = "推荐";
         titleName.add(dataBean);
-        for (int j = 0; j < lessonTypeObject.data.size(); j++) {
-            titleName.add(lessonTypeObject.data.get(j));
-            mArrTitles[j + 1] = (lessonTypeObject.data.get(j).name);
+        for (int j = 0; j < courseTypeVo.data.size(); j++) {
+            titleName.add(courseTypeVo.data.get(j));
+            mArrTitles[j + 1] = (courseTypeVo.data.get(j).name);
         }
         initFragment();
         setAdapter();

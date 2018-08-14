@@ -31,10 +31,10 @@ public class LiveRecommendFragment extends BaseListFragment<LiveViewModel> {
     protected void dataObserver() {
         mViewModel.getLiveRemList().observe(this, new Observer<LiveListVo>() {
             @Override
-            public void onChanged(@Nullable LiveListVo liveListObject) {
-                lastid = liveListObject.
-                data.get(liveListObject.data.size() - 1).liveid;
-                setData(liveListObject.data);
+            public void onChanged(@Nullable LiveListVo liveListVo) {
+                lastid = liveListVo.
+                        data.get(liveListVo.data.size() - 1).liveid;
+                setData(liveListVo.data);
             }
         });
     }

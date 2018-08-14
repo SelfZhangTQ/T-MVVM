@@ -30,7 +30,7 @@ public class WorksListVo {
         public ArrayList<ImageVo> imgs_list;
         public ImageVo imgs;
         public String correctid;
-        public CorrectInfoVo correct;
+        public WorkInfoVo correct;
 
     }
 }

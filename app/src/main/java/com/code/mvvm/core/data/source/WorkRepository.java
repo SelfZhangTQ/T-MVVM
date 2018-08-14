@@ -3,9 +3,9 @@ package com.code.mvvm.core.data.source;
 import com.basiclibrary.helper.RxSchedulers;
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.core.data.BaseRepository;
-import com.code.mvvm.core.data.pojo.banner.BannerAdListVo;
-import com.code.mvvm.core.data.pojo.correct.CorrectDetailVo;
-import com.code.mvvm.core.data.pojo.correct.CorrectRecommentVo;
+import com.code.mvvm.core.data.pojo.banner.BannerListVo;
+import com.code.mvvm.core.data.pojo.correct.WorkDetailVo;
+import com.code.mvvm.core.data.pojo.correct.WorkRecommentVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.network.RxSubscriber;
 
@@ -15,15 +15,15 @@ import rx.functions.Action1;
 /**
  * @author：zhangtianqiu on 18/7/31 15:32
  */
-public class CorrectRepository extends BaseRepository {
+public class WorkRepository extends BaseRepository {
 
     private Observable<WorksListVo> observable2;
-    private Observable<BannerAdListVo> observable1;
+    private Observable<BannerListVo> observable1;
 
-    private Observable<CorrectDetailVo> mCorrectDetail;
-    private Observable<CorrectRecommentVo> mCorrectRecomment;
+    private Observable<WorkDetailVo> mCorrectDetail;
+    private Observable<WorkRecommentVo> mCorrectRecomment;
 
-    public void loadCorrectData(String corrected, String rn, final OnResultCallBack<WorksListVo> listener) {
+    public void loadWorkData(String corrected, String rn, final OnResultCallBack<WorksListVo> listener) {
         observable2 = apiService.getWorkData(corrected, rn);
         //        apiService.getWorkData(corrected, rn)
 //                .compose(RxSchedulers.<WorksListHotObject>io_main())
@@ -46,7 +46,7 @@ public class CorrectRepository extends BaseRepository {
 //                });
     }
 
-    public void loadCorrectMoreData(String corrected, String last_id, String utime, String rn, final OnResultCallBack<WorksListVo> listener) {
+    public void loadWorkMoreData(String corrected, String last_id, String utime, String rn, final OnResultCallBack<WorksListVo> listener) {
         apiService.getWorkMoreData(corrected, last_id, utime, rn)
                 .compose(RxSchedulers.<WorksListVo>io_main())
                 .subscribe(new RxSubscriber<WorksListVo>() {
@@ -76,8 +76,8 @@ public class CorrectRepository extends BaseRepository {
         observable1 = apiService.getBannerData(posType, f_catalog_id, s_catalog_id, t_catalog_id, province);
 
         //        apiService.getBannerData(posType, f_catalog_id, s_catalog_id, t_catalog_id, province).
-//                compose(RxSchedulers.<BannerAdListVo>io_main()).
-//                subscribe(new RxSubscriber<BannerAdListVo>() {
+//                compose(RxSchedulers.<BannerListVo>io_main()).
+//                subscribe(new RxSubscriber<BannerListVo>() {
 //                    @Override
 //                    protected void onNoNetWork() {
 //                        super.onNoNetWork();
@@ -85,7 +85,7 @@ public class CorrectRepository extends BaseRepository {
 //                    }
 //
 //                    @Override
-//                    public void onSuccess(BannerAdListVo headAdList) {
+//                    public void onSuccess(BannerListVo headAdList) {
 //                        listener.onNext(headAdList);
 //                    }
 //
@@ -112,12 +112,12 @@ public class CorrectRepository extends BaseRepository {
                 });
     }
 
-    public void loadCorrectDetailData(String correctId, final OnResultCallBack<CorrectDetailVo> listener) {
+    public void loadWorkDetailData(String correctId, final OnResultCallBack<WorkDetailVo> listener) {
 
         mCorrectDetail = apiService.getWorkDetailData(correctId);
 //        apiService.getWorkDetailData(correctId).
-//                compose(RxSchedulers.<CorrectDetailVo>io_main()).
-//                subscribe(new RxSubscriber<CorrectDetailVo>() {
+//                compose(RxSchedulers.<WorkDetailVo>io_main()).
+//                subscribe(new RxSubscriber<WorkDetailVo>() {
 //                    @Override
 //                    protected void onNoNetWork() {
 //                        super.onNoNetWork();
@@ -125,7 +125,7 @@ public class CorrectRepository extends BaseRepository {
 //                    }
 //
 //                    @Override
-//                    public void onSuccess(CorrectDetailVo correctDetailVo) {
+//                    public void onSuccess(WorkDetailVo correctDetailVo) {
 //                        listener.onNext(correctDetailVo);
 //                    }
 //
@@ -136,11 +136,11 @@ public class CorrectRepository extends BaseRepository {
 //                });
     }
 
-    public void loadCorrectRecommendData(String correctId, final OnResultCallBack<CorrectRecommentVo> listener) {
+    public void loadWorkRecommendData(String correctId, final OnResultCallBack<WorkRecommentVo> listener) {
         mCorrectRecomment=apiService.getWorkRecommendData(correctId);
 //        apiService.getWorkRecommendData(correctId).
-//                compose(RxSchedulers.<CorrectRecommentVo>io_main()).
-//                subscribe(new RxSubscriber<CorrectRecommentVo>() {
+//                compose(RxSchedulers.<WorkRecommentVo>io_main()).
+//                subscribe(new RxSubscriber<WorkRecommentVo>() {
 //                    @Override
 //                    protected void onNoNetWork() {
 //                        super.onNoNetWork();
@@ -148,7 +148,7 @@ public class CorrectRepository extends BaseRepository {
 //                    }
 //
 //                    @Override
-//                    public void onSuccess(CorrectRecommentVo correctRecommentVo) {
+//                    public void onSuccess(WorkRecommentVo correctRecommentVo) {
 //                        listener.onNext(correctRecommentVo);
 //                    }
 //
@@ -159,7 +159,7 @@ public class CorrectRepository extends BaseRepository {
 //                });
     }
 
-    public void loadCorrectMergeData(final OnResultCallBack<Object> listener) {
+    public void loadWorkMergeData(final OnResultCallBack<Object> listener) {
         Observable.concat(mCorrectDetail, mCorrectRecomment)
                 .compose(RxSchedulers.<Object>io_main())
                 .subscribe(new Action1<Object>() {

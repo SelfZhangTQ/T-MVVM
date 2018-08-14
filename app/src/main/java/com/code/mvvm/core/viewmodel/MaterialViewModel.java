@@ -65,8 +65,8 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
             }
 
             @Override
-            public void onNext(MaterialListVo findMaterialListObject) {
-                mMaterialData.postValue(findMaterialListObject);
+            public void onNext(MaterialListVo materialListVo) {
+                mMaterialData.postValue(materialListVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }
 
@@ -85,8 +85,8 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
             }
 
             @Override
-            public void onNext(MaterialListVo findMaterialListObject) {
-                mMaterialMoreData.postValue(findMaterialListObject);
+            public void onNext(MaterialListVo materialListVo) {
+                mMaterialMoreData.postValue(materialListVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }
 
@@ -125,8 +125,8 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
             }
 
             @Override
-            public void onNext(MaterialTypeVo bookClassObject) {
-                mMaterialTypeData.postValue(bookClassObject);
+            public void onNext(MaterialTypeVo materialTypeVo) {
+                mMaterialTypeData.postValue(materialTypeVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }
 

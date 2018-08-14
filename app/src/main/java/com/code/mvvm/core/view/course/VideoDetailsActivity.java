@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import com.basiclibrary.base.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
-import com.code.mvvm.core.data.pojo.course.LessonDetailRemVideoVo;
-import com.code.mvvm.core.data.pojo.course.LessonDetailVo;
+import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
+import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.network.ApiService;
 import com.code.mvvm.util.DisplayUtil;
 import com.trecyclerview.TRecyclerView;
@@ -40,7 +40,7 @@ public class VideoDetailsActivity extends BaseActivity {
     private String teacherId;
     private String fCatalogId;
     private String sCatalogId;
-    private LessonDetailVo.DataEntity lessonData = null;
+    private CourseDetailVo.DataEntity lessonData = null;
 
     @Override
     protected void onStateRefresh() {
@@ -54,7 +54,7 @@ public class VideoDetailsActivity extends BaseActivity {
 
     @Override
     public void initViews(Bundle savedInstanceState) {
-        lessonId = getIntent().getStringExtra("LESSON_ID");
+        lessonId = getIntent().getStringExtra("course_id");
         mRecyclerView = (TRecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -116,7 +116,7 @@ public class VideoDetailsActivity extends BaseActivity {
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<LessonDetailVo>() {
+                .subscribe(new Subscriber<CourseDetailVo>() {
 
                     @Override
                     public void onStart() {
@@ -132,7 +132,7 @@ public class VideoDetailsActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onNext(final LessonDetailVo lessonDetailObject) {
+                    public void onNext(final CourseDetailVo lessonDetailObject) {
 //                            setUIData();
 //                            setPlayerData();
                         lessonData = lessonDetailObject.data;
@@ -160,7 +160,7 @@ public class VideoDetailsActivity extends BaseActivity {
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<LessonDetailRemVideoVo>() {
+                .subscribe(new Subscriber<CourseDetailRemVideoVo>() {
 
                     @Override
                     public void onStart() {
@@ -178,7 +178,7 @@ public class VideoDetailsActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onNext(LessonDetailRemVideoVo lessonDetailAboutVideoBean) {
+                    public void onNext(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
                         if (lessonDetailAboutVideoBean != null && lessonDetailAboutVideoBean.errno == 0) {
                             setData(lessonDetailAboutVideoBean);
                             loadManager.showSuccess();
@@ -188,10 +188,10 @@ public class VideoDetailsActivity extends BaseActivity {
     }
 
 
-    private void setData(LessonDetailRemVideoVo lessonDetailAboutVideoBean) {
+    private void setData(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
         Items items = new Items();
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(LessonDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendViewBinder());
+        adapter.register(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendViewBinder());
         mRecyclerView.setAdapter(adapter);
         items.addAll(lessonDetailAboutVideoBean.getData().getCourse_list());
         adapter.setItems(items);

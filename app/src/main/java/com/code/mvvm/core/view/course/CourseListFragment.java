@@ -19,6 +19,8 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
  * @author：zhangtianqiu on 18/6/30 18:36
  */
 public class CourseListFragment extends BaseListFragment<CourseViewModel> {
+    private String mCatalogId;
+
     public static CourseListFragment newInstance() {
         return new CourseListFragment();
     }
@@ -26,7 +28,9 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
     @Override
     public void initView(Bundle state) {
         super.initView(state);
-
+        if (getArguments() != null) {
+            mCatalogId = getArguments().getString("f_catalog_id", null);
+        }
     }
 
     @Override
@@ -34,7 +38,7 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
         mViewModel.getCourseList().observe(this, new Observer<CourseListVo>() {
             @Override
             public void onChanged(@Nullable CourseListVo courseListVo) {
-                if (courseListVo != null&&courseListVo.data.size()>0) {
+                if (courseListVo != null && courseListVo.data.size() > 0) {
                     lastid = courseListVo.data.get(courseListVo.data.size() - 1).courseid;
                     setData(courseListVo.data);
                 }
@@ -87,6 +91,6 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getCourseList(getArguments().getString("f_catalog_id", null), lastid, "20");
+        mViewModel.getCourseList(mCatalogId, lastid, "20");
     }
 }

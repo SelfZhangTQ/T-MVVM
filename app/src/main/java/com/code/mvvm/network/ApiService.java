@@ -4,17 +4,17 @@ import com.code.mvvm.config.URL;
 import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.data.pojo.article.ArticleTypeVo;
 import com.code.mvvm.core.data.pojo.article.ArticleVo;
-import com.code.mvvm.core.data.pojo.banner.BannerAdListVo;
+import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.book.BookListVo;
 import com.code.mvvm.core.data.pojo.book.BookTypeVo;
-import com.code.mvvm.core.data.pojo.correct.CorrectDetailVo;
-import com.code.mvvm.core.data.pojo.correct.CorrectRecommentVo;
+import com.code.mvvm.core.data.pojo.correct.WorkDetailVo;
+import com.code.mvvm.core.data.pojo.correct.WorkRecommentVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
+import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
-import com.code.mvvm.core.data.pojo.course.LessonDetailRemVideoVo;
-import com.code.mvvm.core.data.pojo.course.LessonDetailVo;
+import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.core.data.pojo.dynamic.DynamicListVo;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawRecommendVo;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawTypeVo;
@@ -49,20 +49,20 @@ public interface ApiService {
 
     @POST(URL.WORK_DETAIL)
     @FormUrlEncoded
-    Observable<CorrectDetailVo> getWorkDetailData(@Field("correctid") String correctid);
+    Observable<WorkDetailVo> getWorkDetailData(@Field("correctid") String correctid);
 
     @POST(URL.WORK_RECOMMEND)
     @FormUrlEncoded
-    Observable<CorrectRecommentVo> getWorkRecommendData(@Field("correctid") String correctid);
+    Observable<WorkRecommentVo> getWorkRecommendData(@Field("correctid") String correctid);
 
 
     @POST(URL.BANNER)
     @FormUrlEncoded
-    Observable<BannerAdListVo> getBannerData(@Field("pos_type") String posType,
-                                             @Field("f_catalog_id") String f_catalog_id,
-                                             @Field("s_catalog_id") String s_catalog_id,
-                                             @Field("t_catalog_id") String t_catalog_id,
-                                             @Field("province") String province
+    Observable<BannerListVo> getBannerData(@Field("pos_type") String posType,
+                                           @Field("f_catalog_id") String f_catalog_id,
+                                           @Field("s_catalog_id") String s_catalog_id,
+                                           @Field("t_catalog_id") String t_catalog_id,
+                                           @Field("province") String province
     );
 
     @GET(URL.COURSE_TYPE)
@@ -142,7 +142,7 @@ public interface ApiService {
 
     @POST(URL.LESSON_DETAILS_DATA)
     @FormUrlEncoded
-    Observable<LessonDetailVo> getLessonData(@Field("courseid") String courseId, @Field("notbrowse") String notBrowse);
+    Observable<CourseDetailVo> getLessonData(@Field("courseid") String courseId, @Field("notbrowse") String notBrowse);
 
     @POST(URL.LIVE_DETAILS_DATA)
     @FormUrlEncoded
@@ -150,7 +150,7 @@ public interface ApiService {
 
     @POST(URL.LESSON_DETAILS_ABOUT_DATA)
     @FormUrlEncoded
-    Observable<LessonDetailRemVideoVo> getLessonAboutData(@Field("courseid") String courseId
+    Observable<CourseDetailRemVideoVo> getLessonAboutData(@Field("courseid") String courseId
             , @Field("f_catalog_id") String f_catalog_id
             , @Field("s_catalog_id") String s_catalog_id
             , @Field("teacherid") String teacherId

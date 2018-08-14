@@ -33,7 +33,9 @@ public abstract class LifecycleFragment<T extends BaseViewModel> extends BaseFra
     }
 
     /**
-     * @return
+     * create ViewModelProviders
+     *
+     * @return ViewModel
      */
     protected abstract T createViewModelProviders();
 

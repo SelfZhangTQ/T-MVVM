@@ -7,20 +7,19 @@ import android.support.v4.app.FragmentTransaction;
 import com.basiclibrary.base.BaseActivity;
 import com.bottomnavigation.BottomNavigationBar;
 import com.bottomnavigation.BottomNavigationItem;
+import com.code.mvvm.core.view.correct.WorkFragment;
 import com.code.mvvm.core.view.course.CourseFragment;
 import com.code.mvvm.core.view.home.HomeFragment;
-import com.code.mvvm.core.view.swipe.SwipeCorrectFragment;
 
 
 /**
- * @author zhangtianqiu
+ * @author：tqzhang
  */
 public class MainActivity extends BaseActivity {
 
     private BottomNavigationBar mBottomNavigationBar;
     private HomeFragment mHomeFragment;
-    //    private CorrectFragment mCorrectFragment;
-    private SwipeCorrectFragment mCorrectFragment;
+    private WorkFragment mWorkFragment;
     private CourseFragment mCourseFragment;
     private MineFragment mMineFragment;
 
@@ -32,34 +31,14 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initViews(Bundle savedInstanceState) {
         loadManager.showSuccess();
-        initView();
         //初始化底部tabBar
         initNavBar();
         //初始化fragment
         initFragment(0);
-//        Observable.interval(5000, 5000, TimeUnit.MILLISECONDS)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Action1<Object>() {
-//                    @Override
-//                    public void call(Object t) {
-//                        SysUtil.getCacheInfo(MainActivity.this);
-////
-//                    }
-//                }, new Action1<Throwable>() {
-//                    @Override
-//                    public void call(Throwable throwable) {
-//                    }
-//                });
     }
-
-
-    private void initView() {
-        mBottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
-    }
-
 
     private void initNavBar() {
+        mBottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         mBottomNavigationBar
@@ -69,7 +48,6 @@ public class MainActivity extends BaseActivity {
                 .addItem(new BottomNavigationItem(R.mipmap.tab_mine_icon, "我的").setInactiveIconResource(R.mipmap.tab_mine_icon_def))
                 .setFirstSelectedPosition(0)
                 .initialise();
-
         mBottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position) {
@@ -103,12 +81,11 @@ public class MainActivity extends BaseActivity {
                 break;
 
             case 1:
-                if (mCorrectFragment == null) {
-//                    mCorrectFragment = CorrectFragment.newInstance();
-                    mCorrectFragment = SwipeCorrectFragment.newInstance();
-                    fragmentTransaction.add(R.id.home_content, mCorrectFragment, "correct");
+                if (mWorkFragment == null) {
+                    mWorkFragment = WorkFragment.newInstance();
+                    fragmentTransaction.add(R.id.home_content, mWorkFragment, "work");
                 } else {
-                    fragmentTransaction.show(mCorrectFragment);
+                    fragmentTransaction.show(mWorkFragment);
                 }
                 break;
             case 2:
@@ -139,8 +116,8 @@ public class MainActivity extends BaseActivity {
             fragmentTransaction.hide(mHomeFragment);
         }
 
-        if (mCorrectFragment != null) {
-            fragmentTransaction.hide(mCorrectFragment);
+        if (mWorkFragment != null) {
+            fragmentTransaction.hide(mWorkFragment);
         }
         if (mCourseFragment != null) {
             fragmentTransaction.hide(mCourseFragment);

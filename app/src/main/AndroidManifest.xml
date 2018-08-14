@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".core.view.common.CommonActivity" />
-        <activity android:name=".core.view.correct.CorrectDetailsActivity" />
+        <activity android:name=".core.view.correct.WorkDetailsActivity" />
 
         <activity
             android:name=".core.view.course.VideoDetailsActivity"

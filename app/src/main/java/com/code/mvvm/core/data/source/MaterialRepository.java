@@ -4,6 +4,7 @@ import com.basiclibrary.helper.RxSchedulers;
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.material.MaterialListVo;
+import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
 import com.code.mvvm.network.RxSubscriber;
 
@@ -12,9 +13,9 @@ import com.code.mvvm.network.RxSubscriber;
  */
 public class MaterialRepository extends BaseRepository {
 
-    public void loadMaterialList(String f_catalog_id, String mlevel, String rn, final OnResultCallBack listener) {
+    public void loadMaterialList(String mCatalogId, String mLevel, String rn, final OnResultCallBack<MaterialListVo> listener) {
 
-        apiService.getMaterialList(f_catalog_id, mlevel, rn)
+        apiService.getMaterialList(mCatalogId, mLevel, rn)
                 .compose(RxSchedulers.<MaterialListVo>io_main())
                 .subscribe(new RxSubscriber<MaterialListVo>() {
                     @Override
@@ -24,8 +25,8 @@ public class MaterialRepository extends BaseRepository {
                     }
 
                     @Override
-                    public void onSuccess(MaterialListVo findMaterialListObject) {
-                        listener.onNext(findMaterialListObject);
+                    public void onSuccess(MaterialListVo materialListVo) {
+                        listener.onNext(materialListVo);
                     }
 
                     @Override
@@ -35,8 +36,8 @@ public class MaterialRepository extends BaseRepository {
                 });
     }
 
-    public void loadMaterialMoreList(String f_catalog_id, String mlevel, String lastId, String rn, final OnResultCallBack listener) {
-        apiService.getMaterialMoreList(f_catalog_id, mlevel, lastId, rn)
+    public void loadMaterialMoreList(String mCatalogId, String mLevel, String lastId, String rn, final OnResultCallBack<MaterialListVo> listener) {
+        apiService.getMaterialMoreList(mCatalogId, mLevel, lastId, rn)
                 .compose(RxSchedulers.<MaterialListVo>io_main())
                 .subscribe(new RxSubscriber<MaterialListVo>() {
                     @Override
@@ -46,8 +47,8 @@ public class MaterialRepository extends BaseRepository {
                     }
 
                     @Override
-                    public void onSuccess(MaterialListVo findMaterialListObject) {
-                        listener.onNext(findMaterialListObject);
+                    public void onSuccess(MaterialListVo materialListVo) {
+                        listener.onNext(materialListVo);
                     }
 
                     @Override
@@ -57,10 +58,10 @@ public class MaterialRepository extends BaseRepository {
                 });
     }
 
-    public void loadMaterialRemList(String f_catalog_id, String lastid, String rn, final OnResultCallBack listener) {
-        apiService.getMaterialRemList(f_catalog_id, lastid, rn)
+    public void loadMaterialRemList(String mCatalogId, String lastId, String rn, final OnResultCallBack<MaterialRecommendVo> listener) {
+        apiService.getMaterialRemList(mCatalogId, lastId, rn)
                 .compose(RxSchedulers.<com.code.mvvm.core.data.pojo.material.MaterialRecommendVo>io_main())
-                .subscribe(new RxSubscriber<com.code.mvvm.core.data.pojo.material.MaterialRecommendVo>() {
+                .subscribe(new RxSubscriber<MaterialRecommendVo>() {
                     @Override
                     protected void onNoNetWork() {
                         super.onNoNetWork();
@@ -68,7 +69,7 @@ public class MaterialRepository extends BaseRepository {
                     }
 
                     @Override
-                    public void onSuccess(com.code.mvvm.core.data.pojo.material.MaterialRecommendVo materialRecommendObject) {
+                    public void onSuccess(MaterialRecommendVo materialRecommendObject) {
                         listener.onNext(materialRecommendObject);
                     }
 
@@ -90,8 +91,8 @@ public class MaterialRepository extends BaseRepository {
                     }
 
                     @Override
-                    public void onSuccess(MaterialTypeVo bookClassObject) {
-                        listener.onNext(bookClassObject);
+                    public void onSuccess(MaterialTypeVo materialTypeVo) {
+                        listener.onNext(materialTypeVo);
                     }
 
                     @Override

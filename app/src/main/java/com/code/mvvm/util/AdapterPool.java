@@ -2,11 +2,10 @@ package com.code.mvvm.util;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
 
 import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.data.pojo.article.ArticleInfoVo;
-import com.code.mvvm.core.data.pojo.banner.BannerAdListVo;
+import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.book.BookList;
 import com.code.mvvm.core.data.pojo.book.BookVo;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
@@ -90,16 +89,16 @@ public class AdapterPool {
         return adapter;
     }
 
-    public MultiTypeAdapter getCorrectAdapter(Context context) {
+    public MultiTypeAdapter getWorkAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(BannerAdListVo.class, new BannerItemView(context));
+        adapter.register(BannerListVo.class, new BannerItemView(context));
         adapter.register(WorksListVo.Works.class, new CorrectItemViewBinder(context));
-        return getNoHeadAdapter(adapter, context);
+        return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getSwipeCorrectAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(BannerAdListVo.class, new BannerItemView(context));
+        adapter.register(BannerListVo.class, new BannerItemView(context));
         adapter.register(WorksListVo.Works.class, new CorrectItemViewBinder(context));
         return getAdapter(adapter, context);
     }
@@ -139,7 +138,7 @@ public class AdapterPool {
     public MultiTypeAdapter getCourseRemAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
         adapter.register(TypeVo.class, new TypeItemView());
-        adapter.register(BannerAdListVo.class, new BannerItemView(context));
+        adapter.register(BannerListVo.class, new BannerItemView(context));
         adapter.register(CourseInfoVo.class, new HomeCourseItemView(context));
         adapter.register(LiveRecommendVo.class, new HomeLiveItemView(context));
         return getNoFootAdapter(adapter, context);
@@ -191,7 +190,7 @@ public class AdapterPool {
 
     public MultiTypeAdapter getHomeAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(BannerAdListVo.class, new BannerItemView(context));
+        adapter.register(BannerListVo.class, new BannerItemView(context));
         adapter.register(TypeVo.class, new TypeItemView());
         adapter.register(CatagoryVo.class, new CategoryItemView(context));
         adapter.register(BookList.class, new BookItemView());

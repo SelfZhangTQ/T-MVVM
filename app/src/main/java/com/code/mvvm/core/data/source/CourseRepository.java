@@ -45,8 +45,8 @@ public class CourseRepository extends BaseRepository {
                     }
 
                     @Override
-                    public void onSuccess(CourseRemVo lessonRemObject) {
-                        onResultCallBack.onNext(lessonRemObject);
+                    public void onSuccess(CourseRemVo courseRemVo) {
+                        onResultCallBack.onNext(courseRemVo);
                     }
 
                     @Override
@@ -67,8 +67,8 @@ public class CourseRepository extends BaseRepository {
                     }
 
                     @Override
-                    public void onSuccess(CourseTypeVo lessonTypeObject) {
-                        listener.onNext(lessonTypeObject);
+                    public void onSuccess(CourseTypeVo courseTypeVo) {
+                        listener.onNext(courseTypeVo);
                     }
 
                     @Override

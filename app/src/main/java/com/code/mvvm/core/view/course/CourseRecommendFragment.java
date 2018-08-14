@@ -8,7 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.core.data.pojo.banner.BannerAdListVo;
+import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.viewmodel.CourseViewModel;
@@ -17,7 +17,7 @@ import com.trecyclerview.entity.HeaderInfo;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：zhangtianqiu on 18/6/30 18:36
+ * @author：tqzhang
  */
 public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
     public static CourseRecommendFragment newInstance() {
@@ -33,9 +33,9 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
     protected void dataObserver() {
         mViewModel.getCourseRemList().observe(this, new Observer<CourseRemVo>() {
             @Override
-            public void onChanged(@Nullable CourseRemVo lessonRemObject) {
-                if (lessonRemObject != null) {
-                    setData(lessonRemObject);
+            public void onChanged(@Nullable CourseRemVo courseRemVo) {
+                if (courseRemVo != null) {
+                    setData(courseRemVo);
                 }
 
             }
@@ -54,7 +54,7 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
             @Override
             public int getSpanSize(int position) {
                 return oldItems.get(position) instanceof TypeVo
-                        || oldItems.get(position) instanceof BannerAdListVo
+                        || oldItems.get(position) instanceof BannerListVo
                         || oldItems.get(position) instanceof HeaderInfo ?
                         2 : 1;
             }
@@ -91,13 +91,13 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
     }
 
 
-    private void setData(CourseRemVo lessonRemObject) {
-        if (lessonRemObject.data.top_adv != null) {
-            setBannerData(new BannerAdListVo(lessonRemObject.data.top_adv));
+    private void setData(CourseRemVo courseRemVo) {
+        if (courseRemVo.data.top_adv != null) {
+            setBannerData(new BannerListVo(courseRemVo.data.top_adv));
         }
-        for (int i = 0; i < lessonRemObject.data.course_recommend.size(); i++) {
-            oldItems.add(new TypeVo(lessonRemObject.data.course_recommend.get(i).f_catalog + "/" + lessonRemObject.data.course_recommend.get(i).s_catalog));
-            oldItems.addAll(lessonRemObject.data.course_recommend.get(i).course_list);
+        for (int i = 0; i < courseRemVo.data.course_recommend.size(); i++) {
+            oldItems.add(new TypeVo(courseRemVo.data.course_recommend.get(i).f_catalog + "/" + courseRemVo.data.course_recommend.get(i).s_catalog));
+            oldItems.addAll(courseRemVo.data.course_recommend.get(i).course_list);
         }
         adapter.setItems(oldItems);
         adapter.notifyDataSetChanged();

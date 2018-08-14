@@ -55,8 +55,8 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
             }
 
             @Override
-            public void onNext(CourseTypeVo lessonTypeObject) {
-                mCourseType.postValue(lessonTypeObject);
+            public void onNext(CourseTypeVo courseTypeVo) {
+                mCourseType.postValue(courseTypeVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }
 
@@ -75,8 +75,8 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
             }
 
             @Override
-            public void onNext(CourseListVo publicLessonListObject) {
-                mCourseListData.postValue(publicLessonListObject);
+            public void onNext(CourseListVo courseListVo) {
+                mCourseListData.postValue(courseListVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }
 
@@ -95,8 +95,8 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
             }
 
             @Override
-            public void onNext(CourseRemVo lessonRemObject) {
-                mCourseRemData.postValue(lessonRemObject);
+            public void onNext(CourseRemVo courseRemVo) {
+                mCourseRemData.postValue(courseRemVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }
 

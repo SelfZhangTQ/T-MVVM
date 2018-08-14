@@ -7,7 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.core.data.pojo.banner.BannerAdListVo;
+import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.book.BookList;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
 import com.code.mvvm.core.data.pojo.home.CatagoryVo;
@@ -21,7 +21,7 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
 
 
 /**
- * @author：zhangtianqiu on 18/5/2 15:46
+ * @author：tqzhang
  */
 public class HomeFragment extends BaseListFragment<HomeViewModel> {
     public static HomeFragment newInstance() {
@@ -48,11 +48,11 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
 
         });
 
-        mViewModel.getBannerList().observe(this, new Observer<BannerAdListVo>() {
+        mViewModel.getBannerList().observe(this, new Observer<BannerListVo>() {
             @Override
-            public void onChanged(@Nullable BannerAdListVo bannerAdListVo) {
-                if (bannerAdListVo != null) {
-                    setBannerData(bannerAdListVo);
+            public void onChanged(@Nullable BannerListVo bannerListVo) {
+                if (bannerListVo != null) {
+                    setBannerData(bannerListVo);
                 }
             }
         });
@@ -92,7 +92,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
                         || oldItems.get(position) instanceof CatagoryVo
                         || oldItems.get(position) instanceof TypeVo
                         || oldItems.get(position) instanceof BookList
-                        || oldItems.get(position) instanceof BannerAdListVo
+                        || oldItems.get(position) instanceof BannerListVo
                         || oldItems.get(position) instanceof HeaderInfo
                         || oldItems.get(position) instanceof FootInfo) ? 2 : 1;
             }
@@ -113,44 +113,44 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
         mViewModel.getRequestMerge();
     }
 
-    private void addItems(HomeListVo studyObject) {
+    private void addItems(HomeListVo homeListVo) {
         if (!isRefresh) {
             oldItems.add(new CatagoryVo("title"));
             oldItems.add(new TypeVo("直播推荐"));
-            if (studyObject.data.live_recommend.size() > 0) {
-                oldItems.addAll(studyObject.data.live_recommend);
+            if (homeListVo.data.live_recommend.size() > 0) {
+                oldItems.addAll(homeListVo.data.live_recommend);
             }
             oldItems.add(new TypeVo("视频课程"));
-            if (studyObject.data.course.size() > 0) {
-                oldItems.addAll(studyObject.data.course);
+            if (homeListVo.data.course.size() > 0) {
+                oldItems.addAll(homeListVo.data.course);
             }
             oldItems.add(new TypeVo("图书推荐"));
-            if (studyObject.data.publishingbook.size() > 0) {
-                oldItems.add(new BookList(studyObject.data.publishingbook));
+            if (homeListVo.data.publishingbook.size() > 0) {
+                oldItems.add(new BookList(homeListVo.data.publishingbook));
             }
             oldItems.add(new TypeVo("专题"));
-            if (studyObject.data.matreialsubject.size() > 0) {
-                oldItems.add(new MatreialListVo(studyObject.data.matreialsubject));
+            if (homeListVo.data.matreialsubject.size() > 0) {
+                oldItems.add(new MatreialListVo(homeListVo.data.matreialsubject));
             }
             adapter.setItems(oldItems);
             notifyDataSetChanged();
         } else {
             newItems.add(new CatagoryVo("title"));
             newItems.add(new TypeVo("直播推荐"));
-            if (studyObject.data.live_recommend.size() > 0) {
-                newItems.addAll(studyObject.data.live_recommend);
+            if (homeListVo.data.live_recommend.size() > 0) {
+                newItems.addAll(homeListVo.data.live_recommend);
             }
             newItems.add(new TypeVo("视频课程"));
-            if (studyObject.data.course.size() > 0) {
-                newItems.addAll(studyObject.data.course);
+            if (homeListVo.data.course.size() > 0) {
+                newItems.addAll(homeListVo.data.course);
             }
             newItems.add(new TypeVo("图书推荐"));
-            if (studyObject.data.publishingbook.size() > 0) {
-                newItems.add(new BookList(studyObject.data.publishingbook));
+            if (homeListVo.data.publishingbook.size() > 0) {
+                newItems.add(new BookList(homeListVo.data.publishingbook));
             }
             newItems.add(new TypeVo("专题"));
-            if (studyObject.data.matreialsubject.size() > 0) {
-                newItems.add(new MatreialListVo(studyObject.data.matreialsubject));
+            if (homeListVo.data.matreialsubject.size() > 0) {
+                newItems.add(new MatreialListVo(homeListVo.data.matreialsubject));
             }
             refreshDataChanged();
         }

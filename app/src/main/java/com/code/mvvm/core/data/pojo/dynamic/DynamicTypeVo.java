@@ -2,7 +2,7 @@ package com.code.mvvm.core.data.pojo.dynamic;
 
 import com.code.mvvm.core.data.pojo.BaseObject;
 import com.code.mvvm.core.data.pojo.article.ArticleSubjectVo;
-import com.code.mvvm.core.data.pojo.correct.CorrectInfoVo;
+import com.code.mvvm.core.data.pojo.correct.WorkInfoVo;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawInfoVo;
 import com.code.mvvm.core.data.pojo.image.ImageVo;
 
@@ -62,7 +62,7 @@ public class DynamicTypeVo extends BaseObject implements Serializable {
         public int type;
         public String correctid;
         public int lessonid;
-        public CorrectInfoVo correct;
+        public WorkInfoVo correct;
         public int picnum;
         public String sname;
         public String avatar;

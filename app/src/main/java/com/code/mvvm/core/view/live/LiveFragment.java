@@ -28,13 +28,17 @@ public class LiveFragment extends BaseViewPagerFragment<LiveViewModel> {
     public void initView(Bundle state) {
         super.initView(state);
         titleName = new ArrayList<>();
+        getTabData();
+    }
+
+    @Override
+    protected void dataObserver() {
         mViewModel.getLiveType().observe(this, new Observer<LiveTypeVo>() {
             @Override
-            public void onChanged(@Nullable LiveTypeVo livingTypeObject) {
-                setData(livingTypeObject);
+            public void onChanged(@Nullable LiveTypeVo liveTypeVo) {
+                setData(liveTypeVo);
             }
         });
-        getTabData();
     }
 
     @Override
@@ -63,12 +67,12 @@ public class LiveFragment extends BaseViewPagerFragment<LiveViewModel> {
 
     }
 
-    private void setData(LiveTypeVo lessonTypeObject) {
-        mArrTitles = new String[lessonTypeObject.data.s_catalog.size()];
+    private void setData(LiveTypeVo liveTypeVo) {
+        mArrTitles = new String[liveTypeVo.data.s_catalog.size()];
         titleName.clear();
-        for (int j = 0; j < lessonTypeObject.data.s_catalog.size(); j++) {
-            titleName.add(lessonTypeObject.data.s_catalog.get(j));
-            mArrTitles[j] = (lessonTypeObject.data.s_catalog.get(j).name);
+        for (int j = 0; j < liveTypeVo.data.s_catalog.size(); j++) {
+            titleName.add(liveTypeVo.data.s_catalog.get(j));
+            mArrTitles[j] = (liveTypeVo.data.s_catalog.get(j).name);
         }
         initFragment();
         setAdapter();

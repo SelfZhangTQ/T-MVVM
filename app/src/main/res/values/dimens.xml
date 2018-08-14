@@ -14,15 +14,6 @@
     <!-- 边距 -->
     <dimen name="list_margin_size">15dp</dimen>
 
-    <!-- 标题配置 -->
-
-    <!-- 首页Gallery高度 -->
-
-    <!-- 来自选择图片页面 -->
-
-    <!-- 普通用户头布局高度 -->
-
-    <!-- 精讲列表item图片 -->
     <dimen name="concise_three_layout_margin">12dp</dimen>
     <dimen name="concise_three_img_margin">8dp</dimen>
     <dimen name="concise_img_margin_top">16dp</dimen>

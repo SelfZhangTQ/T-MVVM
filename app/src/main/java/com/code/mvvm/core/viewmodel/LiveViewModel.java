@@ -53,8 +53,8 @@ public class LiveViewModel extends BaseViewModel<LiveRepository> {
             }
 
             @Override
-            public void onNext(LiveListVo activityListObject) {
-                liveData.postValue(activityListObject);
+            public void onNext(LiveListVo liveListVo) {
+                liveData.postValue(liveListVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }
 
@@ -74,8 +74,8 @@ public class LiveViewModel extends BaseViewModel<LiveRepository> {
             }
 
             @Override
-            public void onNext(LiveListVo activityListObject) {
-                liveRemData.postValue(activityListObject);
+            public void onNext(LiveListVo liveListVo) {
+                liveRemData.postValue(liveListVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }
 
@@ -95,8 +95,8 @@ public class LiveViewModel extends BaseViewModel<LiveRepository> {
             }
 
             @Override
-            public void onNext(LiveTypeVo bookClassObject) {
-                liveTypeData.postValue(bookClassObject);
+            public void onNext(LiveTypeVo liveTypeVo) {
+                liveTypeData.postValue(liveTypeVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }
 

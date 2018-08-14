@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LessonDetailVo extends BaseObject {
+public class CourseDetailVo extends BaseObject {
 
     /**
      * errno : 0

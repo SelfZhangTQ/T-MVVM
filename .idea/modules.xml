@@ -8,7 +8,6 @@
       <module fileurl="file://$PROJECT_DIR$/basiclibrary/basiclibrary.iml" filepath="$PROJECT_DIR$/basiclibrary/basiclibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/basiccomponent/bottomnavigationbar/bottomnavigationbar.iml" filepath="$PROJECT_DIR$/basiccomponent/bottomnavigationbar/bottomnavigationbar.iml" />
       <module fileurl="file://$PROJECT_DIR$/basiccomponent/network/network.iml" filepath="$PROJECT_DIR$/basiccomponent/network/network.iml" />
-      <module fileurl="file://$PROJECT_DIR$/basiccomponent/refreshlibrary/refreshlibrary.iml" filepath="$PROJECT_DIR$/basiccomponent/refreshlibrary/refreshlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/basiccomponent/tablayout/tablayout.iml" filepath="$PROJECT_DIR$/basiccomponent/tablayout/tablayout.iml" />
     </modules>
   </component>

@@ -7,12 +7,12 @@ import com.code.mvvm.core.data.pojo.live.LiveRecommendVo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CorrectRecommentVo extends BaseObject {
+public class WorkRecommentVo extends BaseObject {
 
     public Data data;
 
     public static class Data {
-        public ArrayList<CorrectInfoVo> content;
+        public ArrayList<WorkInfoVo> content;
         public List<CourseInfoVo> course;
         public List<LiveRecommendVo> live;
     }

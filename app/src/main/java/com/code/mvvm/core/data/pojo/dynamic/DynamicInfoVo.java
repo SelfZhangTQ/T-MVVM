@@ -1,7 +1,7 @@
 package com.code.mvvm.core.data.pojo.dynamic;
 
 import com.code.mvvm.core.data.pojo.article.ArticleInfoVo;
-import com.code.mvvm.core.data.pojo.correct.CorrectInfoVo;
+import com.code.mvvm.core.data.pojo.correct.WorkInfoVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawInfoVo;
@@ -19,7 +19,7 @@ public class DynamicInfoVo {
     public String ctime;
     public UserInfoVo userinfo;
     public WorksListVo.Works tweet_info;
-    public CorrectInfoVo correct_info;
+    public WorkInfoVo correct_info;
     public MatreialSubjectVo material_info;
     public ArticleInfoVo lecture_info;
     public LiveRecommendVo live_info;
