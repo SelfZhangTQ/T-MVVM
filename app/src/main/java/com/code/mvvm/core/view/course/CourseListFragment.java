@@ -39,7 +39,7 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
             @Override
             public void onChanged(@Nullable CourseListVo courseListVo) {
                 if (courseListVo != null && courseListVo.data.size() > 0) {
-                    lastid = courseListVo.data.get(courseListVo.data.size() - 1).courseid;
+                    lastId = courseListVo.data.get(courseListVo.data.size() - 1).courseid;
                     setData(courseListVo.data);
                 }
 
@@ -91,6 +91,6 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getCourseList(mCatalogId, lastid, "20");
+        mViewModel.getCourseList(mCatalogId, lastId, "20");
     }
 }

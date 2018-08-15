@@ -32,7 +32,7 @@ public class LiveRecommendFragment extends BaseListFragment<LiveViewModel> {
         mViewModel.getLiveRemList().observe(this, new Observer<LiveListVo>() {
             @Override
             public void onChanged(@Nullable LiveListVo liveListVo) {
-                lastid = liveListVo.
+                lastId = liveListVo.
                         data.get(liveListVo.data.size() - 1).liveid;
                 setData(liveListVo.data);
             }
@@ -74,7 +74,7 @@ public class LiveRecommendFragment extends BaseListFragment<LiveViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getLiveRemList(lastid, "20");
+        mViewModel.getLiveRemList(lastId, "20");
     }
 
 

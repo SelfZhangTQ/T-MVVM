@@ -54,49 +54,7 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
         } else if (e instanceof ConnectException) {
             message = "连接失败";
         } else if (e instanceof ServerException) {
-
             message = ((ServerException) e).message;
-//            switch (messageCode) {
-//                case 0:
-//                    message = "错误";
-//                    break;
-//                case 1:
-//                    message = "成功";
-//                    break;
-//                case 404:
-//                    message = "请求出错";
-//                    break;
-//                case 500:
-//                case 504:
-//                    message = "服务器异常";
-//                    break;
-//                case 1001:
-//                    message = "系统错误";
-//                    break;
-//                case 1002:
-//                    message = "数据库操作错误";
-//                    break;
-//                case 1003:
-//                    message = "参数不完整";
-//                    break;
-//                case 1004:
-//                    message = "未查询到";
-//                    break;
-//                case 1010:
-//                    message = "默认数据已存在";
-//                    break;
-//                case 1017:
-//                    message = "校验不通过";
-//                    break;
-//                case 5000:
-//                    message = "其它错误";
-//                    break;
-//                default:
-//                    break;
-//
-//            }
-
-
         }
         onFailure(message);
     }

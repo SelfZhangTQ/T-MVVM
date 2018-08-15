@@ -34,7 +34,7 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
                 if (followDrawRecommendObject == null) {
                     return;
                 }
-                lastid = followDrawRecommendObject.
+                lastId = followDrawRecommendObject.
                         data.get(followDrawRecommendObject.data.size() - 1).lessonid;
                 setData(followDrawRecommendObject.data);
             }
@@ -76,6 +76,6 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getFollowDrawList(getArguments().getString("type_id"), lastid, "20");
+        mViewModel.getFollowDrawList(getArguments().getString("type_id"), lastId, "20");
     }
 }

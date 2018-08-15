@@ -26,7 +26,7 @@ public class QAListFragment extends BaseListFragment<QAViewModel> {
         mViewModel.getQAList().observe(this, new Observer<QaListVo>() {
             @Override
             public void onChanged(@Nullable QaListVo qaListObject) {
-                lastid = qaListObject.data.get(qaListObject.data.size() - 1).newsid;
+                lastId = qaListObject.data.get(qaListObject.data.size() - 1).newsid;
                 setData(qaListObject.data);
 
             }
@@ -68,6 +68,6 @@ public class QAListFragment extends BaseListFragment<QAViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getQAList(lastid, "30");
+        mViewModel.getQAList(lastId, "30");
     }
 }

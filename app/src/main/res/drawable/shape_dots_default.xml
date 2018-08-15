@@ -4,7 +4,7 @@
 
     <stroke
         android:width="0.5dp"
-        android:color="@color/verification_btn_normal" />
+        android:color="@color/color_D6D8DA" />
 
 
     <solid android:color="#ffffff" />

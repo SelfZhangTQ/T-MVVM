@@ -19,33 +19,33 @@ import com.code.mvvm.core.data.pojo.material.MaterialInfoVo;
 import com.code.mvvm.core.data.pojo.material.MatreialListVo;
 import com.code.mvvm.core.data.pojo.material.MatreialSubjectVo;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
-import com.code.mvvm.core.view.activity.viewholder.ActivityListItemViewBinder;
-import com.code.mvvm.core.view.article.viewholder.ArticleRem1ItemViewBinder;
-import com.code.mvvm.core.view.article.viewholder.ArticleRem2ItemViewBinder;
-import com.code.mvvm.core.view.article.viewholder.ArticleRem3ItemViewBinder;
-import com.code.mvvm.core.view.book.viewholder.BookItemView;
-import com.code.mvvm.core.view.book.viewholder.BookListItemView;
+import com.code.mvvm.core.view.activity.viewholder.ActivityItemHolder;
+import com.code.mvvm.core.view.article.viewholder.ArticleRem1ItemHolder;
+import com.code.mvvm.core.view.article.viewholder.ArticleRem2ItemHolder;
+import com.code.mvvm.core.view.article.viewholder.ArticleRem3ItemHolder;
+import com.code.mvvm.core.view.book.viewholder.BookItemHolder;
+import com.code.mvvm.core.view.book.viewholder.BookListHolder;
 import com.code.mvvm.core.view.common.FootItemViewBinder;
 import com.code.mvvm.core.view.common.TypeItemView;
-import com.code.mvvm.core.view.correct.viewholder.CorrectItemViewBinder;
-import com.code.mvvm.core.view.course.viewholder.CourseItemView;
-import com.code.mvvm.core.view.dynamic.viewholder.dynamicBinderAritcle;
-import com.code.mvvm.core.view.dynamic.viewholder.dynamicBinderCorrect;
-import com.code.mvvm.core.view.dynamic.viewholder.dynamicBinderFollow;
-import com.code.mvvm.core.view.dynamic.viewholder.dynamicBinderLesson;
-import com.code.mvvm.core.view.dynamic.viewholder.dynamicBinderLive;
-import com.code.mvvm.core.view.dynamic.viewholder.dynamicBinderSubject;
-import com.code.mvvm.core.view.dynamic.viewholder.dynamicBinderWork;
-import com.code.mvvm.core.view.followdraw.viewholder.FollowDrawListItemViewBinder;
+import com.code.mvvm.core.view.correct.viewholder.CorrectItemHolder;
+import com.code.mvvm.core.view.course.viewholder.CourseItemHolder;
+import com.code.mvvm.core.view.dynamic.viewholder.DynamicAritcleHolder;
+import com.code.mvvm.core.view.dynamic.viewholder.DynamicCorrectHolder;
+import com.code.mvvm.core.view.dynamic.viewholder.DynamicCourseHolder;
+import com.code.mvvm.core.view.dynamic.viewholder.DynamicFollowHolder;
+import com.code.mvvm.core.view.dynamic.viewholder.DynamicLiveHolder;
+import com.code.mvvm.core.view.dynamic.viewholder.DynamicSubjectHolder;
+import com.code.mvvm.core.view.dynamic.viewholder.DynamicWorkHolder;
+import com.code.mvvm.core.view.followdraw.viewholder.FollowDrawListHolder;
 import com.code.mvvm.core.view.home.viewholder.CategoryItemView;
 import com.code.mvvm.core.view.home.viewholder.HomeCourseItemView;
 import com.code.mvvm.core.view.home.viewholder.HomeLiveItemView;
 import com.code.mvvm.core.view.home.viewholder.HomeMaterialItemView;
-import com.code.mvvm.core.view.home.viewholder.QAListItemViewBinder;
-import com.code.mvvm.core.view.live.viewholder.LiveItemView;
-import com.code.mvvm.core.view.live.viewholder.LiveListItemView;
-import com.code.mvvm.core.view.material.viewholder.MaterialItemViewBinder;
-import com.code.mvvm.core.view.material.viewholder.MatreialListItemViewBinder;
+import com.code.mvvm.core.view.live.viewholder.LiveItemHolder;
+import com.code.mvvm.core.view.live.viewholder.LiveListItemHolder;
+import com.code.mvvm.core.view.material.viewholder.MaterialItemHolder;
+import com.code.mvvm.core.view.material.viewholder.MaterialListHolder;
+import com.code.mvvm.core.view.qa.viewholder.QAListItemHolder;
 import com.code.mvvm.widget.banner.BannerItemView;
 import com.trecyclerview.entity.FootInfo;
 import com.trecyclerview.entity.HeaderInfo;
@@ -92,42 +92,42 @@ public class AdapterPool {
     public MultiTypeAdapter getWorkAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
         adapter.register(BannerListVo.class, new BannerItemView(context));
-        adapter.register(WorksListVo.Works.class, new CorrectItemViewBinder(context));
+        adapter.register(WorksListVo.Works.class, new CorrectItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getSwipeCorrectAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
         adapter.register(BannerListVo.class, new BannerItemView(context));
-        adapter.register(WorksListVo.Works.class, new CorrectItemViewBinder(context));
+        adapter.register(WorksListVo.Works.class, new CorrectItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getBookAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(BookVo.class, new BookListItemView());
+        adapter.register(BookVo.class, new BookListHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getActivityAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(ActivityListVo.DataBean.class, new ActivityListItemViewBinder(context));
+        adapter.register(ActivityListVo.DataBean.class, new ActivityItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getArticleAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(ArticleInfoVo.class).to(new ArticleRem1ItemViewBinder(context), new ArticleRem2ItemViewBinder(context), new ArticleRem3ItemViewBinder(context))
+        adapter.register(ArticleInfoVo.class).to(new ArticleRem1ItemHolder(context), new ArticleRem2ItemHolder(context), new ArticleRem3ItemHolder(context))
                 .withClassLinker(new ClassLinker<ArticleInfoVo>() {
                     @NonNull
                     @Override
                     public Class<? extends AbsItemView<ArticleInfoVo, ?>> index(int position, @NonNull ArticleInfoVo listBean) {
                         if ("1".equals(listBean.thumbtype)) {
-                            return ArticleRem1ItemViewBinder.class;
+                            return ArticleRem1ItemHolder.class;
                         } else if ("2".equals(listBean.thumbtype)) {
-                            return ArticleRem2ItemViewBinder.class;
+                            return ArticleRem2ItemHolder.class;
                         } else if ("3".equals(listBean.thumbtype)) {
-                            return ArticleRem3ItemViewBinder.class;
+                            return ArticleRem3ItemHolder.class;
                         }
                         return null;
                     }
@@ -147,44 +147,44 @@ public class AdapterPool {
 
     public MultiTypeAdapter getCourseListAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(CourseInfoVo.class, new CourseItemView(context));
+        adapter.register(CourseInfoVo.class, new CourseItemHolder(context));
         return getAdapter(adapter, context);
 
     }
 
     public MultiTypeAdapter getFollowAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(FollowDrawInfoVo.class, new FollowDrawListItemViewBinder(context));
+        adapter.register(FollowDrawInfoVo.class, new FollowDrawListHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getQaAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(QaListVo.DataBean.class, new QAListItemViewBinder(context));
+        adapter.register(QaListVo.DataBean.class, new QAListItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getMaterialListAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(MaterialInfoVo.class, new MatreialListItemViewBinder(context));
+        adapter.register(MaterialInfoVo.class, new MaterialListHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getMaterialRemAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(MatreialSubjectVo.class, new MaterialItemViewBinder(context));
+        adapter.register(MatreialSubjectVo.class, new MaterialItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getLiveAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(LiveRecommendVo.class, new LiveListItemView(context));
+        adapter.register(LiveRecommendVo.class, new LiveListItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getLiveRemAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(LiveRecommendVo.class, new LiveItemView(context));
+        adapter.register(LiveRecommendVo.class, new LiveItemHolder(context));
         return getAdapter(adapter, context);
     }
 
@@ -193,7 +193,7 @@ public class AdapterPool {
         adapter.register(BannerListVo.class, new BannerItemView(context));
         adapter.register(TypeVo.class, new TypeItemView());
         adapter.register(CatagoryVo.class, new CategoryItemView(context));
-        adapter.register(BookList.class, new BookItemView());
+        adapter.register(BookList.class, new BookItemHolder(context));
         adapter.register(CourseInfoVo.class, new HomeCourseItemView(context));
         adapter.register(LiveRecommendVo.class, new HomeLiveItemView(context));
         adapter.register(MatreialListVo.class, new HomeMaterialItemView(context));
@@ -203,32 +203,32 @@ public class AdapterPool {
     public MultiTypeAdapter getDynamicAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
         adapter.register(DynamicInfoVo.class)
-                .to(new dynamicBinderCorrect(context),
-                        new dynamicBinderWork(context),
-                        new dynamicBinderSubject(context),
-                        new dynamicBinderAritcle(context),
-                        new dynamicBinderLesson(context),
-                        new dynamicBinderLive(context),
-                        new dynamicBinderFollow(context)
+                .to(new DynamicCorrectHolder(context),
+                        new DynamicWorkHolder(context),
+                        new DynamicSubjectHolder(context),
+                        new DynamicAritcleHolder(context),
+                        new DynamicCourseHolder(context),
+                        new DynamicLiveHolder(context),
+                        new DynamicFollowHolder(context)
                 )
                 .withClassLinker(new ClassLinker<DynamicInfoVo>() {
                     @NonNull
                     @Override
                     public Class<? extends AbsItemView<DynamicInfoVo, ?>> index(int position, @NonNull DynamicInfoVo dynamicInfoVo) {
                         if (dynamicInfoVo.subjecttype.equals("1")) {
-                            return dynamicBinderCorrect.class;
+                            return DynamicCorrectHolder.class;
                         } else if (dynamicInfoVo.subjecttype.equals("2")) {
-                            return dynamicBinderWork.class;
+                            return DynamicWorkHolder.class;
                         } else if (dynamicInfoVo.subjecttype.equals("3")) {
-                            return dynamicBinderSubject.class;
+                            return DynamicSubjectHolder.class;
                         } else if (dynamicInfoVo.subjecttype.equals("4")) {
-                            return dynamicBinderAritcle.class;
+                            return DynamicAritcleHolder.class;
                         } else if (dynamicInfoVo.subjecttype.equals("5")) {
-                            return dynamicBinderFollow.class;
+                            return DynamicFollowHolder.class;
                         } else if (dynamicInfoVo.subjecttype.equals("6")) {
-                            return dynamicBinderLive.class;
+                            return DynamicLiveHolder.class;
                         } else if (dynamicInfoVo.subjecttype.equals("7")) {
-                            return dynamicBinderLesson.class;
+                            return DynamicCourseHolder.class;
                         }
                         return null;
                     }

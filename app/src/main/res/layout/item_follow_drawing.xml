@@ -21,6 +21,6 @@
         android:maxLength="20"
         android:maxLines="2"
         android:paddingLeft="5dp"
-        android:textColor="@color/color_black_333333"
+        android:textColor="@color/color_333333"
         android:textSize="14sp" />
 </com.code.mvvm.widget.CustomHeightRelativeLayout>

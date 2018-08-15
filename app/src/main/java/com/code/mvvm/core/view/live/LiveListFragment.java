@@ -34,7 +34,7 @@ public class LiveListFragment extends BaseListFragment<LiveViewModel> {
             @Override
             public void onChanged(@Nullable LiveListVo liveListVo) {
                 if (liveListVo != null && liveListVo.data!= null) {
-                    lastid = liveListVo.data.get(liveListVo.data.size() - 1).liveid;
+                    lastId = liveListVo.data.get(liveListVo.data.size() - 1).liveid;
                     setData(liveListVo.data);
                 }
             }
@@ -77,6 +77,6 @@ public class LiveListFragment extends BaseListFragment<LiveViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getLiveList(getArguments().getString("f_catalog_id"), lastid, "20");
+        mViewModel.getLiveList(getArguments().getString("f_catalog_id"), lastId, "20");
     }
 }

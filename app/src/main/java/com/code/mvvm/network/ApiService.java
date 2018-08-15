@@ -11,10 +11,10 @@ import com.code.mvvm.core.data.pojo.correct.WorkDetailVo;
 import com.code.mvvm.core.data.pojo.correct.WorkRecommentVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
+import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
-import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.core.data.pojo.dynamic.DynamicListVo;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawRecommendVo;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawTypeVo;
@@ -45,7 +45,7 @@ public interface ApiService {
 
     @POST(URL.WORK_MORE_LIST)
     @FormUrlEncoded
-    Observable<WorksListVo> getWorkMoreData(@Field("corrected") String corrected, @Field("last_id") String last_id, @Field("utime") String utime, @Field("rn") String rn);
+    Observable<WorksListVo> getWorkMoreData(@Field("last_id") String last_id, @Field("utime") String utime, @Field("rn") String rn);
 
     @POST(URL.WORK_DETAIL)
     @FormUrlEncoded

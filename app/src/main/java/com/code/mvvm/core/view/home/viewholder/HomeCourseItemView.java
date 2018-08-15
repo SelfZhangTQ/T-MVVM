@@ -55,7 +55,9 @@ public class HomeCourseItemView extends AbsItemView<CourseInfoVo, HomeCourseItem
         holder.mVideoLayout.setLayoutParams(params);
         holder.mVideoImage.setScaleType(ImageView.ScaleType.FIT_XY);
         Glide.with(mContext).load(courseListBean.thumb_url).placeholder(R.color.white).into(holder.mVideoImage);
-        Glide.with(mContext).load(courseListBean.userinfo.avatar).transform(new GlideCircleTransform(App.Instance())).into(holder.mUserIcon);
+        Glide.with(mContext).load(courseListBean.userinfo.avatar)
+                .transform(new GlideCircleTransform(mContext))
+                .into(holder.mUserIcon);
         holder.mVideoImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/zhibo_img"
+            android:id="@+id/iv_live_pic"
             android:layout_width="match_parent"
             android:scaleType="centerCrop"
             android:layout_height="match_parent" />
@@ -32,7 +32,7 @@
             android:visibility="gone" />
 
         <ImageView
-            android:id="@+id/zhibo_state"
+            android:id="@+id/iv_live_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"

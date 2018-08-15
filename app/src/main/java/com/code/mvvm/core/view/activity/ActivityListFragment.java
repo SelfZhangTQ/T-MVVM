@@ -27,7 +27,7 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
             @Override
             public void onChanged(@Nullable ActivityListVo activityListVo) {
                 if (activityListVo != null) {
-                    lastid = activityListVo.data.get(activityListVo.data.size() - 1).newsid;
+                    lastId = activityListVo.data.get(activityListVo.data.size() - 1).newsid;
                     setData(activityListVo.data);
                 }
 
@@ -71,7 +71,7 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getActivityList(lastid, "20");
+        mViewModel.getActivityList(lastId, "20");
     }
 
 }

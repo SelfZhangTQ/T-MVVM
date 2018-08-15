@@ -32,7 +32,7 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
             @Override
             public void onChanged(@Nullable MaterialListVo materialListVo) {
                 if (materialListVo != null) {
-                    lastid = materialListVo.data.content.get(materialListVo.data.content.size() - 1).tid;
+                    lastId = materialListVo.data.content.get(materialListVo.data.content.size() - 1).tid;
                     setData(materialListVo.data.content);
                 }
             }
@@ -41,7 +41,7 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
             @Override
             public void onChanged(@Nullable MaterialListVo materialListVo) {
                 if (materialListVo != null && materialListVo.data != null && materialListVo.data.content.size() > 0) {
-                    lastid = materialListVo.data.content.get(materialListVo.data.content.size() - 1).tid;
+                    lastId = materialListVo.data.content.get(materialListVo.data.content.size() - 1).tid;
                     setData(materialListVo.data.content);
                 }
             }
@@ -84,7 +84,7 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getMaterialMoreList("0", getArguments().getString("mlevel"), lastid, "20");
+        mViewModel.getMaterialMoreList("0", getArguments().getString("mlevel"), lastId, "20");
     }
 
     private void getNewData() {

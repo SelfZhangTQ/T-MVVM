@@ -24,7 +24,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:text="直播课"
-            android:textColor="@color/color_text_333333"
+            android:textColor="@color/color_333333"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -45,7 +45,7 @@
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/iv_more"
             android:text="查看更多"
-            android:textColor="@color/color_text_666666"
+            android:textColor="@color/color_666666"
             android:textSize="14sp" />
     </RelativeLayout>
 </LinearLayout>

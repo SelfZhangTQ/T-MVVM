@@ -42,7 +42,7 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
             @Override
             public void onChanged(@Nullable DynamicListVo dynamicListVo) {
                 if (dynamicListVo != null) {
-                    lastid = dynamicListVo.data.get(dynamicListVo.data.size() - 1).feedid;
+                    lastId = dynamicListVo.data.get(dynamicListVo.data.size() - 1).feedid;
                     setData(dynamicListVo.data);
                 }
             }
@@ -67,22 +67,22 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
     @Override
     protected void onStateRefresh() {
         super.onStateRefresh();
-        getTabData();
+        getDynamicListData();
     }
 
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
-        getTabData();
+        getDynamicListData();
     }
 
     @Override
     protected void getRemoteData() {
-        getTabData();
+        getDynamicListData();
     }
 
-    private void getTabData() {
-        mViewModel.getDynamicList("20", "818d8a6b54870bdffc333376723289d9", lastid);
+    private void getDynamicListData() {
+        mViewModel.getDynamicList("20", "818d8a6b54870bdffc333376723289d9", lastId);
 
     }
 }

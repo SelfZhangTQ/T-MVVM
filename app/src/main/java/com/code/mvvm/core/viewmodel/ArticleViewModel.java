@@ -36,8 +36,8 @@ public class ArticleViewModel extends BaseViewModel<ArticleRepository> {
         return mArticleTypeData;
     }
 
-    public void getArticleList(String lectureLevel1, String lastid, String rn) {
-        mRepository.loadArticleRemList(lectureLevel1, lastid, rn, new OnResultCallBack<ArticleVo>() {
+    public void getArticleList(String lectureLevel1, String lastId, String rn) {
+        mRepository.loadArticleRemList(lectureLevel1, lastId, rn, new OnResultCallBack<ArticleVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

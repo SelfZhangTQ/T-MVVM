@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             tl:tl_indicator_anim_enable="true"
-            tl:tl_indicator_color="@color/square_textcolor_selected"
+            tl:tl_indicator_color="@color/color_ffca00"
             tl:tl_indicator_height="3dp"
             tl:tl_indicator_style="NORMAL"
             tl:tl_indicator_width="30dp"

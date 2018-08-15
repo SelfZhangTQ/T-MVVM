@@ -45,24 +45,18 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
                 if (worksListVo == null) {
                     return;
                 }
-                lastid = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
+                lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
                 utime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
-                if (isRefresh) {
-                    newItems.addAll(worksListVo.data.content);
-                    oldItems.clear();
-                    oldItems.addAll(newItems);
-                    notifyDataSetChanged();
-                    mRecyclerView.refreshComplete();
-                } else {
-                    setData(worksListVo.data.content);
-                }
-
+                setData(worksListVo.data.content);
             }
         });
         mViewModel.getWorkMoreData().observe(this, new Observer<WorksListVo>() {
             @Override
             public void onChanged(@Nullable WorksListVo worksListVo) {
-                lastid = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
+                if (worksListVo == null) {
+                    return;
+                }
+                lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
                 utime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
                 setData(worksListVo.data.content);
             }
@@ -87,38 +81,31 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
-        getAdData();
-        getWorkData();
+        getNetWorkData();
         mViewModel.getRequestMerge();
     }
 
     @Override
     protected void onRefreshAction() {
         super.onRefreshAction();
-        getAdData();
-        getWorkData();
+        getNetWorkData();
         mViewModel.getRequestMerge();
     }
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getWorkMoreData("", lastid, utime, "20");
+        mViewModel.getWorkMoreData("", lastId, utime, "20");
     }
 
     @Override
     protected void onStateRefresh() {
         super.onStateRefresh();
-        getAdData();
-        getWorkData();
+        getNetWorkData();
         mViewModel.getRequestMerge();
     }
 
-    private void getWorkData() {
+    private void getNetWorkData() {
+        mViewModel.getBannerData("1", "4", "109", "", null);
         mViewModel.getWorkData("80", "20");
     }
-
-    private void getAdData() {
-        mViewModel.getBannerData("1", "4", "109", "", null);
-    }
-
 }

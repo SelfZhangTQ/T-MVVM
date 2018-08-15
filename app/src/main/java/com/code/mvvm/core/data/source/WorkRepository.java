@@ -17,37 +17,18 @@ import rx.functions.Action1;
  */
 public class WorkRepository extends BaseRepository {
 
-    private Observable<WorksListVo> observable2;
-    private Observable<BannerListVo> observable1;
+    private Observable<WorksListVo> mWorkData;
+    private Observable<BannerListVo> mBannerData;
 
-    private Observable<WorkDetailVo> mCorrectDetail;
-    private Observable<WorkRecommentVo> mCorrectRecomment;
+    private Observable<WorkDetailVo> mWorkDetail;
+    private Observable<WorkRecommentVo> mWorkRecomment;
 
     public void loadWorkData(String corrected, String rn, final OnResultCallBack<WorksListVo> listener) {
-        observable2 = apiService.getWorkData(corrected, rn);
-        //        apiService.getWorkData(corrected, rn)
-//                .compose(RxSchedulers.<WorksListHotObject>io_main())
-//                .subscribe(new RxSubscriber<WorksListHotObject>() {
-//
-//                    @Override
-//                    protected void onNoNetWork() {
-//                        super.onNoNetWork();
-//                        listener.onNoNetWork();
-//                    }
-//                    @Override
-//                    public void onSuccess(WorksListHotObject worksListHotObject) {
-//                        listener.onNext(worksListHotObject);
-//                    }
-//
-//                    @Override
-//                    public void onFailure(String msg) {
-//                        listener.onError(msg);
-//                    }
-//                });
+        mWorkData = apiService.getWorkData(corrected, rn);
     }
 
     public void loadWorkMoreData(String corrected, String last_id, String utime, String rn, final OnResultCallBack<WorksListVo> listener) {
-        apiService.getWorkMoreData(corrected, last_id, utime, rn)
+        apiService.getWorkMoreData(last_id, utime, rn)
                 .compose(RxSchedulers.<WorksListVo>io_main())
                 .subscribe(new RxSubscriber<WorksListVo>() {
                     @Override
@@ -73,31 +54,11 @@ public class WorkRepository extends BaseRepository {
                                String s_catalog_id,
                                String t_catalog_id,
                                String province, final OnResultCallBack listener) {
-        observable1 = apiService.getBannerData(posType, f_catalog_id, s_catalog_id, t_catalog_id, province);
-
-        //        apiService.getBannerData(posType, f_catalog_id, s_catalog_id, t_catalog_id, province).
-//                compose(RxSchedulers.<BannerListVo>io_main()).
-//                subscribe(new RxSubscriber<BannerListVo>() {
-//                    @Override
-//                    protected void onNoNetWork() {
-//                        super.onNoNetWork();
-//                        listener.onNoNetWork();
-//                    }
-//
-//                    @Override
-//                    public void onSuccess(BannerListVo headAdList) {
-//                        listener.onNext(headAdList);
-//                    }
-//
-//                    @Override
-//                    public void onFailure(String msg) {
-//                        listener.onError(msg);
-//                    }
-//                });
+        mBannerData = apiService.getBannerData(posType, f_catalog_id, s_catalog_id, t_catalog_id, province);
     }
 
     public void loadRequestMerge(final OnResultCallBack<Object> listener) {
-        Observable.concat(observable1, observable2)
+        Observable.concatDelayError(mBannerData, mWorkData)
                 .compose(RxSchedulers.<Object>io_main())
                 .subscribe(new Action1<Object>() {
                     @Override
@@ -113,54 +74,15 @@ public class WorkRepository extends BaseRepository {
     }
 
     public void loadWorkDetailData(String correctId, final OnResultCallBack<WorkDetailVo> listener) {
-
-        mCorrectDetail = apiService.getWorkDetailData(correctId);
-//        apiService.getWorkDetailData(correctId).
-//                compose(RxSchedulers.<WorkDetailVo>io_main()).
-//                subscribe(new RxSubscriber<WorkDetailVo>() {
-//                    @Override
-//                    protected void onNoNetWork() {
-//                        super.onNoNetWork();
-//                        listener.onNoNetWork();
-//                    }
-//
-//                    @Override
-//                    public void onSuccess(WorkDetailVo correctDetailVo) {
-//                        listener.onNext(correctDetailVo);
-//                    }
-//
-//                    @Override
-//                    public void onFailure(String msg) {
-//                        listener.onError(msg);
-//                    }
-//                });
+        mWorkDetail = apiService.getWorkDetailData(correctId);
     }
 
     public void loadWorkRecommendData(String correctId, final OnResultCallBack<WorkRecommentVo> listener) {
-        mCorrectRecomment=apiService.getWorkRecommendData(correctId);
-//        apiService.getWorkRecommendData(correctId).
-//                compose(RxSchedulers.<WorkRecommentVo>io_main()).
-//                subscribe(new RxSubscriber<WorkRecommentVo>() {
-//                    @Override
-//                    protected void onNoNetWork() {
-//                        super.onNoNetWork();
-//                        listener.onNoNetWork();
-//                    }
-//
-//                    @Override
-//                    public void onSuccess(WorkRecommentVo correctRecommentVo) {
-//                        listener.onNext(correctRecommentVo);
-//                    }
-//
-//                    @Override
-//                    public void onFailure(String msg) {
-//                        listener.onError(msg);
-//                    }
-//                });
+        mWorkRecomment = apiService.getWorkRecommendData(correctId);
     }
 
     public void loadWorkMergeData(final OnResultCallBack<Object> listener) {
-        Observable.concat(mCorrectDetail, mCorrectRecomment)
+        Observable.concatDelayError(mWorkDetail, mWorkRecomment)
                 .compose(RxSchedulers.<Object>io_main())
                 .subscribe(new Action1<Object>() {
                     @Override

@@ -1,8 +1,6 @@
 package com.code.mvvm.core.data.pojo.followdraw;
 
 
-import com.code.mvvm.core.data.pojo.home.HomeListVo;
-
 import java.io.Serializable;
 import java.util.List;
 

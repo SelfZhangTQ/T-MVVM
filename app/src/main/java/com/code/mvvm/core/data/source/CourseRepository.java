@@ -12,8 +12,8 @@ import com.code.mvvm.network.RxSubscriber;
  * @author：zhangtianqiu on 18/7/31 15:14
  */
 public class CourseRepository extends BaseRepository {
-    public void loadCourseList(String f_catalog_id,String lastid, String rn, final OnResultCallBack<CourseListVo> onResultCallBack) {
-        apiService.getCourseList(f_catalog_id,lastid,rn)
+    public void loadCourseList(String f_catalog_id,String lastId, String rn, final OnResultCallBack<CourseListVo> onResultCallBack) {
+        apiService.getCourseList(f_catalog_id,lastId,rn)
                 .compose(RxSchedulers.<CourseListVo>io_main())
                 .subscribe(new RxSubscriber<CourseListVo>() {
                     @Override

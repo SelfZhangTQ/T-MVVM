@@ -17,11 +17,13 @@ import java.util.List;
  */
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
 
-    protected OnItemClickListener onItemClickListener;//单击事件
+    protected OnItemClickListener onItemClickListener;
 
-    protected OnItemLongClickListener onItemLongClickListener;//长按单击事件
+    protected OnItemLongClickListener onItemLongClickListener;
 
     protected List<T> dataList;
+
+    private LayoutInflater layoutInflater;
 
     private int mItemLayoutId;
 
@@ -48,15 +50,14 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         this.context = context;
         this.dataList = list;
         this.mItemLayoutId = itemLayoutId;
+        layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(mItemLayoutId, parent, false);
-        BaseViewHolder holder = new BaseViewHolder(view);
-        view.setTag(holder);
-        return holder;
+        View view = layoutInflater.inflate(mItemLayoutId, parent, false);
+        return new BaseViewHolder(view);
+
     }
 
     @Override

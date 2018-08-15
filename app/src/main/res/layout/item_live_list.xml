@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_root_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="12dp"
-    android:id="@+id/ll_root_view"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -14,31 +14,16 @@
         android:layout_marginRight="12dp">
 
         <ImageView
-            android:id="@+id/zhibo_img"
+            android:id="@+id/iv_live_pic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <ImageView
-            android:id="@+id/zhibo_state"
+            android:id="@+id/iv_live_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true" />
-
-        <ImageView
-            android:id="@+id/fufei_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/fufei_da"
-            android:visibility="gone" />
-        <ImageView
-            android:id="@+id/yifu_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/yifu_da"
-            android:visibility="gone" />
     </RelativeLayout>
 
     <LinearLayout
@@ -49,7 +34,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/zhibo_title"
+            android:id="@+id/tv_live_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#333333"
@@ -69,7 +54,7 @@
                 android:layout_centerVertical="true" />
 
             <TextView
-                android:id="@+id/zhibo_teacher_name"
+                android:id="@+id/tv_live_teacher_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -79,12 +64,12 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/go_zhibo_detail"
+                android:id="@+id/tv_live_detail"
                 android:layout_width="80dp"
                 android:layout_height="27dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/yuanjiao_shape_yellow"
+                android:background="@drawable/fillet_shape_yellow"
                 android:gravity="center"
                 android:textColor="#333333"
                 android:textSize="14sp"
@@ -97,7 +82,7 @@
             android:layout_marginTop="14dp">
 
             <TextView
-                android:id="@+id/zhibo_time"
+                android:id="@+id/tv_live_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -105,7 +90,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/zhibo_baoming_num"
+                android:id="@+id/tv_live_look_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

@@ -33,7 +33,7 @@ public abstract class SwipeListFragment<T extends BaseViewModel> extends Lifecyc
 
     protected MultiTypeAdapter adapter;
 
-    protected String lastid = null;
+    protected String lastId = null;
 
     protected boolean isLoadMore = true;
 
@@ -64,7 +64,7 @@ public abstract class SwipeListFragment<T extends BaseViewModel> extends Lifecyc
             @Override
             public void onRefresh() {
                 mSwipeRefreshLayout.setRefreshing(true);
-                lastid = null;
+                lastId = null;
                 isRefresh = true;
                 onRefreshAction();
             }

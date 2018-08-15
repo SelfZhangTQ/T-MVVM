@@ -66,8 +66,8 @@ public class FollowDrawViewModel extends BaseViewModel<FollowDrawRepository> {
 
     }
 
-    public void getFollowDrawList(String maintypeid, String lastid, String rn) {
-        mRepository.loadFollowDrawList(maintypeid, lastid, rn, new OnResultCallBack<FollowDrawRecommendVo>() {
+    public void getFollowDrawList(String maintypeid, String lastId, String rn) {
+        mRepository.loadFollowDrawList(maintypeid, lastId, rn, new OnResultCallBack<FollowDrawRecommendVo>() {
             @Override
             public void onNoNetWork() {
 
@@ -87,8 +87,8 @@ public class FollowDrawViewModel extends BaseViewModel<FollowDrawRepository> {
 
     }
 
-    public void getFollowDrawRemList(String lastid, String rn) {
-        mRepository.loadFollowDrawRemList(lastid, rn, new OnResultCallBack<FollowDrawRecommendVo>() {
+    public void getFollowDrawRemList(String lastId, String rn) {
+        mRepository.loadFollowDrawRemList(lastId, rn, new OnResultCallBack<FollowDrawRecommendVo>() {
             @Override
             public void onNoNetWork() {
 

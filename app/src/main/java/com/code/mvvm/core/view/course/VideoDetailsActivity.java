@@ -13,13 +13,13 @@ import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.network.ApiService;
 import com.code.mvvm.util.DisplayUtil;
-import com.trecyclerview.TRecyclerView;
-import com.trecyclerview.multitype.Items;
-import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.network.HttpHelper;
 import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
+import com.trecyclerview.TRecyclerView;
+import com.trecyclerview.multitype.Items;
+import com.trecyclerview.multitype.MultiTypeAdapter;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;

@@ -57,7 +57,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxEms="10"
-                        android:textColor="@color/color_black_333333"
+                        android:textColor="@color/color_333333"
                         android:textSize="@dimen/text_size_15" />
 
                     <ImageView
@@ -95,7 +95,7 @@
                         android:id="@+id/tv_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/color_black_aaaaaa"
+                        android:textColor="@color/color_aaaaaa"
                         android:textSize="10sp" />
 
                     <LinearLayout
@@ -112,7 +112,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="6dp"
                         android:text="删除"
-                        android:textColor="@color/delete_text_color"
                         android:textSize="10sp"
                         android:visibility="gone" />
                 </LinearLayout>
@@ -142,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="分类："
-                android:textColor="@color/black_333333"
+                android:textColor="@color/color_333333"
                 android:textSize="14sp" />
 
             <TextView
@@ -150,7 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:textColor="@color/black_333333"
+                android:textColor="@color/color_333333"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -174,7 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="批改老师:"
-                android:textColor="@color/color_black_333333"
+                android:textColor="@color/color_333333"
                 android:textSize="14sp" />
 
             <ImageView
@@ -189,7 +188,7 @@
                 android:id="@+id/tv_teacher_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_black_333333"
+                android:textColor="@color/color_333333"
                 android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>

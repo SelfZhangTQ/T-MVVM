@@ -35,7 +35,7 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
             @Override
             public void onChanged(@Nullable MaterialRecommendVo materialRecommendVo) {
                 if (materialRecommendVo != null) {
-                    lastid = materialRecommendVo.data.content.get(materialRecommendVo.data.content.size() - 1).subjectid;
+                    lastId = materialRecommendVo.data.content.get(materialRecommendVo.data.content.size() - 1).subjectid;
                     setData(materialRecommendVo.data.content);
                 }
 
@@ -79,7 +79,7 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getMaterialRemList("0", lastid, "20");
+        mViewModel.getMaterialRemList("0", lastId, "20");
     }
 
 

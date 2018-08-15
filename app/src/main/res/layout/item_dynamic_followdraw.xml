@@ -55,7 +55,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/look_num"
+                android:id="@+id/tv_look_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"

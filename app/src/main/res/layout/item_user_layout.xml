@@ -39,7 +39,7 @@
                     android:layout_centerVertical="true"
                     android:ellipsize="end"
                     android:maxEms="10"
-                    android:textColor="@color/color_black_333333"
+                    android:textColor="@color/color_333333"
                     android:textSize="@dimen/text_size_14" />
 
                 <LinearLayout

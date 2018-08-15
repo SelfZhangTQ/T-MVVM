@@ -15,7 +15,7 @@
         android:paddingRight="5dp"
         android:paddingTop="1dp"
         android:layout_gravity="center_vertical"
-        android:textColor="@color/color_black_aaaaaa"
+        android:textColor="@color/color_aaaaaa"
         android:textSize="@dimen/text_size_9" />
 
 </LinearLayout>

@@ -74,7 +74,21 @@ public class HomeRepository extends BaseRepository {
 
 
     public void loadRequestMerge(final OnResultCallBack listener) {
-        Observable.concat(mBannerObservable, mHomeListObservable)
+//        Observable.concat(mBannerObservable, mHomeListObservable)
+//                .compose(RxSchedulers.<Object>io_main())
+//                .subscribe(new Action1<Object>() {
+//                    @Override
+//                    public void call(Object o) {
+//                        listener.onNext(o);
+//                    }
+//                }, new Action1<Throwable>() {
+//                    @Override
+//                    public void call(Throwable throwable) {
+//                        listener.onError(throwable.getMessage());
+//                    }
+//                });
+
+        Observable.concatDelayError(mBannerObservable, mHomeListObservable)
                 .compose(RxSchedulers.<Object>io_main())
                 .subscribe(new Action1<Object>() {
                     @Override

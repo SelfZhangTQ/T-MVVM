@@ -1,48 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- 关注item背景颜色 -->
-    <!-- title -->
-
-    <!-- Toast背景颜色 -->
-
-    <!-- Tag选择背景色 -->
-    <!-- 素材页面文字颜色 -->
-    <!-- 按钮选中颜色 -->
-    <color name="square_textcolor_selected">#ffca00</color>
-
-    <!-- 刷新头和刷新底 文字颜色 -->
-    <color name="content_type_textview">#909090</color>
-
-    <!-- 作品列表删除文字颜色 -->
-    <color name="delete_text_color">#255f91</color>
-
-    <!-- 透明 -->
-
-    <!-- 白色半透 -->
-
-    <!-- 分隔线颜色 -->
     <color name="line_color">#e8e8e8</color>
-
-    <!-- 字体颜色 -->
-    <color name="color_text_666666">#666666</color>
-    <color name="color_text_333333">#333333</color>
-
-    <color name="color_grey_999999">#999999</color>
-    <!-- 个人主页文字颜色 -->
-    <!-- 背景 -->
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_999999">#999999</color>
     <color name="black_000000">#000000</color>
-    <color name="black_333333">#e8e8e8</color>
+    <color name="black_e8e8e8">#e8e8e8</color>
     <color name="color_ffca00">#ffca00</color>
-    <color name="color_black_333333">#333333</color>
-    <color name="color_black_aaaaaa">#aaaaaa</color>
-
-    <color name="verification_btn_normal">#D6D8DA</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_aaaaaa">#aaaaaa</color>
+    <color name="color_D6D8DA">#D6D8DA</color>
     <color name="dark">#5e5656</color>
-    <!-- 能力模型图颜色-->
-
-    <!-- 改画 打分圆等级颜色-->
-
 </resources>

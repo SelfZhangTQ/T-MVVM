@@ -67,8 +67,8 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
         });
     }
 
-    public void getCourseList(String fCatalogId,String lastid, String rn) {
-        mRepository.loadCourseList(fCatalogId,lastid, rn, new OnResultCallBack<CourseListVo>() {
+    public void getCourseList(String fCatalogId,String lastId, String rn) {
+        mRepository.loadCourseList(fCatalogId,lastId, rn, new OnResultCallBack<CourseListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

@@ -10,8 +10,8 @@ import com.code.mvvm.network.RxSubscriber;
  * @author：zhangtianqiu on 18/8/2 10:52
  */
 public class QARepository extends BaseRepository {
-    public void loadQAList(String lastid, String rn, final OnResultCallBack<QaListVo> listener) {
-        apiService.getQAList(lastid, rn)
+    public void loadQAList(String lastId, String rn, final OnResultCallBack<QaListVo> listener) {
+        apiService.getQAList(lastId, rn)
                 .compose(RxSchedulers.<QaListVo>io_main())
                 .subscribe(new RxSubscriber<QaListVo>() {
                     @Override

@@ -15,8 +15,8 @@ import com.code.mvvm.util.DiffCallback;
 import com.trecyclerview.TRecyclerView;
 import com.trecyclerview.entity.FootInfo;
 import com.trecyclerview.entity.HeaderInfo;
-import com.trecyclerview.listener.OnScrollStateListener;
 import com.trecyclerview.listener.OnRefreshListener;
+import com.trecyclerview.listener.OnScrollStateListener;
 import com.trecyclerview.multitype.Items;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
@@ -39,7 +39,7 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends Lifecycl
 
     protected MultiTypeAdapter adapter;
 
-    protected String lastid = null;
+    protected String lastId = null;
 
     protected boolean isLoadMore = true;
 
@@ -106,7 +106,7 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends Lifecycl
 
     @Override
     public void onRefresh() {
-        lastid = null;
+        lastId = null;
         isRefresh = true;
         onRefreshAction();
     }

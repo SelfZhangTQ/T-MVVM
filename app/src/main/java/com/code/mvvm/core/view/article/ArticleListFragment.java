@@ -32,7 +32,7 @@ public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
             @Override
             public void onChanged(@Nullable ArticleVo articleVo) {
                 if (articleVo != null) {
-                    lastid = articleVo.data.list.get(articleVo.data.list.size() - 1).newsid;
+                    lastId = articleVo.data.list.get(articleVo.data.list.size() - 1).newsid;
                     setData(articleVo.data.list);
                 }
             }
@@ -75,6 +75,6 @@ public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getArticleList(getArguments().getString("type_id"), lastid, "20");
+        mViewModel.getArticleList(getArguments().getString("type_id"), lastId, "20");
     }
 }

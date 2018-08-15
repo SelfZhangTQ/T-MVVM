@@ -97,8 +97,8 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
         });
     }
 
-    public void getMaterialRemList(String fCatalogId, String lastid, String rn) {
-        mRepository.loadMaterialRemList(fCatalogId, lastid, rn, new OnResultCallBack<MaterialRecommendVo>() {
+    public void getMaterialRemList(String fCatalogId, String lastId, String rn) {
+        mRepository.loadMaterialRemList(fCatalogId, lastId, rn, new OnResultCallBack<MaterialRecommendVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

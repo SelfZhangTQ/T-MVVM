@@ -41,7 +41,7 @@ public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {
                 if (worksListHotObject == null) {
                     return;
                 }
-                lastid = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).tid;
+                lastId = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).tid;
                 utime = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).utime;
                 if (isRefresh) {
                     newItems.addAll(worksListHotObject.data.content);
@@ -59,7 +59,7 @@ public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {
         mViewModel.getWorkMoreData().observe(this, new Observer<WorksListVo>() {
             @Override
             public void onChanged(@Nullable WorksListVo worksListHotObject) {
-                lastid = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).tid;
+                lastId = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).tid;
                 utime = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).utime;
                 setData(worksListHotObject.data.content);
             }
@@ -100,7 +100,7 @@ public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getWorkMoreData("", lastid, utime, "20");
+        mViewModel.getWorkMoreData("", lastId, utime, "20");
     }
 
     @Override

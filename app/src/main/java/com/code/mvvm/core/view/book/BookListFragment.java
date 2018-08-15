@@ -33,7 +33,7 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
             @Override
             public void onChanged(@Nullable BookListVo bookListVo) {
                 if (bookListVo.data.content.size() > 0) {
-                    lastid = bookListVo.data.content.get(bookListVo.data.content.size() - 1).bookid;
+                    lastId = bookListVo.data.content.get(bookListVo.data.content.size() - 1).bookid;
                     setData(bookListVo.data.content);
                 }
             }
@@ -75,7 +75,7 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getBookList(getArguments().getString("f_catalog_id"), lastid, "20");
+        mViewModel.getBookList(getArguments().getString("f_catalog_id"), lastId, "20");
 
     }
 

@@ -23,7 +23,7 @@ import com.trecyclerview.multitype.AbsItemView;
  */
 public class HomeLiveItemView extends AbsItemView<LiveRecommendVo, HomeLiveItemView.ViewHolder> {
 
-    private int commonWidth=0;
+    private int commonWidth = 0;
 
     private Context mContext;
 
@@ -49,19 +49,21 @@ public class HomeLiveItemView extends AbsItemView<LiveRecommendVo, HomeLiveItemV
         holder.mLiveImage.setLayoutParams(params);
         holder.mLiveImage.setScaleType(ImageView.ScaleType.FIT_XY);
         Glide.with(mContext).load(live_recommend.live_thumb_url).into(holder.mLiveImage);
-        Glide.with(mContext).load(live_recommend.userinfo.avatar).transform(new GlideCircleTransform(App.Instance())).into(holder.mUserIcon);
+        Glide.with(mContext).load(live_recommend.userinfo.avatar)
+                .transform(new GlideCircleTransform(mContext))
+                .into(holder.mUserIcon);
 
         if (live_recommend.live_status == 1) {
-            holder.mLiveState.setBackgroundResource(R.drawable.biaoqian_yugao);
-            holder.mLookNum.setText(live_recommend.live_sign_count + "人已报名");
+            holder.mLiveState.setBackgroundResource(R.drawable.preview_state_icon);
+            holder.mLookNum.setText(new StringBuilder(live_recommend.live_sign_count).append("人已报名"));
         }
         if (live_recommend.live_status == 2) {
-            holder.mLiveState.setBackgroundResource(R.drawable.biaoqian_zhibo);
-            holder.mLookNum.setText(live_recommend.hits + "人在围观");
+            holder.mLiveState.setBackgroundResource(R.drawable.living_state_icon);
+            holder.mLookNum.setText(new StringBuilder(live_recommend.hits).append("人在围观"));
         }
         if (live_recommend.live_status == 3) {
-            holder.mLiveState.setBackgroundResource(R.drawable.biaoqian_huifang);
-            holder.mLookNum.setText(live_recommend.hits + "人看过");
+            holder.mLiveState.setBackgroundResource(R.drawable.playback_state_icon);
+            holder.mLookNum.setText(new StringBuilder(live_recommend.hits).append("人看过"));
         }
         holder.mLiveTitle.setText(live_recommend.live_title);
         holder.mUserName.setText(live_recommend.userinfo.sname);

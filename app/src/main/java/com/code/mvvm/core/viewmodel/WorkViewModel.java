@@ -152,7 +152,7 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
         });
     }
 
-    public void getWorkDetailData(String correctId) {
+    private void getWorkDetailData(String correctId) {
         mRepository.loadWorkDetailData(correctId, new OnResultCallBack<WorkDetailVo>() {
             @Override
             public void onNoNetWork() {

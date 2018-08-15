@@ -25,45 +25,9 @@
         android:textColor="#333333"
         android:textSize="@dimen/text_size_14" />
 
-    <RelativeLayout
-        android:id="@+id/rl_item_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_activity_title"
-        android:layout_marginBottom="@dimen/space_15">
-
-        <TextView
-            android:id="@+id/tv_activity_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:paddingBottom="3dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="3dp"
-            android:text="美院帮大咖改画"
-            android:textSize="@dimen/text_size_14" />
-
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/tv_activity_state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/rl_item_layout"
-        android:layout_alignTop="@id/rl_item_layout"
-        android:layout_below="@+id/tv_activity_title"
-        android:layout_marginLeft="@dimen/space_10"
-        android:layout_toRightOf="@id/rl_item_layout"
-        android:gravity="center_vertical"
-        android:textColor="#333333"
-        android:textSize="@dimen/text_size_14" />
-
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/space_10"
-        android:layout_below="@+id/rl_item_layout"
+        android:layout_below="@+id/tv_activity_title"
         android:background="#E8E8E8" />
 </RelativeLayout>

@@ -29,8 +29,8 @@ public class QAViewModel extends BaseViewModel<QARepository> {
         return mQAData;
     }
 
-    public void getQAList(String lastid, String rn) {
-        mRepository.loadQAList(lastid, rn, new OnResultCallBack<QaListVo>() {
+    public void getQAList(String lastId, String rn) {
+        mRepository.loadQAList(lastId, rn, new OnResultCallBack<QaListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
