@@ -224,7 +224,7 @@ public class AdapterPool {
                             return DynamicSubjectHolder.class;
                         } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_ARTICLE)) {
                             return DynamicArticleHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_FOLLOWDRAW)) {
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_FOLLOW_DRAW)) {
                             return DynamicFollowHolder.class;
                         } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_LIVE)) {
                             return DynamicLiveHolder.class;

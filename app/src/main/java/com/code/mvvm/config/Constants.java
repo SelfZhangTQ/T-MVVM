@@ -14,20 +14,20 @@ public class Constants {
     public static final String VIDEO_TAG = "video";
     public static final String MINE_TAG = "mine";
 
-    public final static String MATERIAL = "MaterialFragment";
-    public final static String FOLLOW_DRAW = "FollowDrawingFragment";
-    public final static String ARTICLE = "ArticleFragment";
-    public final static String LIVE = "LiveFragment";
-    public final static String BOOK = "BookFragment";
-    public final static String DYNAMIC = "DynamicFragment";
-    public final static String ACTIVITY = "ActivityListFragment";
-    public final static String QA = "QaFragment";
+    public final static String MATERIAL = "Material";
+    public final static String FOLLOW_DRAW = "FollowDraw";
+    public final static String ARTICLE = "Article";
+    public final static String LIVE = "Live";
+    public final static String BOOK = "Book";
+    public final static String DYNAMIC = "Dynamic";
+    public final static String ACTIVITY = "Activity";
+    public final static String QA = "Qa";
 
     public static final String TYPE_CORRECT = "1";
     public static final String TYPE_WORK = "2";
     public static final String TYPE_MATERIAL_SUBJECT = "3";
     public static final String TYPE_ARTICLE = "4";
-    public static final String TYPE_FOLLOWDRAW = "5";
+    public static final String TYPE_FOLLOW_DRAW = "5";
     public static final String TYPE_LIVE = "6";
     public static final String TYPE_LESSON = "7";
 

@@ -21,7 +21,7 @@ import com.code.mvvm.core.view.dynamic.DynamicFragment;
 import com.code.mvvm.core.view.followdraw.FollowDrawFragment;
 import com.code.mvvm.core.view.live.LiveFragment;
 import com.code.mvvm.core.view.material.MaterialFragment;
-import com.code.mvvm.core.view.qa.QAListFragment;
+import com.code.mvvm.core.view.qa.QaListFragment;
 
 /**
  * @author：tqzhang on 18/7/2 14:17
@@ -90,7 +90,7 @@ public class CommonActivity extends BaseActivity implements View.OnClickListener
                 commitFragment(ActivityListFragment.newInstance());
                 break;
             case Constants.QA:
-                commitFragment(new QAListFragment());
+                commitFragment(QaListFragment.newInstance());
                 break;
             default:
                 break;

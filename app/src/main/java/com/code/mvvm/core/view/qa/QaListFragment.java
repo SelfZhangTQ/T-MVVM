@@ -15,10 +15,10 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
 /**
  * @author：tqzhang on 18/7/4 14:10
  */
-public class QAListFragment extends BaseListFragment<QaViewModel> {
+public class QaListFragment extends BaseListFragment<QaViewModel> {
 
-    public static QAListFragment newInstance() {
-        return new QAListFragment();
+    public static QaListFragment newInstance() {
+        return new QaListFragment();
     }
 
     @Override
@@ -30,9 +30,12 @@ public class QAListFragment extends BaseListFragment<QaViewModel> {
     protected void dataObserver() {
         mViewModel.getQAList().observe(this, new Observer<QaListVo>() {
             @Override
-            public void onChanged(@Nullable QaListVo qaListObject) {
-                lastId = qaListObject.data.get(qaListObject.data.size() - 1).newsid;
-                setData(qaListObject.data);
+            public void onChanged(@Nullable QaListVo qaListVo) {
+                if (qaListVo == null) {
+                    return;
+                }
+                lastId = qaListVo.data.get(qaListVo.data.size() - 1).newsid;
+                setData(qaListVo.data);
 
             }
         });
