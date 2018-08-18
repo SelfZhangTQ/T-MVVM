@@ -22,7 +22,7 @@ import com.code.mvvm.core.data.pojo.home.HomeListVo;
 import com.code.mvvm.core.data.pojo.live.LiveDetailsVo;
 import com.code.mvvm.core.data.pojo.live.LiveListVo;
 import com.code.mvvm.core.data.pojo.live.LiveTypeVo;
-import com.code.mvvm.core.data.pojo.material.MaterialListVo;
+import com.code.mvvm.core.data.pojo.material.MateriaVo;
 import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
@@ -110,11 +110,11 @@ public interface ApiService {
 
     @POST(URL.GET_MATERIAL_LIST_NEW)
     @FormUrlEncoded
-    Observable<MaterialListVo> getMaterialList(@Field("f_catalog_id") String f_catalog_id, @Field("mlevel") String mlevel, @Field("rn") String rn);
+    Observable<MateriaVo> getMaterialList(@Field("f_catalog_id") String f_catalog_id, @Field("mlevel") String mlevel, @Field("rn") String rn);
 
     @POST(URL.GET_MATERIAL_LIST_OLD)
     @FormUrlEncoded
-    Observable<MaterialListVo> getMaterialMoreList(@Field("f_catalog_id") String f_catalog_id, @Field("mlevel") String mlevel, @Field("lasttid") String lasttid, @Field("rn") String rn);
+    Observable<MateriaVo> getMaterialMoreList(@Field("f_catalog_id") String f_catalog_id, @Field("mlevel") String mlevel, @Field("lasttid") String lasttid, @Field("rn") String rn);
 
     @POST(URL.GET_FOLLOW_RECOMMEND)
     @FormUrlEncoded

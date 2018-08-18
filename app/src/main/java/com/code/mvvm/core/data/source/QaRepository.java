@@ -7,9 +7,9 @@ import com.code.mvvm.core.data.pojo.qa.QaListVo;
 import com.code.mvvm.network.RxSubscriber;
 
 /**
- * @author：zhangtianqiu on 18/8/2 10:52
+ * @author：tqzhang  on 18/8/2 10:52
  */
-public class QARepository extends BaseRepository {
+public class QaRepository extends BaseRepository {
     public void loadQAList(String lastId, String rn, final OnResultCallBack<QaListVo> listener) {
         apiService.getQAList(lastId, rn)
                 .compose(RxSchedulers.<QaListVo>io_main())

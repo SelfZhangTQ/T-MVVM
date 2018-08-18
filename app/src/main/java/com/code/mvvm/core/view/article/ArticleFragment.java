@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.basiclibrary.base.BaseFragment;
+import com.code.mvvm.R;
 import com.code.mvvm.base.BaseViewPagerFragment;
 import com.code.mvvm.core.data.pojo.article.ArticleTypeVo;
 import com.code.mvvm.core.viewmodel.ArticleViewModel;
@@ -14,7 +15,7 @@ import java.util.List;
 
 
 /**
- * @author：zhangtianqiu on 18/7/2 14:24
+ * @author：tqzhang  on 18/7/2 14:24
  */
 public class ArticleFragment extends BaseViewPagerFragment<ArticleViewModel> {
     private List<ArticleTypeVo.DataBean> titleName;
@@ -74,8 +75,8 @@ public class ArticleFragment extends BaseViewPagerFragment<ArticleViewModel> {
         mArrTitles = new String[articleTypeVo.data.size() + 1];
         titleName.clear();
         ArticleTypeVo.DataBean dataBean = new ArticleTypeVo.DataBean();
-        dataBean.maintypename = "推荐";
-        mArrTitles[0] = "推荐";
+        dataBean.maintypename = getResources().getString(R.string.recommend_tab_name);
+        mArrTitles[0] = getResources().getString(R.string.recommend_tab_name);
         titleName.add(dataBean);
         for (int j = 0; j < articleTypeVo.data.size(); j++) {
             titleName.add(articleTypeVo.data.get(j));

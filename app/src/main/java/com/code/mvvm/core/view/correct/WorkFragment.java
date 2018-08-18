@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
+import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
@@ -14,7 +15,7 @@ import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：tqzhang
+ * @author：tqzhang on 18/5/2 19:30
  */
 public class WorkFragment extends BaseListFragment<WorkViewModel> {
     private String utime;
@@ -26,7 +27,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     @Override
     public void initView(Bundle state) {
         super.initView(state);
-        setTitle("作品");
+        setTitle(getResources().getString(R.string.work_title_name));
     }
 
     @Override

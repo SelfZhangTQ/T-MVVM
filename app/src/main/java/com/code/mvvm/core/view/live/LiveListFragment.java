@@ -14,11 +14,11 @@ import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：zhangtianqiu on 18/6/30 18:36
+ * @author：tqzhang  on 18/6/30 18:36
  */
 public class LiveListFragment extends BaseListFragment<LiveViewModel> {
 
-
+private String typeId;
     public static LiveListFragment newInstance() {
         return new LiveListFragment();
     }
@@ -26,6 +26,9 @@ public class LiveListFragment extends BaseListFragment<LiveViewModel> {
     @Override
     public void initView(Bundle state) {
         super.initView(state);
+        if (getArguments()!=null) {
+            typeId = getArguments().getString("type_id");
+        }
     }
 
     @Override
@@ -77,6 +80,6 @@ public class LiveListFragment extends BaseListFragment<LiveViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getLiveList(getArguments().getString("f_catalog_id"), lastId, "20");
+        mViewModel.getLiveList(typeId, lastId, "20");
     }
 }

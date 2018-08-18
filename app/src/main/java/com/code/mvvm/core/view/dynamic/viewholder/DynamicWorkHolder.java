@@ -19,7 +19,7 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/7/4 15:35
+ * @author：tqzhang on 18/7/4 15:35
  */
 public class DynamicWorkHolder extends AbsViewHolder<DynamicInfoVo, DynamicWorkHolder.ViewHolder> {
     private int contentWidth;
@@ -49,14 +49,14 @@ public class DynamicWorkHolder extends AbsViewHolder<DynamicInfoVo, DynamicWorkH
                 .into(holder.ivUserPic);
         holder.mUserTag.removeAllViews();
         if (!TextUtils.isEmpty(item.userinfo.province) && !TextUtils.equals("false", item.userinfo.province)) {
-            holder.mUserTag.addView(ViewUtils.CreateTagView(mContext,item.userinfo.province));
+            holder.mUserTag.addView(ViewUtils.CreateTagView(mContext, item.userinfo.province));
         }
         if (!TextUtils.isEmpty(item.userinfo.profession)
                 && !TextUtils.equals("false", item.userinfo.profession)) {
-            holder.mUserTag.addView(ViewUtils.CreateTagView(mContext,item.userinfo.profession));
+            holder.mUserTag.addView(ViewUtils.CreateTagView(mContext, item.userinfo.profession));
         }
         holder.userType.setText(item.title);
-        holder.lookNum.setText(item.tweet_info.hits + "人看过");
+        holder.lookNum.setText(new StringBuilder(item.tweet_info.hits).append("人看过"));
         holder.dynamicTitle.setText(item.tweet_info.content);
 //
         holder.dynamicPic.setVisibility(View.VISIBLE);
@@ -72,9 +72,9 @@ public class DynamicWorkHolder extends AbsViewHolder<DynamicInfoVo, DynamicWorkH
 
     public static class ViewHolder extends BaseViewHolder {
 
-        public TextView tvUserName, userType, dynamicTitle, publich_time, lookNum;
-        public ImageView ivUserPic, dynamicPic;
-        public LinearLayout mUserTag;
+        private TextView tvUserName, userType, dynamicTitle, lookNum;
+        private ImageView ivUserPic, dynamicPic;
+        private LinearLayout mUserTag;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -83,7 +83,6 @@ public class DynamicWorkHolder extends AbsViewHolder<DynamicInfoVo, DynamicWorkH
             tvUserName = getViewById(R.id.tv_user_name);
             userType = getViewById(R.id.user_type);
             dynamicTitle = getViewById(R.id.tv_dynamic_title);
-            publich_time = getViewById(R.id.tv_publich_time);
             lookNum = getViewById(R.id.tv_look_num);
             mUserTag = getViewById(R.id.ll_user_tag);
         }

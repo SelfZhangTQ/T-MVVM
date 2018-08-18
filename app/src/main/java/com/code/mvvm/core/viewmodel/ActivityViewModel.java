@@ -11,7 +11,7 @@ import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.data.source.ActivityRepository;
 
 /**
- * @author：zhangtianqiu on 18/7/27 15:23
+ * @author：tqzhang on 18/7/27 15:23
  */
 public class ActivityViewModel extends BaseViewModel<ActivityRepository> {
 

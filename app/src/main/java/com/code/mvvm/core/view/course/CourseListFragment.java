@@ -16,7 +16,7 @@ import com.trecyclerview.entity.HeaderInfo;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：zhangtianqiu on 18/6/30 18:36
+ * @author：tqzhang on 18/5/2 19:40
  */
 public class CourseListFragment extends BaseListFragment<CourseViewModel> {
     private String mCatalogId;

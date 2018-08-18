@@ -8,15 +8,17 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.core.data.pojo.material.MaterialListVo;
+import com.code.mvvm.core.data.pojo.material.MateriaVo;
 import com.code.mvvm.core.viewmodel.MaterialViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：zhangtianqiu on 18/7/2 14:40
+ * @author：tqzhang  on 18/7/2 14:40
  */
 public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
+    private String subId;
+
     public static MaterialListFragment newInstance() {
         return new MaterialListFragment();
     }
@@ -24,22 +26,25 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
     @Override
     public void initView(Bundle state) {
         super.initView(state);
+        if (getArguments() != null) {
+            subId = getArguments().getString("sub_id");
+        }
     }
 
     @Override
     protected void dataObserver() {
-        mViewModel.getMaterialList().observe(this, new Observer<MaterialListVo>() {
+        mViewModel.getMaterialList().observe(this, new Observer<MateriaVo>() {
             @Override
-            public void onChanged(@Nullable MaterialListVo materialListVo) {
+            public void onChanged(@Nullable MateriaVo materialListVo) {
                 if (materialListVo != null) {
                     lastId = materialListVo.data.content.get(materialListVo.data.content.size() - 1).tid;
                     setData(materialListVo.data.content);
                 }
             }
         });
-        mViewModel.getMaterialMoreList().observe(this, new Observer<MaterialListVo>() {
+        mViewModel.getMaterialMoreList().observe(this, new Observer<MateriaVo>() {
             @Override
-            public void onChanged(@Nullable MaterialListVo materialListVo) {
+            public void onChanged(@Nullable MateriaVo materialListVo) {
                 if (materialListVo != null && materialListVo.data != null && materialListVo.data.content.size() > 0) {
                     lastId = materialListVo.data.content.get(materialListVo.data.content.size() - 1).tid;
                     setData(materialListVo.data.content);
@@ -84,11 +89,11 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getMaterialMoreList("0", getArguments().getString("mlevel"), lastId, "20");
+        mViewModel.getMaterialMoreList("0", subId, lastId, "20");
     }
 
     private void getNewData() {
-        mViewModel.getMaterialList("0", getArguments().getString("mlevel"), "20");
+        mViewModel.getMaterialList("0", subId, "20");
 
     }
 }

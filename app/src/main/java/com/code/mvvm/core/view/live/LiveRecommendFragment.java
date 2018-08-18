@@ -14,7 +14,7 @@ import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：zhangtianqiu on 18/6/30 18:36
+ * @author：tqzhang on 18/6/30 18:36
  */
 public class LiveRecommendFragment extends BaseListFragment<LiveViewModel> {
 
@@ -32,9 +32,13 @@ public class LiveRecommendFragment extends BaseListFragment<LiveViewModel> {
         mViewModel.getLiveRemList().observe(this, new Observer<LiveListVo>() {
             @Override
             public void onChanged(@Nullable LiveListVo liveListVo) {
-                lastId = liveListVo.
-                        data.get(liveListVo.data.size() - 1).liveid;
-                setData(liveListVo.data);
+                if (liveListVo != null) {
+
+                    lastId = liveListVo.
+                            data.get(liveListVo.data.size() - 1).liveid;
+                    setData(liveListVo.data);
+
+                }
             }
         });
     }

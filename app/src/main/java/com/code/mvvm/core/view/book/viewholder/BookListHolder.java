@@ -13,7 +13,7 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/6/20 13:41
+ * @author：tqzhang on 18/6/20 13:41
  */
 public class BookListHolder extends AbsViewHolder<BookVo, BookListHolder.ViewHolder> {
 
@@ -34,24 +34,24 @@ public class BookListHolder extends AbsViewHolder<BookVo, BookListHolder.ViewHol
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull BookVo bookAd) {
-        holder.book_name.setText(bookAd.title);
-        holder.press_name.setText(bookAd.publishing_name);
+        holder.bookName.setText(bookAd.title);
+        holder.pressName.setText(bookAd.publishing_name);
         holder.price.setText("￥" + bookAd.price);
-        Glide.with(mContext).load(bookAd.img.l.url).placeholder(R.color.black_e8e8e8).into(holder.book_img);
+        Glide.with(mContext).load(bookAd.img.l.url).placeholder(R.color.black_e8e8e8).into(holder.bookImg);
     }
 
 
     static class ViewHolder extends BaseViewHolder {
 
-        private TextView book_name, press_name, price;
-        private ImageView book_img;
+        private TextView bookName, pressName, price;
+        private ImageView bookImg;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            press_name = getViewById(R.id.press_name);
-            book_name = getViewById(R.id.book_name);
+            pressName = getViewById(R.id.press_name);
+            bookName = getViewById(R.id.book_name);
             price = getViewById(R.id.price);
-            book_img = getViewById(R.id.book_img);
+            bookImg = getViewById(R.id.book_img);
 
         }
     }

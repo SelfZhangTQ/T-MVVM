@@ -17,6 +17,8 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
  * @author：zhangtianqiu on 18/7/2 14:40
  */
 public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel> {
+    private String typeId;
+
     public static FollowDrawListFragment newInstance() {
         return new FollowDrawListFragment();
     }
@@ -24,6 +26,9 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
     @Override
     public void initView(Bundle state) {
         super.initView(state);
+        if (getArguments()!=null) {
+            typeId = getArguments().getString("type_id");
+        }
     }
 
     @Override
@@ -76,6 +81,6 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getFollowDrawList(getArguments().getString("type_id"), lastId, "20");
+        mViewModel.getFollowDrawList(typeId, lastId, "20");
     }
 }

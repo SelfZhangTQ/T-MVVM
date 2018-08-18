@@ -19,7 +19,7 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/7/4 15:35
+ * @author：tqzhang  on 18/7/4 15:35
  */
 public class DynamicCorrectHolder extends AbsViewHolder<DynamicInfoVo, DynamicCorrectHolder.ViewHolder> {
     private int contentWidth;
@@ -60,9 +60,8 @@ public class DynamicCorrectHolder extends AbsViewHolder<DynamicInfoVo, DynamicCo
         holder.lookNum.setText("");
         holder.dynamicTitle.setText(item.correct_info.content);
         int mWidth = (contentWidth - DisplayUtil.dp2px(App.Instance(), 14 * 2)) * 2 / 3;
-        //图片url
         String pic_url;
-        if (item.correct_info.status.equals("0")) {
+        if ("0".equals(item.correct_info.status)) {
             pic_url = item.correct_info.source_pic.img.l.url;
             float dv = (float) item.correct_info.source_pic.img.l.h / (float) item.correct_info.source_pic.img.l.w;
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(mWidth, (int) (dv * mWidth));
@@ -85,9 +84,9 @@ public class DynamicCorrectHolder extends AbsViewHolder<DynamicInfoVo, DynamicCo
 
 
     public static class ViewHolder extends BaseViewHolder {
-        public TextView tvUserName, userType, dynamicTitle, publich_time, lookNum;
-        public ImageView ivUserPic, dynamicPic;
-        public LinearLayout mUserTag;
+        private TextView tvUserName, userType, dynamicTitle, lookNum;
+        private ImageView ivUserPic, dynamicPic;
+        private LinearLayout mUserTag;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -96,7 +95,6 @@ public class DynamicCorrectHolder extends AbsViewHolder<DynamicInfoVo, DynamicCo
             tvUserName = getViewById(R.id.tv_user_name);
             userType = getViewById(R.id.user_type);
             dynamicTitle = getViewById(R.id.tv_dynamic_title);
-            publich_time = getViewById(R.id.tv_publich_time);
             lookNum = getViewById(R.id.tv_look_num);
             mUserTag = getViewById(R.id.ll_user_tag);
         }

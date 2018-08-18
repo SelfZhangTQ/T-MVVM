@@ -8,14 +8,19 @@ import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
-import com.code.mvvm.core.viewmodel.QAViewModel;
+import com.code.mvvm.core.viewmodel.QaViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：zhangtianqiu on 18/7/4 14:10
+ * @author：tqzhang on 18/7/4 14:10
  */
-public class QAListFragment extends BaseListFragment<QAViewModel> {
+public class QAListFragment extends BaseListFragment<QaViewModel> {
+
+    public static QAListFragment newInstance() {
+        return new QAListFragment();
+    }
+
     @Override
     public void initView(Bundle state) {
         super.initView(state);
@@ -34,8 +39,8 @@ public class QAListFragment extends BaseListFragment<QAViewModel> {
     }
 
     @Override
-    protected QAViewModel createViewModelProviders() {
-        return VMProviders(this, QAViewModel.class);
+    protected QaViewModel createViewModelProviders() {
+        return VMProviders(this, QaViewModel.class);
     }
 
     @Override

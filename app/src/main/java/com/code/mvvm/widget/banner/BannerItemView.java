@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -13,25 +12,29 @@ import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
-import com.trecyclerview.multitype.AbsItemView;
+import com.trecyclerview.holder.AbsViewHolder;
+import com.trecyclerview.holder.BaseViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author：zhangtianqiu on 18/6/21 18:00
+ * @author：tqzhang on 18/6/21 18:00
  */
-public class BannerItemView extends AbsItemView<BannerListVo, BannerItemView.ViewHolder> {
-    private Context mContext;
+public class BannerItemView extends AbsViewHolder<BannerListVo, BannerItemView.ViewHolder> {
 
     public BannerItemView(Context context) {
-        mContext = context;
+        super(context);
     }
 
     @Override
-    protected @NonNull
-    BannerItemView.ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        return new BannerItemView.ViewHolder(inflater.inflate(R.layout.common_banner_view, parent, false));
+    public int getLayoutResId() {
+        return R.layout.common_banner_view;
+    }
+
+    @Override
+    public ViewHolder createViewHolder(View view) {
+        return new ViewHolder(view);
     }
 
 
@@ -57,15 +60,13 @@ public class BannerItemView extends AbsItemView<BannerListVo, BannerItemView.Vie
     }
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends BaseViewHolder {
 
-        private @NonNull
-        final BannerView mBannerView;
-
+        private BannerView mBannerView;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mBannerView = itemView.findViewById(R.id.banner);
+            mBannerView = getViewById(R.id.banner);
         }
 
     }

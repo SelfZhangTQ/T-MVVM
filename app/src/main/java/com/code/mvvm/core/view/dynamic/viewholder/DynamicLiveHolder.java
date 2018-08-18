@@ -19,12 +19,10 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/7/4 15:35
+ * @author：tqzhang  on 18/7/4 15:35
  */
 public class DynamicLiveHolder extends AbsViewHolder<DynamicInfoVo, DynamicLiveHolder.ViewHolder> {
     private int contentWidth = DisplayUtil.getScreenWidth(App.Instance()) - DisplayUtil.dp2px(App.Instance(), 95);
-
-    private Context mContext;
 
     public DynamicLiveHolder(Context context) {
         super(context);
@@ -86,12 +84,12 @@ public class DynamicLiveHolder extends AbsViewHolder<DynamicInfoVo, DynamicLiveH
 
 
     public static class ViewHolder extends BaseViewHolder {
-        public ImageView zhibo_img;
-        public ImageView zhibo_state;
-        public TextView tvUserName, userType, dynamicTitle, lookNum;
-        public ImageView ivUserPic, dynamicPic;
-        public LinearLayout mUserTag;
-        public View img_content_layout;
+        private ImageView zhibo_img;
+        private ImageView zhibo_state;
+        private TextView tvUserName, userType, dynamicTitle, lookNum;
+        private ImageView ivUserPic;
+        private LinearLayout mUserTag;
+        private View img_content_layout;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -99,7 +97,6 @@ public class DynamicLiveHolder extends AbsViewHolder<DynamicInfoVo, DynamicLiveH
             img_content_layout = getViewById(R.id.ly_zhibo_content_img);
             zhibo_state = getViewById(R.id.iv_live_state);
             ivUserPic = getViewById(R.id.iv_user_pic);
-            dynamicPic = getViewById(R.id.iv_dynamic_pic);
             tvUserName = getViewById(R.id.tv_user_name);
             userType = getViewById(R.id.user_type);
             dynamicTitle = getViewById(R.id.tv_dynamic_title);

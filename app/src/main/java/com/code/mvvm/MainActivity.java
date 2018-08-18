@@ -7,20 +7,20 @@ import android.support.v4.app.FragmentTransaction;
 import com.basiclibrary.base.BaseActivity;
 import com.bottomnavigation.BottomNavigationBar;
 import com.bottomnavigation.BottomNavigationItem;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.view.correct.WorkFragment;
-import com.code.mvvm.core.view.course.CourseFragment;
+import com.code.mvvm.core.view.course.VideoFragment;
 import com.code.mvvm.core.view.home.HomeFragment;
 
 
 /**
- * @author：tqzhang
+ * @author：tqzhang on 18/5/2 15:46
  */
 public class MainActivity extends BaseActivity {
 
-    private BottomNavigationBar mBottomNavigationBar;
     private HomeFragment mHomeFragment;
     private WorkFragment mWorkFragment;
-    private CourseFragment mCourseFragment;
+    private VideoFragment mVideoFragment;
     private MineFragment mMineFragment;
 
     @Override
@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initNavBar() {
-        mBottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
+        BottomNavigationBar mBottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         mBottomNavigationBar
@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity {
             case 0:
                 if (mHomeFragment == null) {
                     mHomeFragment = HomeFragment.newInstance();
-                    fragmentTransaction.add(R.id.home_content, mHomeFragment, "home");
+                    fragmentTransaction.add(R.id.home_content, mHomeFragment, Constants.HOME_TAG);
                 } else {
                     fragmentTransaction.show(mHomeFragment);
                 }
@@ -83,23 +83,23 @@ public class MainActivity extends BaseActivity {
             case 1:
                 if (mWorkFragment == null) {
                     mWorkFragment = WorkFragment.newInstance();
-                    fragmentTransaction.add(R.id.home_content, mWorkFragment, "work");
+                    fragmentTransaction.add(R.id.home_content, mWorkFragment, Constants.WORK_TAG);
                 } else {
                     fragmentTransaction.show(mWorkFragment);
                 }
                 break;
             case 2:
-                if (mCourseFragment == null) {
-                    mCourseFragment = CourseFragment.newInstance();
-                    fragmentTransaction.add(R.id.home_content, mCourseFragment, "course");
+                if (mVideoFragment == null) {
+                    mVideoFragment = VideoFragment.newInstance();
+                    fragmentTransaction.add(R.id.home_content, mVideoFragment, Constants.VIDEO_TAG);
                 } else {
-                    fragmentTransaction.show(mCourseFragment);
+                    fragmentTransaction.show(mVideoFragment);
                 }
                 break;
             case 3:
                 if (mMineFragment == null) {
                     mMineFragment = MineFragment.newInstance();
-                    fragmentTransaction.add(R.id.home_content, mMineFragment, "mine");
+                    fragmentTransaction.add(R.id.home_content, mMineFragment, Constants.MINE_TAG);
                 } else {
                     fragmentTransaction.show(mMineFragment);
                 }
@@ -119,8 +119,8 @@ public class MainActivity extends BaseActivity {
         if (mWorkFragment != null) {
             fragmentTransaction.hide(mWorkFragment);
         }
-        if (mCourseFragment != null) {
-            fragmentTransaction.hide(mCourseFragment);
+        if (mVideoFragment != null) {
+            fragmentTransaction.hide(mVideoFragment);
         }
 
         if (mMineFragment != null) {

@@ -20,14 +20,14 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/7/4 15:35
+ * @author：tqzhang  on 18/7/4 15:35
  */
 public class DynamicCourseHolder extends AbsViewHolder<DynamicInfoVo, DynamicCourseHolder.ViewHolder> {
-    int contentWidth;
+    private int contentWidth;
 
     public DynamicCourseHolder(Context context) {
         super(context);
-        contentWidth = DisplayUtil.getScreenWidth(App.Instance()) - DisplayUtil.dp2px(App.Instance(), 15 + 40 + 10 + 30);
+        contentWidth = DisplayUtil.getScreenWidth(mContext) - DisplayUtil.dp2px(mContext, 95);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class DynamicCourseHolder extends AbsViewHolder<DynamicInfoVo, DynamicCou
             holder.video_time.setText(minute + "" + "分" + second + "" + "秒");
         }
 
-        int commonwidth = contentWidth - DisplayUtil.dp2px(App.Instance(), 14 * 2);
+        int commonwidth = contentWidth - DisplayUtil.dp2px(mContext, 28);
         double dv = 0.56;
 
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.img_content_layout.getLayoutParams();
@@ -81,14 +81,14 @@ public class DynamicCourseHolder extends AbsViewHolder<DynamicInfoVo, DynamicCou
 
     public static class ViewHolder extends BaseViewHolder {
 
-        public ImageView video_img;
-        public TextView video_time;
+        private ImageView video_img;
+        private TextView video_time;
 
-        public TextView tvUserName, userType, dynamicTitle, lookNum;
-        public ImageView ivUserPic, dynamicPic;
-        public LinearLayout mUserTag;
+        private TextView tvUserName, userType, dynamicTitle, lookNum;
+        private ImageView ivUserPic;
+        private LinearLayout mUserTag;
 
-        public View img_content_layout;
+        private View img_content_layout;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -96,7 +96,6 @@ public class DynamicCourseHolder extends AbsViewHolder<DynamicInfoVo, DynamicCou
             img_content_layout = getViewById(R.id.img_ly);
             video_time = getViewById(R.id.video_time);
             ivUserPic = getViewById(R.id.iv_user_pic);
-            dynamicPic = getViewById(R.id.iv_dynamic_pic);
             tvUserName = getViewById(R.id.tv_user_name);
             userType = getViewById(R.id.user_type);
             dynamicTitle = getViewById(R.id.tv_dynamic_title);
@@ -104,12 +103,4 @@ public class DynamicCourseHolder extends AbsViewHolder<DynamicInfoVo, DynamicCou
             mUserTag = getViewById(R.id.ll_user_tag);
         }
     }
-
-    private View initTag(String text) {
-        View view = LayoutInflater.from(App.Instance()).inflate(R.layout.item_user_tag, null);
-        TextView tv_tag = (TextView) view.findViewById(R.id.tv_tag);
-        tv_tag.setText(text);
-        return view;
-    }
-
 }

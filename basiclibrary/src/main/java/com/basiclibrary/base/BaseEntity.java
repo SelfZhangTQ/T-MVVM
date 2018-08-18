@@ -1,7 +1,7 @@
 package com.basiclibrary.base;
 
 /**
- * @author：zhangtianqiu on 18/3/12 19:20
+ * @author：tqzhang on 18/3/12 19:20
  */
 public class BaseEntity<T> {
     public int res_code;

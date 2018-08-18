@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author：zhangtianqiu on 18/6/30 11:13
+ * @author：tqzhang  on 18/6/30 11:13
  */
 public class LiveFragment extends BaseViewPagerFragment<LiveViewModel> {
     private List<LiveTypeVo.DataBean.SCatalogBean> titleName;
@@ -36,7 +36,9 @@ public class LiveFragment extends BaseViewPagerFragment<LiveViewModel> {
         mViewModel.getLiveType().observe(this, new Observer<LiveTypeVo>() {
             @Override
             public void onChanged(@Nullable LiveTypeVo liveTypeVo) {
-                setData(liveTypeVo);
+                if (liveTypeVo!=null) {
+                    setData(liveTypeVo);
+                }
             }
         });
     }
@@ -86,7 +88,7 @@ public class LiveFragment extends BaseViewPagerFragment<LiveViewModel> {
             } else {
                 LiveListFragment liveListFragment = LiveListFragment.newInstance();
                 Bundle bundle = new Bundle();
-                bundle.putString("f_catalog_id", titleName.get(i).id + "");
+                bundle.putString("type_id", String.valueOf(titleName.get(i).id));
                 liveListFragment.setArguments(bundle);
                 mFragments.add(liveListFragment);
             }

@@ -14,7 +14,7 @@ import com.trecyclerview.entity.HeaderInfo;
 import com.trecyclerview.multitype.AbsItemView;
 
 /**
- * @author：zhangtianqiu on 18/7/13 16:47
+ * @author：tqzhang on 18/7/13 16:47
  */
 public class HeaderItemView extends AbsItemView<HeaderInfo, HeaderItemView.ViewHolder> {
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.basiclibrary.base.BaseFragment;
+import com.code.mvvm.R;
 import com.code.mvvm.base.BaseViewPagerFragment;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
 import com.code.mvvm.core.viewmodel.MaterialViewModel;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author：zhangtianqiu on 18/7/2 14:24
+ * @author：tqzhang on 18/7/2 14:24
  */
 public class MaterialFragment extends BaseViewPagerFragment<MaterialViewModel> {
     private List<MaterialTypeVo.TypelistEntity> titleName;
@@ -68,16 +69,16 @@ public class MaterialFragment extends BaseViewPagerFragment<MaterialViewModel> {
     }
 
 
-    public void setData(MaterialTypeVo lessonTypeObject) {
-        mArrTitles = new String[lessonTypeObject.data.typelist.size() + 1];
+    public void setData(MaterialTypeVo materialTypeVo) {
+        mArrTitles = new String[materialTypeVo.data.typelist.size() + 1];
         titleName.clear();
         MaterialTypeVo.TypelistEntity dataBean = new MaterialTypeVo.TypelistEntity();
-        dataBean.name = "专题";
-        mArrTitles[0] = "专题";
+        dataBean.name = getResources().getString(R.string.special_tab_name);
+        mArrTitles[0] = getResources().getString(R.string.special_tab_name);
         titleName.add(dataBean);
-        for (int j = 0; j < lessonTypeObject.data.typelist.size(); j++) {
-            titleName.add(lessonTypeObject.data.typelist.get(j));
-            mArrTitles[j + 1] = (lessonTypeObject.data.typelist.get(j).name);
+        for (int j = 0; j < materialTypeVo.data.typelist.size(); j++) {
+            titleName.add(materialTypeVo.data.typelist.get(j));
+            mArrTitles[j + 1] = (materialTypeVo.data.typelist.get(j).name);
         }
         initFragment();
         setAdapter();
@@ -91,7 +92,7 @@ public class MaterialFragment extends BaseViewPagerFragment<MaterialViewModel> {
             } else {
                 MaterialListFragment materialListFragment = MaterialListFragment.newInstance();
                 Bundle bundle = new Bundle();
-                bundle.putString("mlevel", titleName.get(i).subid);
+                bundle.putString("sub_id", titleName.get(i).subid);
                 materialListFragment.setArguments(bundle);
                 mFragments.add(materialListFragment);
             }

@@ -16,15 +16,15 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/6/19 15:00
+ * @author：tqzhang  on 18/6/19 15:00
  */
-public class QAListItemHolder extends AbsViewHolder<QaListVo.DataBean, QAListItemHolder.ViewHolder> {
+public class QaListItemHolder extends AbsViewHolder<QaListVo.DataBean, QaListItemHolder.ViewHolder> {
     private int commonWidth;
 
 
-    public QAListItemHolder(Context context) {
+    public QaListItemHolder(Context context) {
         super(context);
-        commonWidth = (int) ((float) DisplayUtil.getScreenWidth(App.Instance())
+        commonWidth = (int) ((float) DisplayUtil.getScreenWidth(mContext)
                 - 2 * App.Instance().getResources()
                 .getDimensionPixelSize(
                         R.dimen.concise_three_layout_margin));

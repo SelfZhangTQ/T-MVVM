@@ -47,7 +47,7 @@
             android:layout_marginTop="10dp">
 
             <ImageView
-                android:id="@+id/img_icon"
+                android:id="@+id/iv_live_teacher_icon"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentLeft="true"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@+id/img_icon"
+                android:layout_toRightOf="@+id/tv_live_teacher_icon"
                 android:textColor="#333333"
                 android:textSize="14sp" />
 

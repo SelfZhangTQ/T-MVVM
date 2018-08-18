@@ -18,7 +18,7 @@ import com.code.mvvm.core.data.pojo.live.LiveRecommendVo;
 import com.code.mvvm.core.view.common.TypeItemView;
 import com.code.mvvm.core.view.correct.viewholder.CorrectPicHolder;
 import com.code.mvvm.core.view.correct.viewholder.CorrectRemItemHolder;
-import com.code.mvvm.core.view.home.viewholder.HomeCourseItemView;
+import com.code.mvvm.core.view.home.viewholder.HomeVideoItemView;
 import com.code.mvvm.core.view.home.viewholder.HomeLiveItemView;
 import com.code.mvvm.core.viewmodel.WorkViewModel;
 import com.trecyclerview.TRecyclerView;
@@ -73,10 +73,10 @@ public class WorkDetailsActivity extends LifecycleActivity<WorkViewModel> {
     private void initAdapter() {
         adapter = new MultiTypeAdapter();
         adapter.register(WorkDetailVo.class, new CorrectPicHolder(weakReference.get()));
-        adapter.register(CourseInfoVo.class, new HomeCourseItemView(weakReference.get()));
+        adapter.register(CourseInfoVo.class, new HomeVideoItemView(weakReference.get()));
         adapter.register(LiveRecommendVo.class, new HomeLiveItemView(weakReference.get()));
         adapter.register(WorkInfoVo.class, new CorrectRemItemHolder(weakReference.get()));
-        adapter.register(TypeVo.class, new TypeItemView());
+        adapter.register(TypeVo.class, new TypeItemView(weakReference.get()));
 
     }
 

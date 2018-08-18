@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/ly_zhibo_img"
+        android:id="@+id/rl_live_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

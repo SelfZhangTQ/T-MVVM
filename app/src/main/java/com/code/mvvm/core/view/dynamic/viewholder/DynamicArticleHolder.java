@@ -20,15 +20,15 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/7/4 15:35
+ * @author：tqzhang on 18/7/4 15:35
  */
-public class DynamicAritcleHolder extends AbsViewHolder<DynamicInfoVo, DynamicAritcleHolder.ViewHolder> {
+public class DynamicArticleHolder extends AbsViewHolder<DynamicInfoVo, DynamicArticleHolder.ViewHolder> {
     private int contentWidth;
 
 
-    public DynamicAritcleHolder(Context context) {
+    public DynamicArticleHolder(Context context) {
         super(context);
-        contentWidth = DisplayUtil.getScreenWidth(App.Instance()) - DisplayUtil.dp2px(App.Instance(), 15 + 40 + 10 + 30);
+        contentWidth = DisplayUtil.getScreenWidth(mContext) - DisplayUtil.dp2px(mContext, 95);
 
     }
 
@@ -51,17 +51,17 @@ public class DynamicAritcleHolder extends AbsViewHolder<DynamicInfoVo, DynamicAr
                 .into(holder.ivUserPic);
         holder.mUserTag.removeAllViews();
         if (!TextUtils.isEmpty(item.userinfo.province) && !TextUtils.equals("false", item.userinfo.province)) {
-            holder.mUserTag.addView(ViewUtils.CreateTagView(mContext,item.userinfo.province));
+            holder.mUserTag.addView(ViewUtils.CreateTagView(mContext, item.userinfo.province));
         }
         if (!TextUtils.isEmpty(item.userinfo.profession)
                 && !TextUtils.equals("false", item.userinfo.profession)) {
-            holder.mUserTag.addView(ViewUtils.CreateTagView(mContext,item.userinfo.profession));
+            holder.mUserTag.addView(ViewUtils.CreateTagView(mContext, item.userinfo.profession));
         }
-        holder.look_num.setText(item.lecture_info.hits + "人看过");
+        holder.look_num.setText(new StringBuilder(item.lecture_info.hits).append("人看过"));
         holder.dynamic_title1.setText(item.lecture_info.title);
         holder.dynamic_title2.setText(item.lecture_info.title);
         holder.dynamic_title3.setText(item.lecture_info.title);
-        int commonWidth = contentWidth - DisplayUtil.dp2px(App.Instance(), 14 * 2);
+        int commonWidth = contentWidth - DisplayUtil.dp2px(mContext, 28);
         int type = Integer.valueOf(item.lecture_info.thumbtype);
         if (type == 1) {
             holder.article_type1.setVisibility(View.VISIBLE);
@@ -78,7 +78,6 @@ public class DynamicAritcleHolder extends AbsViewHolder<DynamicInfoVo, DynamicAr
             }
 
 
-            //2视频，3音频
             if ("2".equals(item.lecture_info.content_type)) {
                 holder.content_type1.setVisibility(View.VISIBLE);
                 holder.content_type1.setBackgroundResource(R.drawable.tag_video_icon);
@@ -89,7 +88,6 @@ public class DynamicAritcleHolder extends AbsViewHolder<DynamicInfoVo, DynamicAr
                 holder.content_type1.setVisibility(View.GONE);
             }
         } else if (type == 2) {
-            // 左图
             holder.article_type1.setVisibility(View.GONE);
             holder.article_type2.setVisibility(View.VISIBLE);
             holder.article_type3.setVisibility(View.GONE);
@@ -101,7 +99,6 @@ public class DynamicAritcleHolder extends AbsViewHolder<DynamicInfoVo, DynamicAr
             }
 
 
-            //2视频，3音频
             if ("2".equals(item.lecture_info.content_type)) {
                 holder.content_type2.setVisibility(View.VISIBLE);
                 holder.content_type2.setBackgroundResource(R.drawable.tag_video_icon);
@@ -112,7 +109,6 @@ public class DynamicAritcleHolder extends AbsViewHolder<DynamicInfoVo, DynamicAr
                 holder.content_type2.setVisibility(View.GONE);
             }
         } else {
-            //三图
             holder.article_type1.setVisibility(View.GONE);
             holder.article_type2.setVisibility(View.GONE);
             holder.article_type3.setVisibility(View.VISIBLE);
@@ -155,40 +151,38 @@ public class DynamicAritcleHolder extends AbsViewHolder<DynamicInfoVo, DynamicAr
 
     public static class ViewHolder extends BaseViewHolder {
 
-        public ImageView type1_dynamic_img;
-        public ImageView type2_dynamic_img;
-        public ImageView type3_dynamic_img, type3_dynamic_img2, type3_dynamic_img3;
-        public ImageView content_type1, content_type2;
-        public TextView tvUserName, user_action, publich_time, look_num;
-        public ImageView ivUserPic;
-        public LinearLayout mUserTag;
-        public LinearLayout article_type1, article_type2, article_type3;
-        public TextView dynamic_title1, dynamic_title2, dynamic_title3;
+        private ImageView type1_dynamic_img;
+        private ImageView type2_dynamic_img;
+        private ImageView type3_dynamic_img, type3_dynamic_img2, type3_dynamic_img3;
+        private ImageView content_type1, content_type2;
+        private TextView tvUserName, look_num;
+        private ImageView ivUserPic;
+        private LinearLayout mUserTag;
+        private LinearLayout article_type1, article_type2, article_type3;
+        private TextView dynamic_title1, dynamic_title2, dynamic_title3;
 
         public ViewHolder(View itemView) {
             super(itemView);
             type1_dynamic_img = getViewById(R.id.type1_dynamic_img);
             type2_dynamic_img = getViewById(R.id.type2_dynamic_img);
-            type3_dynamic_img =getViewById(R.id.type3_dynamic_img);
+            type3_dynamic_img = getViewById(R.id.type3_dynamic_img);
             type3_dynamic_img2 = getViewById(R.id.type3_dynamic_img2);
             type3_dynamic_img3 = getViewById(R.id.type3_dynamic_img3);
             content_type1 = getViewById(R.id.content_type1);
-            content_type2 =getViewById(R.id.content_type2);
+            content_type2 = getViewById(R.id.content_type2);
 
             ivUserPic = getViewById(R.id.iv_user_pic);
             tvUserName = getViewById(R.id.tv_user_name);
-            user_action = getViewById(R.id.user_type);
-            publich_time = getViewById(R.id.publich_time);
             look_num = getViewById(R.id.tv_look_num);
             mUserTag = getViewById(R.id.ll_user_tag);
 
-            dynamic_title1 = (TextView) itemView.findViewById(R.id.dynamic_title1);
-            dynamic_title2 = (TextView) itemView.findViewById(R.id.dynamic_title2);
-            dynamic_title3 = (TextView) itemView.findViewById(R.id.dynamic_title3);
+            dynamic_title1 = getViewById(R.id.dynamic_title1);
+            dynamic_title2 = getViewById(R.id.dynamic_title2);
+            dynamic_title3 = getViewById(R.id.dynamic_title3);
 
-            article_type1 = (LinearLayout) itemView.findViewById(R.id.article_type1);
-            article_type2 = (LinearLayout) itemView.findViewById(R.id.article_type2);
-            article_type3 = (LinearLayout) itemView.findViewById(R.id.article_type3);
+            article_type1 = getViewById(R.id.article_type1);
+            article_type2 = getViewById(R.id.article_type2);
+            article_type3 = getViewById(R.id.article_type3);
         }
     }
 

@@ -19,14 +19,14 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/7/4 15:35
+ * @author：tqzhang on 18/7/4 15:35
  */
 public class DynamicSubjectHolder extends AbsViewHolder<DynamicInfoVo, DynamicSubjectHolder.ViewHolder> {
     private int contentWidth;
 
     public DynamicSubjectHolder(Context context) {
         super(context);
-        contentWidth = DisplayUtil.getScreenWidth(App.Instance()) - DisplayUtil.dp2px(App.Instance(), 15 + 40 + 10 + 30);
+        contentWidth = DisplayUtil.getScreenWidth(mContext) - DisplayUtil.dp2px(mContext, 15 + 40 + 10 + 30);
 
     }
 
@@ -46,18 +46,16 @@ public class DynamicSubjectHolder extends AbsViewHolder<DynamicInfoVo, DynamicSu
         Glide.with(mContext).load(item.userinfo.avatar)
                 .transform(new GlideCircleTransform(mContext))
                 .into(holder.ivUserPic);
-        // 展示用户信息tag
         holder.mUserTag.removeAllViews();
         if (!TextUtils.isEmpty(item.userinfo.province) && !TextUtils.equals("false", item.userinfo.province)) {
-            holder.mUserTag.addView(ViewUtils.CreateTagView(mContext,item.userinfo.province));
+            holder.mUserTag.addView(ViewUtils.CreateTagView(mContext, item.userinfo.province));
         }
         if (!TextUtils.isEmpty(item.userinfo.profession)
                 && !TextUtils.equals("false", item.userinfo.profession)) {
-            holder.mUserTag.addView(ViewUtils.CreateTagView(mContext,item.userinfo.profession));
+            holder.mUserTag.addView(ViewUtils.CreateTagView(mContext, item.userinfo.profession));
         }
         holder.userType.setText(item.title);
-
-        holder.lookNum.setText(item.material_info.hits + "人看过");
+        holder.lookNum.setText(new StringBuilder(item.material_info.hits).append("人看过"));
         holder.dynamicTitle.setText(item.material_info.title);
 
         int mWidth = contentWidth - DisplayUtil.dp2px(App.Instance(), 14 * 2);
@@ -73,9 +71,9 @@ public class DynamicSubjectHolder extends AbsViewHolder<DynamicInfoVo, DynamicSu
 
     public static class ViewHolder extends BaseViewHolder {
 
-        public TextView tvUserName, userType, dynamicTitle, lookNum;
-        public ImageView ivUserPic, dynamicPic;
-        public LinearLayout mUserTag;
+        private TextView tvUserName, userType, dynamicTitle, lookNum;
+        private ImageView ivUserPic, dynamicPic;
+        private LinearLayout mUserTag;
 
         public ViewHolder(View itemView) {
             super(itemView);

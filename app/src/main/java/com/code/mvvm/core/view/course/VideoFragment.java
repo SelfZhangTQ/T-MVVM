@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.basiclibrary.base.BaseFragment;
+import com.code.mvvm.R;
 import com.code.mvvm.base.BaseViewPagerFragment;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
 import com.code.mvvm.core.viewmodel.CourseViewModel;
@@ -13,19 +14,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author：tqzhang
+ * @author：tqzhang on 18/5/2 19:20
  */
-public class CourseFragment extends BaseViewPagerFragment<CourseViewModel> {
+public class VideoFragment extends BaseViewPagerFragment<CourseViewModel> {
     private List<CourseTypeVo.DataBean> titleName;
 
-    public static CourseFragment newInstance() {
-        return new CourseFragment();
+    public static VideoFragment newInstance() {
+        return new VideoFragment();
     }
 
     @Override
     public void initView(Bundle state) {
         super.initView(state);
-        setTitle("课程");
+        setTitle(getResources().getString(R.string.video_title_name));
         titleName = new ArrayList<>();
         getTabData();
     }
@@ -35,6 +36,9 @@ public class CourseFragment extends BaseViewPagerFragment<CourseViewModel> {
         mViewModel.getCourseType().observe(this, new Observer<CourseTypeVo>() {
             @Override
             public void onChanged(@Nullable CourseTypeVo courseTypeVo) {
+                if (courseTypeVo == null) {
+                    return;
+                }
                 setData(courseTypeVo);
             }
         });
@@ -70,8 +74,8 @@ public class CourseFragment extends BaseViewPagerFragment<CourseViewModel> {
         mArrTitles = new String[courseTypeVo.data.size() + 1];
         titleName.clear();
         CourseTypeVo.DataBean dataBean = new CourseTypeVo.DataBean();
-        dataBean.name = ("推荐");
-        mArrTitles[0] = "推荐";
+        dataBean.name = getResources().getString(R.string.recommend_tab_name);
+        mArrTitles[0] = getResources().getString(R.string.recommend_tab_name);
         titleName.add(dataBean);
         for (int j = 0; j < courseTypeVo.data.size(); j++) {
             titleName.add(courseTypeVo.data.get(j));

@@ -6,13 +6,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.book.BookList;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
 import com.code.mvvm.core.data.pojo.home.CatagoryVo;
 import com.code.mvvm.core.data.pojo.home.HomeListVo;
-import com.code.mvvm.core.data.pojo.material.MatreialListVo;
+import com.code.mvvm.core.data.pojo.material.MaterialListVo;
 import com.code.mvvm.core.viewmodel.HomeViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.entity.FootInfo;
@@ -21,7 +22,7 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
 
 
 /**
- * @author：tqzhang
+ * @author：tqzhang on 18/5/2 18:46
  */
 public class HomeFragment extends BaseListFragment<HomeViewModel> {
     public static HomeFragment newInstance() {
@@ -31,7 +32,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
     @Override
     public void initView(final Bundle state) {
         super.initView(state);
-        setTitle("首页");
+        setTitle(getResources().getString(R.string.home_title_name));
     }
 
     @Override
@@ -88,7 +89,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                return (oldItems.get(position) instanceof MatreialListVo
+                return (oldItems.get(position) instanceof MaterialListVo
                         || oldItems.get(position) instanceof CatagoryVo
                         || oldItems.get(position) instanceof TypeVo
                         || oldItems.get(position) instanceof BookList
@@ -130,7 +131,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
             }
             oldItems.add(new TypeVo("专题"));
             if (homeListVo.data.matreialsubject.size() > 0) {
-                oldItems.add(new MatreialListVo(homeListVo.data.matreialsubject));
+                oldItems.add(new MaterialListVo(homeListVo.data.matreialsubject));
             }
             adapter.setItems(oldItems);
             notifyDataSetChanged();
@@ -150,7 +151,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
             }
             newItems.add(new TypeVo("专题"));
             if (homeListVo.data.matreialsubject.size() > 0) {
-                newItems.add(new MatreialListVo(homeListVo.data.matreialsubject));
+                newItems.add(new MaterialListVo(homeListVo.data.matreialsubject));
             }
             refreshDataChanged();
         }

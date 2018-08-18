@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.basiclibrary.base.BaseFragment;
+import com.code.mvvm.R;
 import com.code.mvvm.base.BaseViewPagerFragment;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawTypeVo;
 import com.code.mvvm.core.viewmodel.FollowDrawViewModel;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author：zhangtianqiu on 18/7/2 14:24
+ * @author：tqzhang  on 18/7/2 14:24
  */
 public class FollowDrawFragment extends BaseViewPagerFragment<FollowDrawViewModel> {
 
@@ -73,8 +74,8 @@ public class FollowDrawFragment extends BaseViewPagerFragment<FollowDrawViewMode
         mArrTitles = new String[followDrawTypeVo.data.size() + 1];
         titleName.clear();
         FollowDrawTypeVo.DataBean dataBean = new FollowDrawTypeVo.DataBean();
-        dataBean.maintypename = ("推荐");
-        mArrTitles[0] = "推荐";
+        dataBean.maintypename = getResources().getString(R.string.recommend_tab_name);
+        mArrTitles[0] = getResources().getString(R.string.recommend_tab_name);
         titleName.add(dataBean);
         for (int j = 0; j < followDrawTypeVo.data.size(); j++) {
             titleName.add(followDrawTypeVo.data.get(j));

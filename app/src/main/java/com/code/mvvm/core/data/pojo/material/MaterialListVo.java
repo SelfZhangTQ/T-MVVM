@@ -3,14 +3,17 @@ package com.code.mvvm.core.data.pojo.material;
 
 import java.util.List;
 
+/**
+ * @author：zhangtianqiu on 18/6/20 13:49
+ */
 public class MaterialListVo {
+    public List<MatreialSubjectVo> matreialsubject;
 
+    public MaterialListVo(List<MatreialSubjectVo> matreialsubject) {
+        this.matreialsubject = matreialsubject;
+    }
 
-    public int errno;
-    public DataEntity data;
-
-    public static class DataEntity {
-        public String totalnum;
-        public List<MaterialInfoVo> content;
+    public void setMatreialsubject(List<MatreialSubjectVo> matreialsubject) {
+        this.matreialsubject = matreialsubject;
     }
 }

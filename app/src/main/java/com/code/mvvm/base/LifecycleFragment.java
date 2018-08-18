@@ -6,7 +6,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import com.basiclibrary.base.BaseFragment;
@@ -28,8 +27,9 @@ public abstract class LifecycleFragment<T extends BaseViewModel> extends BaseFra
         mViewModel = createViewModelProviders();
         if (mViewModel != null) {
             mViewModel.loadState.observe(this, observer);
+            dataObserver();
         }
-        dataObserver();
+
     }
 
     /**
@@ -40,8 +40,8 @@ public abstract class LifecycleFragment<T extends BaseViewModel> extends BaseFra
     protected abstract T createViewModelProviders();
 
 
-    protected <T extends ViewModel> T VMProviders(Fragment fragment, @NonNull Class modelClass) {
-        return (T) ViewModelProviders.of(fragment).get(modelClass);
+    protected <T extends ViewModel> T VMProviders(BaseFragment fragment, @NonNull Class<T> modelClass) {
+        return (T)ViewModelProviders.of(fragment).get(modelClass);
 
     }
 

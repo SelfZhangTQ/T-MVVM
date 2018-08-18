@@ -23,7 +23,7 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/7/4 15:35
+ * @author：tqzhang  on 18/7/4 15:35
  */
 public class DynamicFollowHolder extends AbsViewHolder<DynamicInfoVo, DynamicFollowHolder.ViewHolder> {
     private int contentWidth = DisplayUtil.getScreenWidth(App.Instance()) - DisplayUtil.dp2px(App.Instance(), 95);
@@ -81,18 +81,17 @@ public class DynamicFollowHolder extends AbsViewHolder<DynamicInfoVo, DynamicFol
     }
 
     public static class ViewHolder extends BaseViewHolder {
-        public CustomHeightImageView ImagePic;
-        public View img_content_layout;
-        public TextView tvUserName, userType, dynamicTitle, lookNum;
-        public ImageView ivUserPic, dynamicPic;
-        public LinearLayout mUserTag;
+        private CustomHeightImageView ImagePic;
+        private View img_content_layout;
+        private TextView tvUserName, userType, dynamicTitle, lookNum;
+        private ImageView ivUserPic;
+        private LinearLayout mUserTag;
 
         public ViewHolder(View itemView) {
             super(itemView);
             ImagePic = getViewById(R.id.img_drawing);
             img_content_layout = getViewById(R.id.img_ly);
             ivUserPic = getViewById(R.id.iv_user_pic);
-            dynamicPic = getViewById(R.id.iv_dynamic_pic);
             tvUserName = getViewById(R.id.tv_user_name);
             userType = getViewById(R.id.user_type);
             dynamicTitle = getViewById(R.id.tv_dynamic_title);

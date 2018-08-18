@@ -13,7 +13,7 @@ import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：zhangtianqiu on 18/6/26 17:02
+ * @author：tqzhang on 18/6/26 17:02
  */
 //public class WorkFragment extends BaseListFragment<WorkViewModel> {
 public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {

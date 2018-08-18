@@ -3,7 +3,7 @@ package com.code.mvvm.core.data.source;
 import com.basiclibrary.helper.RxSchedulers;
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.core.data.BaseRepository;
-import com.code.mvvm.core.data.pojo.material.MaterialListVo;
+import com.code.mvvm.core.data.pojo.material.MateriaVo;
 import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
 import com.code.mvvm.network.RxSubscriber;
@@ -13,11 +13,11 @@ import com.code.mvvm.network.RxSubscriber;
  */
 public class MaterialRepository extends BaseRepository {
 
-    public void loadMaterialList(String mCatalogId, String mLevel, String rn, final OnResultCallBack<MaterialListVo> listener) {
+    public void loadMaterialList(String mCatalogId, String mLevel, String rn, final OnResultCallBack<MateriaVo> listener) {
 
         apiService.getMaterialList(mCatalogId, mLevel, rn)
-                .compose(RxSchedulers.<MaterialListVo>io_main())
-                .subscribe(new RxSubscriber<MaterialListVo>() {
+                .compose(RxSchedulers.<MateriaVo>io_main())
+                .subscribe(new RxSubscriber<MateriaVo>() {
                     @Override
                     protected void onNoNetWork() {
                         super.onNoNetWork();
@@ -25,7 +25,7 @@ public class MaterialRepository extends BaseRepository {
                     }
 
                     @Override
-                    public void onSuccess(MaterialListVo materialListVo) {
+                    public void onSuccess(MateriaVo materialListVo) {
                         listener.onNext(materialListVo);
                     }
 
@@ -36,10 +36,10 @@ public class MaterialRepository extends BaseRepository {
                 });
     }
 
-    public void loadMaterialMoreList(String mCatalogId, String mLevel, String lastId, String rn, final OnResultCallBack<MaterialListVo> listener) {
+    public void loadMaterialMoreList(String mCatalogId, String mLevel, String lastId, String rn, final OnResultCallBack<MateriaVo> listener) {
         apiService.getMaterialMoreList(mCatalogId, mLevel, lastId, rn)
-                .compose(RxSchedulers.<MaterialListVo>io_main())
-                .subscribe(new RxSubscriber<MaterialListVo>() {
+                .compose(RxSchedulers.<MateriaVo>io_main())
+                .subscribe(new RxSubscriber<MateriaVo>() {
                     @Override
                     protected void onNoNetWork() {
                         super.onNoNetWork();
@@ -47,7 +47,7 @@ public class MaterialRepository extends BaseRepository {
                     }
 
                     @Override
-                    public void onSuccess(MaterialListVo materialListVo) {
+                    public void onSuccess(MateriaVo materialListVo) {
                         listener.onNext(materialListVo);
                     }
 

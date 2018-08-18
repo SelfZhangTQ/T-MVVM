@@ -3,6 +3,7 @@ package com.code.mvvm.util;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.data.pojo.article.ArticleInfoVo;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
@@ -16,7 +17,7 @@ import com.code.mvvm.core.data.pojo.followdraw.FollowDrawInfoVo;
 import com.code.mvvm.core.data.pojo.home.CatagoryVo;
 import com.code.mvvm.core.data.pojo.live.LiveRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialInfoVo;
-import com.code.mvvm.core.data.pojo.material.MatreialListVo;
+import com.code.mvvm.core.data.pojo.material.MaterialListVo;
 import com.code.mvvm.core.data.pojo.material.MatreialSubjectVo;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
 import com.code.mvvm.core.view.activity.viewholder.ActivityItemHolder;
@@ -29,7 +30,7 @@ import com.code.mvvm.core.view.common.FootItemViewBinder;
 import com.code.mvvm.core.view.common.TypeItemView;
 import com.code.mvvm.core.view.correct.viewholder.CorrectItemHolder;
 import com.code.mvvm.core.view.course.viewholder.CourseItemHolder;
-import com.code.mvvm.core.view.dynamic.viewholder.DynamicAritcleHolder;
+import com.code.mvvm.core.view.dynamic.viewholder.DynamicArticleHolder;
 import com.code.mvvm.core.view.dynamic.viewholder.DynamicCorrectHolder;
 import com.code.mvvm.core.view.dynamic.viewholder.DynamicCourseHolder;
 import com.code.mvvm.core.view.dynamic.viewholder.DynamicFollowHolder;
@@ -38,14 +39,14 @@ import com.code.mvvm.core.view.dynamic.viewholder.DynamicSubjectHolder;
 import com.code.mvvm.core.view.dynamic.viewholder.DynamicWorkHolder;
 import com.code.mvvm.core.view.followdraw.viewholder.FollowDrawListHolder;
 import com.code.mvvm.core.view.home.viewholder.CategoryItemView;
-import com.code.mvvm.core.view.home.viewholder.HomeCourseItemView;
+import com.code.mvvm.core.view.home.viewholder.HomeVideoItemView;
 import com.code.mvvm.core.view.home.viewholder.HomeLiveItemView;
 import com.code.mvvm.core.view.home.viewholder.HomeMaterialItemView;
 import com.code.mvvm.core.view.live.viewholder.LiveItemHolder;
 import com.code.mvvm.core.view.live.viewholder.LiveListItemHolder;
 import com.code.mvvm.core.view.material.viewholder.MaterialItemHolder;
 import com.code.mvvm.core.view.material.viewholder.MaterialListHolder;
-import com.code.mvvm.core.view.qa.viewholder.QAListItemHolder;
+import com.code.mvvm.core.view.qa.viewholder.QaListItemHolder;
 import com.code.mvvm.widget.banner.BannerItemView;
 import com.trecyclerview.entity.FootInfo;
 import com.trecyclerview.entity.HeaderInfo;
@@ -137,9 +138,9 @@ public class AdapterPool {
 
     public MultiTypeAdapter getCourseRemAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(TypeVo.class, new TypeItemView());
+        adapter.register(TypeVo.class, new TypeItemView(context));
         adapter.register(BannerListVo.class, new BannerItemView(context));
-        adapter.register(CourseInfoVo.class, new HomeCourseItemView(context));
+        adapter.register(CourseInfoVo.class, new HomeVideoItemView(context));
         adapter.register(LiveRecommendVo.class, new HomeLiveItemView(context));
         return getNoFootAdapter(adapter, context);
 
@@ -160,7 +161,7 @@ public class AdapterPool {
 
     public MultiTypeAdapter getQaAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(QaListVo.DataBean.class, new QAListItemHolder(context));
+        adapter.register(QaListVo.DataBean.class, new QaListItemHolder(context));
         return getAdapter(adapter, context);
     }
 
@@ -191,12 +192,12 @@ public class AdapterPool {
     public MultiTypeAdapter getHomeAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
         adapter.register(BannerListVo.class, new BannerItemView(context));
-        adapter.register(TypeVo.class, new TypeItemView());
+        adapter.register(TypeVo.class, new TypeItemView(context));
         adapter.register(CatagoryVo.class, new CategoryItemView(context));
         adapter.register(BookList.class, new BookItemHolder(context));
-        adapter.register(CourseInfoVo.class, new HomeCourseItemView(context));
+        adapter.register(CourseInfoVo.class, new HomeVideoItemView(context));
         adapter.register(LiveRecommendVo.class, new HomeLiveItemView(context));
-        adapter.register(MatreialListVo.class, new HomeMaterialItemView(context));
+        adapter.register(MaterialListVo.class, new HomeMaterialItemView(context));
         return getNoFootAdapter(adapter, context);
     }
 
@@ -206,7 +207,7 @@ public class AdapterPool {
                 .to(new DynamicCorrectHolder(context),
                         new DynamicWorkHolder(context),
                         new DynamicSubjectHolder(context),
-                        new DynamicAritcleHolder(context),
+                        new DynamicArticleHolder(context),
                         new DynamicCourseHolder(context),
                         new DynamicLiveHolder(context),
                         new DynamicFollowHolder(context)
@@ -215,19 +216,19 @@ public class AdapterPool {
                     @NonNull
                     @Override
                     public Class<? extends AbsItemView<DynamicInfoVo, ?>> index(int position, @NonNull DynamicInfoVo dynamicInfoVo) {
-                        if (dynamicInfoVo.subjecttype.equals("1")) {
+                        if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_CORRECT)) {
                             return DynamicCorrectHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals("2")) {
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_WORK)) {
                             return DynamicWorkHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals("3")) {
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_MATERIAL_SUBJECT)) {
                             return DynamicSubjectHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals("4")) {
-                            return DynamicAritcleHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals("5")) {
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_ARTICLE)) {
+                            return DynamicArticleHolder.class;
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_FOLLOWDRAW)) {
                             return DynamicFollowHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals("6")) {
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_LIVE)) {
                             return DynamicLiveHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals("7")) {
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_LESSON)) {
                             return DynamicCourseHolder.class;
                         }
                         return null;

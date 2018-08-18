@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author：zhangtianqiu on 18/6/30 11:13
+ * @author：tqzhang on 18/6/30 11:13
  */
 public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
     private List<BookTypeVo.ClassContent> titleName;
@@ -34,6 +34,9 @@ public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
         mViewModel.getBookType().observe(this, new Observer<BookTypeVo>() {
             @Override
             public void onChanged(@Nullable BookTypeVo bookTypeVo) {
+                if (bookTypeVo == null) {
+                    return;
+                }
                 setData(bookTypeVo);
             }
         });
@@ -80,7 +83,7 @@ public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
         for (int i = 0; i < titleName.size(); i++) {
             BookListFragment bookListFragment = BookListFragment.newInstance();
             Bundle bundle = new Bundle();
-            bundle.putString("f_catalog_id", titleName.get(i).f_catalog_id);
+            bundle.putString("type_id", titleName.get(i).f_catalog_id);
             bookListFragment.setArguments(bundle);
             mFragments.add(bookListFragment);
         }

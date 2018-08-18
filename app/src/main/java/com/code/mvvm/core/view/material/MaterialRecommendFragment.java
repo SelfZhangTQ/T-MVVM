@@ -15,7 +15,7 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
 
 
 /**
- * @author：zhangtianqiu on 18/7/2 14:39
+ * @author：tqzhang on 18/7/2 14:39
  */
 public class MaterialRecommendFragment extends BaseListFragment<MaterialViewModel> {
 

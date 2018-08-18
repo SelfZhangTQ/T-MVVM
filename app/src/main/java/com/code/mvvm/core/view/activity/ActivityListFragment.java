@@ -13,9 +13,13 @@ import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：zhangtianqiu on 18/7/4 14:10
+ * @author：tqzhang  on 18/7/4 14:10
  */
 public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
+    public static ActivityListFragment newInstance() {
+        return new ActivityListFragment();
+    }
+
     @Override
     public void initView(Bundle state) {
         super.initView(state);

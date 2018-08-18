@@ -14,9 +14,10 @@ import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：zhangtianqiu on 18/7/2 14:40
+ * @author：tqzhang on 18/7/2 14:40
  */
 public class BookListFragment extends BaseListFragment<BookViewModel> {
+    private String typeId;
 
     public static BookListFragment newInstance() {
         return new BookListFragment();
@@ -25,6 +26,9 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
     @Override
     public void initView(Bundle state) {
         super.initView(state);
+        if (getArguments() != null) {
+            typeId = getArguments().getString("type_id");
+        }
     }
 
     @Override
@@ -32,6 +36,9 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
         mViewModel.getBookList().observe(this, new Observer<BookListVo>() {
             @Override
             public void onChanged(@Nullable BookListVo bookListVo) {
+                if (bookListVo == null) {
+                    return;
+                }
                 if (bookListVo.data.content.size() > 0) {
                     lastId = bookListVo.data.content.get(bookListVo.data.content.size() - 1).bookid;
                     setData(bookListVo.data.content);
@@ -75,7 +82,7 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getBookList(getArguments().getString("f_catalog_id"), lastId, "20");
+        mViewModel.getBookList(typeId, lastId, "20");
 
     }
 

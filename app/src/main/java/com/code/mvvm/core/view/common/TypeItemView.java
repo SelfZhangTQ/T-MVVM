@@ -1,27 +1,35 @@
 package com.code.mvvm.core.view.common;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
-import com.trecyclerview.multitype.AbsItemView;
+import com.trecyclerview.holder.AbsViewHolder;
+import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/6/20 13:41
+ * @author：tqzhang on 18/6/20 13:41
  */
-public class TypeItemView extends AbsItemView<TypeVo, TypeItemView.ViewHolder> {
+public class TypeItemView extends AbsViewHolder<TypeVo, TypeItemView.ViewHolder> {
+
+    public TypeItemView(Context context) {
+        super(context);
+    }
 
     @Override
-    protected @NonNull
-    ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        return new ViewHolder(inflater.inflate(R.layout.item_type, parent, false));
+    public int getLayoutResId() {
+        return R.layout.item_type;
+    }
+
+    @Override
+    public ViewHolder createViewHolder(View view) {
+        return new ViewHolder(view);
     }
 
 
@@ -35,16 +43,15 @@ public class TypeItemView extends AbsItemView<TypeVo, TypeItemView.ViewHolder> {
     }
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends BaseViewHolder {
 
-        private @NonNull
-        final TextView mClassifyType;
+        private TextView mClassifyType;
         private LinearLayout mRootLayout;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mClassifyType = itemView.findViewById(R.id.tv_classify_type);
-            mRootLayout = itemView.findViewById(R.id.root_layout);
+            mClassifyType = getViewById(R.id.tv_classify_type);
+            mRootLayout = getViewById(R.id.root_layout);
         }
     }
 }

@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.material.MaterialListVo;
+import com.code.mvvm.core.data.pojo.material.MateriaVo;
 import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
 import com.code.mvvm.core.data.source.MaterialRepository;
@@ -19,8 +19,8 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
 
 
     private MutableLiveData<MaterialTypeVo> mMaterialTypeData;
-    private MutableLiveData<MaterialListVo> mMaterialData;
-    private MutableLiveData<MaterialListVo> mMaterialMoreData;
+    private MutableLiveData<MateriaVo> mMaterialData;
+    private MutableLiveData<MateriaVo> mMaterialMoreData;
     private MutableLiveData<MaterialRecommendVo> mMaterialRecommendData;
 
     public MaterialViewModel(@NonNull Application application) {
@@ -35,14 +35,14 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
         return mMaterialTypeData;
     }
 
-    public LiveData<MaterialListVo> getMaterialList() {
+    public LiveData<MateriaVo> getMaterialList() {
         if (mMaterialData == null) {
             mMaterialData = new MutableLiveData<>();
         }
         return mMaterialData;
     }
 
-    public LiveData<MaterialListVo> getMaterialMoreList() {
+    public LiveData<MateriaVo> getMaterialMoreList() {
         if (mMaterialMoreData == null) {
             mMaterialMoreData = new MutableLiveData<>();
         }
@@ -58,14 +58,14 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
 
 
     public void getMaterialList(String fCatalogId, String mlevel, String rn) {
-        mRepository.loadMaterialList(fCatalogId, mlevel, rn, new OnResultCallBack<MaterialListVo>() {
+        mRepository.loadMaterialList(fCatalogId, mlevel, rn, new OnResultCallBack<MateriaVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
             }
 
             @Override
-            public void onNext(MaterialListVo materialListVo) {
+            public void onNext(MateriaVo materialListVo) {
                 mMaterialData.postValue(materialListVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }
@@ -78,14 +78,14 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
     }
 
     public void getMaterialMoreList(String fCatalogId, String mlevel, String lastId, String rn) {
-        mRepository.loadMaterialMoreList(fCatalogId, mlevel, lastId, rn, new OnResultCallBack<MaterialListVo>() {
+        mRepository.loadMaterialMoreList(fCatalogId, mlevel, lastId, rn, new OnResultCallBack<MateriaVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
             }
 
             @Override
-            public void onNext(MaterialListVo materialListVo) {
+            public void onNext(MateriaVo materialListVo) {
                 mMaterialMoreData.postValue(materialListVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }

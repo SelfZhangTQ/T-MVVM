@@ -17,7 +17,7 @@ import com.trecyclerview.entity.HeaderInfo;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：tqzhang
+ * @author：tqzhang  on 18/5/2 19:40
  */
 public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
     public static CourseRecommendFragment newInstance() {

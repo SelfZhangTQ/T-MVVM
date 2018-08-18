@@ -9,7 +9,7 @@ import com.basiclibrary.utils.InstanceUtil;
 import com.code.mvvm.core.data.BaseRepository;
 
 /**
- * @author：zhangtianqiu on 18/7/26 16:15
+ * @author：tqzhang on 18/7/26 16:15
  */
 public class BaseViewModel<T extends BaseRepository> extends AndroidViewModel {
     public MutableLiveData<String> loadState;

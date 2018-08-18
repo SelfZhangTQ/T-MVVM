@@ -20,6 +20,7 @@
 
     <!--通用-->
     <dimen name="space_13">13.0dip</dimen>
+    <dimen name="space_12">12.0dip</dimen>
     <dimen name="space_10">10.0dip</dimen>
     <dimen name="space_7">7.0dip</dimen>
     <dimen name="space_4">4.0dip</dimen>

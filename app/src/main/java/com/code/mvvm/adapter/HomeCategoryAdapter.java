@@ -17,22 +17,21 @@ import java.util.List;
 /**
  * @author：zhangtianqiu on 18/6/26 14:05
  */
-public class HomeCatagoryAdapter extends BaseRecyclerAdapter<CatagoryInfoVo> {
+public class HomeCategoryAdapter extends BaseRecyclerAdapter<CatagoryInfoVo> {
 
 
-    public HomeCatagoryAdapter(Context context, @Nullable List<CatagoryInfoVo> list, int itemLayoutId) {
+    public HomeCategoryAdapter(Context context, @Nullable List<CatagoryInfoVo> list, int itemLayoutId) {
         super(context, list, R.layout.item_classify);
     }
 
     @Override
     protected void convert(BaseViewHolder holder, final CatagoryInfoVo catagoryInfoVo, int position, List payloads) {
-        ImageView iv_classify = holder.getView(R.id.iv_classify);
-        TextView tv_classify = holder.getView(R.id.tv_classify);
-        Glide.with(App.Instance())
+        ImageView categroyIcon = holder.getView(R.id.iv_classify);
+        TextView categroyName = holder.getView(R.id.tv_classify);
+        Glide.with(getContext())
                 .load(catagoryInfoVo.resId)
-                .skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE)
-                .into(iv_classify);
-        tv_classify.setText(catagoryInfoVo.title);
+                .into(categroyIcon);
+        categroyName.setText(catagoryInfoVo.title);
 
     }
 }

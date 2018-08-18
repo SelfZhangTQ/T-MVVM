@@ -16,7 +16,7 @@ import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * @author：zhangtianqiu on 18/3/12 19:22
+ * @author：tqzhang on 18/3/12 19:22
  * 添加权限
  */
 

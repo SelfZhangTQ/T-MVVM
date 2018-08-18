@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">艺术帮</string>
+    <string name="home_title_name">首页</string>
+    <string name="work_title_name">作品</string>
+    <string name="video_title_name">视频</string>
+
+
+    <string name="special_tab_name">专题</string>
+
+    <string name="qa_title_name">问答</string>
+    <string name="activity_title_name">活动</string>
+    <string name="dynamic_title_name">动态</string>
+    <string name="book_title_name">图书</string>
+    <string name="live_title_name">直播课</string>
+    <string name="follow_draw_title_name">跟着画</string>
+    <string name="article_title_name">精讲</string>
+    <string name="material_title_name">图库</string>
+
+    <string name="recommend_tab_name">推荐</string>
+
 </resources>

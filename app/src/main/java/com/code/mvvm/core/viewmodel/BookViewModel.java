@@ -12,7 +12,7 @@ import com.code.mvvm.core.data.pojo.book.BookTypeVo;
 import com.code.mvvm.core.data.source.BookRepository;
 
 /**
- * @author：zhangtianqiu on 18/7/28 13:32
+ * @author：tqzhang on 18/7/28 13:32
  */
 public class BookViewModel extends BaseViewModel<BookRepository> {
 

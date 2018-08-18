@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import com.trecyclerview.multitype.AbsItemView;
 
 /**
- * @author：zhangtianqiu on 18/7/13 16:47
+ * @author：tqzhang on 18/7/13 16:47
  */
 public abstract class FootItemView<T, VH extends RecyclerView.ViewHolder> extends AbsItemView {
 

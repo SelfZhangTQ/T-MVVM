@@ -4,36 +4,37 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.code.mvvm.R;
 import com.code.mvvm.adapter.HomeListAdapter;
-import com.code.mvvm.base.BaseViewHolder;
-import com.code.mvvm.core.data.pojo.material.MatreialListVo;
-import com.trecyclerview.multitype.AbsItemView;
+import com.code.mvvm.core.data.pojo.material.MaterialListVo;
+import com.trecyclerview.holder.AbsViewHolder;
+import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/6/19 15:16
+ * @author：tqzhang on 18/6/19 15:16
  */
-public class HomeMaterialItemView extends AbsItemView<MatreialListVo, HomeMaterialItemView.ViewHolder> {
+public class HomeMaterialItemView extends AbsViewHolder<MaterialListVo, HomeMaterialItemView.ViewHolder> {
 
-    private Context mContext;
 
     public HomeMaterialItemView(Context context) {
-        this.mContext = context;
+        super(context);
     }
 
     @Override
-    protected @NonNull
-    ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        return new ViewHolder(inflater.inflate(R.layout.home_matreial_item, parent, false));
+    public int getLayoutResId() {
+        return R.layout.home_matreial_item;
+    }
+
+    @Override
+    public ViewHolder createViewHolder(View view) {
+        return new ViewHolder(view);
     }
 
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull MatreialListVo matreialsubject) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull MaterialListVo matreialsubject) {
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         holder.mRecyclerView.setLayoutManager(layoutManager);
         HomeListAdapter adapter = new HomeListAdapter(mContext, null, 0);
@@ -49,7 +50,7 @@ public class HomeMaterialItemView extends AbsItemView<MatreialListVo, HomeMateri
 
         private ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mRecyclerView = itemView.findViewById(R.id.recycler_view);
+            mRecyclerView = getViewById(R.id.recycler_view);
         }
 
     }

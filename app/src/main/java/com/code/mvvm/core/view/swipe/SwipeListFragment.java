@@ -22,7 +22,7 @@ import java.util.Collection;
 import static com.trecyclerview.LoadingMoreFooter.STATE_LOADING;
 
 /**
- * @author：zhangtianqiu on 18/7/10 16:20
+ * @author：tqzhang on 18/7/10 16:20
  */
 public abstract class SwipeListFragment<T extends BaseViewModel> extends LifecycleFragment<T> implements OnLoadMoreListener {
     protected SwipeRefreshLayout mSwipeRefreshLayout;

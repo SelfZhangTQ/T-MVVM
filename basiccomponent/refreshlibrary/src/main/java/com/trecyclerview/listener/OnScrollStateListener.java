@@ -1,7 +1,7 @@
 package com.trecyclerview.listener;
 
 /**
- * @author：zhangtianqiu on 18/8/10 09:59
+ * @author：tqzhang on 18/8/10 09:59
  */
 public interface OnScrollStateListener {
 
