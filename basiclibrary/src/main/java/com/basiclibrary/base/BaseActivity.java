@@ -1,14 +1,9 @@
 package com.basiclibrary.base;
 
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
 
-import com.basiclibrary.R;
-import com.basiclibrary.utils.InstanceUtil;
 import com.tqzhang.stateview.core.LoadManager;
 import com.tqzhang.stateview.stateview.BaseStateControl;
 

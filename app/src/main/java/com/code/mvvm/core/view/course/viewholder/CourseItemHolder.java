@@ -19,7 +19,7 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/6/19 15:00
+ * @author：tqzhang  on 18/6/19 15:00
  */
 public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHolder.ViewHolder> {
     private int commonWidth;

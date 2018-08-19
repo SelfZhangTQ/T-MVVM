@@ -1,7 +1,7 @@
 package com.code.mvvm.callback;
 
 /**
- * @author：zhangtianqiu on 18/7/31 12:33
+ * @author：tqzhang  on 18/7/31 12:33
  */
 public interface OnResultCallBack<T> {
 

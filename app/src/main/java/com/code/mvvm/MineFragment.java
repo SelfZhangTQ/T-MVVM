@@ -6,7 +6,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.code.mvvm.base.AbsLifecycleFragment;
-import com.code.mvvm.core.viewmodel.BaseViewModel;
 
 /**
  * @author：zhangtianqiu on 18/5/2 15:46

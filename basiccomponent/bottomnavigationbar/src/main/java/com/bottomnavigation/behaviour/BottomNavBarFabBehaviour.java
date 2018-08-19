@@ -9,7 +9,6 @@ import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.view.View;
 import android.view.animation.Interpolator;
 
-
 import com.bottomnavigation.BottomNavigationBar;
 
 import java.util.List;

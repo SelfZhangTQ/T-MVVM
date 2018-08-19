@@ -4,6 +4,7 @@ package com.trecyclerview.progressindicator.indicator;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.view.animation.LinearInterpolator;
+
 import java.util.ArrayList;
 import java.util.List;
 

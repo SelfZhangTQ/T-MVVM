@@ -33,6 +33,9 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import rx.Observable;
 
+/**
+ * @author tqzhang
+ */
 public interface ApiService {
 
     @POST(URL.HOME_LIST)
@@ -65,13 +68,13 @@ public interface ApiService {
                                            @Field("province") String province
     );
 
-    @GET(URL.COURSE_TYPE)
+    @GET(URL.VIDEO_TYPE)
     Observable<CourseTypeVo> getCourseType();
 
-    @GET(URL.REMMEND_COURSE)
+    @GET(URL.RECOMMEND_COURSE)
     Observable<CourseRemVo> getCourseRemList();
 
-    @POST(URL.COURSE_LIST)
+    @POST(URL.VIDEO_LIST)
     @FormUrlEncoded
     Observable<CourseListVo> getCourseList(@Field("f_catalog_id") String f_catalog_id, @Field("lastid") String lastid, @Field("rn") String rn);
 
@@ -103,24 +106,24 @@ public interface ApiService {
     @FormUrlEncoded
     Observable<BookListVo> getBookList(@Field("f_catalog_id") String f_catalog_id, @Field("last_id") String last_id, @Field("rn") String rn);
 
-    @POST(URL.MATRIAL_SUBJECT_LIST)
+    @POST(URL.MATERIAL_SUBJECT_LIST)
     @FormUrlEncoded
     Observable<MaterialRecommendVo> getMaterialRemList(@Field("f_catalog_id") String f_catalog_id, @Field("lastid") String lastid, @Field("rn") String rn);
 
 
-    @POST(URL.GET_MATERIAL_LIST_NEW)
+    @POST(URL.MATERIAL_LIST_NEW)
     @FormUrlEncoded
     Observable<MateriaVo> getMaterialList(@Field("f_catalog_id") String f_catalog_id, @Field("mlevel") String mlevel, @Field("rn") String rn);
 
-    @POST(URL.GET_MATERIAL_LIST_OLD)
+    @POST(URL.MATERIAL_LIST)
     @FormUrlEncoded
     Observable<MateriaVo> getMaterialMoreList(@Field("f_catalog_id") String f_catalog_id, @Field("mlevel") String mlevel, @Field("lasttid") String lasttid, @Field("rn") String rn);
 
-    @POST(URL.GET_FOLLOW_RECOMMEND)
+    @POST(URL.FOLLOW_RECOMMEND)
     @FormUrlEncoded
     Observable<FollowDrawRecommendVo> getFollowDrawRemList(@Field("lastid") String lastid, @Field("rn") String rn);
 
-    @POST(URL.GET_FOLLOW_LIST)
+    @POST(URL.FOLLOW_LIST)
     @FormUrlEncoded
     Observable<FollowDrawRecommendVo> getollowDrawList(@Field("maintypeid") String maintypeid, @Field("lastid") String lastid, @Field("rn") String rn);
 
@@ -128,19 +131,19 @@ public interface ApiService {
     @FormUrlEncoded
     Observable<ActivityListVo> getActivityList(@Field("lastid") String lastid, @Field("rn") String rn);
 
-    @POST(URL.QA_LSIT)
+    @POST(URL.QA_LIST)
     @FormUrlEncoded
     Observable<QaListVo> getQAList(@Field("lastid") String lastid, @Field("rn") String rn);
 
-    @POST(URL.GET_ZHIBO_LIST)
+    @POST(URL.LIVE_LIST)
     @FormUrlEncoded
     Observable<LiveListVo> getLiveRem(@Field("lastid") String lastid, @Field("rn") String rn);
 
-    @POST(URL.GET_LIVING_LIST)
+    @POST(URL.LIVING_LIST)
     @FormUrlEncoded
     Observable<LiveListVo> getLiveList(@Field("f_catalog_id") String f_catalog_id, @Field("lastid") String lastid, @Field("rn") String rn);
 
-    @POST(URL.LESSON_DETAILS_DATA)
+    @POST(URL.VIDEO_DETAILS_DATA)
     @FormUrlEncoded
     Observable<CourseDetailVo> getLessonData(@Field("courseid") String courseId, @Field("notbrowse") String notBrowse);
 
@@ -148,7 +151,7 @@ public interface ApiService {
     @FormUrlEncoded
     Observable<LiveDetailsVo> getLiveData(@Field("liveid") String liveid);
 
-    @POST(URL.LESSON_DETAILS_ABOUT_DATA)
+    @POST(URL.VIDEO_DETAILS_ABOUT_DATA)
     @FormUrlEncoded
     Observable<CourseDetailRemVideoVo> getLessonAboutData(@Field("courseid") String courseId
             , @Field("f_catalog_id") String f_catalog_id

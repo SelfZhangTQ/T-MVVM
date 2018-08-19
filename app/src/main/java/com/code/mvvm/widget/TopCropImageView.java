@@ -6,7 +6,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 
 /**
- * @author：zhangtianqiu on 18/7/3 19:37
+ * @author：tqzhang  on 18/7/3 19:37
  */
 public class TopCropImageView extends AppCompatImageView
 {

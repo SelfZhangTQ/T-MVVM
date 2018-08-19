@@ -2,7 +2,6 @@ package com.code.mvvm.core.view.correct.viewholder;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +20,7 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/6/27 19:14
+ * @author：tqzhang  on 18/6/27 19:14
  */
 public class CorrectRemItemHolder extends AbsViewHolder<WorkInfoVo, CorrectRemItemHolder.ViewHolder> {
     private int commonwidth;

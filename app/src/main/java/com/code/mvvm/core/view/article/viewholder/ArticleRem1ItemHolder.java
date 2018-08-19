@@ -17,7 +17,7 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseViewHolder;
 
 /**
- * @author：zhangtianqiu on 18/6/19 15:16
+ * @author：tqzhang  on 18/6/19 15:16
  */
 public class ArticleRem1ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleRem1ItemHolder.ViewHolder> {
     private int commonWidth;

@@ -1,6 +1,7 @@
 package com.trecyclerview.multitype;
 
 import android.support.annotation.NonNull;
+
 import org.junit.Before;
 import org.junit.Test;
 

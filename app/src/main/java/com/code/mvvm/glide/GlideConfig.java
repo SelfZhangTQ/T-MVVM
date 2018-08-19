@@ -11,6 +11,10 @@ import com.bumptech.glide.load.engine.cache.LruResourceCache;
 import com.bumptech.glide.module.GlideModule;
 import com.code.mvvm.config.Constants;
 
+/**
+ *
+ * @author tqzhang
+ */
 public class GlideConfig implements GlideModule {
     public final static String TAG = "GlideConfig";
 

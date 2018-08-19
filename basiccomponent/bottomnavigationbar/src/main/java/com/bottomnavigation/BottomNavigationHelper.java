@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.widget.FrameLayout;
 
-import com.bottomnavigation.R;
-
 /**
  * Class description : This is utils class specific for this library, most the common code goes here.
  *

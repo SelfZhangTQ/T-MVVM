@@ -11,8 +11,6 @@ import android.view.animation.Transformation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bottomnavigation.R;
-
 /**
  * Class description
  *

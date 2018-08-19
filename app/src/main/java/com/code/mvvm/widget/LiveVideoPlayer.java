@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
 /**
- * @author：zhangtianqiu on 18/7/25 17:19
+ * @author：tqzhang  on 18/7/25 17:19
  */
 public class LiveVideoPlayer extends StandardGSYVideoPlayer {
 

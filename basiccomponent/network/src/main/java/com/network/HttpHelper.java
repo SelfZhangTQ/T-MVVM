@@ -1,7 +1,6 @@
 package com.network;
 
 
-import android.app.Application;
 import android.content.Context;
 
 import java.util.List;
@@ -9,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;

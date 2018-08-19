@@ -18,6 +18,7 @@ package com.trecyclerview.multitype;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+
 import java.util.List;
 
 import static com.trecyclerview.multitype.Preconditions.checkNotNull;

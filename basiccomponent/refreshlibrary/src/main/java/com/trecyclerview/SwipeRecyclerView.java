@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewParent;
 
 import com.trecyclerview.listener.OnLoadMoreListener;
-import com.trecyclerview.listener.OnScrollStateListener;
 import com.trecyclerview.listener.OnRefreshListener;
+import com.trecyclerview.listener.OnScrollStateListener;
 import com.trecyclerview.listener.OnTScrollListener;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.multitype.TypePool;

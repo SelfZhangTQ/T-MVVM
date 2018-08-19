@@ -5,7 +5,7 @@ import android.content.Context;
 import android.util.Log;
 
 /**
- * @author：zhangtianqiu on 18/8/7 12:42
+ * @author：tqzhang  on 18/8/7 12:42
  */
 public class SysUtil {
     public static void getCacheInfo(Context context) {

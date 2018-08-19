@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
-import com.bottomnavigation.R;
 /**
  * Class description : Holds data for tabs (i.e data structure which holds all data to paint a tab)
  *

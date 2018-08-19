@@ -1,7 +1,5 @@
 package com.code.mvvm.core.data.pojo.live;
 
-import android.content.Intent;
-
 import java.util.ArrayList;
 
 public class LiveTypeVo {

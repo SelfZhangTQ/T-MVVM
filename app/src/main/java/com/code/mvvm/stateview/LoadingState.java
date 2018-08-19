@@ -4,7 +4,7 @@ import com.code.mvvm.R;
 import com.tqzhang.stateview.stateview.BaseStateControl;
 
 /**
- * @author：zhangtianqiu on 18/7/16 15:07
+ * @author：tqzhang  on 18/7/16 15:07
  */
 public class LoadingState extends BaseStateControl {
     @Override

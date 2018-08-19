@@ -6,10 +6,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.animation.LinearInterpolator;
 
+import com.trecyclerview.progressindicator.indicator.BallScaleIndicator;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.trecyclerview.progressindicator.indicator.BallScaleIndicator;
 
 /**
  * Created by Jack on 2015/10/19.

@@ -5,7 +5,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 
 /**
- * @author zhangtianqiu
+ * @author tqzhang
  */
 public class CustomHeightImageView extends AppCompatImageView {
 

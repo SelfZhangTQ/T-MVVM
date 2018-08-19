@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * @author：zhangtianqiu on 18/8/8 16:48
+ * @author：tqzhang  on 18/8/8 16:48
  */
 public class NestedViewPager extends ViewPager {
 

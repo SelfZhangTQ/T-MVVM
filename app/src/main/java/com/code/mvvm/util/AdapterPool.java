@@ -39,9 +39,9 @@ import com.code.mvvm.core.view.dynamic.viewholder.DynamicSubjectHolder;
 import com.code.mvvm.core.view.dynamic.viewholder.DynamicWorkHolder;
 import com.code.mvvm.core.view.followdraw.viewholder.FollowDrawListHolder;
 import com.code.mvvm.core.view.home.viewholder.CategoryItemView;
-import com.code.mvvm.core.view.home.viewholder.HomeVideoItemView;
 import com.code.mvvm.core.view.home.viewholder.HomeLiveItemView;
 import com.code.mvvm.core.view.home.viewholder.HomeMaterialItemView;
+import com.code.mvvm.core.view.home.viewholder.HomeVideoItemView;
 import com.code.mvvm.core.view.live.viewholder.LiveItemHolder;
 import com.code.mvvm.core.view.live.viewholder.LiveListItemHolder;
 import com.code.mvvm.core.view.material.viewholder.MaterialItemHolder;
@@ -56,7 +56,7 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.view.HeaderItemView;
 
 /**
- * @author：zhangtianqiu on 18/8/3 16:25
+ * @author：tqzhang  on 18/8/3 16:25
  */
 public class AdapterPool {
 

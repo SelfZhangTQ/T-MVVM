@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
 /**
- * @author zhangtianqiu
+ * @author tqzhang
  */
 public class CustomHeightRelativeLayout extends RelativeLayout {
 

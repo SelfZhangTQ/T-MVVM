@@ -3,7 +3,6 @@ package com.bottomnavigation;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import com.bottomnavigation.R;
 /**
  * Created by 李天祥 on 2017/11/30.
  */

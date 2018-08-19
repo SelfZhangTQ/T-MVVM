@@ -1,19 +1,12 @@
 package com.basiclibrary.base;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.basiclibrary.R;
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 

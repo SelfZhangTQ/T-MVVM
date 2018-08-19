@@ -34,12 +34,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
 
-
         <meta-data
             android:name="com.code.mvvm.glide.GlideConfig"
             android:value="GlideModule" />
     </application>
-
 
 
 </manifest>

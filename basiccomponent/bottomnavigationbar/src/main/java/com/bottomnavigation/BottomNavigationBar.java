@@ -1,4 +1,5 @@
 package com.bottomnavigation;
+
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -21,10 +22,6 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-
-import com.bottomnavigation.BottomNavigationItem;
-import com.bottomnavigation.R;
-import com.bottomnavigation.behaviour.BottomNavBarFabBehaviour;
 import com.bottomnavigation.utils.Utils;
 
 import java.lang.annotation.Retention;

@@ -17,6 +17,7 @@
 package com.trecyclerview.multitype;
 
 import android.support.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
