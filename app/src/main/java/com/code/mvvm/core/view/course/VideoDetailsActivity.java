@@ -28,7 +28,7 @@ import rx.schedulers.Schedulers;
 import static com.trecyclerview.multitype.MultiTypeAsserts.assertAllRegistered;
 
 /**
- * @author：zhangtianqiu on 18/7/7 15:09
+ * @author：tqzhang  on 18/7/7 15:09
  */
 public class VideoDetailsActivity extends BaseActivity {
     StandardGSYVideoPlayer mVideoPlayer;
@@ -148,7 +148,6 @@ public class VideoDetailsActivity extends BaseActivity {
                         mVideoPlayer.setUp(lessonDetailObject.data.sectioin.get(0).getVideos().get(0).getVideo_info().getM3u8url(), false, lessonDetailObject.data.sectioin.get(0).getVideos().get(0).getTitle());
                         mVideoPlayer.startPlayLogic();
                         getAboutData();
-
                     }
                 });
 
@@ -181,8 +180,9 @@ public class VideoDetailsActivity extends BaseActivity {
                     public void onNext(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
                         if (lessonDetailAboutVideoBean != null && lessonDetailAboutVideoBean.errno == 0) {
                             setData(lessonDetailAboutVideoBean);
-                            loadManager.showSuccess();
+
                         }
+                        loadManager.showSuccess();
                     }
                 });
     }

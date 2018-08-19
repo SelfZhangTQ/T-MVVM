@@ -56,7 +56,7 @@ public class HomeVideoItemView extends AbsViewHolder<CourseInfoVo, HomeVideoItem
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, VideoDetailsActivity.class);
-                intent.putExtra("LESSON_ID", courseListBean.courseid);
+                intent.putExtra("course_id", courseListBean.courseid);
                 mContext.startActivity(intent);
             }
         });
