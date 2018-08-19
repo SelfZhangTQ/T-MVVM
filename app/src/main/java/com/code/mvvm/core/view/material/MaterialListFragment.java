@@ -53,10 +53,6 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
         });
     }
 
-    @Override
-    protected MaterialViewModel createViewModelProviders() {
-        return ViewModelProviders.of(this).get(MaterialViewModel.class);
-    }
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {

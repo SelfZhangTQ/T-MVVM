@@ -43,11 +43,6 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
     }
 
     @Override
-    protected CourseViewModel createViewModelProviders() {
-        return ViewModelProviders.of(this).get(CourseViewModel.class);
-    }
-
-    @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {

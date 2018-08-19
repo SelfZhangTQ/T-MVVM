@@ -53,7 +53,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
-            android:drawableLeft="@drawable/eye_qa"
+            android:drawableLeft="@drawable/eye_qa_icon"
             android:drawablePadding="4dp"
             android:gravity="center_vertical"
             android:textColor="#999999"

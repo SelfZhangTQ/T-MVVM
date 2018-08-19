@@ -43,10 +43,6 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
         });
     }
 
-    @Override
-    protected MaterialViewModel createViewModelProviders() {
-        return ViewModelProviders.of(this).get(MaterialViewModel.class);
-    }
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {

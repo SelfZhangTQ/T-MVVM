@@ -67,11 +67,6 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
     }
 
     @Override
-    protected HomeViewModel createViewModelProviders() {
-        return VMProviders(this, HomeViewModel.class);
-    }
-
-    @Override
     protected void onStateRefresh() {
         super.onStateRefresh();
         getRemoteData();

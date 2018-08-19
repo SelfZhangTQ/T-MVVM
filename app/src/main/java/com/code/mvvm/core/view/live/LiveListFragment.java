@@ -44,10 +44,6 @@ private String typeId;
         });
     }
 
-    @Override
-    protected LiveViewModel createViewModelProviders() {
-        return ViewModelProviders.of(this).get(LiveViewModel.class);
-    }
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {

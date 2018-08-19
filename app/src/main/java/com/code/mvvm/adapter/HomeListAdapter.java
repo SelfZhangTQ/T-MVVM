@@ -16,7 +16,7 @@ import com.code.mvvm.widget.CustomHeightImageView;
 import java.util.List;
 
 /**
- * @author：zhangtianqiu on 18/5/7 14:55
+ * @author：tqzhang on 18/5/7 14:55
  */
 public class HomeListAdapter extends BaseRecyclerAdapter<MatreialSubjectVo> {
 

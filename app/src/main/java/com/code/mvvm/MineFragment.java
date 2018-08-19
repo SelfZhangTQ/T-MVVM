@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import com.code.mvvm.base.LifecycleFragment;
+import com.code.mvvm.base.AbsLifecycleFragment;
 import com.code.mvvm.core.viewmodel.BaseViewModel;
 
 /**
  * @author：zhangtianqiu on 18/5/2 15:46
  */
-public class MineFragment extends LifecycleFragment {
+public class MineFragment extends AbsLifecycleFragment {
     WebView webView;
 
 
@@ -53,10 +53,6 @@ public class MineFragment extends LifecycleFragment {
         loadManager.showSuccess();
     }
 
-    @Override
-    protected BaseViewModel createViewModelProviders() {
-        return null;
-    }
 
     @Override
     protected void onStateRefresh() {

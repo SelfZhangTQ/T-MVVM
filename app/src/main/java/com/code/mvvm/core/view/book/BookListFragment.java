@@ -47,10 +47,6 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
         });
     }
 
-    @Override
-    protected BookViewModel createViewModelProviders() {
-        return ViewModelProviders.of(this).get(BookViewModel.class);
-    }
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {

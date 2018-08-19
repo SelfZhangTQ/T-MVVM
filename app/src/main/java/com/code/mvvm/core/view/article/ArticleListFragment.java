@@ -40,11 +40,6 @@ public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
     }
 
     @Override
-    protected ArticleViewModel createViewModelProviders() {
-        return VMProviders(this, ArticleViewModel.class);
-    }
-
-    @Override
     protected void onStateRefresh() {
         super.onStateRefresh();
         getRemoteData();

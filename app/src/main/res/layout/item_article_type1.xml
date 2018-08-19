@@ -91,7 +91,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/eye" />
+                android:src="@drawable/eye_icon" />
 
             <TextView
                 android:id="@+id/tv_hits"

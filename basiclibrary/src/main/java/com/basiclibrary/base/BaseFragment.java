@@ -17,7 +17,7 @@ import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * @author：zhangtianqiu on 18/3/12 19:25
+ * @author：tqzhang  on 18/3/12 19:25
  * Fragment基类
  */
 public abstract class BaseFragment extends Fragment {

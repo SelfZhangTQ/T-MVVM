@@ -41,10 +41,6 @@ public class QaListFragment extends BaseListFragment<QaViewModel> {
         });
     }
 
-    @Override
-    protected QaViewModel createViewModelProviders() {
-        return VMProviders(this, QaViewModel.class);
-    }
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {

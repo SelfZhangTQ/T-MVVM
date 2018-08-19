@@ -23,6 +23,7 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
     private MutableLiveData<MateriaVo> mMaterialMoreData;
     private MutableLiveData<MaterialRecommendVo> mMaterialRecommendData;
 
+
     public MaterialViewModel(@NonNull Application application) {
         super(application);
 

@@ -51,11 +51,6 @@ public class VideoFragment extends BaseViewPagerFragment<CourseViewModel> {
     }
 
     @Override
-    protected CourseViewModel createViewModelProviders() {
-        return VMProviders(this, CourseViewModel.class);
-    }
-
-    @Override
     protected String[] createPageTitle() {
         return mArrTitles;
     }

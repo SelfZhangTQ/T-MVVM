@@ -40,10 +40,6 @@ public class FollowDrawRecommendFragment extends BaseListFragment<FollowDrawView
         });
     }
 
-    @Override
-    protected FollowDrawViewModel createViewModelProviders() {
-        return ViewModelProviders.of(this).get(FollowDrawViewModel.class);
-    }
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {

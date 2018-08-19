@@ -45,11 +45,6 @@ public class ArticleFragment extends BaseViewPagerFragment<ArticleViewModel> {
     }
 
     @Override
-    protected ArticleViewModel createViewModelProviders() {
-        return VMProviders(this, ArticleViewModel.class);
-    }
-
-    @Override
     protected void onStateRefresh() {
         super.onStateRefresh();
         getTabData();

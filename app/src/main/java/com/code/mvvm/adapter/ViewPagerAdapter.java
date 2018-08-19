@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author：zhangtianqiu on 18/8/1 10:26
+ * @author：tqzhang on 18/8/1 10:26
  */
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 

@@ -46,10 +46,6 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
         });
     }
 
-    @Override
-    protected FollowDrawViewModel createViewModelProviders() {
-        return ViewModelProviders.of(this).get(FollowDrawViewModel.class);
-    }
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {

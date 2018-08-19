@@ -38,12 +38,6 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
             }
         });
     }
-
-    @Override
-    protected ActivityViewModel createViewModelProviders() {
-        return VMProviders(this, ActivityViewModel.class);
-    }
-
     @Override
     protected void onStateRefresh() {
         super.onStateRefresh();

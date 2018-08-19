@@ -42,10 +42,6 @@ public class MaterialFragment extends BaseViewPagerFragment<MaterialViewModel> {
         });
     }
 
-    @Override
-    protected MaterialViewModel createViewModelProviders() {
-        return VMProviders(this, MaterialViewModel.class);
-    }
 
     @Override
     protected void onStateRefresh() {

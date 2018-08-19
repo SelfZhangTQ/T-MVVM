@@ -42,10 +42,6 @@ public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
         });
     }
 
-    @Override
-    protected BookViewModel createViewModelProviders() {
-        return VMProviders(this, BookViewModel.class);
-    }
 
     @Override
     protected void onStateRefresh() {

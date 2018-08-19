@@ -18,9 +18,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author：zhangtianqiu on 18/8/1 10:43
+ * @author：tqzhang on 18/8/1 10:43
  */
-public abstract class BaseViewPagerFragment<T extends BaseViewModel> extends LifecycleFragment<T> {
+public abstract class BaseViewPagerFragment<T extends BaseViewModel> extends AbsLifecycleFragment<T> {
 
     protected SlidingTabLayout mTabLayout;
 

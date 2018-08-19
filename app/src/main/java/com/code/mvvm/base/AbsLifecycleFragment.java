@@ -13,23 +13,29 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.viewmodel.BaseViewModel;
 import com.code.mvvm.stateview.ErrorState;
 import com.code.mvvm.stateview.LoadingState;
+import com.code.mvvm.util.TUtil;
 import com.tqzhang.stateview.stateview.BaseStateControl;
 
 /**
- * @author：zhangtianqiu on 18/7/10 16:20
+ * @author：tqzhang on 18/7/10 16:20
  */
-public abstract class LifecycleFragment<T extends BaseViewModel> extends BaseFragment {
+public abstract class AbsLifecycleFragment<T extends BaseViewModel> extends BaseFragment {
 
     protected T mViewModel;
 
+    private Class<T> clazz;
+
+    public AbsLifecycleFragment() {
+        clazz = TUtil.getInstance(this, 0);
+    }
+
     @Override
     public void initView(Bundle state) {
-        mViewModel = createViewModelProviders();
-        if (mViewModel != null) {
+        mViewModel = VMProviders(this, clazz);
+        if (null != mViewModel) {
             mViewModel.loadState.observe(this, observer);
             dataObserver();
         }
-
     }
 
     /**
@@ -37,11 +43,8 @@ public abstract class LifecycleFragment<T extends BaseViewModel> extends BaseFra
      *
      * @return ViewModel
      */
-    protected abstract T createViewModelProviders();
-
-
     protected <T extends ViewModel> T VMProviders(BaseFragment fragment, @NonNull Class<T> modelClass) {
-        return (T)ViewModelProviders.of(fragment).get(modelClass);
+        return ViewModelProviders.of(fragment).get(modelClass);
 
     }
 

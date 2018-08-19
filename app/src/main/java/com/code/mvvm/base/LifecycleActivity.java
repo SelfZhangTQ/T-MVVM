@@ -17,11 +17,15 @@ import com.code.mvvm.stateview.LoadingState;
 import com.tqzhang.stateview.stateview.BaseStateControl;
 
 /**
- * @author：zhangtianqiu on 18/8/10 11:40
+ * @author：tqzhang on 18/8/10 11:40
  */
 public abstract class LifecycleActivity<T extends BaseViewModel> extends BaseActivity {
 
     protected T mViewModel;
+
+    public LifecycleActivity() {
+
+    }
 
     @Override
     public void initViews(Bundle savedInstanceState) {

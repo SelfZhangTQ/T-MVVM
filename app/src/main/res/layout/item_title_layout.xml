@@ -13,7 +13,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:scaleType="centerInside"
-        android:src="@drawable/back"
+        android:src="@drawable/back_icon"
         android:visibility="gone" />
 
     <TextView

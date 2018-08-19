@@ -47,10 +47,6 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
         });
     }
 
-    @Override
-    protected CourseViewModel createViewModelProviders() {
-        return ViewModelProviders.of(this).get(CourseViewModel.class);
-    }
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {

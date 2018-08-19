@@ -7,6 +7,8 @@ import java.lang.reflect.ParameterizedType;
  * author：zhangtianqiu on 18/3/12 19:12
  */
 public class InstanceUtil {
+
+
     public static <T> T getNewInstance(Object o, int i) {
         if(o!=null){
             try {

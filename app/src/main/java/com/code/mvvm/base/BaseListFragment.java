@@ -28,7 +28,7 @@ import static com.trecyclerview.LoadingMoreFooter.STATE_NOMORE;
 /**
  * @author：tqzhang  on 18/7/10 16:20
  */
-public abstract class BaseListFragment<T extends BaseViewModel> extends LifecycleFragment<T> implements OnRefreshListener {
+public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifecycleFragment<T> implements OnRefreshListener {
     protected TRecyclerView mRecyclerView;
 
     protected RelativeLayout mTitleBar;

@@ -50,10 +50,6 @@ public class FollowDrawFragment extends BaseViewPagerFragment<FollowDrawViewMode
         getTabData();
     }
 
-    @Override
-    protected FollowDrawViewModel createViewModelProviders() {
-        return VMProviders(this, FollowDrawViewModel.class);
-    }
 
     @Override
     protected String[] createPageTitle() {

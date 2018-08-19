@@ -65,11 +65,6 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     }
 
     @Override
-    protected WorkViewModel createViewModelProviders() {
-        return VMProviders(this, WorkViewModel.class);
-    }
-
-    @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
         return new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
     }

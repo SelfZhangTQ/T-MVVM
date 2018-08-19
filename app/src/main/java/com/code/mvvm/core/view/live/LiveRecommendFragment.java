@@ -43,10 +43,6 @@ public class LiveRecommendFragment extends BaseListFragment<LiveViewModel> {
         });
     }
 
-    @Override
-    protected LiveViewModel createViewModelProviders() {
-        return ViewModelProviders.of(this).get(LiveViewModel.class);
-    }
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {

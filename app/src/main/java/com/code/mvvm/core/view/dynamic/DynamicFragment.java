@@ -40,10 +40,6 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
         });
     }
 
-    @Override
-    protected DynamicViewModel createViewModelProviders() {
-        return VMProviders(this, DynamicViewModel.class);
-    }
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {

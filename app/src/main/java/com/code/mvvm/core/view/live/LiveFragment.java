@@ -49,10 +49,6 @@ public class LiveFragment extends BaseViewPagerFragment<LiveViewModel> {
         getTabData();
     }
 
-    @Override
-    protected LiveViewModel createViewModelProviders() {
-        return VMProviders(this, LiveViewModel.class);
-    }
 
     @Override
     protected String[] createPageTitle() {
