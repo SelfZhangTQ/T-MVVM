@@ -31,9 +31,9 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initViews(Bundle savedInstanceState) {
         loadManager.showSuccess();
-        //初始化底部tabBar
+        //int Bottom tabBar
         initNavBar();
-        //初始化fragment
+        //init fragment
         initFragment(0);
     }
 
@@ -42,10 +42,10 @@ public class MainActivity extends BaseActivity {
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         mBottomNavigationBar
-                .addItem(new BottomNavigationItem(R.mipmap.tab_home_icon, "首页").setInactiveIconResource(R.mipmap.tab_home_icon_def))
-                .addItem(new BottomNavigationItem(R.mipmap.tab_works_icon, "作品").setInactiveIconResource(R.mipmap.tab_works_icon_def))
-                .addItem(new BottomNavigationItem(R.mipmap.tab_course_icon, "视频").setInactiveIconResource(R.mipmap.tab_course_icon_def))
-                .addItem(new BottomNavigationItem(R.mipmap.tab_mine_icon, "我的").setInactiveIconResource(R.mipmap.tab_mine_icon_def))
+                .addItem(new BottomNavigationItem(R.mipmap.tab_home_icon, R.string.home_title_name).setInactiveIconResource(R.mipmap.tab_home_icon_def))
+                .addItem(new BottomNavigationItem(R.mipmap.tab_works_icon, R.string.work_title_name).setInactiveIconResource(R.mipmap.tab_works_icon_def))
+                .addItem(new BottomNavigationItem(R.mipmap.tab_course_icon, R.string.video_title_name).setInactiveIconResource(R.mipmap.tab_course_icon_def))
+                .addItem(new BottomNavigationItem(R.mipmap.tab_mine_icon, R.string.mine_title_name).setInactiveIconResource(R.mipmap.tab_mine_icon_def))
                 .setFirstSelectedPosition(0)
                 .initialise();
         mBottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
