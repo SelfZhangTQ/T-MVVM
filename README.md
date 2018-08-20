@@ -21,10 +21,8 @@
 * BottomNavigationBar(轻量级底部导航栏)<br/>
 * LoadState(用于错误状态UI的切换)<br/>
 * gsyVideoPlayer(视频播放)<br/>
-* [TRecyclerView][id]:
-  [id]: https://github.com/SelfZhangTQ/TRecyclerView
-<br/>
--EventBus<br/>
+* [TRecyclerView](https://github.com/SelfZhangTQ/TRecyclerView) <br/>
+* EventBus<br/>
 
 #声明 <br/>
 
