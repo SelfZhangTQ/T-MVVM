@@ -27,8 +27,8 @@ public class CorrectRemItemHolder extends AbsViewHolder<WorkInfoVo, CorrectRemIt
 
     public CorrectRemItemHolder(Context context) {
         super(context);
-        commonwidth = (int) (((float) DisplayUtil.getScreenWidth(App.Instance())
-                - 30 * DisplayUtil.getDisplayDensity(App.Instance())) / 2);
+        commonwidth = (int) (((float) DisplayUtil.getScreenWidth(App.instance())
+                - 30 * DisplayUtil.getDisplayDensity(App.instance())) / 2);
 
     }
 

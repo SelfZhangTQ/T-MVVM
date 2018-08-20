@@ -3,6 +3,7 @@ package com.code.mvvm.base;
 import android.os.Bundle;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ import static com.trecyclerview.LoadingMoreFooter.STATE_LOADING;
 import static com.trecyclerview.LoadingMoreFooter.STATE_NOMORE;
 
 /**
- * @author：tqzhang  on 18/7/10 16:20
+ * @author：tqzhang on 18/7/10 16:20
  */
 public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifecycleFragment<T> implements OnRefreshListener {
     protected TRecyclerView mRecyclerView;

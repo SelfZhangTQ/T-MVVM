@@ -25,8 +25,8 @@ public class ActivityItemHolder extends AbsViewHolder<ActivityListVo.DataBean, A
 
     public ActivityItemHolder(Context context) {
         super(context);
-        commonWidth = (int) ((float) DisplayUtil.getScreenWidth(App.Instance())
-                - 2 * App.Instance().getResources()
+        commonWidth = (int) ((float) DisplayUtil.getScreenWidth(App.instance())
+                - 2 * App.instance().getResources()
                 .getDimensionPixelSize(
                         R.dimen.concise_three_layout_margin));
     }
@@ -49,16 +49,16 @@ public class ActivityItemHolder extends AbsViewHolder<ActivityListVo.DataBean, A
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, (int) (dv * commonWidth));
         params.setMargins(
-                App.Instance().getResources()
+                App.instance().getResources()
                         .getDimensionPixelSize(
                                 R.dimen.concise_three_layout_margin),
-                App.Instance().getResources()
+                App.instance().getResources()
                         .getDimensionPixelSize(
                                 R.dimen.concise_img_margin_top),
-                App.Instance().getResources()
+                App.instance().getResources()
                         .getDimensionPixelSize(
                                 R.dimen.concise_three_layout_margin),
-                App.Instance().getResources()
+                App.instance().getResources()
                         .getDimensionPixelSize(
                                 R.dimen.concise_img_margin_bottom));
 

@@ -30,7 +30,7 @@ public class CourseRecommendViewBinder extends AbsItemView<CourseDetailRemVideoV
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull CourseDetailRemVideoVo.DataBean.CourseListBean entity) {
-        Glide.with(App.Instance()).load(entity.getThumb_url()).into(holder.iv_lesson_img);
+        Glide.with(App.instance()).load(entity.getThumb_url()).into(holder.iv_lesson_img);
         holder.tv_lesson_title.setText(entity.getTitle());
         float mPrice = 0;
         if (TextUtils.equals("1", entity.getIs_free())) {

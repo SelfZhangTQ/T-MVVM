@@ -22,7 +22,7 @@ import com.trecyclerview.holder.BaseViewHolder;
  * @author：tqzhang  on 18/7/4 15:35
  */
 public class DynamicLiveHolder extends AbsViewHolder<DynamicInfoVo, DynamicLiveHolder.ViewHolder> {
-    private int contentWidth = DisplayUtil.getScreenWidth(App.Instance()) - DisplayUtil.dp2px(App.Instance(), 95);
+    private int contentWidth = DisplayUtil.getScreenWidth(App.instance()) - DisplayUtil.dp2px(App.instance(), 95);
 
     public DynamicLiveHolder(Context context) {
         super(context);
@@ -66,7 +66,7 @@ public class DynamicLiveHolder extends AbsViewHolder<DynamicInfoVo, DynamicLiveH
             holder.zhibo_state.setBackgroundResource(R.drawable.playback_state_icon);
         }
 
-        int commonwidth = contentWidth - DisplayUtil.dp2px(App.Instance(), 14 * 2);
+        int commonwidth = contentWidth - DisplayUtil.dp2px(App.instance(), 14 * 2);
         double dv = 0.56;
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.img_content_layout.getLayoutParams();
         params.height = (int) (dv * commonwidth);

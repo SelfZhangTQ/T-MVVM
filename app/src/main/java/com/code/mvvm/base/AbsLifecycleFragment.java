@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.vm.BaseViewModel;
@@ -15,6 +16,8 @@ import com.code.mvvm.stateview.LoadingState;
 import com.code.mvvm.util.TUtil;
 import com.tqzhang.stateview.stateview.BaseStateControl;
 
+import java.lang.reflect.Constructor;
+
 /**
  * @author：tqzhang on 18/7/10 16:20
  */
@@ -22,15 +25,9 @@ public abstract class AbsLifecycleFragment<T extends BaseViewModel> extends Base
 
     protected T mViewModel;
 
-    private Class<T> clazz;
-
-    public AbsLifecycleFragment() {
-        clazz = TUtil.getInstance(this, 0);
-    }
-
     @Override
     public void initView(Bundle state) {
-        mViewModel = VMProviders(this, clazz);
+        mViewModel = VMProviders(this, (Class<T>) TUtil.getInstance(this, 0));
         if (null != mViewModel) {
             mViewModel.loadState.observe(this, observer);
             dataObserver();

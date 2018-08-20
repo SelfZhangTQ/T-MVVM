@@ -27,7 +27,7 @@ public class DynamicCorrectHolder extends AbsViewHolder<DynamicInfoVo, DynamicCo
 
     public DynamicCorrectHolder(Context context) {
         super(context);
-        contentWidth = DisplayUtil.getScreenWidth(App.Instance()) - DisplayUtil.dp2px(App.Instance(), 15 + 40 + 10 + 30);
+        contentWidth = DisplayUtil.getScreenWidth(App.instance()) - DisplayUtil.dp2px(App.instance(), 15 + 40 + 10 + 30);
 
     }
 
@@ -59,7 +59,7 @@ public class DynamicCorrectHolder extends AbsViewHolder<DynamicInfoVo, DynamicCo
         holder.userType.setText(item.title);
         holder.lookNum.setText("");
         holder.dynamicTitle.setText(item.correct_info.content);
-        int mWidth = (contentWidth - DisplayUtil.dp2px(App.Instance(), 14 * 2)) * 2 / 3;
+        int mWidth = (contentWidth - DisplayUtil.dp2px(App.instance(), 14 * 2)) * 2 / 3;
         String pic_url;
         if ("0".equals(item.correct_info.status)) {
             pic_url = item.correct_info.source_pic.img.l.url;

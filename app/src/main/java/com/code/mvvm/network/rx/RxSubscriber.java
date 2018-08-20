@@ -20,7 +20,7 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
     public void onStart() {
         super.onStart();
         showLoading();
-        if (!NetworkUtils.isNetworkAvailable(App.Instance())) {
+        if (!NetworkUtils.isNetworkAvailable(App.instance())) {
             onNoNetWork();
             if (!isUnsubscribed()) {
                 unsubscribe();

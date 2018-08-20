@@ -26,7 +26,7 @@ import com.trecyclerview.holder.BaseViewHolder;
  * @author：tqzhang  on 18/7/4 15:35
  */
 public class DynamicFollowHolder extends AbsViewHolder<DynamicInfoVo, DynamicFollowHolder.ViewHolder> {
-    private int contentWidth = DisplayUtil.getScreenWidth(App.Instance()) - DisplayUtil.dp2px(App.Instance(), 95);
+    private int contentWidth = DisplayUtil.getScreenWidth(App.instance()) - DisplayUtil.dp2px(App.instance(), 95);
 
     public DynamicFollowHolder(Context context) {
         super(context);
@@ -66,7 +66,7 @@ public class DynamicFollowHolder extends AbsViewHolder<DynamicInfoVo, DynamicFol
         holder.userType.setText(item.title);
         holder.lookNum.setText(new StringBuilder(item.lesson_info.hits).append("人看过").toString());
         holder.dynamicTitle.setText(item.lesson_info.title);
-        int commonwidth = (contentWidth - DisplayUtil.dp2px(App.Instance(), 14 * 2)) * 2 / 3;
+        int commonwidth = (contentWidth - DisplayUtil.dp2px(App.instance(), 14 * 2)) * 2 / 3;
         double dv = 268.0 / 204;
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(commonwidth, (int) (dv * commonwidth));
         holder.img_content_layout.setLayoutParams(params);

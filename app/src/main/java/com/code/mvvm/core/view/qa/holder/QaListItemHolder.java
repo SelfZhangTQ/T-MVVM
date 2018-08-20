@@ -25,7 +25,7 @@ public class QaListItemHolder extends AbsViewHolder<QaListVo.DataBean, QaListIte
     public QaListItemHolder(Context context) {
         super(context);
         commonWidth = (int) ((float) DisplayUtil.getScreenWidth(mContext)
-                - 2 * App.Instance().getResources()
+                - 2 * App.instance().getResources()
                 .getDimensionPixelSize(
                         R.dimen.concise_three_layout_margin));
     }

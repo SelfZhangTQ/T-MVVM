@@ -26,8 +26,8 @@ public class HomeLiveItemView extends AbsViewHolder<LiveRecommendVo, HomeLiveIte
 
     public HomeLiveItemView(Context context) {
         super(context);
-        commonWidth = (int) (((float) DisplayUtil.getScreenWidth(App.Instance())
-                - DisplayUtil.dp2px(App.Instance(), 20)) / 2);
+        commonWidth = (int) (((float) DisplayUtil.getScreenWidth(App.instance())
+                - DisplayUtil.dp2px(App.instance(), 20)) / 2);
     }
 
     @Override

@@ -17,7 +17,6 @@ public class BaseViewModel<T extends BaseRepository> extends AndroidViewModel {
 
     public T mRepository;
 
-
     public BaseViewModel(@NonNull Application application) {
         super(application);
         loadState = new MutableLiveData<>();

@@ -24,7 +24,7 @@ public class ArticleRem3ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleR
 
     public ArticleRem3ItemHolder(Context context) {
         super(context);
-        commonWidth = (int) ((float) DisplayUtil.getScreenWidth(App.Instance()));
+        commonWidth = (int) ((float) DisplayUtil.getScreenWidth(App.instance()));
     }
 
     @Override
@@ -42,12 +42,12 @@ public class ArticleRem3ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleR
         // 图片适配
         double dv2 = 1;
         LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
-                (commonWidth - 2 * App.Instance()
+                (commonWidth - 2 * App.instance()
                         .getResources().getDimensionPixelSize(
                                 R.dimen.concise_three_img_margin))
                         / 3,
                 (int) (dv2
-                        * (commonWidth - 2 * App.Instance().getResources()
+                        * (commonWidth - 2 * App.instance().getResources()
                         .getDimensionPixelSize(
                                 R.dimen.concise_three_img_margin))
                         / 3));

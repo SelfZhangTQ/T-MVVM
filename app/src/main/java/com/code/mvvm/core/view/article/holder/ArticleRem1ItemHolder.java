@@ -24,7 +24,7 @@ public class ArticleRem1ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleR
 
     public ArticleRem1ItemHolder(Context context) {
         super(context);
-        commonWidth = (int) ((float) DisplayUtil.getScreenWidth(App.Instance()));
+        commonWidth = (int) ((float) DisplayUtil.getScreenWidth(App.instance()));
     }
 
     @Override

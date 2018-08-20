@@ -27,8 +27,8 @@ public class CorrectItemHolder extends AbsViewHolder<WorksListVo.Works, CorrectI
 
     public CorrectItemHolder(Context context) {
         super(context);
-        commonWidth = (int) (((float) DisplayUtil.getScreenWidth(App.Instance())
-                - 30 * DisplayUtil.getDisplayDensity(App.Instance())) / 2);
+        commonWidth = (int) (((float) DisplayUtil.getScreenWidth(App.instance())
+                - 30 * DisplayUtil.getDisplayDensity(App.instance())) / 2);
 
     }
 

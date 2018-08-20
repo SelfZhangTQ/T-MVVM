@@ -58,7 +58,7 @@ public class DynamicSubjectHolder extends AbsViewHolder<DynamicInfoVo, DynamicSu
         holder.lookNum.setText(new StringBuilder(item.material_info.hits).append("人看过"));
         holder.dynamicTitle.setText(item.material_info.title);
 
-        int mWidth = contentWidth - DisplayUtil.dp2px(App.Instance(), 14 * 2);
+        int mWidth = contentWidth - DisplayUtil.dp2px(App.instance(), 14 * 2);
         float dv = (float) item.material_info.picurl.l.h / (float) item.material_info.picurl.l.w;
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(mWidth, (int) (dv * mWidth));
         holder.dynamicPic.setLayoutParams(params);

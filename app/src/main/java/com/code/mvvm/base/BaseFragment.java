@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * @author：tqzhang  on 18/3/12 19:25
+ * @author：tqzhang on 18/3/12 19:25
  * Fragment基类
  */
 public abstract class BaseFragment extends Fragment {
@@ -119,8 +120,9 @@ public abstract class BaseFragment extends Fragment {
 
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
+        this.activity = null;
     }
 
     @Override
@@ -128,7 +130,6 @@ public abstract class BaseFragment extends Fragment {
         super.onAttach(activity);
         this.activity = (FragmentActivity) activity;
     }
-
 
     @Override
     public void onDetach() {

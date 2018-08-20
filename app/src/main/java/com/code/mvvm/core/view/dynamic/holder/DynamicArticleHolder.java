@@ -115,12 +115,12 @@ public class DynamicArticleHolder extends AbsViewHolder<DynamicInfoVo, DynamicAr
 
             double dv2 = 1;
             LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
-                    (commonWidth - 2 * App.Instance()
+                    (commonWidth - 2 * App.instance()
                             .getResources().getDimensionPixelSize(
                                     R.dimen.concise_three_img_margin))
                             / 3,
                     (int) (dv2
-                            * (commonWidth - 2 * App.Instance().getResources()
+                            * (commonWidth - 2 * App.instance().getResources()
                             .getDimensionPixelSize(
                                     R.dimen.concise_three_img_margin))
                             / 3));
