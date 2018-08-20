@@ -10,9 +10,9 @@
 ![image](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/6_video.gif)<br/>
 
 #第三方库 <br/>
--okhttp <br/>
--Retrofit <br/>
--RxJava <br/>
+-Space okhttp <br/>
+-Space Retrofit <br/>
+-Space RxJava <br/>
 -LiveData <br/>
 -ViewModel <br/>
 -ButterKnife <br/>
@@ -21,11 +21,11 @@
 -BottomNavigationBar(轻量级底部导航栏)<br/>
 -LoadState(用于错误状态UI的切换)<br/>
 -gsyVideoPlayer(视频播放)<br/>
--[TRecyclerView][id](下拉刷新)
- [id]: https://github.com/SelfZhangTQ/TRecyclerView
+-[TRecyclerView][id]:
+  [id]: https://github.com/SelfZhangTQ/TRecyclerView
 <br/>
 -EventBus<br/>
 
-声明 <br/>
+#声明 <br/>
 
 这个属于个人开发作品，仅做学习交流使用。诸位勿传播于非技术人员，拒绝用于商业用途，数据均属于非正常渠道获取。
