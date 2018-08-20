@@ -10,8 +10,8 @@
 ![image](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/6_video.gif)<br/>
 
 #第三方库 <br/>
--Space okhttp <br/>
--Space Retrofit <br/>
+* Space okhttp <br/>
+* Retrofit <br/>
 -Space RxJava <br/>
 -LiveData <br/>
 -ViewModel <br/>
