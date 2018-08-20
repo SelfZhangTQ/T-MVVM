@@ -81,7 +81,7 @@
             android:layout_weight="1.8">
 
 
-            <com.code.mvvm.widget.TopCropImageView
+            <com.code.mvvm.widget.CropImageView
                 android:id="@+id/iv_live_pic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>

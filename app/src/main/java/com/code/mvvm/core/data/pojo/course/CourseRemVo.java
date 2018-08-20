@@ -1,13 +1,13 @@
 package com.code.mvvm.core.data.pojo.course;
 
-import com.code.mvvm.core.data.pojo.BaseObject;
+import com.code.mvvm.core.data.pojo.BaseVo;
 import com.code.mvvm.core.data.pojo.banner.BannerVo;
 import com.code.mvvm.core.data.pojo.user.UserInfoVo;
 
 import java.util.List;
 
 
-public class CourseRemVo extends BaseObject {
+public class CourseRemVo extends BaseVo {
 
     public DataBean data;
 

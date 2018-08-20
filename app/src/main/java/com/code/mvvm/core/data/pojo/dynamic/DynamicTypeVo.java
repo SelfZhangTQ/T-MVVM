@@ -1,6 +1,6 @@
 package com.code.mvvm.core.data.pojo.dynamic;
 
-import com.code.mvvm.core.data.pojo.BaseObject;
+import com.code.mvvm.core.data.pojo.BaseVo;
 import com.code.mvvm.core.data.pojo.article.ArticleSubjectVo;
 import com.code.mvvm.core.data.pojo.correct.WorkInfoVo;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawInfoVo;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DynamicTypeVo extends BaseObject implements Serializable {
+public class DynamicTypeVo extends BaseVo implements Serializable {
 
     public Data data;
 

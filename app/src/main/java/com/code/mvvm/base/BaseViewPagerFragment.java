@@ -5,10 +5,9 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.basiclibrary.base.BaseFragment;
 import com.code.mvvm.R;
 import com.code.mvvm.adapter.ViewPagerAdapter;
-import com.code.mvvm.core.viewmodel.BaseViewModel;
+import com.code.mvvm.core.vm.BaseViewModel;
 import com.code.mvvm.stateview.LoadingState;
 import com.code.mvvm.widget.NestedViewPager;
 import com.flyco.tablayout.SlidingTabLayout;

@@ -1,11 +1,11 @@
 package com.code.mvvm.core.data.pojo.article;
 
-import com.code.mvvm.core.data.pojo.BaseObject;
+import com.code.mvvm.core.data.pojo.BaseVo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArticleSubjectVo extends BaseObject {
+public class ArticleSubjectVo extends BaseVo {
 
 
 	/**

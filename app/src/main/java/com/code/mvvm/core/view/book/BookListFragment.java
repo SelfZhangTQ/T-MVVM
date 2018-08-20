@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.data.pojo.book.BookListVo;
-import com.code.mvvm.core.viewmodel.BookViewModel;
+import com.code.mvvm.core.vm.BookViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 

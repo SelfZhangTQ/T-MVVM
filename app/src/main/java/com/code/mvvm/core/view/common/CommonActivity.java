@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.basiclibrary.base.BaseActivity;
-import com.basiclibrary.base.BaseFragment;
 import com.code.mvvm.R;
+import com.code.mvvm.base.BaseActivity;
+import com.code.mvvm.base.BaseFragment;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.view.activity.ActivityListFragment;
 import com.code.mvvm.core.view.article.ArticleFragment;

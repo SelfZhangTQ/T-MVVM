@@ -6,14 +6,14 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.basiclibrary.base.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
+import com.code.mvvm.base.BaseActivity;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.network.ApiService;
+import com.code.mvvm.network.HttpHelper;
 import com.code.mvvm.util.DisplayUtil;
-import com.network.HttpHelper;
 import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;

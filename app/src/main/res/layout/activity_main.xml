@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <FrameLayout
@@ -19,9 +19,8 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        app:bnbActiveColor="@color/navigation_bar_active"
+        app:bnbActiveColor="@color/color_ffca00"
         app:bnbAutoHideEnabled="true"
         app:bnbBackgroundColor="@color/navigation_bar"
-        app:bnbInactiveColor="@color/navigation_bar_inactive"
-       />
+        app:bnbInactiveColor="@color/navigation_bar_inactive" />
 </LinearLayout>

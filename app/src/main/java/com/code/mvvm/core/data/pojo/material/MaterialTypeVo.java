@@ -1,11 +1,11 @@
 package com.code.mvvm.core.data.pojo.material;
 
-import com.code.mvvm.core.data.pojo.BaseObject;
+import com.code.mvvm.core.data.pojo.BaseVo;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class MaterialTypeVo extends BaseObject implements Serializable
+public class MaterialTypeVo extends BaseVo implements Serializable
 {
 
     public DataEntity data;

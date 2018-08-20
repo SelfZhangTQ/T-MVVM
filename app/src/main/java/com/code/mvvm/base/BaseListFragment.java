@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
-import com.code.mvvm.core.viewmodel.BaseViewModel;
+import com.code.mvvm.core.vm.BaseViewModel;
 import com.code.mvvm.util.DiffCallback;
 import com.trecyclerview.TRecyclerView;
 import com.trecyclerview.entity.FootInfo;

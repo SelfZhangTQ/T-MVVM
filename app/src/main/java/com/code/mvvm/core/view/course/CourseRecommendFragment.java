@@ -10,7 +10,7 @@ import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
-import com.code.mvvm.core.viewmodel.CourseViewModel;
+import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.entity.HeaderInfo;
 import com.trecyclerview.multitype.MultiTypeAdapter;

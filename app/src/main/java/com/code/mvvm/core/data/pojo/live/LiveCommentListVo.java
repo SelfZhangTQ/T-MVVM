@@ -1,10 +1,10 @@
 package com.code.mvvm.core.data.pojo.live;
 
-import com.code.mvvm.core.data.pojo.BaseObject;
+import com.code.mvvm.core.data.pojo.BaseVo;
 
 import java.util.List;
 
-public class LiveCommentListVo extends BaseObject {
+public class LiveCommentListVo extends BaseVo {
 
     public List<DataBean> data;
 

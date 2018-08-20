@@ -1,10 +1,10 @@
 package com.code.mvvm.core.data.pojo.activity;
 
-import com.code.mvvm.core.data.pojo.BaseObject;
+import com.code.mvvm.core.data.pojo.BaseVo;
 
 import java.io.Serializable;
 
-public class ActivityDetialVo extends BaseObject
+public class ActivityDetialVo extends BaseVo
 {
     public ActData data;
 

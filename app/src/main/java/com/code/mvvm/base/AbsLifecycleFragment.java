@@ -8,9 +8,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
-import com.basiclibrary.base.BaseFragment;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.viewmodel.BaseViewModel;
+import com.code.mvvm.core.vm.BaseViewModel;
 import com.code.mvvm.stateview.ErrorState;
 import com.code.mvvm.stateview.LoadingState;
 import com.code.mvvm.util.TUtil;

@@ -9,9 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
-import com.basiclibrary.base.BaseActivity;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.viewmodel.BaseViewModel;
+import com.code.mvvm.core.vm.BaseViewModel;
 import com.code.mvvm.stateview.ErrorState;
 import com.code.mvvm.stateview.LoadingState;
 import com.tqzhang.stateview.stateview.BaseStateControl;

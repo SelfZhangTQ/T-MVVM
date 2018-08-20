@@ -4,11 +4,11 @@ import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.basiclibrary.base.BaseFragment;
 import com.code.mvvm.R;
+import com.code.mvvm.base.BaseFragment;
 import com.code.mvvm.base.BaseViewPagerFragment;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawTypeVo;
-import com.code.mvvm.core.viewmodel.FollowDrawViewModel;
+import com.code.mvvm.core.vm.FollowDrawViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

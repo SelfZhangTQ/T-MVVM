@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.data.pojo.course.CourseListVo;
-import com.code.mvvm.core.viewmodel.CourseViewModel;
+import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.entity.FootInfo;
 import com.trecyclerview.entity.HeaderInfo;

@@ -1,7 +1,7 @@
 ## MVVM
 
 ## 艺术帮是一款艺术图片应用，仅仅用于学习交流，不断完善中，采用LiveData+ViewModel + RxJava + Retrofit + Glide架构的项目<br/>
-## 截图<br/>
+## 无图无真相<br/>
 ![image](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/1_video.gif)
 ![image](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/2_video.gif)<br/>
 ![image](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/3_video.gif)
@@ -25,6 +25,6 @@
 * EventBus<br/>
 * ... <br/>
 
-#声明 <br/>
+## 声明 <br/>
 
 这个属于个人开发作品，仅做学习交流使用。诸位勿传播于非技术人员，拒绝用于商业用途，数据均属于非正常渠道获取。

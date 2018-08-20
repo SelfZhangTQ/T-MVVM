@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import com.code.mvvm.R;
 import com.code.mvvm.base.AbsLifecycleFragment;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
-import com.code.mvvm.core.viewmodel.BaseViewModel;
+import com.code.mvvm.core.vm.BaseViewModel;
 import com.code.mvvm.util.DiffCallback;
 import com.code.mvvm.util.DisplayUtil;
 import com.trecyclerview.SwipeRecyclerView;

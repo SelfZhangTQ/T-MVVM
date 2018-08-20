@@ -8,7 +8,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.data.pojo.dynamic.DynamicListVo;
-import com.code.mvvm.core.viewmodel.DynamicViewModel;
+import com.code.mvvm.core.vm.DynamicViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 

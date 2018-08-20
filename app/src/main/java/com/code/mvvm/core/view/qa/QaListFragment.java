@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
-import com.code.mvvm.core.viewmodel.QaViewModel;
+import com.code.mvvm.core.vm.QaViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 

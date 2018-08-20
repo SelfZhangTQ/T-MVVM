@@ -1,11 +1,11 @@
 package com.code.mvvm.core.data.pojo.article;
 
-import com.code.mvvm.core.data.pojo.BaseObject;
+import com.code.mvvm.core.data.pojo.BaseVo;
 
 import java.util.List;
 
 
-public class ArticleTypeVo extends BaseObject {
+public class ArticleTypeVo extends BaseVo {
 
 
     public List<DataBean> data;

@@ -1,9 +1,11 @@
 package com.code.mvvm.core.data.pojo.user;
 
+import com.code.mvvm.core.data.pojo.BaseVo;
+
 import java.io.Serializable;
 import java.util.List;
 
-public class UserInfoObject extends com.code.mvvm.core.data.pojo.BaseObject implements Serializable {
+public class UserInfoObject extends BaseVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public UserInfoContent data;

@@ -14,7 +14,7 @@ import com.code.mvvm.core.data.pojo.common.TypeVo;
 import com.code.mvvm.core.data.pojo.home.CatagoryVo;
 import com.code.mvvm.core.data.pojo.home.HomeListVo;
 import com.code.mvvm.core.data.pojo.material.MaterialListVo;
-import com.code.mvvm.core.viewmodel.HomeViewModel;
+import com.code.mvvm.core.vm.HomeViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.entity.FootInfo;
 import com.trecyclerview.entity.HeaderInfo;

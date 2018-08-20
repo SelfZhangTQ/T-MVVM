@@ -4,7 +4,7 @@ import com.code.mvvm.core.data.pojo.image.ImageInfoVo;
 
 import java.io.Serializable;
 
-public class SplashAdVo extends BaseObject {
+public class SplashAdVo extends BaseVo {
     public Data data;
 
     public static class Data implements Serializable {

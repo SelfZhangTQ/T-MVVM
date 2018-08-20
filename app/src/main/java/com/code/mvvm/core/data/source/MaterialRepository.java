@@ -1,15 +1,15 @@
 package com.code.mvvm.core.data.source;
 
-import com.basiclibrary.helper.RxSchedulers;
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.material.MateriaVo;
 import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
-import com.code.mvvm.network.RxSubscriber;
+import com.code.mvvm.network.rx.RxSchedulers;
+import com.code.mvvm.network.rx.RxSubscriber;
 
 /**
- * @author：zhangtianqiu on 18/7/28 13:00
+ * @author：tqzhang  on 18/7/28 13:00
  */
 public class MaterialRepository extends BaseRepository {
 

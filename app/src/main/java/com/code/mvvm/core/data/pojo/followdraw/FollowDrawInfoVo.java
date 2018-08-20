@@ -1,9 +1,9 @@
 package com.code.mvvm.core.data.pojo.followdraw;
 
-import com.code.mvvm.core.data.pojo.BaseObject;
+import com.code.mvvm.core.data.pojo.BaseVo;
 import com.code.mvvm.core.data.pojo.image.ImageVo;
 
-public class FollowDrawInfoVo extends BaseObject {
+public class FollowDrawInfoVo extends BaseVo {
 
     public String title;
     public String hits;

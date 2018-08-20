@@ -8,7 +8,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
-import com.code.mvvm.core.viewmodel.WorkViewModel;
+import com.code.mvvm.core.vm.WorkViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 

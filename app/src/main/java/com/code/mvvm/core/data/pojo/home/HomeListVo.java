@@ -1,6 +1,6 @@
 package com.code.mvvm.core.data.pojo.home;
 
-import com.code.mvvm.core.data.pojo.BaseObject;
+import com.code.mvvm.core.data.pojo.BaseVo;
 import com.code.mvvm.core.data.pojo.article.ArticleInfoVo;
 import com.code.mvvm.core.data.pojo.book.BookVo;
 import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * @author：tqzhang
  */
-public class HomeListVo extends BaseObject implements Serializable {
+public class HomeListVo extends BaseVo implements Serializable {
 
     public DataBean data;
 

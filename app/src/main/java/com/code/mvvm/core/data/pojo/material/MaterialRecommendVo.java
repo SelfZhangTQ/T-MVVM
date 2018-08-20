@@ -1,11 +1,11 @@
 package com.code.mvvm.core.data.pojo.material;
 
-import com.code.mvvm.core.data.pojo.BaseObject;
+import com.code.mvvm.core.data.pojo.BaseVo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MaterialRecommendVo extends BaseObject implements Serializable{
+public class MaterialRecommendVo extends BaseVo implements Serializable{
 
     public MaterialReData data;
 

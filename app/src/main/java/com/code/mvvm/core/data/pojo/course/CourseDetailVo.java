@@ -1,14 +1,14 @@
 package com.code.mvvm.core.data.pojo.course;
 
 
-import com.code.mvvm.core.data.pojo.BaseObject;
+import com.code.mvvm.core.data.pojo.BaseVo;
 import com.code.mvvm.core.data.pojo.user.UserInfoVo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseDetailVo extends BaseObject {
+public class CourseDetailVo extends BaseVo {
 
     /**
      * errno : 0

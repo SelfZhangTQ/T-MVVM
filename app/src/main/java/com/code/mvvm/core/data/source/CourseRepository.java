@@ -1,15 +1,15 @@
 package com.code.mvvm.core.data.source;
 
-import com.basiclibrary.helper.RxSchedulers;
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
-import com.code.mvvm.network.RxSubscriber;
+import com.code.mvvm.network.rx.RxSchedulers;
+import com.code.mvvm.network.rx.RxSubscriber;
 
 /**
- * @author：zhangtianqiu on 18/7/31 15:14
+ * @author：tqzhang  on 18/7/31 15:14
  */
 public class CourseRepository extends BaseRepository {
     public void loadCourseList(String f_catalog_id,String lastId, String rn, final OnResultCallBack<CourseListVo> onResultCallBack) {

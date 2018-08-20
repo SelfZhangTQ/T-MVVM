@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.basiclibrary.base.BaseActivity;
 import com.bottomnavigation.BottomNavigationBar;
 import com.bottomnavigation.BottomNavigationItem;
+import com.code.mvvm.base.BaseActivity;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.view.correct.WorkFragment;
 import com.code.mvvm.core.view.course.VideoFragment;

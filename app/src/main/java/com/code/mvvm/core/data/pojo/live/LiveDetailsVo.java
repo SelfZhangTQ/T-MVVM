@@ -1,12 +1,12 @@
 package com.code.mvvm.core.data.pojo.live;
 
-import com.code.mvvm.core.data.pojo.BaseObject;
+import com.code.mvvm.core.data.pojo.BaseVo;
 import com.code.mvvm.core.data.pojo.user.UserInfoVo;
 
 import java.util.List;
 
 
-public class LiveDetailsVo extends BaseObject {
+public class LiveDetailsVo extends BaseVo {
 
 
     /**

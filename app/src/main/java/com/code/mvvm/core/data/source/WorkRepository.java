@@ -1,19 +1,19 @@
 package com.code.mvvm.core.data.source;
 
-import com.basiclibrary.helper.RxSchedulers;
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.correct.WorkDetailVo;
 import com.code.mvvm.core.data.pojo.correct.WorkRecommentVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
-import com.code.mvvm.network.RxSubscriber;
+import com.code.mvvm.network.rx.RxSchedulers;
+import com.code.mvvm.network.rx.RxSubscriber;
 
 import rx.Observable;
 import rx.functions.Action1;
 
 /**
- * @author：zhangtianqiu on 18/7/31 15:32
+ * @author：tqzhang  on 18/7/31 15:32
  */
 public class WorkRepository extends BaseRepository {
 

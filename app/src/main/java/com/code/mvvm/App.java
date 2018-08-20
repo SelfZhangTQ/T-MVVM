@@ -5,9 +5,9 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.code.mvvm.config.URL;
+import com.code.mvvm.network.HttpHelper;
 import com.code.mvvm.stateview.ErrorState;
 import com.code.mvvm.stateview.LoadingState;
-import com.network.HttpHelper;
 import com.tqzhang.stateview.core.LoadState;
 
 

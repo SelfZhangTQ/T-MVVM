@@ -41,7 +41,6 @@ public class CustomHeightImageView extends AppCompatImageView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (mHeightRatio > 0.0 || mHeight > 0) {
-            // set the image views size
             int width = MeasureSpec.getSize(widthMeasureSpec);
             setMeasuredDimension(width, mHeight);
         }

@@ -1,14 +1,14 @@
 package com.code.mvvm.core.data.source;
 
-import com.basiclibrary.helper.RxSchedulers;
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.live.LiveListVo;
 import com.code.mvvm.core.data.pojo.live.LiveTypeVo;
-import com.code.mvvm.network.RxSubscriber;
+import com.code.mvvm.network.rx.RxSchedulers;
+import com.code.mvvm.network.rx.RxSubscriber;
 
 /**
- * @author：zhangtianqiu on 18/8/2 13:36
+ * @author：tqzhang  on 18/8/2 13:36
  */
 public class LiveRepository extends BaseRepository {
     public void loadLiveList(String mCatalogId, String id, String rn, final OnResultCallBack<LiveListVo> onResultCallBack) {
