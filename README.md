@@ -1,7 +1,7 @@
 ## MVVM
 
 ## 艺术帮是一款艺术图片应用，仅仅用于学习交流，不断完善中，采用LiveData+ViewModel + RxJava + Retrofit + Glide架构的项目<br/>
-截图<br/>
+## 截图<br/>
 ![image](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/1_video.gif)
 ![image](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/2_video.gif)<br/>
 ![image](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/3_video.gif)
@@ -19,10 +19,11 @@
 * Glide <br/>
 * Gson <br/>
 * BottomNavigationBar(轻量级底部导航栏)<br/>
-* [LoadState](https://github.com/SelfZhangTQ/LoadState)<br/>
+* [LoadState](https://github.com/SelfZhangTQ/LoadState) (统一管理错误页面库)<br/>
 * gsyVideoPlayer(视频播放)<br/>
-* [TRecyclerView](https://github.com/SelfZhangTQ/TRecyclerView) <br/>
+* [TRecyclerView](https://github.com/SelfZhangTQ/TRecyclerView) (面向ViewHolder开发的刷新库) <br/>
 * EventBus<br/>
+* ... <br/>
 
 #声明 <br/>
 
