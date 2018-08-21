@@ -3,7 +3,6 @@ package com.code.mvvm.base;
 import android.os.Bundle;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,17 +13,18 @@ import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.vm.BaseViewModel;
 import com.code.mvvm.util.DiffCallback;
 import com.trecyclerview.TRecyclerView;
-import com.trecyclerview.entity.FootInfo;
-import com.trecyclerview.entity.HeaderInfo;
 import com.trecyclerview.listener.OnRefreshListener;
 import com.trecyclerview.listener.OnScrollStateListener;
 import com.trecyclerview.multitype.Items;
 import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.pojo.FootVo;
+import com.trecyclerview.pojo.HeaderVo;
 
 import java.util.Collection;
 
-import static com.trecyclerview.LoadingMoreFooter.STATE_LOADING;
-import static com.trecyclerview.LoadingMoreFooter.STATE_NOMORE;
+import static com.trecyclerview.view.LoadingMoreFooter.STATE_LOADING;
+import static com.trecyclerview.view.LoadingMoreFooter.STATE_NOMORE;
+
 
 /**
  * @author：tqzhang on 18/7/10 16:20
@@ -88,7 +88,7 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
-        oldItems.add(new HeaderInfo());
+        oldItems.add(new HeaderVo());
         isLoadMore = false;
     }
 
@@ -196,15 +196,15 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
 
     protected void addHeaderData() {
         if (isRefresh) {
-            newItems.add(new HeaderInfo());
+            newItems.add(new HeaderVo());
         } else {
-            oldItems.add(new HeaderInfo());
+            oldItems.add(new HeaderVo());
         }
 
     }
 
     protected void addFootData(int state) {
-        oldItems.add(new FootInfo(state));
+        oldItems.add(new FootVo(state));
         notifyMoreDataChanged(oldItems.size() - 1, oldItems.size());
     }
 

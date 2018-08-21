@@ -14,7 +14,7 @@ import com.code.mvvm.core.data.pojo.home.CatagoryInfoVo;
 import com.code.mvvm.core.data.pojo.home.CatagoryVo;
 import com.code.mvvm.core.view.common.CommonActivity;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +86,7 @@ public class CategoryItemView extends AbsViewHolder<CatagoryVo, CategoryItemView
     }
 
 
-    public static class ViewHolder extends BaseViewHolder {
+    public static class ViewHolder extends BaseHolder {
 
         private RecyclerView recyclerView;
 

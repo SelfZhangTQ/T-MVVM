@@ -17,7 +17,7 @@ import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.widget.CustomHeightImageView;
 import com.code.mvvm.widget.CustomHeightRelativeLayout;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang  on 18/6/27 19:14
@@ -50,7 +50,7 @@ public class CorrectItemHolder extends AbsViewHolder<WorksListVo.Works, CorrectI
             float dv = (float) data.correct.source_pic.img.l.h / (float) data.correct.source_pic.img.l.w;
             holder.mCHImageView.setHeight((int) (dv * commonWidth));
             Glide.with(mContext).load(data.correct.source_pic.img.l.url)
-                    .placeholder(R.color.white)
+                    .placeholder(R.color.black_e8e8e8)
                     .transform(new GlideRoundTransform(mContext, 4))
                     .into(holder.mCHImageView);
         } else {
@@ -58,13 +58,13 @@ public class CorrectItemHolder extends AbsViewHolder<WorksListVo.Works, CorrectI
                 float dv = (float) data.correct.correct_pic.img.l.h / (float) data.correct.correct_pic.img.l.w;
                 holder.mCHImageView.setHeight((int) (dv * commonWidth));
                 Glide.with(mContext).load(data.correct.correct_pic.img.l.url)
-                        .placeholder(R.color.white)
+                        .placeholder(R.color.black_e8e8e8)
                         .transform(new GlideRoundTransform(mContext, 4)).into(holder.mCHImageView);
             } else {
                 float dv = (float) data.correct.source_pic.img.l.h / (float) data.correct.source_pic.img.l.w;
                 holder.mCHImageView.setHeight((int) (dv * commonWidth));
                 Glide.with(mContext).load(data.correct.source_pic.img.l.url)
-                        .placeholder(R.color.white)
+                        .placeholder(R.color.black_e8e8e8)
                         .transform(new GlideRoundTransform(mContext, 4)).into(holder.mCHImageView);
             }
         }
@@ -80,7 +80,7 @@ public class CorrectItemHolder extends AbsViewHolder<WorksListVo.Works, CorrectI
         });
     }
 
-    public class ViewHolder extends BaseViewHolder {
+    public class ViewHolder extends BaseHolder {
         private CustomHeightImageView mCHImageView;
         private TextView mTvDesc, mUserName;
         private ImageView mUserIcon;

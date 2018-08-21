@@ -39,51 +39,22 @@ public class HomeViewModel extends BaseViewModel<HomeRepository> {
         return bannerData;
     }
 
-    public void loadHomeList(String id) {
-        mRepository.loadHomeData(id, new OnResultCallBack<HomeListVo>() {
-            @Override
-            public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
-            }
-
-            @Override
-            public void onNext(HomeListVo homeListVo) {
-                homeData.postValue(homeListVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
-            }
-
-            @Override
-            public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
-            }
-        });
+    private void loadHomeList(String id) {
+        mRepository.loadHomeData(id);
     }
 
-    public void getBannerData(String posType,
-                              String fCatalogId,
-                              String sCatalogId,
-                              String tCatalogId,
-                              String province) {
-        mRepository.loadBannerData(posType, fCatalogId, sCatalogId, tCatalogId, province, new OnResultCallBack<BannerListVo>() {
-            @Override
-            public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
-            }
-
-            @Override
-            public void onNext(BannerListVo bannerAdListVo) {
-                bannerData.postValue(bannerAdListVo);
-            }
-
-            @Override
-            public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
-            }
-        });
+    private void getBannerData(String posType,
+                               String fCatalogId,
+                               String sCatalogId,
+                               String tCatalogId,
+                               String province) {
+        mRepository.loadBannerData(posType, fCatalogId, sCatalogId, tCatalogId, province);
 
     }
 
     public void getRequestMerge() {
+        getBannerData("1", "4", "109", "", null);
+        loadHomeList("0");
         mRepository.loadRequestMerge(new OnResultCallBack<Object>() {
             @Override
             public void onNoNetWork() {

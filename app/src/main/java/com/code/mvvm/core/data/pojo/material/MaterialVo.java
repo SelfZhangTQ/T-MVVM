@@ -3,7 +3,7 @@ package com.code.mvvm.core.data.pojo.material;
 
 import java.util.List;
 
-public class MateriaVo {
+public class MaterialVo {
 
 
     public int errno;

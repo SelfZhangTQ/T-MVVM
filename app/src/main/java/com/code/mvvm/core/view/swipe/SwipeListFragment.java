@@ -12,14 +12,15 @@ import com.code.mvvm.core.vm.BaseViewModel;
 import com.code.mvvm.util.DiffCallback;
 import com.code.mvvm.util.DisplayUtil;
 import com.trecyclerview.SwipeRecyclerView;
-import com.trecyclerview.entity.FootInfo;
 import com.trecyclerview.listener.OnLoadMoreListener;
 import com.trecyclerview.multitype.Items;
 import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.pojo.FootVo;
 
 import java.util.Collection;
 
-import static com.trecyclerview.LoadingMoreFooter.STATE_LOADING;
+import static com.trecyclerview.view.LoadingMoreFooter.STATE_LOADING;
+
 
 /**
  * @author：tqzhang on 18/7/10 16:20
@@ -170,7 +171,7 @@ public abstract class SwipeListFragment<T extends BaseViewModel> extends AbsLife
     }
 
     protected void addFootData() {
-        oldItems.add(new FootInfo(STATE_LOADING));
+        oldItems.add(new FootVo(STATE_LOADING));
         notifyMoreDataChanged(oldItems.size() - 1, oldItems.size());
     }
 

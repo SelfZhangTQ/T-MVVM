@@ -10,7 +10,7 @@ import com.code.mvvm.R;
 import com.code.mvvm.adapter.HomeListAdapter;
 import com.code.mvvm.core.data.pojo.material.MaterialListVo;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang on 18/6/19 15:16
@@ -44,7 +44,7 @@ public class HomeMaterialItemView extends AbsViewHolder<MaterialListVo, HomeMate
         adapter.notifyDataSetChanged();
     }
 
-    static class ViewHolder extends BaseViewHolder {
+    static class ViewHolder extends BaseHolder {
 
         private RecyclerView mRecyclerView;
 

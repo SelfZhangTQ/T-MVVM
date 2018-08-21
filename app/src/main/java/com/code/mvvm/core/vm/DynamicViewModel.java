@@ -11,7 +11,7 @@ import com.code.mvvm.core.data.pojo.dynamic.DynamicListVo;
 import com.code.mvvm.core.data.source.DynamicRepository;
 
 /**
- * @author：zhangtianqiu on 18/8/13 15:21
+ * @author：tqzhang  on 18/8/13 15:21
  */
 public class DynamicViewModel extends BaseViewModel<DynamicRepository> {
 

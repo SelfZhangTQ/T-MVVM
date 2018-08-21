@@ -17,7 +17,7 @@ import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.widget.CustomHeightImageView;
 import com.code.mvvm.widget.CustomHeightRelativeLayout;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang  on 18/6/27 19:14
@@ -50,7 +50,7 @@ public class CorrectRemItemHolder extends AbsViewHolder<WorkInfoVo, CorrectRemIt
             float dv = (float) data.source_pic.img.l.h / (float) data.source_pic.img.l.w;
             holder.mCHImageView.setHeight((int) (dv * commonwidth));
             Glide.with(mContext).load(data.source_pic.img.l.url)
-                    .placeholder(R.color.black)
+                    .placeholder(R.color.black_e8e8e8)
                     .transform(new GlideRoundTransform(mContext, 4))
                     .into(holder.mCHImageView);
         } else {
@@ -58,7 +58,7 @@ public class CorrectRemItemHolder extends AbsViewHolder<WorkInfoVo, CorrectRemIt
                 float dv = (float) data.correct_pic.img.l.h / (float) data.correct_pic.img.l.w;
                 holder.mCHImageView.setHeight((int) (dv * commonwidth));
                 Glide.with(mContext).load(data.correct_pic.img.l.url)
-                        .placeholder(R.color.white)
+                        .placeholder(R.color.black_e8e8e8)
                         .transform(new GlideRoundTransform(mContext, 4))
                         .into(holder.mCHImageView);
 
@@ -66,7 +66,7 @@ public class CorrectRemItemHolder extends AbsViewHolder<WorkInfoVo, CorrectRemIt
                 float dv = (float) data.source_pic.img.l.h / (float) data.source_pic.img.l.w;
                 holder.mCHImageView.setHeight((int) (dv * commonwidth));
                 Glide.with(mContext).load(data.source_pic.img.l.url)
-                        .placeholder(R.color.white)
+                        .placeholder(R.color.black_e8e8e8)
                         .transform(new GlideRoundTransform(mContext, 4))
                         .into(holder.mCHImageView);
             }
@@ -84,7 +84,7 @@ public class CorrectRemItemHolder extends AbsViewHolder<WorkInfoVo, CorrectRemIt
     }
 
 
-    static class ViewHolder extends BaseViewHolder {
+    static class ViewHolder extends BaseHolder {
         private CustomHeightImageView mCHImageView;
         private TextView mTvDesc, mUserName;
         private ImageView mUserIcon;

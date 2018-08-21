@@ -12,8 +12,8 @@ import com.code.mvvm.core.data.pojo.common.TypeVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.entity.HeaderInfo;
 import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.pojo.HeaderVo;
 
 /**
  * @author：tqzhang  on 18/5/2 19:40
@@ -49,7 +49,7 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
             public int getSpanSize(int position) {
                 return oldItems.get(position) instanceof TypeVo
                         || oldItems.get(position) instanceof BannerListVo
-                        || oldItems.get(position) instanceof HeaderInfo ?
+                        || oldItems.get(position) instanceof HeaderVo ?
                         2 : 1;
             }
         });

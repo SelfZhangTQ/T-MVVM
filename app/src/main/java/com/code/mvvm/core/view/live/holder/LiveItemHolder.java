@@ -16,7 +16,7 @@ import com.code.mvvm.core.view.live.LiveDetailsActivity;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang on 18/6/19 15:00
@@ -52,7 +52,7 @@ public class LiveItemHolder extends AbsViewHolder<LiveRecommendVo, LiveItemHolde
         if (item.live_thumb_url != null
                 && !TextUtils.isEmpty(item.live_thumb_url)) {
             Glide.with(mContext).load(item.live_thumb_url)
-                    .placeholder(R.color.white).centerCrop()
+                    .placeholder(R.color.black_e8e8e8).centerCrop()
                     .into(holder.livePic);
         }
 
@@ -76,7 +76,7 @@ public class LiveItemHolder extends AbsViewHolder<LiveRecommendVo, LiveItemHolde
         }
         holder.liveTitle.setText(item.live_title);
         Glide.with(mContext).load(item.userinfo.avatar)
-                .placeholder(R.color.white).transform(new GlideCircleTransform(mContext))
+                .placeholder(R.color.black_e8e8e8).transform(new GlideCircleTransform(mContext))
                 .into(holder.liveTeacherIcon);
         holder.liveTeacherName.setText(item.userinfo.sname);
         holder.convertView.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +90,7 @@ public class LiveItemHolder extends AbsViewHolder<LiveRecommendVo, LiveItemHolde
     }
 
 
-    static class ViewHolder extends BaseViewHolder {
+    static class ViewHolder extends BaseHolder {
 
         private ImageView livePic;
         private ImageView liveStateBg;

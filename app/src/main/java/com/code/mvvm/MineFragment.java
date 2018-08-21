@@ -8,7 +8,7 @@ import android.webkit.WebView;
 import com.code.mvvm.base.AbsLifecycleFragment;
 
 /**
- * @author：zhangtianqiu on 18/5/2 15:46
+ * @author：tqzhang  on 18/5/2 15:46
  */
 public class MineFragment extends AbsLifecycleFragment {
     WebView webView;
@@ -27,7 +27,6 @@ public class MineFragment extends AbsLifecycleFragment {
     public void initView(Bundle state) {
         super.initView(state);
         webView = getViewById(R.id.web_view);
-
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setSaveFormData(true);
         webView.getSettings().setDomStorageEnabled(true);

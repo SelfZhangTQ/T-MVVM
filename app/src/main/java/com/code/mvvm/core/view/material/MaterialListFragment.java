@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.core.data.pojo.material.MateriaVo;
+import com.code.mvvm.core.data.pojo.material.MaterialVo;
 import com.code.mvvm.core.vm.MaterialViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -32,18 +32,18 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getMaterialList().observe(this, new Observer<MateriaVo>() {
+        mViewModel.getMaterialList().observe(this, new Observer<MaterialVo>() {
             @Override
-            public void onChanged(@Nullable MateriaVo materialListVo) {
+            public void onChanged(@Nullable MaterialVo materialListVo) {
                 if (materialListVo != null) {
                     lastId = materialListVo.data.content.get(materialListVo.data.content.size() - 1).tid;
                     setData(materialListVo.data.content);
                 }
             }
         });
-        mViewModel.getMaterialMoreList().observe(this, new Observer<MateriaVo>() {
+        mViewModel.getMaterialMoreList().observe(this, new Observer<MaterialVo>() {
             @Override
-            public void onChanged(@Nullable MateriaVo materialListVo) {
+            public void onChanged(@Nullable MaterialVo materialListVo) {
                 if (materialListVo != null && materialListVo.data != null && materialListVo.data.content.size() > 0) {
                     lastId = materialListVo.data.content.get(materialListVo.data.content.size() - 1).tid;
                     setData(materialListVo.data.content);

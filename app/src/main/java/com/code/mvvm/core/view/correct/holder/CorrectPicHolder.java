@@ -19,7 +19,7 @@ import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.util.ViewUtils;
 import com.code.mvvm.widget.CustomHeightImageView;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang  on 18/6/27 19:14
@@ -68,7 +68,7 @@ public class CorrectPicHolder extends AbsViewHolder<WorkDetailVo, CorrectPicHold
         LinearLayout.LayoutParams cparams = new LinearLayout.LayoutParams(
                 DisplayUtil.getScreenWidth(mContext), hightc);
         holder.imagePic.setLayoutParams(cparams);
-        Glide.with(mContext).load(correct_img.img.s.url).placeholder(R.color.dark).override(DisplayUtil.getScreenWidth(mContext), hightc).into(holder.imagePic);
+        Glide.with(mContext).load(correct_img.img.s.url).placeholder(R.color.black_e8e8e8).override(DisplayUtil.getScreenWidth(mContext), hightc).into(holder.imagePic);
         holder.userTag.removeAllViews();
         if (!TextUtils.isEmpty(object.data.tweet_info.province) && !TextUtils.equals("false", object.data.tweet_info.province)) {
             holder.userTag.addView(ViewUtils.CreateTagView(mContext, object.data.tweet_info.province));
@@ -79,7 +79,7 @@ public class CorrectPicHolder extends AbsViewHolder<WorkDetailVo, CorrectPicHold
         }
     }
 
-    static class ViewHolder extends BaseViewHolder {
+    static class ViewHolder extends BaseHolder {
         private CustomHeightImageView imagePic;
         private ImageView workPic, teacherIcon;
         private TextView teacherName, userName;

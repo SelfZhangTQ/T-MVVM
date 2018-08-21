@@ -20,15 +20,13 @@ public class HttpHelper {
 
     private static volatile HttpHelper mHttpHelper = null;
 
-    public static Context mContext;
-
     private static OkHttpClient mOkHttpClient;
 
     private static Retrofit mRetrofit;
 
     private static OkHttpClient.Builder mBuilder;
 
-    public HttpHelper() {
+    private HttpHelper() {
     }
 
     public static HttpHelper getInstance() {
@@ -46,7 +44,7 @@ public class HttpHelper {
     /**
      * 初始化OKHttpClient,设置缓存,设置超时时间,设置打印日志
      */
-    public static OkHttpClient.Builder initBuilder() {
+    private static OkHttpClient.Builder initBuilder() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         if (mBuilder == null) {
@@ -68,7 +66,7 @@ public class HttpHelper {
         return mBuilder;
     }
 
-    public static OkHttpClient initOkHttpClient() {
+    private static OkHttpClient initOkHttpClient() {
         return mBuilder.build();
     }
 
@@ -81,8 +79,7 @@ public class HttpHelper {
                 .build();
     }
 
-    public static void init(Context context, List<Interceptor> mInterceptor, String baseUrl) {
-        mContext = context;
+    public static void init(List<Interceptor> mInterceptor, String baseUrl) {
         if (mInterceptor != null && mInterceptor.size() > 0) {
             for (Interceptor interceptor : mInterceptor) {
                 initBuilder().addNetworkInterceptor(interceptor);

@@ -26,7 +26,6 @@ import com.code.mvvm.core.view.article.holder.ArticleRem2ItemHolder;
 import com.code.mvvm.core.view.article.holder.ArticleRem3ItemHolder;
 import com.code.mvvm.core.view.book.holder.BookItemHolder;
 import com.code.mvvm.core.view.book.holder.BookListHolder;
-import com.code.mvvm.core.view.common.FootItemViewBinder;
 import com.code.mvvm.core.view.common.TypeItemView;
 import com.code.mvvm.core.view.correct.holder.CorrectItemHolder;
 import com.code.mvvm.core.view.course.holder.CourseItemHolder;
@@ -48,12 +47,14 @@ import com.code.mvvm.core.view.material.holder.MaterialItemHolder;
 import com.code.mvvm.core.view.material.holder.MaterialListHolder;
 import com.code.mvvm.core.view.qa.holder.QaListItemHolder;
 import com.code.mvvm.widget.banner.BannerItemView;
-import com.trecyclerview.entity.FootInfo;
-import com.trecyclerview.entity.HeaderInfo;
 import com.trecyclerview.multitype.AbsItemView;
 import com.trecyclerview.multitype.ClassLinker;
 import com.trecyclerview.multitype.MultiTypeAdapter;
-import com.trecyclerview.view.HeaderItemView;
+import com.trecyclerview.pojo.FootVo;
+import com.trecyclerview.pojo.HeaderVo;
+import com.trecyclerview.progressindicator.ProgressStyle;
+import com.trecyclerview.view.FootViewHolder;
+import com.trecyclerview.view.HeaderViewHolder;
 
 /**
  * @author：tqzhang  on 18/8/3 16:25
@@ -75,18 +76,18 @@ public class AdapterPool {
     }
 
     public MultiTypeAdapter getNoHeadAdapter(MultiTypeAdapter adapter, Context context) {
-        adapter.register(FootInfo.class, new FootItemViewBinder());
+        adapter.register(FootVo.class, new FootViewHolder(context,ProgressStyle.Pacman));
         return adapter;
     }
 
     public MultiTypeAdapter getNoFootAdapter(MultiTypeAdapter adapter, Context context) {
-        adapter.register(HeaderInfo.class, new HeaderItemView(context));
+        adapter.register(HeaderVo.class, new HeaderViewHolder(context,ProgressStyle.Pacman));
         return adapter;
     }
 
     public MultiTypeAdapter getAdapter(MultiTypeAdapter adapter, Context context) {
-        adapter.register(HeaderInfo.class, new HeaderItemView(context));
-        adapter.register(FootInfo.class, new FootItemViewBinder());
+        adapter.register(HeaderVo.class, new HeaderViewHolder(context,ProgressStyle.Pacman));
+        adapter.register(FootVo.class, new FootViewHolder(context, ProgressStyle.Pacman));
         return adapter;
     }
 

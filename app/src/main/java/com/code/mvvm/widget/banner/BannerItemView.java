@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +60,7 @@ public class BannerItemView extends AbsViewHolder<BannerListVo, BannerItemView.V
     }
 
 
-    static class ViewHolder extends BaseViewHolder {
+    static class ViewHolder extends BaseHolder {
 
         private BannerView mBannerView;
 

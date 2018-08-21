@@ -15,7 +15,7 @@ import com.code.mvvm.core.data.pojo.live.LiveRecommendVo;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang on 18/6/19 15:00
@@ -69,7 +69,7 @@ public class HomeLiveItemView extends AbsViewHolder<LiveRecommendVo, HomeLiveIte
     }
 
 
-    public static class ViewHolder extends BaseViewHolder {
+    public static class ViewHolder extends BaseHolder {
 
         private ImageView mLiveState;
         private ImageView mUserIcon;

@@ -13,7 +13,7 @@ import com.code.mvvm.glide.GlideRoundTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.widget.CustomHeightImageView;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang on 18/6/19 15:16
@@ -51,7 +51,7 @@ public class MaterialItemHolder extends AbsViewHolder<MatreialSubjectVo, Materia
         holder.mMaterialTitle.setText(matreialsubject.title);
     }
 
-    static class ViewHolder extends BaseViewHolder {
+    static class ViewHolder extends BaseHolder {
         TextView mMaterialTitle;
         CustomHeightImageView mMaterialPic;
 

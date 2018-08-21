@@ -16,7 +16,7 @@ import com.code.mvvm.core.view.course.VideoDetailsActivity;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang  on 18/6/19 15:00
@@ -47,7 +47,7 @@ public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHold
                 commonWidth, (int) (0.56 * commonWidth));
         holder.mVideoImage.setLayoutParams(params);
         holder.mVideoImage.setScaleType(ImageView.ScaleType.FIT_XY);
-        Glide.with(mContext).load(courseListBean.thumb_url).placeholder(R.color.white).into(holder.mVideoImage);
+        Glide.with(mContext).load(courseListBean.thumb_url).placeholder(R.color.black_e8e8e8).into(holder.mVideoImage);
         Glide.with(mContext).load(courseListBean.userinfo.avatar).transform(new GlideCircleTransform(mContext)).into(holder.mUserIcon);
         holder.mVideoImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +63,7 @@ public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHold
     }
 
 
-    static class ViewHolder extends BaseViewHolder {
+    static class ViewHolder extends BaseHolder {
 
         private ImageView mVideoImage, mUserIcon;
         private TextView mLookNum, mVideoTitle, mUserName;

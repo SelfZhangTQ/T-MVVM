@@ -16,7 +16,7 @@ import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.util.ViewUtils;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang on 18/7/4 15:35
@@ -69,7 +69,7 @@ public class DynamicSubjectHolder extends AbsViewHolder<DynamicInfoVo, DynamicSu
     }
 
 
-    public static class ViewHolder extends BaseViewHolder {
+    public static class ViewHolder extends BaseHolder {
 
         private TextView tvUserName, userType, dynamicTitle, lookNum;
         private ImageView ivUserPic, dynamicPic;

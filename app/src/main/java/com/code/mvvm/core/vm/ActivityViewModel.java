@@ -29,14 +29,14 @@ public class ActivityViewModel extends BaseViewModel<ActivityRepository> {
     }
 
     public void getActivityList(String id, String rn) {
-        mRepository.loadActivityList(id, rn, new OnResultCallBack<com.code.mvvm.core.data.pojo.activity.ActivityListVo>() {
+        mRepository.loadActivityList(id, rn, new OnResultCallBack<ActivityListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
             }
 
             @Override
-            public void onNext(com.code.mvvm.core.data.pojo.activity.ActivityListVo activityListVo) {
+            public void onNext(ActivityListVo activityListVo) {
                 activityData.postValue(activityListVo);
                 loadState.postValue(Constants.SUCCESS_STATE);
             }

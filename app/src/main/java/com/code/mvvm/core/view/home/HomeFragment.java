@@ -16,9 +16,9 @@ import com.code.mvvm.core.data.pojo.home.HomeListVo;
 import com.code.mvvm.core.data.pojo.material.MaterialListVo;
 import com.code.mvvm.core.vm.HomeViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.entity.FootInfo;
-import com.trecyclerview.entity.HeaderInfo;
 import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.pojo.FootVo;
+import com.trecyclerview.pojo.HeaderVo;
 
 
 /**
@@ -89,8 +89,8 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
                         || oldItems.get(position) instanceof TypeVo
                         || oldItems.get(position) instanceof BookList
                         || oldItems.get(position) instanceof BannerListVo
-                        || oldItems.get(position) instanceof HeaderInfo
-                        || oldItems.get(position) instanceof FootInfo) ? 2 : 1;
+                        || oldItems.get(position) instanceof HeaderVo
+                        || oldItems.get(position) instanceof FootVo) ? 2 : 1;
             }
         });
 
@@ -104,8 +104,6 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getBannerData("1", "4", "109", "", null);
-        mViewModel.loadHomeList("0");
         mViewModel.getRequestMerge();
     }
 

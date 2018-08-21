@@ -12,7 +12,7 @@ import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.book.BookList;
 import com.code.mvvm.util.DisplayUtil;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang on 18/6/20 13:41
@@ -48,9 +48,9 @@ public class BookItemHolder extends AbsViewHolder<BookList, BookItemHolder.ViewH
         holder.book1.setLayoutParams(layoutParams);
         holder.book2.setLayoutParams(layoutParams);
         holder.book3.setLayoutParams(layoutParams);
-        Glide.with(mContext).load(mBookList.publishingbook.get(0).img.l.url).placeholder(R.color.white).centerCrop().into(holder.book1);
-        Glide.with(mContext).load(mBookList.publishingbook.get(1).img.l.url).placeholder(R.color.white).centerCrop().into(holder.book2);
-        Glide.with(mContext).load(mBookList.publishingbook.get(2).img.l.url).placeholder(R.color.white).centerCrop().into(holder.book3);
+        Glide.with(mContext).load(mBookList.publishingbook.get(0).img.l.url).placeholder(R.color.black_e8e8e8).centerCrop().into(holder.book1);
+        Glide.with(mContext).load(mBookList.publishingbook.get(1).img.l.url).placeholder(R.color.black_e8e8e8).centerCrop().into(holder.book2);
+        Glide.with(mContext).load(mBookList.publishingbook.get(2).img.l.url).placeholder(R.color.black_e8e8e8).centerCrop().into(holder.book3);
         holder.bookName1.setText(mBookList.publishingbook.get(0).title);
         holder.bookName2.setText(mBookList.publishingbook.get(1).title);
         holder.bookName3.setText(mBookList.publishingbook.get(2).title);
@@ -60,7 +60,7 @@ public class BookItemHolder extends AbsViewHolder<BookList, BookItemHolder.ViewH
     }
 
 
-    static class ViewHolder extends BaseViewHolder {
+    static class ViewHolder extends BaseHolder {
 
         private ImageView book1, book2, book3;
         private TextView bookName1, bookName2, bookName3;

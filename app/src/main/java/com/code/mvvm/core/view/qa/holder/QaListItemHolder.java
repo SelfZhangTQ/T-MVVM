@@ -13,7 +13,7 @@ import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
 import com.code.mvvm.util.DisplayUtil;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang  on 18/6/19 15:00
@@ -57,7 +57,7 @@ public class QaListItemHolder extends AbsViewHolder<QaListVo.DataBean, QaListIte
     }
 
 
-    static class ViewHolder extends BaseViewHolder {
+    static class ViewHolder extends BaseHolder {
         TextView decs;
         TextView lookNum;
         TextView decsType;

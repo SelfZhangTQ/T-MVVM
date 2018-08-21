@@ -11,10 +11,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.App;
 import com.code.mvvm.R;
+import com.code.mvvm.base.BaseViewHolder;
 import com.code.mvvm.core.data.pojo.article.ArticleInfoVo;
 import com.code.mvvm.util.DisplayUtil;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang  on 18/6/19 15:16
@@ -79,7 +80,7 @@ public class ArticleRem3ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleR
         }
     }
 
-    static class ViewHolder extends BaseViewHolder {
+    static class ViewHolder extends BaseHolder {
         public ImageView iv_pic;
 
         public ImageView iv_pic2;

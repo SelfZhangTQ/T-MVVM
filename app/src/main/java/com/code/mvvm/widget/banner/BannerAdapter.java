@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import java.util.List;
 
 /**
- * @author：zhangtianqiu on 18/5/8 15:38
+ * @author：tqzhang  on 18/5/8 15:38
  */
 public class BannerAdapter extends PagerAdapter{
 

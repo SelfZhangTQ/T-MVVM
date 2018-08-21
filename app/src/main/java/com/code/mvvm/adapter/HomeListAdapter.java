@@ -41,7 +41,7 @@ public class HomeListAdapter extends BaseRecyclerAdapter<MatreialSubjectVo> {
         CustomHeightImageView video_img = holder.getView(R.id.iv_pic_image);
         video_img.setLayoutParams(new RelativeLayout.LayoutParams(commonwidth, height));
         Glide.with(getContext()).load(matreialsubject.picurl.l.url).skipMemoryCache(true)
-                .placeholder(R.color.white)
+                .placeholder(R.color.black_e8e8e8)
                 .transform(new GlideRoundTransform(getContext(), 4))
                 .override(commonwidth, (int) (dv * commonwidth)).into(video_img);
         ((TextView) holder.getView(R.id.video_title)).setText(matreialsubject.title);

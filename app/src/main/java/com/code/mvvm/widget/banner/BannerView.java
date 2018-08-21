@@ -25,7 +25,7 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * @author：zhangtianqiu on 18/5/8 15:38
+ * @author：tqzhang  on 18/5/8 15:38
  */
 public class BannerView extends RelativeLayout {
     ViewPager viewPager;

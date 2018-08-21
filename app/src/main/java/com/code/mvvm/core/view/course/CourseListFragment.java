@@ -10,9 +10,9 @@ import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.entity.FootInfo;
-import com.trecyclerview.entity.HeaderInfo;
 import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.pojo.FootVo;
+import com.trecyclerview.pojo.HeaderVo;
 
 /**
  * @author：tqzhang on 18/5/2 19:40
@@ -53,8 +53,8 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                return oldItems.get(position) instanceof FootInfo
-                        || oldItems.get(position) instanceof HeaderInfo ?
+                return oldItems.get(position) instanceof FootVo
+                        || oldItems.get(position) instanceof HeaderVo ?
                         2 : 1;
             }
         });

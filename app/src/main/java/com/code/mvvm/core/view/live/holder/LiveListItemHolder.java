@@ -12,7 +12,7 @@ import com.code.mvvm.core.data.pojo.live.LiveRecommendVo;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.widget.CropImageView;
 import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseViewHolder;
+import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang  on 18/6/19 15:00
@@ -38,7 +38,7 @@ public class LiveListItemHolder extends AbsViewHolder<LiveRecommendVo, LiveListI
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull LiveRecommendVo entity) {
 
         Glide.with(mContext).load(entity.live_thumb_url).centerCrop()
-                .placeholder(R.color.white)
+                .placeholder(R.color.black_e8e8e8)
                 .into(holder.livePic);
         holder.liveTitle.setText(entity.live_title);
         holder.liveHits.setText(new StringBuilder(entity.hits).append(" 人看过"));
@@ -58,7 +58,7 @@ public class LiveListItemHolder extends AbsViewHolder<LiveRecommendVo, LiveListI
     }
 
 
-    static class ViewHolder extends BaseViewHolder {
+    static class ViewHolder extends BaseHolder {
 
         private CropImageView livePic;
 
