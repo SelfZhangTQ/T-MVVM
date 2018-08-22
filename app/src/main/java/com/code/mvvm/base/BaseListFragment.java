@@ -3,6 +3,7 @@ package com.code.mvvm.base;
 import android.os.Bundle;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -88,14 +89,12 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
-        oldItems.add(new HeaderVo());
         isLoadMore = false;
     }
 
     protected void setData(Collection<?> collection) {
         if (isLoadMore) {
             onLoadMoreSuccess(collection);
-
         } else {
             if (isRefresh) {
                 onRefreshSuccess(collection);
@@ -114,16 +113,11 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
 
     @Override
     public void onLoadMore() {
-        isLoadMore = true;
-        if (isLoading) {
-            isLoading = false;
-            addFootData(STATE_LOADING);
-            getRemoteData();
-        }
+        getRemoteData();
     }
 
     protected void onRefreshAction() {
-        addHeaderData();
+
     }
 
     protected void setBannerData(BannerListVo headAdList) {
@@ -143,22 +137,16 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
     protected void onDefaultSuccess(Collection<?> collection) {
         oldItems.addAll(collection);
         adapter.setItems(oldItems);
-        if (collection.size() < 20) {
-            mRecyclerView.setNoMore();
-            addFootData(STATE_NOMORE);
-        }
-        notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
     protected void onLoadMoreSuccess(Collection<?> collection) {
-        oldItems.remove(oldItems.size() - 1);
         oldItems.addAll(collection);
-        notifyMoreDataChanged(oldItems.size() - collection.size(), oldItems.size());
         if (collection.size() < 20) {
-            mRecyclerView.setNoMore();
-            addFootData(STATE_NOMORE);
+            mRecyclerView.setNoMore(collection.size());
+        } else {
+            mRecyclerView.loadMoreComplete(collection.size());
         }
-        mRecyclerView.loadMoreComplete();
         isLoading = true;
         isLoadMore = false;
         newItems.clear();
@@ -167,7 +155,6 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
     protected void refreshDataChanged() {
         oldItems.clear();
         oldItems.addAll(newItems);
-        notifyDataSetChanged();
         mRecyclerView.refreshComplete();
         isRefresh = false;
         newItems.clear();

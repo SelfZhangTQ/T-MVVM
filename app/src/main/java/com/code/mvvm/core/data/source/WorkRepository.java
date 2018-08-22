@@ -60,15 +60,21 @@ public class WorkRepository extends BaseRepository {
     public void loadRequestMerge(final OnResultCallBack<Object> listener) {
         addSubscribe(Observable.concatDelayError(mBannerData, mWorkData)
                 .compose(RxSchedulers.<Object>io_main())
-                .subscribe(new Action1<Object>() {
+                .subscribe(new RxSubscriber<Object>() {
                     @Override
-                    public void call(Object o) {
+                    protected void onNoNetWork() {
+                        super.onNoNetWork();
+                        listener.onNoNetWork();
+                    }
+
+                    @Override
+                    public void onSuccess(Object o) {
                         listener.onNext(o);
                     }
-                }, new Action1<Throwable>() {
+
                     @Override
-                    public void call(Throwable throwable) {
-                        listener.onError(throwable.getMessage());
+                    public void onFailure(String msg) {
+                        listener.onError(msg);
                     }
                 }));
     }
@@ -84,15 +90,21 @@ public class WorkRepository extends BaseRepository {
     public void loadWorkMergeData(final OnResultCallBack<Object> listener) {
         addSubscribe(Observable.concatDelayError(mWorkDetail, mWorkRecomment)
                 .compose(RxSchedulers.<Object>io_main())
-                .subscribe(new Action1<Object>() {
+                .subscribe(new RxSubscriber<Object>() {
                     @Override
-                    public void call(Object o) {
+                    protected void onNoNetWork() {
+                        super.onNoNetWork();
+                        listener.onNoNetWork();
+                    }
+
+                    @Override
+                    public void onSuccess(Object o) {
                         listener.onNext(o);
                     }
-                }, new Action1<Throwable>() {
+
                     @Override
-                    public void call(Throwable throwable) {
-                        listener.onError(throwable.getMessage());
+                    public void onFailure(String msg) {
+                        listener.onError(msg);
                     }
                 }));
     }

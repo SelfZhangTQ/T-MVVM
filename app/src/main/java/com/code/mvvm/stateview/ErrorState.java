@@ -2,13 +2,14 @@ package com.code.mvvm.stateview;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.code.mvvm.R;
 import com.tqzhang.stateview.stateview.BaseStateControl;
 
 /**
- * @author：tqzhang  on 18/7/16 15:07
+ * @author：tqzhang on 18/7/16 15:07
  */
 public class ErrorState extends BaseStateControl {
     @Override
@@ -18,12 +19,15 @@ public class ErrorState extends BaseStateControl {
 
     @Override
     protected void onViewCreate(Context context, View view) {
-        TextView tv_desc = view.findViewById(R.id.tv_desc);
+        TextView errorDesc = view.findViewById(R.id.tv_error_desc);
+        ImageView errorIcon = view.findViewById(R.id.iv_error_icon);
         if (view.getTag() != null) {
             if (view.getTag().equals("1")) {
-                tv_desc.setText("网络不给力～_~");
+                errorDesc.setText("网络不给力～_~");
+                errorIcon.setImageResource(R.mipmap.empty_network);
             } else if (view.getTag().equals("2")) {
-                tv_desc.setText("没有数据");
+                errorDesc.setText("服务器异常");
+                errorIcon.setImageResource(R.mipmap.empty_network);
             }
 
         }

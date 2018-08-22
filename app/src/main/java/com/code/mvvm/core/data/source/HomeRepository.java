@@ -6,6 +6,7 @@ import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.home.HomeListVo;
 import com.code.mvvm.network.rx.RxSchedulers;
+import com.code.mvvm.network.rx.RxSubscriber;
 
 import rx.Observable;
 import rx.functions.Action1;
@@ -37,15 +38,22 @@ public class HomeRepository extends BaseRepository {
     public void loadRequestMerge(final OnResultCallBack listener) {
         addSubscribe(Observable.concatDelayError(mBannerObservable, mHomeListObservable)
                 .compose(RxSchedulers.<Object>io_main())
-                .subscribe(new Action1<Object>() {
+                .subscribe(new RxSubscriber<Object>() {
+
                     @Override
-                    public void call(Object o) {
+                    protected void onNoNetWork() {
+                        super.onNoNetWork();
+                        listener.onNoNetWork();
+                    }
+
+                    @Override
+                    public void onSuccess(Object o) {
                         listener.onNext(o);
                     }
-                }, new Action1<Throwable>() {
+
                     @Override
-                    public void call(Throwable throwable) {
-                        listener.onError(throwable.getMessage());
+                    public void onFailure(String msg) {
+                        listener.onError(msg);
                     }
                 }));
     }

@@ -2,9 +2,11 @@ package com.code.mvvm.core.view.correct;
 
 import android.arch.lifecycle.Observer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
@@ -36,8 +38,11 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
             @Override
             public void onChanged(@Nullable BannerListVo bannerListVo) {
                 if (bannerListVo != null) {
-                    setBannerData(bannerListVo);
+//                    setBannerData(bannerListVo);
+                    newItems.clear();
+                    newItems.add(bannerListVo);
                 }
+
             }
         });
         mViewModel.getWorkData().observe(this, new Observer<WorksListVo>() {
@@ -48,18 +53,28 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
                 }
                 lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
                 uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
-                setData(worksListVo.data.content);
+                newItems.addAll(worksListVo.data.content);
+                oldItems.clear();
+                oldItems.addAll(newItems);
+                adapter.setItems(oldItems);
+                mRecyclerView.refreshComplete();
             }
         });
         mViewModel.getWorkMoreData().observe(this, new Observer<WorksListVo>() {
             @Override
-            public void onChanged(@Nullable WorksListVo worksListVo) {
+            public void onChanged(@Nullable final WorksListVo worksListVo) {
                 if (worksListVo == null) {
                     return;
                 }
                 lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
                 uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
-                setData(worksListVo.data.content);
+//                setData(worksListVo.data.content);
+                oldItems.addAll(worksListVo.data.content);
+                if (worksListVo.data.content.size() < 20) {
+                    mRecyclerView.setNoMore(worksListVo.data.content.size());
+                } else {
+                    mRecyclerView.loadMoreComplete(worksListVo.data.content.size());
+                }
             }
         });
     }
@@ -83,7 +98,6 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
 
     @Override
     protected void onRefreshAction() {
-        super.onRefreshAction();
         getNetWorkData();
         mViewModel.getRequestMerge();
     }
