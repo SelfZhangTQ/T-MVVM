@@ -1,7 +1,17 @@
 ## T-MVVM 努力打造简单实用的开发框架
 
 ## 艺术帮是一款艺术图片应用，采用LiveData+ViewModel + RxJava + Retrofit + Glide架构的项目,仅用于学习交流，不断完善中<br/>
-# 项目github地址:<https://github.com/SelfZhangTQ/T-MVVM> <br/>
+ 项目github地址:<https://github.com/SelfZhangTQ/T-MVVM> <br/>
+#### 项目初衷 在此之前一直使用mvp,mvp缺点:<br/>
+   * Presenter中除了应用逻辑以外，还有大量的View->Model，Model-  >View的手动同步逻辑，造成Presenter比较笨重，维护起来会比较困难。<br/>
+   * 由于对视图的渲染放在了Presenter中，所以视图和Presenter的交互会过于频繁。<br/>
+   * 如果Presenter过多地渲染了视图，往往会使得它与特定的视图的联系过于紧密。一旦视图需要变更，那么Presenter也需要变更了<br/>
+   * 接口暴增,可以说代码量成倍增长,让人无法忍受,<br/>
+#### MVVM的出现提高可维护性。解决了MVP大量的手动View和Model同步的问题,但并非救世主。。。
+#### 此项目未使用:DataBinding原由<br/>
+   * 数据绑定增加Bug调试难度。<br/>
+   * 复杂的页面，model也会很大，虽然使用方便了也很容易保证了数据的一致性，当时长期持有，不利于释放内存。<br/>
+   * 数据双向绑定不利于View重用。<br/>
 
 ## 无图无真相<br/>
 ![image](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/1_video.gif)
