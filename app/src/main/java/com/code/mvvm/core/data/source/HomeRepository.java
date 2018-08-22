@@ -35,7 +35,7 @@ public class HomeRepository extends BaseRepository {
 
 
     public void loadRequestMerge(final OnResultCallBack listener) {
-        Observable.concatDelayError(mBannerObservable, mHomeListObservable)
+        addSubscribe(Observable.concatDelayError(mBannerObservable, mHomeListObservable)
                 .compose(RxSchedulers.<Object>io_main())
                 .subscribe(new Action1<Object>() {
                     @Override
@@ -47,7 +47,7 @@ public class HomeRepository extends BaseRepository {
                     public void call(Throwable throwable) {
                         listener.onError(throwable.getMessage());
                     }
-                });
+                }));
     }
 
 }

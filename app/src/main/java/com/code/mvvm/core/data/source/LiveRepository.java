@@ -12,7 +12,7 @@ import com.code.mvvm.network.rx.RxSubscriber;
  */
 public class LiveRepository extends BaseRepository {
     public void loadLiveList(String mCatalogId, String id, String rn, final OnResultCallBack<LiveListVo> onResultCallBack) {
-        apiService.getLiveList(mCatalogId, id, rn)
+        addSubscribe(apiService.getLiveList(mCatalogId, id, rn)
                 .compose(RxSchedulers.<LiveListVo>io_main())
                 .subscribe(new RxSubscriber<LiveListVo>() {
 
@@ -26,11 +26,11 @@ public class LiveRepository extends BaseRepository {
                     public void onFailure(String msg) {
 
                     }
-                });
+                }));
     }
 
     public void loadLiveRemList(String id, String rn, final OnResultCallBack<LiveListVo> onResultCallBack) {
-        apiService.getLiveRem(id, rn)
+        addSubscribe(apiService.getLiveRem(id, rn)
                 .compose(RxSchedulers.<LiveListVo>io_main())
                 .subscribe(new RxSubscriber<LiveListVo>() {
 
@@ -43,11 +43,11 @@ public class LiveRepository extends BaseRepository {
                     public void onFailure(String msg) {
 
                     }
-                });
+                }));
     }
 
     public void loadLiveTypeData(final OnResultCallBack<LiveTypeVo> listener) {
-   apiService.getLiveType()
+        addSubscribe(apiService.getLiveType()
            .compose(RxSchedulers.<LiveTypeVo>io_main())
            .subscribe(new RxSubscriber<LiveTypeVo>() {
                @Override
@@ -65,7 +65,7 @@ public class LiveRepository extends BaseRepository {
                public void onFailure(String msg) {
                    listener.onError(msg);
                }
-           });
+           }));
 
     }
 }

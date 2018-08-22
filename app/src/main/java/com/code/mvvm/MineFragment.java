@@ -2,16 +2,18 @@ package com.code.mvvm;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import com.code.mvvm.base.AbsLifecycleFragment;
+import com.code.mvvm.base.BaseFragment;
+import com.code.mvvm.stateview.LoadingState;
 
 /**
  * @author：tqzhang  on 18/5/2 15:46
  */
-public class MineFragment extends AbsLifecycleFragment {
-    WebView webView;
+public class MineFragment extends BaseFragment {
+    private WebView webView;
 
 
     public static MineFragment newInstance() {
@@ -25,7 +27,7 @@ public class MineFragment extends AbsLifecycleFragment {
 
     @Override
     public void initView(Bundle state) {
-        super.initView(state);
+        loadManager.showStateView(LoadingState.class);
         webView = getViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setSaveFormData(true);
@@ -34,7 +36,7 @@ public class MineFragment extends AbsLifecycleFragment {
         webView.getSettings().setAppCacheEnabled(true);
 
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        webView.getSettings().setUseWideViewPort(true);//关键点
+        webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 
@@ -42,13 +44,24 @@ public class MineFragment extends AbsLifecycleFragment {
         webView.getSettings().setAllowFileAccess(true);
         webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 
-
         //5.0以上支持混合https和http
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
-        webView.loadUrl("https://selfzhangtq.github.io/");
-        loadManager.showSuccess();
+        webView.setWebChromeClient(new MyWebChromeClient());
+        webView.loadUrl("https://github.com/SelfZhangTQ/T-MVVM");
+
+    }
+
+
+    private class MyWebChromeClient extends WebChromeClient {
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
+            super.onProgressChanged(view, newProgress);
+            if (newProgress == 100) {
+                loadManager.showSuccess();
+            }
+        }
     }
 
 

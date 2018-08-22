@@ -7,11 +7,11 @@ import com.code.mvvm.network.rx.RxSchedulers;
 import com.code.mvvm.network.rx.RxSubscriber;
 
 /**
- * @author：tqzhang  on 18/8/13 15:21
+ * @author：tqzhang on 18/8/13 15:21
  */
 public class DynamicRepository extends BaseRepository {
-    public void loadDynamicList(String rn, String token,String lastId, final OnResultCallBack<DynamicListVo> listener) {
-        apiService.getDynamicList(rn, token,lastId)
+    public void loadDynamicList(String rn, String token, String lastId, final OnResultCallBack<DynamicListVo> listener) {
+        addSubscribe(apiService.getDynamicList(rn, token, lastId)
                 .compose(RxSchedulers.<DynamicListVo>io_main())
                 .subscribe(new RxSubscriber<DynamicListVo>() {
                     @Override
@@ -29,7 +29,7 @@ public class DynamicRepository extends BaseRepository {
                     public void onFailure(String msg) {
                         listener.onError(msg);
                     }
-                });
+                }));
 
     }
 }

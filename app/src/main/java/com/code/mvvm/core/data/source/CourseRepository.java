@@ -13,7 +13,7 @@ import com.code.mvvm.network.rx.RxSubscriber;
  */
 public class CourseRepository extends BaseRepository {
     public void loadCourseList(String f_catalog_id,String lastId, String rn, final OnResultCallBack<CourseListVo> onResultCallBack) {
-        apiService.getCourseList(f_catalog_id,lastId,rn)
+        addSubscribe(apiService.getCourseList(f_catalog_id,lastId,rn)
                 .compose(RxSchedulers.<CourseListVo>io_main())
                 .subscribe(new RxSubscriber<CourseListVo>() {
                     @Override
@@ -31,11 +31,11 @@ public class CourseRepository extends BaseRepository {
                     public void onFailure(String msg) {
                         onResultCallBack.onError(msg);
                     }
-                });
+                }));
     }
 
     public void loadCourseRemList(String rn, final OnResultCallBack<CourseRemVo> onResultCallBack) {
-        apiService.getCourseRemList()
+        addSubscribe(apiService.getCourseRemList()
                 .compose(RxSchedulers.<CourseRemVo>io_main())
                 .subscribe(new RxSubscriber<CourseRemVo>() {
                     @Override
@@ -53,11 +53,11 @@ public class CourseRepository extends BaseRepository {
                     public void onFailure(String msg) {
                         onResultCallBack.onError(msg);
                     }
-                });
+                }));
     }
 
     public void loadCourseType(final OnResultCallBack<CourseTypeVo> listener) {
-        apiService.getCourseType()
+        addSubscribe(apiService.getCourseType()
                 .compose(RxSchedulers.<CourseTypeVo>io_main())
                 .subscribe(new RxSubscriber<CourseTypeVo>() {
                     @Override
@@ -75,6 +75,6 @@ public class CourseRepository extends BaseRepository {
                     public void onFailure(String msg) {
                         listener.onError(msg);
                     }
-                });
+                }));
     }
 }

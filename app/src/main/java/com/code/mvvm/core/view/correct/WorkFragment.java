@@ -18,7 +18,7 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
  * @author：tqzhang on 18/5/2 19:30
  */
 public class WorkFragment extends BaseListFragment<WorkViewModel> {
-    private String utime;
+    private String uTime;
 
     public static WorkFragment newInstance() {
         return new WorkFragment();
@@ -47,7 +47,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
                     return;
                 }
                 lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
-                utime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
+                uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
                 setData(worksListVo.data.content);
             }
         });
@@ -58,7 +58,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
                     return;
                 }
                 lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
-                utime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
+                uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
                 setData(worksListVo.data.content);
             }
         });
@@ -90,7 +90,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getWorkMoreData("", lastId, utime, "20");
+        mViewModel.getWorkMoreData("", lastId, uTime, "20");
     }
 
     @Override

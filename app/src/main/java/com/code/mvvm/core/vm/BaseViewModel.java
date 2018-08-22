@@ -22,4 +22,13 @@ public class BaseViewModel<T extends BaseRepository> extends AndroidViewModel {
         loadState = new MutableLiveData<>();
         mRepository = TUtil.getNewInstance(this, 0);
     }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        if (mRepository != null) {
+            mRepository.unSubscribe();
+        }
+
+    }
 }

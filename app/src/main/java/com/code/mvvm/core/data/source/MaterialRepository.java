@@ -15,7 +15,7 @@ public class MaterialRepository extends BaseRepository {
 
     public void loadMaterialList(String mCatalogId, String mLevel, String rn, final OnResultCallBack<MaterialVo> listener) {
 
-        apiService.getMaterialList(mCatalogId, mLevel, rn)
+        addSubscribe(apiService.getMaterialList(mCatalogId, mLevel, rn)
                 .compose(RxSchedulers.<MaterialVo>io_main())
                 .subscribe(new RxSubscriber<MaterialVo>() {
                     @Override
@@ -33,11 +33,11 @@ public class MaterialRepository extends BaseRepository {
                     public void onFailure(String msg) {
                         listener.onError(msg);
                     }
-                });
+                }));
     }
 
     public void loadMaterialMoreList(String mCatalogId, String mLevel, String lastId, String rn, final OnResultCallBack<MaterialVo> listener) {
-        apiService.getMaterialMoreList(mCatalogId, mLevel, lastId, rn)
+        addSubscribe(apiService.getMaterialMoreList(mCatalogId, mLevel, lastId, rn)
                 .compose(RxSchedulers.<MaterialVo>io_main())
                 .subscribe(new RxSubscriber<MaterialVo>() {
                     @Override
@@ -55,7 +55,7 @@ public class MaterialRepository extends BaseRepository {
                     public void onFailure(String msg) {
                         listener.onError(msg);
                     }
-                });
+                }));
     }
 
     public void loadMaterialRemList(String mCatalogId, String lastId, String rn, final OnResultCallBack<MaterialRecommendVo> listener) {

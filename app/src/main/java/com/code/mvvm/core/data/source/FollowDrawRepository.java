@@ -12,7 +12,7 @@ import com.code.mvvm.network.rx.RxSubscriber;
  */
 public class FollowDrawRepository extends BaseRepository {
     public void loadFollowDrawList(String mainTypeId, String lastId, String rn, final OnResultCallBack<FollowDrawRecommendVo> listener) {
-        apiService.getollowDrawList(mainTypeId, lastId, rn)
+        addSubscribe(apiService.getollowDrawList(mainTypeId, lastId, rn)
                 .compose(RxSchedulers.<FollowDrawRecommendVo>io_main())
                 .subscribe(new RxSubscriber<FollowDrawRecommendVo>() {
                     @Override
@@ -30,11 +30,11 @@ public class FollowDrawRepository extends BaseRepository {
                     public void onFailure(String msg) {
                         listener.onError(msg);
                     }
-                });
+                }));
     }
 
     public void loadFollowDrawRemList(String lastId, String rn, final OnResultCallBack<FollowDrawRecommendVo> listener) {
-        apiService.getFollowDrawRemList(lastId, rn)
+        addSubscribe(apiService.getFollowDrawRemList(lastId, rn)
                 .compose(RxSchedulers.<FollowDrawRecommendVo>io_main())
                 .subscribe(new RxSubscriber<FollowDrawRecommendVo>() {
                     @Override
@@ -52,11 +52,11 @@ public class FollowDrawRepository extends BaseRepository {
                     public void onFailure(String msg) {
                         listener.onError(msg);
                     }
-                });
+                }));
     }
 
     public void loadFollowDrawType(final OnResultCallBack<FollowDrawTypeVo> listener) {
-        apiService.getFollowDrawType()
+        addSubscribe(apiService.getFollowDrawType()
                 .compose(RxSchedulers.<FollowDrawTypeVo>io_main())
                 .subscribe(new RxSubscriber<FollowDrawTypeVo>() {
                     @Override
@@ -74,6 +74,6 @@ public class FollowDrawRepository extends BaseRepository {
                     public void onFailure(String msg) {
                         listener.onError(msg);
                     }
-                });
+                }));
     }
 }

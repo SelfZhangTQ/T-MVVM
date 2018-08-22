@@ -9,18 +9,17 @@ import com.code.mvvm.network.rx.RxSchedulers;
 import com.code.mvvm.network.rx.RxSubscriber;
 
 /**
- * @author：tqzhang  on 18/7/28 13:00
+ * @author：tqzhang on 18/7/28 13:00
  */
 public class ArticleRepository extends BaseRepository {
 
     public void loadArticleRemList(final String lectureLevel, final String lastId, final String rn, final OnResultCallBack<ArticleVo> listener) {
-        apiService.getArticleRemList(lectureLevel, lastId, rn)
+        addSubscribe(apiService.getArticleRemList(lectureLevel, lastId, rn)
                 .compose(RxSchedulers.<ArticleVo>io_main())
                 .subscribe(new RxSubscriber<ArticleVo>() {
                     @Override
                     protected void onNoNetWork() {
                         super.onNoNetWork();
-
                         listener.onNoNetWork();
                     }
 
@@ -33,7 +32,7 @@ public class ArticleRepository extends BaseRepository {
                     public void onFailure(String msg) {
                         listener.onError(msg);
                     }
-                });
+                }));
 
     }
 

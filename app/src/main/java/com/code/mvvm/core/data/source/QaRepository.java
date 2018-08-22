@@ -11,7 +11,7 @@ import com.code.mvvm.network.rx.RxSubscriber;
  */
 public class QaRepository extends BaseRepository {
     public void loadQAList(String lastId, String rn, final OnResultCallBack<QaListVo> listener) {
-        apiService.getQAList(lastId, rn)
+        addSubscribe(apiService.getQAList(lastId, rn)
                 .compose(RxSchedulers.<QaListVo>io_main())
                 .subscribe(new RxSubscriber<QaListVo>() {
                     @Override
@@ -29,6 +29,6 @@ public class QaRepository extends BaseRepository {
                     public void onFailure(String msg) {
                         listener.onError(msg);
                     }
-                });
+                }));
     }
 }

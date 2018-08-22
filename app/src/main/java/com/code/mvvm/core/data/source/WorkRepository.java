@@ -13,7 +13,7 @@ import rx.Observable;
 import rx.functions.Action1;
 
 /**
- * @author：tqzhang  on 18/7/31 15:32
+ * @author：tqzhang on 18/7/31 15:32
  */
 public class WorkRepository extends BaseRepository {
 
@@ -27,8 +27,8 @@ public class WorkRepository extends BaseRepository {
         mWorkData = apiService.getWorkData(corrected, rn);
     }
 
-    public void loadWorkMoreData(String corrected, String last_id, String utime, String rn, final OnResultCallBack<WorksListVo> listener) {
-        apiService.getWorkMoreData(last_id, utime, rn)
+    public void loadWorkMoreData(String corrected, String lastId, String uTime, String rn, final OnResultCallBack<WorksListVo> listener) {
+        addSubscribe(apiService.getWorkMoreData(lastId, uTime, rn)
                 .compose(RxSchedulers.<WorksListVo>io_main())
                 .subscribe(new RxSubscriber<WorksListVo>() {
                     @Override
@@ -46,19 +46,19 @@ public class WorkRepository extends BaseRepository {
                     public void onFailure(String msg) {
                         listener.onError(msg);
                     }
-                });
+                }));
     }
 
     public void loadBannerData(String posType,
-                               String f_catalog_id,
-                               String s_catalog_id,
-                               String t_catalog_id,
+                               String fCatalogId,
+                               String sCatalogId,
+                               String tCatalogId,
                                String province, final OnResultCallBack listener) {
-        mBannerData = apiService.getBannerData(posType, f_catalog_id, s_catalog_id, t_catalog_id, province);
+        mBannerData = apiService.getBannerData(posType, fCatalogId, sCatalogId, tCatalogId, province);
     }
 
     public void loadRequestMerge(final OnResultCallBack<Object> listener) {
-        Observable.concatDelayError(mBannerData, mWorkData)
+        addSubscribe(Observable.concatDelayError(mBannerData, mWorkData)
                 .compose(RxSchedulers.<Object>io_main())
                 .subscribe(new Action1<Object>() {
                     @Override
@@ -70,7 +70,7 @@ public class WorkRepository extends BaseRepository {
                     public void call(Throwable throwable) {
                         listener.onError(throwable.getMessage());
                     }
-                });
+                }));
     }
 
     public void loadWorkDetailData(String correctId, final OnResultCallBack<WorkDetailVo> listener) {
@@ -82,7 +82,7 @@ public class WorkRepository extends BaseRepository {
     }
 
     public void loadWorkMergeData(final OnResultCallBack<Object> listener) {
-        Observable.concatDelayError(mWorkDetail, mWorkRecomment)
+        addSubscribe(Observable.concatDelayError(mWorkDetail, mWorkRecomment)
                 .compose(RxSchedulers.<Object>io_main())
                 .subscribe(new Action1<Object>() {
                     @Override
@@ -94,6 +94,6 @@ public class WorkRepository extends BaseRepository {
                     public void call(Throwable throwable) {
                         listener.onError(throwable.getMessage());
                     }
-                });
+                }));
     }
 }
