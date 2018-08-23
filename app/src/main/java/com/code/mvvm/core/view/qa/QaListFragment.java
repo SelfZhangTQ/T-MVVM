@@ -65,13 +65,13 @@ public class QaListFragment extends BaseListFragment<QaViewModel> {
     }
 
     @Override
-    protected void onRefreshAction() {
-        super.onRefreshAction();
+    public void onRefresh() {
+        super.onRefresh();
         getRemoteData();
     }
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getQAList(lastId, "30");
+        mViewModel.getQAList(lastId, "20");
     }
 }

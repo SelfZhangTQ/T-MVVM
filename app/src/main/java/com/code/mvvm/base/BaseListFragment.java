@@ -3,7 +3,6 @@ package com.code.mvvm.base;
 import android.os.Bundle;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,13 +17,8 @@ import com.trecyclerview.listener.OnRefreshListener;
 import com.trecyclerview.listener.OnScrollStateListener;
 import com.trecyclerview.multitype.Items;
 import com.trecyclerview.multitype.MultiTypeAdapter;
-import com.trecyclerview.pojo.FootVo;
-import com.trecyclerview.pojo.HeaderVo;
 
 import java.util.Collection;
-
-import static com.trecyclerview.view.LoadingMoreFooter.STATE_LOADING;
-import static com.trecyclerview.view.LoadingMoreFooter.STATE_NOMORE;
 
 
 /**
@@ -96,11 +90,7 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
         if (isLoadMore) {
             onLoadMoreSuccess(collection);
         } else {
-            if (isRefresh) {
-                onRefreshSuccess(collection);
-            } else {
-                onDefaultSuccess(collection);
-            }
+            onRefreshSuccess(collection);
         }
     }
 
@@ -108,58 +98,37 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
     public void onRefresh() {
         lastId = null;
         isRefresh = true;
-        onRefreshAction();
     }
 
     @Override
     public void onLoadMore() {
+        isLoadMore = true;
         getRemoteData();
     }
 
-    protected void onRefreshAction() {
-
-    }
-
     protected void setBannerData(BannerListVo headAdList) {
-        if (isRefresh) {
-            newItems.add(headAdList);
-        } else {
-            oldItems.add(headAdList);
-        }
+        newItems.add(headAdList);
     }
-
 
     protected void onRefreshSuccess(Collection<?> collection) {
         newItems.addAll(collection);
-        refreshDataChanged();
-    }
-
-    protected void onDefaultSuccess(Collection<?> collection) {
-        oldItems.addAll(collection);
+        oldItems.clear();
+        oldItems.addAll(newItems);
         adapter.setItems(oldItems);
-        adapter.notifyDataSetChanged();
+        mRecyclerView.refreshComplete(collection.size()<20?true:false);
+        newItems.clear();
     }
 
     protected void onLoadMoreSuccess(Collection<?> collection) {
+        isLoading = true;
+        isLoadMore = false;
         oldItems.addAll(collection);
         if (collection.size() < 20) {
             mRecyclerView.setNoMore(collection.size());
         } else {
             mRecyclerView.loadMoreComplete(collection.size());
         }
-        isLoading = true;
-        isLoadMore = false;
-        newItems.clear();
     }
-
-    protected void refreshDataChanged() {
-        oldItems.clear();
-        oldItems.addAll(newItems);
-        mRecyclerView.refreshComplete();
-        isRefresh = false;
-        newItems.clear();
-    }
-
 
     protected void diffNotifyDataChanged() {
         DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffCallback(oldItems, newItems), true);
@@ -179,20 +148,6 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
         if (adapter != null) {
             adapter.notifyItemRangeChanged(positionStart, itemCount);
         }
-    }
-
-    protected void addHeaderData() {
-        if (isRefresh) {
-            newItems.add(new HeaderVo());
-        } else {
-            oldItems.add(new HeaderVo());
-        }
-
-    }
-
-    protected void addFootData(int state) {
-        oldItems.add(new FootVo(state));
-        notifyMoreDataChanged(oldItems.size() - 1, oldItems.size());
     }
 
     /**

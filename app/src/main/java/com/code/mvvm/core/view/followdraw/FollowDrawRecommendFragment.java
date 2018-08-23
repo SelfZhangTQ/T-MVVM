@@ -63,8 +63,8 @@ public class FollowDrawRecommendFragment extends BaseListFragment<FollowDrawView
     }
 
     @Override
-    protected void onRefreshAction() {
-        super.onRefreshAction();
+    public void onRefresh() {
+        super.onRefresh();
         getRemoteData();
     }
 

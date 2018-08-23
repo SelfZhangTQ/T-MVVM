@@ -16,7 +16,7 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.pojo.HeaderVo;
 
 /**
- * @author：tqzhang  on 18/5/2 19:40
+ * @author：tqzhang on 18/5/2 19:40
  */
 public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
     public static CourseRecommendFragment newInstance() {
@@ -74,8 +74,8 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
     }
 
     @Override
-    protected void onRefreshAction() {
-        super.onRefreshAction();
+    public void onRefresh() {
+        super.onRefresh();
         getRemoteData();
     }
 
@@ -90,12 +90,14 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
             setBannerData(new BannerListVo(courseRemVo.data.top_adv));
         }
         for (int i = 0; i < courseRemVo.data.course_recommend.size(); i++) {
-            oldItems.add(new TypeVo(courseRemVo.data.course_recommend.get(i).f_catalog + "/" + courseRemVo.data.course_recommend.get(i).s_catalog));
-            oldItems.addAll(courseRemVo.data.course_recommend.get(i).course_list);
+            newItems.add(new TypeVo(courseRemVo.data.course_recommend.get(i).f_catalog + "/" + courseRemVo.data.course_recommend.get(i).s_catalog));
+            newItems.addAll(courseRemVo.data.course_recommend.get(i).course_list);
         }
+        oldItems.clear();
+        oldItems.addAll(newItems);
         adapter.setItems(oldItems);
-        adapter.notifyDataSetChanged();
-        mRecyclerView.refreshComplete();
+        mRecyclerView.refreshComplete(true);
+        newItems.clear();
     }
 
 

@@ -68,8 +68,8 @@ private String typeId;
     }
 
     @Override
-    protected void onRefreshAction() {
-        super.onRefreshAction();
+    public void onRefresh() {
+        super.onRefresh();
         getRemoteData();
     }
 

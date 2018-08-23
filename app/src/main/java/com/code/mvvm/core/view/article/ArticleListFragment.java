@@ -62,11 +62,10 @@ public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
     }
 
     @Override
-    protected void onRefreshAction() {
-        super.onRefreshAction();
+    public void onRefresh() {
+        super.onRefresh();
         getRemoteData();
     }
-
 
     @Override
     protected void getRemoteData() {

@@ -65,9 +65,10 @@ public class LiveRecommendFragment extends BaseListFragment<LiveViewModel> {
         getRemoteData();
     }
 
+
     @Override
-    protected void onRefreshAction() {
-        super.onRefreshAction();
+    public void onRefresh() {
+        super.onRefresh();
         getRemoteData();
     }
 

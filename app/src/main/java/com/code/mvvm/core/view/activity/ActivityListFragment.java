@@ -62,8 +62,8 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
     }
 
     @Override
-    protected void onRefreshAction() {
-        super.onRefreshAction();
+    public void onRefresh() {
+        super.onRefresh();
         getRemoteData();
     }
 

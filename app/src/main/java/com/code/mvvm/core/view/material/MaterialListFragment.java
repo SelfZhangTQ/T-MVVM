@@ -76,9 +76,10 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
     }
 
 
+
     @Override
-    protected void onRefreshAction() {
-        super.onRefreshAction();
+    public void onRefresh() {
+        super.onRefresh();
         getNewData();
     }
 

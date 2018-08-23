@@ -65,10 +65,9 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
         getRemoteData();
     }
 
-
     @Override
-    protected void onRefreshAction() {
-        super.onRefreshAction();
+    public void onRefresh() {
+        super.onRefresh();
         getRemoteData();
     }
 

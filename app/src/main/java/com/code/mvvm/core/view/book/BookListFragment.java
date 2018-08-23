@@ -70,8 +70,8 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
     }
 
     @Override
-    protected void onRefreshAction() {
-        super.onRefreshAction();
+    public void onRefresh() {
+        super.onRefresh();
         getRemoteData();
     }
 

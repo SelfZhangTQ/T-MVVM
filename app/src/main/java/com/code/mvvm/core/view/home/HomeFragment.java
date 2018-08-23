@@ -44,7 +44,6 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
                     return;
                 }
                 addItems(homeListVo);
-                mRecyclerView.refreshComplete();
             }
 
         });
@@ -71,10 +70,9 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
         super.onStateRefresh();
         getRemoteData();
     }
-
     @Override
-    protected void onRefreshAction() {
-        super.onRefreshAction();
+    public void onRefresh() {
+        super.onRefresh();
         getRemoteData();
     }
 
@@ -108,47 +106,27 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
     }
 
     private void addItems(HomeListVo homeListVo) {
-        if (!isRefresh) {
-            oldItems.add(new CatagoryVo("title"));
-            oldItems.add(new TypeVo("直播推荐"));
-            if (homeListVo.data.live_recommend.size() > 0) {
-                oldItems.addAll(homeListVo.data.live_recommend);
-            }
-            oldItems.add(new TypeVo("视频课程"));
-            if (homeListVo.data.course.size() > 0) {
-                oldItems.addAll(homeListVo.data.course);
-            }
-            oldItems.add(new TypeVo("图书推荐"));
-            if (homeListVo.data.publishingbook.size() > 0) {
-                oldItems.add(new BookList(homeListVo.data.publishingbook));
-            }
-            oldItems.add(new TypeVo("专题"));
-            if (homeListVo.data.matreialsubject.size() > 0) {
-                oldItems.add(new MaterialListVo(homeListVo.data.matreialsubject));
-            }
-            adapter.setItems(oldItems);
-            notifyDataSetChanged();
-        } else {
-            newItems.add(new CatagoryVo("title"));
-            newItems.add(new TypeVo("直播推荐"));
-            if (homeListVo.data.live_recommend.size() > 0) {
-                newItems.addAll(homeListVo.data.live_recommend);
-            }
-            newItems.add(new TypeVo("视频课程"));
-            if (homeListVo.data.course.size() > 0) {
-                newItems.addAll(homeListVo.data.course);
-            }
-            newItems.add(new TypeVo("图书推荐"));
-            if (homeListVo.data.publishingbook.size() > 0) {
-                newItems.add(new BookList(homeListVo.data.publishingbook));
-            }
-            newItems.add(new TypeVo("专题"));
-            if (homeListVo.data.matreialsubject.size() > 0) {
-                newItems.add(new MaterialListVo(homeListVo.data.matreialsubject));
-            }
-            refreshDataChanged();
+        newItems.add(new CatagoryVo("title"));
+        newItems.add(new TypeVo("直播推荐"));
+        if (homeListVo.data.live_recommend.size() > 0) {
+            newItems.addAll(homeListVo.data.live_recommend);
         }
-
-
+        newItems.add(new TypeVo("视频课程"));
+        if (homeListVo.data.course.size() > 0) {
+            newItems.addAll(homeListVo.data.course);
+        }
+        newItems.add(new TypeVo("图书推荐"));
+        if (homeListVo.data.publishingbook.size() > 0) {
+            newItems.add(new BookList(homeListVo.data.publishingbook));
+        }
+        newItems.add(new TypeVo("专题"));
+        if (homeListVo.data.matreialsubject.size() > 0) {
+            newItems.add(new MaterialListVo(homeListVo.data.matreialsubject));
+        }
+        oldItems.clear();
+        oldItems.addAll(newItems);
+        adapter.setItems(oldItems);
+        mRecyclerView.refreshComplete(true);
+        newItems.clear();
     }
 }

@@ -38,9 +38,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
             @Override
             public void onChanged(@Nullable BannerListVo bannerListVo) {
                 if (bannerListVo != null) {
-//                    setBannerData(bannerListVo);
-                    newItems.clear();
-                    newItems.add(bannerListVo);
+                    setBannerData(bannerListVo);
                 }
 
             }
@@ -53,11 +51,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
                 }
                 lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
                 uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
-                newItems.addAll(worksListVo.data.content);
-                oldItems.clear();
-                oldItems.addAll(newItems);
-                adapter.setItems(oldItems);
-                mRecyclerView.refreshComplete();
+                setData(worksListVo.data.content);
             }
         });
         mViewModel.getWorkMoreData().observe(this, new Observer<WorksListVo>() {
@@ -68,13 +62,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
                 }
                 lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
                 uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
-//                setData(worksListVo.data.content);
-                oldItems.addAll(worksListVo.data.content);
-                if (worksListVo.data.content.size() < 20) {
-                    mRecyclerView.setNoMore(worksListVo.data.content.size());
-                } else {
-                    mRecyclerView.loadMoreComplete(worksListVo.data.content.size());
-                }
+                setData(worksListVo.data.content);
             }
         });
     }
@@ -95,9 +83,9 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
         getNetWorkData();
         mViewModel.getRequestMerge();
     }
-
     @Override
-    protected void onRefreshAction() {
+    public void onRefresh() {
+        super.onRefresh();
         getNetWorkData();
         mViewModel.getRequestMerge();
     }
@@ -113,7 +101,6 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
         getNetWorkData();
         mViewModel.getRequestMerge();
     }
-
     private void getNetWorkData() {
         mViewModel.getBannerData("1", "4", "109", "", null);
         mViewModel.getWorkData("80", "20");
