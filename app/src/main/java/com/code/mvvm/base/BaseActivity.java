@@ -12,7 +12,6 @@ import rx.subscriptions.CompositeSubscription;
 
 /**
  * @author：tqzhang on 18/3/12 19:22
- * 添加权限
  */
 
 public abstract class BaseActivity extends AppCompatActivity {

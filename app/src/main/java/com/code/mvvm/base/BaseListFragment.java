@@ -115,7 +115,7 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
         oldItems.clear();
         oldItems.addAll(newItems);
         adapter.setItems(oldItems);
-        mRecyclerView.refreshComplete(collection.size()<20?true:false);
+        mRecyclerView.refreshComplete(collection.size() < 20);
         newItems.clear();
     }
 
@@ -137,19 +137,6 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
         newItems.clear();
         result.dispatchUpdatesTo(adapter);
     }
-
-    protected void notifyDataSetChanged() {
-        if (adapter != null) {
-            adapter.notifyDataSetChanged();
-        }
-    }
-
-    protected void notifyMoreDataChanged(int positionStart, int itemCount) {
-        if (adapter != null) {
-            adapter.notifyItemRangeChanged(positionStart, itemCount);
-        }
-    }
-
     /**
      * @return
      */

@@ -79,12 +79,6 @@ public class WorkDetailsActivity extends LifecycleActivity<WorkViewModel> {
         adapter.register(TypeVo.class, new TypeItemView(weakReference.get()));
 
     }
-
-    @Override
-    protected WorkViewModel createViewModelProviders() {
-        return VMProviders(this, WorkViewModel.class);
-    }
-
     @Override
     protected void dataObserver() {
         mViewModel.getWorkDetailData().observe(this, new Observer<WorkDetailVo>() {

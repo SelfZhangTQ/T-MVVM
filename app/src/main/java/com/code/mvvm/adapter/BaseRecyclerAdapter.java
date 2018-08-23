@@ -17,11 +17,11 @@ import java.util.List;
  */
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
 
-    protected OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
 
-    protected OnItemLongClickListener onItemLongClickListener;
+    private OnItemLongClickListener onItemLongClickListener;
 
-    protected List<T> dataList;
+    private List<T> dataList;
 
     private LayoutInflater layoutInflater;
 

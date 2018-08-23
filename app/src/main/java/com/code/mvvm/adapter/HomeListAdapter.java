@@ -21,7 +21,7 @@ import java.util.List;
 public class HomeListAdapter extends BaseRecyclerAdapter<MatreialSubjectVo> {
 
 
-    private int commonwidth = (int) (((float) DisplayUtil.getScreenWidth(getContext())
+    private int commonWidth = (int) (((float) DisplayUtil.getScreenWidth(getContext())
             - DisplayUtil.dp2px(getContext(), 8)) / 2);
 
     /**
@@ -35,15 +35,14 @@ public class HomeListAdapter extends BaseRecyclerAdapter<MatreialSubjectVo> {
 
     @Override
     protected void convert(BaseViewHolder holder, MatreialSubjectVo matreialsubject, int position, List payloads) {
-        //设置推荐素材封面高度
         float dv = (float) matreialsubject.picurl.l.h / (float) matreialsubject.picurl.l.w;
-        int height = (int) (dv * commonwidth);
-        CustomHeightImageView video_img = holder.getView(R.id.iv_pic_image);
-        video_img.setLayoutParams(new RelativeLayout.LayoutParams(commonwidth, height));
-        Glide.with(getContext()).load(matreialsubject.picurl.l.url).skipMemoryCache(true)
+        int height = (int) (dv * commonWidth);
+        CustomHeightImageView videoImg = holder.getView(R.id.iv_pic_image);
+        videoImg.setLayoutParams(new RelativeLayout.LayoutParams(commonWidth, height));
+        Glide.with(getContext()).load(matreialsubject.picurl.l.url)
                 .placeholder(R.color.black_e8e8e8)
                 .transform(new GlideRoundTransform(getContext(), 4))
-                .override(commonwidth, (int) (dv * commonwidth)).into(video_img);
+                .override(commonWidth, (int) (dv * commonWidth)).into(videoImg);
         ((TextView) holder.getView(R.id.video_title)).setText(matreialsubject.title);
     }
 }

@@ -13,6 +13,7 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.vm.BaseViewModel;
 import com.code.mvvm.stateview.ErrorState;
 import com.code.mvvm.stateview.LoadingState;
+import com.code.mvvm.util.TUtil;
 import com.tqzhang.stateview.stateview.BaseStateControl;
 
 /**
@@ -28,15 +29,10 @@ public abstract class LifecycleActivity<T extends BaseViewModel> extends BaseAct
 
     @Override
     public void initViews(Bundle savedInstanceState) {
-        mViewModel = createViewModelProviders();
+        mViewModel = VMProviders(this, (Class<T>) TUtil.getInstance(this, 0));
         mViewModel.loadState.observe(this, observer);
         dataObserver();
     }
-
-    /**
-     * @return
-     */
-    protected abstract T createViewModelProviders();
 
 
     protected <T extends ViewModel> T VMProviders(AppCompatActivity fragment, @NonNull Class modelClass) {

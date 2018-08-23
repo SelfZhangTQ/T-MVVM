@@ -18,7 +18,6 @@ import rx.subscriptions.CompositeSubscription;
 
 /**
  * @author：tqzhang on 18/3/12 19:25
- * Fragment基类
  */
 public abstract class BaseFragment extends Fragment {
     private View rootView;
@@ -126,9 +125,9 @@ public abstract class BaseFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = (FragmentActivity) activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.activity = (FragmentActivity) context;
     }
 
     @Override
@@ -139,11 +138,6 @@ public abstract class BaseFragment extends Fragment {
 
     public FragmentActivity getSupportActivity() {
         return super.getActivity();
-    }
-
-
-    public android.app.ActionBar getSupportActionBar() {
-        return getSupportActivity().getActionBar();
     }
 
 
