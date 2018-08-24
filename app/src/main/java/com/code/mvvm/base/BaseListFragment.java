@@ -114,8 +114,7 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
         newItems.addAll(collection);
         oldItems.clear();
         oldItems.addAll(newItems);
-        adapter.setItems(oldItems);
-        mRecyclerView.refreshComplete(collection.size() < 20);
+        mRecyclerView.refreshComplete(oldItems,collection.size() < 20);
         newItems.clear();
     }
 

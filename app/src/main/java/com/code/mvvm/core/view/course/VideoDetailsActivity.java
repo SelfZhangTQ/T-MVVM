@@ -191,7 +191,7 @@ public class VideoDetailsActivity extends BaseActivity {
     private void setData(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
         Items items = new Items();
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendViewBinder());
+        adapter.bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendViewBinder());
         mRecyclerView.setAdapter(adapter);
         items.addAll(lessonDetailAboutVideoBean.getData().getCourse_list());
         adapter.setItems(items);

@@ -45,6 +45,6 @@ dependencies {
     api 'com.shuyu:gsyVideoPlayer-java:5.0.1'
     api 'com.shuyu:gsyVideoPlayer-ex_so:5.0.1'
     api 'com.github.SelfZhangTQ:loadState:1.1.0'
-    api 'com.github.SelfZhangTQ:TRecyclerView:2.2.4'
+    api 'com.github.SelfZhangTQ:TRecyclerView:2.2.5'
 
 }

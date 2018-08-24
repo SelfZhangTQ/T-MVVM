@@ -199,7 +199,7 @@ public class LiveDetailsActivity extends BaseActivity {
     private void setData(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
         Items items = new Items();
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendViewBinder());
+        adapter.bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendViewBinder());
         mRecyclerView.setAdapter(adapter);
         for (int i = 0; i < lessonDetailAboutVideoBean.getData().getCourse_list().size(); i++) {
             items.add(lessonDetailAboutVideoBean.getData().getCourse_list().get(i));

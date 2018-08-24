@@ -72,11 +72,11 @@ public class WorkDetailsActivity extends LifecycleActivity<WorkViewModel> {
 
     private void initAdapter() {
         adapter = new MultiTypeAdapter();
-        adapter.register(WorkDetailVo.class, new CorrectPicHolder(weakReference.get()));
-        adapter.register(CourseInfoVo.class, new HomeVideoItemView(weakReference.get()));
-        adapter.register(LiveRecommendVo.class, new HomeLiveItemView(weakReference.get()));
-        adapter.register(WorkInfoVo.class, new CorrectRemItemHolder(weakReference.get()));
-        adapter.register(TypeVo.class, new TypeItemView(weakReference.get()));
+        adapter.bind(WorkDetailVo.class, new CorrectPicHolder(weakReference.get()));
+        adapter.bind(CourseInfoVo.class, new HomeVideoItemView(weakReference.get()));
+        adapter.bind(LiveRecommendVo.class, new HomeLiveItemView(weakReference.get()));
+        adapter.bind(WorkInfoVo.class, new CorrectRemItemHolder(weakReference.get()));
+        adapter.bind(TypeVo.class, new TypeItemView(weakReference.get()));
 
     }
     @Override

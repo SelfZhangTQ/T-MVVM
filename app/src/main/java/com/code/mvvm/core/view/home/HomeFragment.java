@@ -125,8 +125,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
         }
         oldItems.clear();
         oldItems.addAll(newItems);
-        adapter.setItems(oldItems);
-        mRecyclerView.refreshComplete(true);
+        mRecyclerView.refreshComplete(oldItems,true);
         newItems.clear();
     }
 }

@@ -76,50 +76,50 @@ public class AdapterPool {
     }
 
     public MultiTypeAdapter getNoHeadAdapter(MultiTypeAdapter adapter, Context context) {
-        adapter.register(FootVo.class, new FootViewHolder(context,ProgressStyle.Pacman));
+        adapter.bind(FootVo.class, new FootViewHolder(context,ProgressStyle.Pacman));
         return adapter;
     }
 
     public MultiTypeAdapter getNoFootAdapter(MultiTypeAdapter adapter, Context context) {
-        adapter.register(HeaderVo.class, new HeaderViewHolder(context,ProgressStyle.Pacman));
+        adapter.bind(HeaderVo.class, new HeaderViewHolder(context,ProgressStyle.Pacman));
         return adapter;
     }
 
     public MultiTypeAdapter getAdapter(MultiTypeAdapter adapter, Context context) {
-        adapter.register(HeaderVo.class, new HeaderViewHolder(context,ProgressStyle.Pacman));
-        adapter.register(FootVo.class, new FootViewHolder(context, ProgressStyle.Pacman));
+        adapter.bind(HeaderVo.class, new HeaderViewHolder(context,ProgressStyle.Pacman));
+        adapter.bind(FootVo.class, new FootViewHolder(context, ProgressStyle.Pacman));
         return adapter;
     }
 
     public MultiTypeAdapter getWorkAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(BannerListVo.class, new BannerItemView(context));
-        adapter.register(WorksListVo.Works.class, new CorrectItemHolder(context));
+        adapter.bind(BannerListVo.class, new BannerItemView(context));
+        adapter.bind(WorksListVo.Works.class, new CorrectItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getSwipeCorrectAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(BannerListVo.class, new BannerItemView(context));
-        adapter.register(WorksListVo.Works.class, new CorrectItemHolder(context));
+        adapter.bind(BannerListVo.class, new BannerItemView(context));
+        adapter.bind(WorksListVo.Works.class, new CorrectItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getBookAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(BookVo.class, new BookListHolder(context));
+        adapter.bind(BookVo.class, new BookListHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getActivityAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(ActivityListVo.DataBean.class, new ActivityItemHolder(context));
+        adapter.bind(ActivityListVo.DataBean.class, new ActivityItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getArticleAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(ArticleInfoVo.class).to(new ArticleRem1ItemHolder(context), new ArticleRem2ItemHolder(context), new ArticleRem3ItemHolder(context))
+        adapter.bind(ArticleInfoVo.class).to(new ArticleRem1ItemHolder(context), new ArticleRem2ItemHolder(context), new ArticleRem3ItemHolder(context))
                 .withClassLinker(new ClassLinker<ArticleInfoVo>() {
                     @NonNull
                     @Override
@@ -139,72 +139,72 @@ public class AdapterPool {
 
     public MultiTypeAdapter getCourseRemAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(TypeVo.class, new TypeItemView(context));
-        adapter.register(BannerListVo.class, new BannerItemView(context));
-        adapter.register(CourseInfoVo.class, new HomeVideoItemView(context));
-        adapter.register(LiveRecommendVo.class, new HomeLiveItemView(context));
+        adapter.bind(TypeVo.class, new TypeItemView(context));
+        adapter.bind(BannerListVo.class, new BannerItemView(context));
+        adapter.bind(CourseInfoVo.class, new HomeVideoItemView(context));
+        adapter.bind(LiveRecommendVo.class, new HomeLiveItemView(context));
         return getNoFootAdapter(adapter, context);
 
     }
 
     public MultiTypeAdapter getCourseListAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(CourseInfoVo.class, new CourseItemHolder(context));
+        adapter.bind(CourseInfoVo.class, new CourseItemHolder(context));
         return getAdapter(adapter, context);
 
     }
 
     public MultiTypeAdapter getFollowAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(FollowDrawInfoVo.class, new FollowDrawListHolder(context));
+        adapter.bind(FollowDrawInfoVo.class, new FollowDrawListHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getQaAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(QaListVo.DataBean.class, new QaListItemHolder(context));
+        adapter.bind(QaListVo.DataBean.class, new QaListItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getMaterialListAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(MaterialInfoVo.class, new MaterialListHolder(context));
+        adapter.bind(MaterialInfoVo.class, new MaterialListHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getMaterialRemAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(MatreialSubjectVo.class, new MaterialItemHolder(context));
+        adapter.bind(MatreialSubjectVo.class, new MaterialItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getLiveAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(LiveRecommendVo.class, new LiveListItemHolder(context));
+        adapter.bind(LiveRecommendVo.class, new LiveListItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getLiveRemAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(LiveRecommendVo.class, new LiveItemHolder(context));
+        adapter.bind(LiveRecommendVo.class, new LiveItemHolder(context));
         return getAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getHomeAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(BannerListVo.class, new BannerItemView(context));
-        adapter.register(TypeVo.class, new TypeItemView(context));
-        adapter.register(CatagoryVo.class, new CategoryItemView(context));
-        adapter.register(BookList.class, new BookItemHolder(context));
-        adapter.register(CourseInfoVo.class, new HomeVideoItemView(context));
-        adapter.register(LiveRecommendVo.class, new HomeLiveItemView(context));
-        adapter.register(MaterialListVo.class, new HomeMaterialItemView(context));
+        adapter.bind(BannerListVo.class, new BannerItemView(context));
+        adapter.bind(TypeVo.class, new TypeItemView(context));
+        adapter.bind(CatagoryVo.class, new CategoryItemView(context));
+        adapter.bind(BookList.class, new BookItemHolder(context));
+        adapter.bind(CourseInfoVo.class, new HomeVideoItemView(context));
+        adapter.bind(LiveRecommendVo.class, new HomeLiveItemView(context));
+        adapter.bind(MaterialListVo.class, new HomeMaterialItemView(context));
         return getNoFootAdapter(adapter, context);
     }
 
     public MultiTypeAdapter getDynamicAdapter(Context context) {
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.register(DynamicInfoVo.class)
+        adapter.bind(DynamicInfoVo.class)
                 .to(new DynamicCorrectHolder(context),
                         new DynamicWorkHolder(context),
                         new DynamicSubjectHolder(context),

@@ -95,8 +95,7 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
         }
         oldItems.clear();
         oldItems.addAll(newItems);
-        adapter.setItems(oldItems);
-        mRecyclerView.refreshComplete(true);
+        mRecyclerView.refreshComplete(oldItems,true);
         newItems.clear();
     }
 
