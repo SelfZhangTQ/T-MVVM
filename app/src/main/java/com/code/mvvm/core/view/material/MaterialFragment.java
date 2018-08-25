@@ -17,7 +17,7 @@ import java.util.List;
  * @author：tqzhang on 18/7/2 14:24
  */
 public class MaterialFragment extends BaseViewPagerFragment<MaterialViewModel> {
-    private List<MaterialTypeVo.TypelistEntity> titleName;
+    private List<MaterialTypeVo.TypeListEntity> titleName;
 
     public static MaterialFragment newInstance() {
         return new MaterialFragment();
@@ -68,7 +68,7 @@ public class MaterialFragment extends BaseViewPagerFragment<MaterialViewModel> {
     public void setData(MaterialTypeVo materialTypeVo) {
         mArrTitles = new String[materialTypeVo.data.typelist.size() + 1];
         titleName.clear();
-        MaterialTypeVo.TypelistEntity dataBean = new MaterialTypeVo.TypelistEntity();
+        MaterialTypeVo.TypeListEntity dataBean = new MaterialTypeVo.TypeListEntity();
         dataBean.name = getResources().getString(R.string.special_tab_name);
         mArrTitles[0] = getResources().getString(R.string.special_tab_name);
         titleName.add(dataBean);

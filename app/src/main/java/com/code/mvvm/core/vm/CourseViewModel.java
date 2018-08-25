@@ -7,9 +7,13 @@ import android.support.annotation.NonNull;
 
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.config.Constants;
+import com.code.mvvm.core.data.pojo.banner.BannerListVo;
+import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
+import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
+import com.code.mvvm.core.data.pojo.home.HomeListVo;
 import com.code.mvvm.core.data.source.CourseRepository;
 
 /**
@@ -23,6 +27,8 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
     private MutableLiveData<CourseTypeVo> mCourseType;
     private MutableLiveData<CourseListVo> mCourseListData;
     private MutableLiveData<CourseRemVo> mCourseRemData;
+    private MutableLiveData<CourseDetailRemVideoVo> mCourseDetailRemData;
+    private MutableLiveData<CourseDetailVo> mCourseDetailData;
 
     public LiveData<CourseTypeVo> getCourseType() {
         if (mCourseType == null) {
@@ -46,6 +52,20 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
         return mCourseRemData;
     }
 
+    public LiveData<CourseDetailVo> getCourseDetailData() {
+        if (mCourseDetailData == null) {
+            mCourseDetailData = new MutableLiveData<>();
+        }
+        return mCourseDetailData;
+    }
+
+    public LiveData<CourseDetailRemVideoVo> getCourseDetailRemData() {
+        if (mCourseDetailRemData == null) {
+            mCourseDetailRemData = new MutableLiveData<>();
+        }
+        return mCourseDetailRemData;
+    }
+
 
     public void getCourseTypeData() {
         mRepository.loadCourseType(new OnResultCallBack<CourseTypeVo>() {
@@ -67,8 +87,8 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
         });
     }
 
-    public void getCourseList(String fCatalogId,String lastId, String rn) {
-        mRepository.loadCourseList(fCatalogId,lastId, rn, new OnResultCallBack<CourseListVo>() {
+    public void getCourseList(String fCatalogId, String lastId, String rn) {
+        mRepository.loadCourseList(fCatalogId, lastId, rn, new OnResultCallBack<CourseListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -105,5 +125,22 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
                 loadState.postValue(Constants.ERROR_STATE);
             }
         });
+    }
+
+    private void getCourseDetailData(String id) {
+        mRepository.loadCourseDetailData(id);
+    }
+
+    private void getCourseDetailRemData(String id,
+                                        String fCatalogId,
+                                        String sCatalogId,
+                                        String teacherId,
+                                        String rn) {
+        mRepository.loadCourseDetailRemData(id, fCatalogId, sCatalogId, teacherId, rn);
+
+    }
+
+    public void getRequestMerge() {
+
     }
 }

@@ -134,7 +134,7 @@ public abstract class SwipeListFragment<T extends BaseViewModel> extends AbsLife
         oldItems.remove(oldItems.size() - 1);
         oldItems.addAll(collection);
         notifyMoreDataChanged(oldItems.size() - collection.size(), oldItems.size());
-        mRecyclerView.loadMoreComplete();
+        mRecyclerView.loadMoreComplete(collection.size());
         isLoading = true;
         isLoadMore = false;
         newItems.clear();

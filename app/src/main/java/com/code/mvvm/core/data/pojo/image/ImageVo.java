@@ -5,37 +5,23 @@ import java.util.ArrayList;
 
 public class ImageVo implements Serializable
 {
-    /** 缩略图 */
     public ImageInfoVo t;
 
-    /** 小图 */
     public ImageInfoVo s;
 
     public String tid;
 
-    /**
-     * 列表图
-     */
     public ImageInfoVo l;
 
-    /** 原图 */
     public ImageInfoVo n;
 
     public String content;
 
     public String resource_id;
 
-    public ArrayList<TagInfos> taginfos;
+    public ArrayList<TagInfo> taginfos;
 
-    /**
-     * 图片标签
-     *
-     * @Description
-     * @author wudi
-     * @date 2015年11月3日 下午6:55:08
-     * @version V1.3.1
-     */
-    public static class TagInfos implements Serializable
+    public static class TagInfo implements Serializable
     {
         public String tagid;
 
@@ -63,15 +49,16 @@ public class ImageVo implements Serializable
 
         public String ctime;
 
+        @Override
         public boolean equals(Object o)
         {
-            if (!(o instanceof TagInfos))
+            if (!(o instanceof TagInfo))
             {
                 return false;
             }
             else
             {
-                TagInfos infos = (TagInfos) o;
+                TagInfo infos = (TagInfo) o;
                 return infos.rid.equals(rid)
                         && infos.tagcontent.equals(tagcontent)
                         && infos.uid.equals(uid) && infos.totalh == (totalh)

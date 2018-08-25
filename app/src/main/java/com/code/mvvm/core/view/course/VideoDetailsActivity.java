@@ -8,9 +8,10 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
-import com.code.mvvm.base.BaseActivity;
+import com.code.mvvm.base.AbsLifecycleActivity;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
+import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.network.ApiService;
 import com.code.mvvm.network.HttpHelper;
 import com.code.mvvm.util.DisplayUtil;
@@ -25,12 +26,10 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-import static com.trecyclerview.multitype.MultiTypeAsserts.assertAllRegistered;
-
 /**
- * @author：tqzhang  on 18/7/7 15:09
+ * @author：tqzhang on 18/7/7 15:09
  */
-public class VideoDetailsActivity extends BaseActivity {
+public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> {
     StandardGSYVideoPlayer mVideoPlayer;
     OrientationUtils mOrientationUtils;
 
@@ -54,16 +53,15 @@ public class VideoDetailsActivity extends BaseActivity {
 
     @Override
     public void initViews(Bundle savedInstanceState) {
+       super.initViews(savedInstanceState);
         lessonId = getIntent().getStringExtra("course_id");
-        mRecyclerView = (TRecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         mVideoPlayer = findViewById(R.id.video_player);
         int widthVideo = DisplayUtil.getScreenWidth(this);
         int heightVideo = widthVideo * 9 / 16;
         mVideoPlayer.getLayoutParams().width = widthVideo;
         mVideoPlayer.getLayoutParams().height = heightVideo;
-
         //外部辅助的旋转，帮助全屏
         mOrientationUtils = new OrientationUtils(this, mVideoPlayer);
         //初始化不打开外部的旋转
@@ -81,8 +79,6 @@ public class VideoDetailsActivity extends BaseActivity {
             public void onClick(View v) {
                 //直接横屏
                 mOrientationUtils.resolveByClick();
-//                mVideoPlayer.getTitleTextView().setText(((VideoMode) sections.get(sectionPosition).get(position)).getVideoTitle());
-                //第一个true是否需要隐藏actionbar，第二个true是否需要隐藏statusbar
                 mVideoPlayer.startWindowFullscreen(VideoDetailsActivity.this, true, true);
             }
         });
@@ -107,12 +103,17 @@ public class VideoDetailsActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void dataObserver() {
+
+    }
+
     private void getNetWorkData() {
         if (TextUtils.isEmpty(lessonId)) {
             //页面加载错误
             return;
         }
-        HttpHelper.getInstance().create(ApiService.class).getLessonData(lessonId, "")
+        HttpHelper.getInstance().create(ApiService.class).getVideoDetailsData(lessonId, "")
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -133,14 +134,10 @@ public class VideoDetailsActivity extends BaseActivity {
 
                     @Override
                     public void onNext(final CourseDetailVo lessonDetailObject) {
-//                            setUIData();
-//                            setPlayerData();
                         lessonData = lessonDetailObject.data;
                         fCatalogId = lessonData.f_catalog_id;
                         sCatalogId = lessonData.s_catalog_id;
                         teacherId = lessonData.teacheruid;
-
-                        //增加封面
                         ImageView imageView = new ImageView(VideoDetailsActivity.this);
                         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                         Glide.with(VideoDetailsActivity.this).load(lessonDetailObject.data.thumb_url).into(imageView);
@@ -155,7 +152,7 @@ public class VideoDetailsActivity extends BaseActivity {
     }
 
     private void getAboutData() {
-        HttpHelper.getInstance().create(ApiService.class).getLessonAboutData(lessonId, fCatalogId, sCatalogId, teacherId, "20")
+        HttpHelper.getInstance().create(ApiService.class).getVideoAboutData(lessonId, fCatalogId, sCatalogId, teacherId, "20")
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -194,9 +191,7 @@ public class VideoDetailsActivity extends BaseActivity {
         adapter.bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendViewBinder());
         mRecyclerView.setAdapter(adapter);
         items.addAll(lessonDetailAboutVideoBean.getData().getCourse_list());
-        adapter.setItems(items);
-        adapter.notifyDataSetChanged();
-        assertAllRegistered(adapter, items);
+        mRecyclerView.refreshComplete(items, false);
     }
 
 }

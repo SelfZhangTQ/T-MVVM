@@ -14,10 +14,10 @@ public class MaterialTypeVo extends BaseVo implements Serializable
     {
         public String totalnum;
 
-        public List<TypelistEntity> typelist;
+        public List<TypeListEntity> typelist;
     }
 
-    public static class TypelistEntity implements Serializable
+    public static class TypeListEntity implements Serializable
     {
         public String subid;
 

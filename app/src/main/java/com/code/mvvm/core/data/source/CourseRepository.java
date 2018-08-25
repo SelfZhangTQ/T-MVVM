@@ -2,11 +2,17 @@ package com.code.mvvm.core.data.source;
 
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.core.data.BaseRepository;
+import com.code.mvvm.core.data.pojo.banner.BannerListVo;
+import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
+import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
+import com.code.mvvm.core.data.pojo.home.HomeListVo;
 import com.code.mvvm.network.rx.RxSchedulers;
 import com.code.mvvm.network.rx.RxSubscriber;
+
+import rx.Observable;
 
 /**
  * @author：tqzhang  on 18/7/31 15:14
@@ -76,5 +82,16 @@ public class CourseRepository extends BaseRepository {
                         listener.onError(msg);
                     }
                 }));
+    }
+
+    private Observable<CourseDetailVo> mCourseDetailDataObservable;
+    private Observable<CourseDetailRemVideoVo> mCourseDetailRemVideoObservable;
+    public void loadCourseDetailData(String id) {
+        mCourseDetailDataObservable=apiService.getVideoDetailsData(id,"");
+
+    }
+
+    public void loadCourseDetailRemData(String id, String fCatalogId, String sCatalogId, String teacherId, String rn) {
+        mCourseDetailRemVideoObservable=apiService.getVideoAboutData(id,fCatalogId,sCatalogId,teacherId,rn);
     }
 }

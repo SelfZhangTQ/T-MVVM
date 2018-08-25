@@ -19,11 +19,11 @@ import com.tqzhang.stateview.stateview.BaseStateControl;
 /**
  * @author：tqzhang on 18/8/10 11:40
  */
-public abstract class LifecycleActivity<T extends BaseViewModel> extends BaseActivity {
+public abstract class AbsLifecycleActivity<T extends BaseViewModel> extends BaseActivity {
 
     protected T mViewModel;
 
-    public LifecycleActivity() {
+    public AbsLifecycleActivity() {
 
     }
 

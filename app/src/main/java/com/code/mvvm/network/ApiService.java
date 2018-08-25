@@ -145,7 +145,7 @@ public interface ApiService {
 
     @POST(URL.VIDEO_DETAILS_DATA)
     @FormUrlEncoded
-    Observable<CourseDetailVo> getLessonData(@Field("courseid") String courseId, @Field("notbrowse") String notBrowse);
+    Observable<CourseDetailVo> getVideoDetailsData(@Field("courseid") String courseId, @Field("notbrowse") String notBrowse);
 
     @POST(URL.LIVE_DETAILS_DATA)
     @FormUrlEncoded
@@ -153,7 +153,7 @@ public interface ApiService {
 
     @POST(URL.VIDEO_DETAILS_ABOUT_DATA)
     @FormUrlEncoded
-    Observable<CourseDetailRemVideoVo> getLessonAboutData(@Field("courseid") String courseId
+    Observable<CourseDetailRemVideoVo> getVideoAboutData(@Field("courseid") String courseId
             , @Field("f_catalog_id") String f_catalog_id
             , @Field("s_catalog_id") String s_catalog_id
             , @Field("teacherid") String teacherId

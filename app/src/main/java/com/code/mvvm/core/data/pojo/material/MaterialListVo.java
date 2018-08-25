@@ -4,7 +4,7 @@ package com.code.mvvm.core.data.pojo.material;
 import java.util.List;
 
 /**
- * @author：zhangtianqiu on 18/6/20 13:49
+ * @author：tqzhang  on 18/6/20 13:49
  */
 public class MaterialListVo {
     public List<MatreialSubjectVo> matreialsubject;

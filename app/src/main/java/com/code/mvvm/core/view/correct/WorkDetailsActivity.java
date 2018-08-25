@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.R;
-import com.code.mvvm.base.LifecycleActivity;
+import com.code.mvvm.base.AbsLifecycleActivity;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
 import com.code.mvvm.core.data.pojo.correct.WorkDetailVo;
 import com.code.mvvm.core.data.pojo.correct.WorkInfoVo;
@@ -31,7 +31,7 @@ import java.lang.ref.WeakReference;
 /**
  * @author：tqzhang on 18/7/16 18:06
  */
-public class WorkDetailsActivity extends LifecycleActivity<WorkViewModel> {
+public class WorkDetailsActivity extends AbsLifecycleActivity<WorkViewModel> {
 
     protected TRecyclerView mRecyclerView;
     private MultiTypeAdapter adapter;

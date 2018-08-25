@@ -1,7 +1,7 @@
 package com.code.mvvm.core.data.pojo.banner;
 
 /**
- * @author：zhangtianqiu on 18/5/8 15:40
+ * @author：tqzhang  on 18/5/8 15:40
  */
 public class BannerVo {
     public String imgUrl;
