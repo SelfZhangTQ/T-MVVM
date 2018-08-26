@@ -12,7 +12,7 @@ import com.code.mvvm.base.BaseActivity;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.core.data.pojo.live.LiveDetailsVo;
-import com.code.mvvm.core.view.course.CourseRecommendViewBinder;
+import com.code.mvvm.core.view.course.holder.CourseRecommendHolder;
 import com.code.mvvm.network.ApiService;
 import com.code.mvvm.network.HttpHelper;
 import com.code.mvvm.network.rx.RxSchedulers;
@@ -64,13 +64,9 @@ public class LiveDetailsActivity extends BaseActivity {
         mVideoPlayer.getLayoutParams().width = widthVideo;
         mVideoPlayer.getLayoutParams().height = heightVideo;
 
-
-        //外部辅助的旋转，帮助全屏
         mOrientationUtils = new OrientationUtils(this, mVideoPlayer);
-        //初始化不打开外部的旋转
         mOrientationUtils.setEnable(false);
         mVideoPlayer.setIsTouchWiget(true);
-        //关闭自动旋转
         mVideoPlayer.setRotateViewAuto(false);
         mVideoPlayer.setLockLand(false);
         mVideoPlayer.setShowFullAnimation(false);
@@ -133,11 +129,7 @@ public class LiveDetailsActivity extends BaseActivity {
 
                     @Override
                     public void onNext(final LiveDetailsVo liveData) {
-//                            setUIData();
-//                            setPlayerData();
-//                        lessonData = lessonDetailObject.getData();
                         liveType = liveData.data.live_status == 2 ? true : false;
-                        //增加封面
                         ImageView imageView = new ImageView(LiveDetailsActivity.this);
                         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                         Glide.with(LiveDetailsActivity.this).load(liveType ? liveData.data.live_thumb_url : liveData.data.recording_thumb_url).into(imageView);
@@ -156,7 +148,7 @@ public class LiveDetailsActivity extends BaseActivity {
                         mVideoPlayer.setThumbImageView(imageView);
                         mVideoPlayer.setUp(liveUrl, false, liveData.data.live_title);
                         mVideoPlayer.startPlayLogic();
-                        getAboutData();
+                        getData();
                         loadManager.showSuccess();
                     }
                 });
@@ -164,42 +156,14 @@ public class LiveDetailsActivity extends BaseActivity {
 
     }
 
-    private void getAboutData() {
-//        HttpHelper.getInstance().create(ApiService.class).getLessonAboutData(lessonId, fCatalogId, sCatalogId, teacherId, "20")
-//                .subscribeOn(Schedulers.io())
-//                .unsubscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Subscriber<CourseDetailRemVideoVo>() {
-//
-//                    @Override
-//                    public void onStart() {
-//                        super.onStart();
-//                    }
-//
-//                    @Override
-//                    public void onCompleted() {
-//
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
-//                        if (lessonDetailAboutVideoBean != null && lessonDetailAboutVideoBean.errno == 0) {
-//                            setData(lessonDetailAboutVideoBean);
-//                        }
-//                    }
-//                });
+    private void getData() {
     }
 
 
     private void setData(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
         Items items = new Items();
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendViewBinder());
+        adapter.bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendHolder(LiveDetailsActivity.this));
         mRecyclerView.setAdapter(adapter);
         for (int i = 0; i < lessonDetailAboutVideoBean.getData().getCourse_list().size(); i++) {
             items.add(lessonDetailAboutVideoBean.getData().getCourse_list().get(i));

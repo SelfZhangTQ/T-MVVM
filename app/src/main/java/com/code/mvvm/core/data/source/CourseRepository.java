@@ -13,6 +13,9 @@ import com.code.mvvm.network.rx.RxSchedulers;
 import com.code.mvvm.network.rx.RxSubscriber;
 
 import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * @author：tqzhang  on 18/7/31 15:14
@@ -94,4 +97,10 @@ public class CourseRepository extends BaseRepository {
     public void loadCourseDetailRemData(String id, String fCatalogId, String sCatalogId, String teacherId, String rn) {
         mCourseDetailRemVideoObservable=apiService.getVideoAboutData(id,fCatalogId,sCatalogId,teacherId,rn);
     }
+
+
+    public void loadCourseDetailMerge() {
+
+    }
+
 }

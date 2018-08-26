@@ -11,6 +11,7 @@ import com.code.mvvm.R;
 import com.code.mvvm.base.AbsLifecycleActivity;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
+import com.code.mvvm.core.view.course.holder.CourseRecommendHolder;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.network.ApiService;
 import com.code.mvvm.network.HttpHelper;
@@ -62,12 +63,9 @@ public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> 
         int heightVideo = widthVideo * 9 / 16;
         mVideoPlayer.getLayoutParams().width = widthVideo;
         mVideoPlayer.getLayoutParams().height = heightVideo;
-        //外部辅助的旋转，帮助全屏
         mOrientationUtils = new OrientationUtils(this, mVideoPlayer);
-        //初始化不打开外部的旋转
         mOrientationUtils.setEnable(false);
         mVideoPlayer.setIsTouchWiget(true);
-        //关闭自动旋转
         mVideoPlayer.setRotateViewAuto(false);
         mVideoPlayer.setLockLand(false);
         mVideoPlayer.setShowFullAnimation(false);
@@ -142,7 +140,7 @@ public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> 
                         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                         Glide.with(VideoDetailsActivity.this).load(lessonDetailObject.data.thumb_url).into(imageView);
                         mVideoPlayer.setThumbImageView(imageView);
-                        mVideoPlayer.setUp(lessonDetailObject.data.sectioin.get(0).getVideos().get(0).getVideo_info().getM3u8url(), false, lessonDetailObject.data.sectioin.get(0).getVideos().get(0).getTitle());
+                        mVideoPlayer.setUp(lessonDetailObject.data.sectioin.get(0).videos.get(0).video_info.m3u8url, false, lessonDetailObject.data.sectioin.get(0).videos.get(0).title);
                         mVideoPlayer.startPlayLogic();
                         getAboutData();
                     }
@@ -188,7 +186,7 @@ public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> 
     private void setData(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
         Items items = new Items();
         MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendViewBinder());
+        adapter.bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendHolder(VideoDetailsActivity.this));
         mRecyclerView.setAdapter(adapter);
         items.addAll(lessonDetailAboutVideoBean.getData().getCourse_list());
         mRecyclerView.refreshComplete(items, false);

@@ -141,6 +141,6 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
     }
 
     public void getRequestMerge() {
-
+        mRepository.loadCourseDetailMerge();
     }
 }

@@ -116,61 +116,6 @@ public class CourseDetailVo extends BaseVo {
             public String status;
             public ArrayList<VideosEntity> videos;
 
-            public String getSectionid() {
-                return sectionid;
-            }
-
-            public void setSectionid(String sectionid) {
-                this.sectionid = sectionid;
-            }
-
-            public String getSection_num() {
-                return section_num;
-            }
-
-            public void setSection_num(String section_num) {
-                this.section_num = section_num;
-            }
-
-            public String getCourseid() {
-                return courseid;
-            }
-
-            public void setCourseid(String courseid) {
-                this.courseid = courseid;
-            }
-
-            public String getTitle() {
-                return title;
-            }
-
-            public void setTitle(String title) {
-                this.title = title;
-            }
-
-            public String getCtime() {
-                return ctime;
-            }
-
-            public void setCtime(String ctime) {
-                this.ctime = ctime;
-            }
-
-            public String getStatus() {
-                return status;
-            }
-
-            public void setStatus(String status) {
-                this.status = status;
-            }
-
-            public ArrayList<VideosEntity> getVideos() {
-                return videos;
-            }
-
-            public void setVideos(ArrayList<VideosEntity> videos) {
-                this.videos = videos;
-            }
 
             public static class VideosEntity implements Serializable {
                 /**
@@ -185,65 +130,18 @@ public class CourseDetailVo extends BaseVo {
                  * status : 1
                  * video_info : {"m3u8url":"http://video.meiyuanbang.com/video/2017-1-19/696ec29a47324f298ff9a8a023bf07fc/1484819461047_9938.m3u8","filename":"1484819461047_9938","status":"1","subtype":"110","runid":"696ec29a47324f298ff9a8a023bf07fc","video_length":"0","videoid":"35","maintype":"2","ctime":"1484819459","video_type":"","coverpic":"https://img.meiyuanbang.com/cms/video/2017-01-19/0861FDFCFFA305A60D76B4C519397418.jpg","sourceurl":"http://myb-media-in.oss-cn-beijing.aliyuncs.com/video/2017-1-19/1484819461047_9938.mp4","desc":"八爪鱼视频北京工业大学示范（上）"}
                  */
-                public boolean isShow = false;//显示选择框
-                public boolean showLine = false;//是否显示单节最后一条数据的line
-                public boolean isSelect;//选择框是否选中
-                public boolean isShowline = false;//选择框是否选中
-                public String editTitle;//修改后的标题
-                public String iconLessonUrl;//lesson的icon地址
-                public String lessontitle;//lesson的标题
-                public String teacherName;//老师name
-                public String teachericon;//老师icon
-                public String teacherUid;//老师uid
+                public boolean isShow = false;//
+                public boolean showLine = false;//
+                public boolean isSelect;//
+                public boolean isShowline = false;
+                public String editTitle;//
+                public String iconLessonUrl;
+                public String lessontitle;
+                public String teacherName;
+                public String teachericon;
+                public String teacherUid;
                 public String lessonid;
 
-                public String getTeacherUid() {
-                    return teacherUid;
-                }
-
-                public void setTeacherUid(String teacherUid) {
-                    this.teacherUid = teacherUid;
-                }
-
-                public String getLessonid() {
-                    return lessonid;
-                }
-
-                public void setLessonid(String lessonid) {
-                    this.lessonid = lessonid;
-                }
-
-                public String getIconLessonUrl() {
-                    return iconLessonUrl;
-                }
-
-                public void setIconLessonUrl(String iconLessonUrl) {
-                    this.iconLessonUrl = iconLessonUrl;
-                }
-
-                public String getLessontitle() {
-                    return lessontitle;
-                }
-
-                public void setLessontitle(String lessontitle) {
-                    this.lessontitle = lessontitle;
-                }
-
-                public String getTeacherName() {
-                    return teacherName;
-                }
-
-                public void setTeacherName(String teacherName) {
-                    this.teacherName = teacherName;
-                }
-
-                public String getTeachericon() {
-                    return teachericon;
-                }
-
-                public void setTeachericon(String teachericon) {
-                    this.teachericon = teachericon;
-                }
 
                 public String coursevideoid;
                 public String sectionid;
@@ -255,116 +153,14 @@ public class CourseDetailVo extends BaseVo {
                 public String ctime;
                 public String status;
 
-                public int getBuy_status() {
-                    return buy_status;
-                }
-
 
                 public int buy_status;
 
-                public void setBuy_status(int buy_status) {
-                    this.buy_status = buy_status;
-                }
 
                 public VideoInfoEntity video_info;
 
-                public String getEditTitle() {
-                    return editTitle;
-                }
-
-                public void setEditTitle(String editTitle) {
-                    this.editTitle = editTitle;
-                }
-
-                public String getCoursevideoid() {
-                    return coursevideoid;
-                }
-
-                public void setCoursevideoid(String coursevideoid) {
-                    this.coursevideoid = coursevideoid;
-                }
-
-                public String getSectionid() {
-                    return sectionid;
-                }
-
-                public void setSectionid(String sectionid) {
-                    this.sectionid = sectionid;
-                }
-
-                public String getSection_video_num() {
-                    return section_video_num;
-                }
-
-                public void setSection_video_num(String section_video_num) {
-                    this.section_video_num = section_video_num;
-                }
-
-                public String getTitle() {
-                    return title;
-                }
-
-                public void setTitle(String title) {
-                    this.title = title;
-                }
-
-                public String getVideoid() {
-                    return videoid;
-                }
-
-                public void setVideoid(String videoid) {
-                    this.videoid = videoid;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getSale_price() {
-                    return sale_price;
-                }
-
-                public void setSale_price(String sale_price) {
-                    this.sale_price = sale_price;
-                }
-
-                public String getCtime() {
-                    return ctime;
-                }
-
-                public void setCtime(String ctime) {
-                    this.ctime = ctime;
-                }
-
-                public String getStatus() {
-                    return status;
-                }
-
-                public void setStatus(String status) {
-                    this.status = status;
-                }
-
-                public VideoInfoEntity getVideo_info() {
-                    return video_info;
-                }
-
-                public void setVideo_info(VideoInfoEntity video_info) {
-                    this.video_info = video_info;
-                }
 
                 public static class VideoInfoEntity implements Serializable {
-                    public String getVideo_size() {
-                        return video_size;
-                    }
-
-                    public void setVideo_size(String video_size) {
-                        this.video_size = video_size;
-                    }
-
                     /**
                      * m3u8url : http://video.meiyuanbang.com/video/2017-1-19/696ec29a47324f298ff9a8a023bf07fc/1484819461047_9938.m3u8
                      * filename : 1484819461047_9938
@@ -396,109 +192,6 @@ public class CourseDetailVo extends BaseVo {
                     public String desc;
                     public String video_size;
 
-                    public String getM3u8url() {
-                        return m3u8url;
-                    }
-
-                    public void setM3u8url(String m3u8url) {
-                        this.m3u8url = m3u8url;
-                    }
-
-                    public String getFilename() {
-                        return filename;
-                    }
-
-                    public void setFilename(String filename) {
-                        this.filename = filename;
-                    }
-
-                    public String getStatus() {
-                        return status;
-                    }
-
-                    public void setStatus(String status) {
-                        this.status = status;
-                    }
-
-                    public String getSubtype() {
-                        return subtype;
-                    }
-
-                    public void setSubtype(String subtype) {
-                        this.subtype = subtype;
-                    }
-
-                    public String getRunid() {
-                        return runid;
-                    }
-
-                    public void setRunid(String runid) {
-                        this.runid = runid;
-                    }
-
-                    public String getVideo_length() {
-                        return video_length;
-                    }
-
-                    public void setVideo_length(String video_length) {
-                        this.video_length = video_length;
-                    }
-
-                    public String getVideoid() {
-                        return videoid;
-                    }
-
-                    public void setVideoid(String videoid) {
-                        this.videoid = videoid;
-                    }
-
-                    public String getMaintype() {
-                        return maintype;
-                    }
-
-                    public void setMaintype(String maintype) {
-                        this.maintype = maintype;
-                    }
-
-                    public String getCtime() {
-                        return ctime;
-                    }
-
-                    public void setCtime(String ctime) {
-                        this.ctime = ctime;
-                    }
-
-                    public String getVideo_type() {
-                        return video_type;
-                    }
-
-                    public void setVideo_type(String video_type) {
-                        this.video_type = video_type;
-                    }
-
-                    public String getCoverpic() {
-                        return coverpic;
-                    }
-
-                    public void setCoverpic(String coverpic) {
-                        this.coverpic = coverpic;
-                    }
-
-                    public String getSourceurl() {
-                        return sourceurl;
-                    }
-
-                    public void setSourceurl(String sourceurl) {
-                        this.sourceurl = sourceurl;
-                    }
-
-                    public String getDesc() {
-                        return desc;
-                    }
-
-                    public void setDesc(String desc) {
-                        this.desc = desc;
-                    }
                 }
             }
         }
@@ -519,117 +212,6 @@ public class CourseDetailVo extends BaseVo {
             public String sourceurl;
             public String ctime;
 
-            public String getSubtype() {
-                return subtype;
-            }
-
-            public void setSubtype(String subtype) {
-                this.subtype = subtype;
-            }
-
-            public String getStatus() {
-                return status;
-            }
-
-            public void setStatus(String status) {
-                this.status = status;
-            }
-
-            public String getM3u8url() {
-                return m3u8url;
-            }
-
-            public void setM3u8url(String m3u8url) {
-                this.m3u8url = m3u8url;
-            }
-
-            public String getVideo_type() {
-                return video_type;
-            }
-
-            public void setVideo_type(String video_type) {
-                this.video_type = video_type;
-            }
-
-            public String getDesc() {
-                return desc;
-            }
-
-            public void setDesc(String desc) {
-                this.desc = desc;
-            }
-
-            public String getMaintype() {
-                return maintype;
-            }
-
-            public void setMaintype(String maintype) {
-                this.maintype = maintype;
-            }
-
-            public String getVideo_length() {
-                return video_length;
-            }
-
-            public void setVideo_length(String video_length) {
-                this.video_length = video_length;
-            }
-
-            public String getVideoid() {
-                return videoid;
-            }
-
-            public void setVideoid(String videoid) {
-                this.videoid = videoid;
-            }
-
-            public String getVideo_size() {
-                return video_size;
-            }
-
-            public void setVideo_size(String video_size) {
-                this.video_size = video_size;
-            }
-
-            public String getFilename() {
-                return filename;
-            }
-
-            public void setFilename(String filename) {
-                this.filename = filename;
-            }
-
-            public String getRunid() {
-                return runid;
-            }
-
-            public void setRunid(String runid) {
-                this.runid = runid;
-            }
-
-            public String getCoverpic() {
-                return coverpic;
-            }
-
-            public void setCoverpic(String coverpic) {
-                this.coverpic = coverpic;
-            }
-
-            public String getSourceurl() {
-                return sourceurl;
-            }
-
-            public void setSourceurl(String sourceurl) {
-                this.sourceurl = sourceurl;
-            }
-
-            public String getCtime() {
-                return ctime;
-            }
-
-            public void setCtime(String ctime) {
-                this.ctime = ctime;
-            }
         }
 
         public static class GroupBugObject{
@@ -649,125 +231,6 @@ public class CourseDetailVo extends BaseVo {
             public String is_join;
             public long current_time;
 
-            public long getCurrent_time() {
-                return current_time;
-            }
-
-            public void setCurrent_time(long current_time) {
-                this.current_time = current_time;
-            }
-
-            public String getGroupbuyid() {
-                return groupbuyid;
-            }
-
-            public void setGroupbuyid(String groupbuyid) {
-                this.groupbuyid = groupbuyid;
-            }
-
-            public String getTitle() {
-                return title;
-            }
-
-            public void setTitle(String title) {
-                this.title = title;
-            }
-
-            public String getCourseid() {
-                return courseid;
-            }
-
-            public void setCourseid(String courseid) {
-                this.courseid = courseid;
-            }
-
-            public String getCourse_group_fee_ios() {
-                return course_group_fee_ios;
-            }
-
-            public void setCourse_group_fee_ios(String course_group_fee_ios) {
-                this.course_group_fee_ios = course_group_fee_ios;
-            }
-
-            public String getCourse_group_fee() {
-                return course_group_fee;
-            }
-
-            public void setCourse_group_fee(String course_group_fee) {
-                this.course_group_fee = course_group_fee;
-            }
-
-            public int getPerson_count_init() {
-                return person_count_init;
-            }
-
-            public void setPerson_count_init(int person_count_init) {
-                this.person_count_init = person_count_init;
-            }
-
-            public int getPerson_count_total() {
-                return person_count_total;
-            }
-
-            public void setPerson_count_total(int person_count_total) {
-                this.person_count_total = person_count_total;
-            }
-
-            public int getPerson_count_final() {
-                return person_count_final;
-            }
-
-            public void setPerson_count_final(int person_count_final) {
-                this.person_count_final = person_count_final;
-            }
-
-            public String getStart_time() {
-                return start_time;
-            }
-
-            public void setStart_time(String start_time) {
-                this.start_time = start_time;
-            }
-
-            public long getEnd_time() {
-                return end_time;
-            }
-
-            public void setEnd_time(long end_time) {
-                this.end_time = end_time;
-            }
-
-            public String getCtime() {
-                return ctime;
-            }
-
-            public void setCtime(String ctime) {
-                this.ctime = ctime;
-            }
-
-            public String getStatus() {
-                return status;
-            }
-
-            public void setStatus(String status) {
-                this.status = status;
-            }
-
-            public int getPerson_count_show() {
-                return person_count_show;
-            }
-
-            public void setPerson_count_show(int person_count_show) {
-                this.person_count_show = person_count_show;
-            }
-
-            public String getIs_join() {
-                return is_join;
-            }
-
-            public void setIs_join(String is_join) {
-                this.is_join = is_join;
-            }
         }
     }
 }
