@@ -23,7 +23,7 @@ public class WorkRepository extends BaseRepository {
     private Observable<WorkDetailVo> mWorkDetail;
     private Observable<WorkRecommentVo> mWorkRecomment;
 
-    public void loadWorkData(String corrected, String rn, final OnResultCallBack<WorksListVo> listener) {
+    public void loadWorkData(String corrected, String rn) {
         mWorkData = apiService.getWorkData(corrected, rn);
     }
 
@@ -53,7 +53,7 @@ public class WorkRepository extends BaseRepository {
                                String fCatalogId,
                                String sCatalogId,
                                String tCatalogId,
-                               String province, final OnResultCallBack listener) {
+                               String province) {
         mBannerData = apiService.getBannerData(posType, fCatalogId, sCatalogId, tCatalogId, province);
     }
 

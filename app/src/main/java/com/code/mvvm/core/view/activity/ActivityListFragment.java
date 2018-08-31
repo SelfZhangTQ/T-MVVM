@@ -13,7 +13,7 @@ import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：tqzhang  on 18/7/4 14:10
+ * @author：tqzhang on 18/7/4 14:10
  */
 public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
     public static ActivityListFragment newInstance() {
@@ -38,10 +38,11 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
             }
         });
     }
+
     @Override
     protected void onStateRefresh() {
         super.onStateRefresh();
-        getRemoteData();
+        getNetWorkData();
     }
 
     @Override
@@ -57,19 +58,25 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
-        getRemoteData();
+        getNetWorkData();
 
     }
 
     @Override
     public void onRefresh() {
         super.onRefresh();
-        getRemoteData();
+        getNetWorkData();
+    }
+
+    public void getNetWorkData() {
+        mViewModel.getActivityList(lastId, "20");
     }
 
     @Override
-    protected void getRemoteData() {
+    public void onLoadMore() {
+        super.onLoadMore();
         mViewModel.getActivityList(lastId, "20");
     }
+
 
 }

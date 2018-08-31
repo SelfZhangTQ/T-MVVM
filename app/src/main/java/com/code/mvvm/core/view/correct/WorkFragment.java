@@ -7,13 +7,16 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
+import com.code.mvvm.core.data.pojo.correct.WorkMergeVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.code.mvvm.util.AdapterPool;
+import com.trecyclerview.listener.OnRefreshListener;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -34,30 +37,22 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getBannerData().observe(this, new Observer<BannerListVo>() {
+        mViewModel.getWorkMergeData().observe(this, new Observer<WorkMergeVo>() {
             @Override
-            public void onChanged(@Nullable BannerListVo bannerListVo) {
-                if (bannerListVo != null) {
-                    setBannerData(bannerListVo);
+            public void onChanged(@Nullable WorkMergeVo workMergeVo) {
+                if (workMergeVo != null) {
+                    newItems.clear();
+                    setBannerData(workMergeVo.bannerListVo);
+                    lastId = workMergeVo.worksListVo.data.content.get(workMergeVo.worksListVo.data.content.size() - 1).tid;
+                    uTime = workMergeVo.worksListVo.data.content.get(workMergeVo.worksListVo.data.content.size() - 1).utime;
+                    setData(workMergeVo.worksListVo.data.content);
                 }
-
-            }
-        });
-        mViewModel.getWorkData().observe(this, new Observer<WorksListVo>() {
-            @Override
-            public void onChanged(@Nullable WorksListVo worksListVo) {
-                if (worksListVo == null) {
-                    return;
-                }
-                lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
-                uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
-                setData(worksListVo.data.content);
             }
         });
         mViewModel.getWorkMoreData().observe(this, new Observer<WorksListVo>() {
             @Override
             public void onChanged(@Nullable final WorksListVo worksListVo) {
-                if (worksListVo == null) {
+                if (worksListVo == null && worksListVo.data != null && worksListVo.data.content != null) {
                     return;
                 }
                 lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
@@ -81,17 +76,17 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     protected void lazyLoad() {
         super.lazyLoad();
         getNetWorkData();
-        mViewModel.getRequestMerge();
     }
+
     @Override
     public void onRefresh() {
         super.onRefresh();
         getNetWorkData();
-        mViewModel.getRequestMerge();
     }
 
     @Override
-    protected void getRemoteData() {
+    public void onLoadMore() {
+        super.onLoadMore();
         mViewModel.getWorkMoreData("", lastId, uTime, "20");
     }
 
@@ -99,10 +94,9 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     protected void onStateRefresh() {
         super.onStateRefresh();
         getNetWorkData();
-        mViewModel.getRequestMerge();
     }
+
     private void getNetWorkData() {
-        mViewModel.getBannerData("1", "4", "109", "", null);
-        mViewModel.getWorkData("80", "20");
+        mViewModel.getRequestMerge();
     }
 }

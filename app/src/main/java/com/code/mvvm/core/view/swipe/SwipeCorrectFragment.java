@@ -27,35 +27,35 @@ public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {
     @Override
     public void initView(Bundle state) {
         super.initView(state);
-        mViewModel.getBannerData().observe(this, new Observer<BannerListVo>() {
-            @Override
-            public void onChanged(@Nullable BannerListVo headAdList) {
-                if (headAdList != null) {
-                    setBannerData(headAdList);
-                }
-            }
-        });
-        mViewModel.getWorkData().observe(this, new Observer<WorksListVo>() {
-            @Override
-            public void onChanged(@Nullable WorksListVo worksListHotObject) {
-                if (worksListHotObject == null) {
-                    return;
-                }
-                lastId = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).tid;
-                utime = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).utime;
-                if (isRefresh) {
-                    newItems.addAll(worksListHotObject.data.content);
-                    oldItems.clear();
-                    oldItems.addAll(newItems);
-                    notifyDataSetChanged();
-                    mSwipeRefreshLayout.setRefreshing(false);
-//                    mRecyclerView.refreshComplete();
-                } else {
-                    setData(worksListHotObject.data.content);
-                }
-
-            }
-        });
+//        mViewModel.getBannerData().observe(this, new Observer<BannerListVo>() {
+//            @Override
+//            public void onChanged(@Nullable BannerListVo headAdList) {
+//                if (headAdList != null) {
+//                    setBannerData(headAdList);
+//                }
+//            }
+//        });
+//        mViewModel.getWorkData().observe(this, new Observer<WorksListVo>() {
+//            @Override
+//            public void onChanged(@Nullable WorksListVo worksListHotObject) {
+//                if (worksListHotObject == null) {
+//                    return;
+//                }
+//                lastId = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).tid;
+//                utime = worksListHotObject.data.content.get(worksListHotObject.data.content.size() - 1).utime;
+//                if (isRefresh) {
+//                    newItems.addAll(worksListHotObject.data.content);
+//                    oldItems.clear();
+//                    oldItems.addAll(newItems);
+//                    notifyDataSetChanged();
+//                    mSwipeRefreshLayout.setRefreshing(false);
+////                    mRecyclerView.refreshComplete();
+//                } else {
+//                    setData(worksListHotObject.data.content);
+//                }
+//
+//            }
+//        });
         mViewModel.getWorkMoreData().observe(this, new Observer<WorksListVo>() {
             @Override
             public void onChanged(@Nullable WorksListVo worksListHotObject) {

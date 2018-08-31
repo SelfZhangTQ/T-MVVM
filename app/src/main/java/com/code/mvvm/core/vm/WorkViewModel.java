@@ -9,30 +9,34 @@ import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.correct.WorkDetailVo;
+import com.code.mvvm.core.data.pojo.correct.WorkMergeVo;
 import com.code.mvvm.core.data.pojo.correct.WorkRecommentVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.data.source.WorkRepository;
 
 
 /**
- * @author：tqzhang  on 18/7/31 15:32
+ * @author：tqzhang on 18/7/31 15:32
  */
 public class WorkViewModel extends BaseViewModel<WorkRepository> {
-    private MutableLiveData<BannerListVo> mBannerData;
     private MutableLiveData<WorksListVo> mWorkMoreData;
-    private MutableLiveData<WorksListVo> mWorkData;
     private MutableLiveData<WorkDetailVo> mWorkDetailData;
     private MutableLiveData<WorkRecommentVo> mWorkRecommentData;
+
+    private MutableLiveData<WorkMergeVo> mWorkMergeData;
+
+    private WorkMergeVo workMergeVo = new WorkMergeVo();
+
 
     public WorkViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<BannerListVo> getBannerData() {
-        if (mBannerData == null) {
-            mBannerData = new MutableLiveData<>();
+    public LiveData<WorkMergeVo> getWorkMergeData() {
+        if (mWorkMergeData == null) {
+            mWorkMergeData = new MutableLiveData<>();
         }
-        return mBannerData;
+        return mWorkMergeData;
     }
 
     public LiveData<WorksListVo> getWorkMoreData() {
@@ -40,13 +44,6 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
             mWorkMoreData = new MutableLiveData<>();
         }
         return mWorkMoreData;
-    }
-
-    public LiveData<WorksListVo> getWorkData() {
-        if (mWorkData == null) {
-            mWorkData = new MutableLiveData<>();
-        }
-        return mWorkData;
     }
 
     public LiveData<WorkDetailVo> getWorkDetailData() {
@@ -84,23 +81,8 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
     }
 
     public void getWorkData(String corrected, String rn) {
-        mRepository.loadWorkData(corrected, rn, new OnResultCallBack<WorksListVo>() {
-            @Override
-            public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
-            }
+        mRepository.loadWorkData(corrected, rn);
 
-            @Override
-            public void onNext(WorksListVo worksListHotObject) {
-                mWorkData.postValue(worksListHotObject);
-                loadState.postValue(Constants.SUCCESS_STATE);
-            }
-
-            @Override
-            public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
-            }
-        });
     }
 
     public void getBannerData(String posType,
@@ -108,26 +90,12 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
                               String sCatalogId,
                               String tCatalogId,
                               String province) {
-        mRepository.loadBannerData(posType, fCatalogId, sCatalogId, tCatalogId, province, new OnResultCallBack<BannerListVo>() {
-            @Override
-            public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
-            }
-
-            @Override
-            public void onNext(BannerListVo headAdList) {
-                mBannerData.postValue(headAdList);
-            }
-
-            @Override
-            public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
-            }
-        });
-
+        mRepository.loadBannerData(posType, fCatalogId, sCatalogId, tCatalogId, province);
     }
 
     public void getRequestMerge() {
+        getBannerData("1", "4", "109", "", null);
+        getWorkData("80", "20");
         mRepository.loadRequestMerge(new OnResultCallBack<Object>() {
             @Override
             public void onNoNetWork() {
@@ -137,12 +105,12 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
             @Override
             public void onNext(Object object) {
                 if (object instanceof BannerListVo) {
-                    mBannerData.postValue((BannerListVo) object);
+                    workMergeVo.bannerListVo = (BannerListVo) object;
                 } else if (object instanceof WorksListVo) {
-                    mWorkData.postValue((WorksListVo) object);
+                    workMergeVo.worksListVo = (WorksListVo) object;
+                    mWorkMergeData.postValue(workMergeVo);
                     loadState.postValue(Constants.SUCCESS_STATE);
                 }
-
             }
 
             @Override

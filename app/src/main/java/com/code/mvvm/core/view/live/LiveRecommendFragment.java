@@ -56,24 +56,29 @@ public class LiveRecommendFragment extends BaseListFragment<LiveViewModel> {
     @Override
     protected void onStateRefresh() {
         super.onStateRefresh();
-        getRemoteData();
+        getNetWorkData();
     }
 
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
-        getRemoteData();
+        getNetWorkData();
     }
 
 
     @Override
     public void onRefresh() {
         super.onRefresh();
-        getRemoteData();
+        getNetWorkData();
     }
 
     @Override
-    protected void getRemoteData() {
+    public void onLoadMore() {
+        super.onLoadMore();
+        getNetWorkData();
+    }
+
+    protected void getNetWorkData() {
         mViewModel.getLiveRemList(lastId, "20");
     }
 

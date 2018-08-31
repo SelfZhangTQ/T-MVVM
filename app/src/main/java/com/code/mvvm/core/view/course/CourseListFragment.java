@@ -37,7 +37,7 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
         mViewModel.getCourseList().observe(this, new Observer<CourseListVo>() {
             @Override
             public void onChanged(@Nullable CourseListVo courseListVo) {
-                if (courseListVo != null && courseListVo.data!=null) {
+                if (courseListVo != null && courseListVo.data != null) {
                     lastId = courseListVo.data.get(courseListVo.data.size() - 1).courseid;
                     setData(courseListVo.data);
                 }
@@ -69,23 +69,28 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
     @Override
     protected void onStateRefresh() {
         super.onStateRefresh();
-        getRemoteData();
+        getNetWorkData();
     }
 
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
-        getRemoteData();
+        getNetWorkData();
     }
 
     @Override
     public void onRefresh() {
         super.onRefresh();
-        getRemoteData();
+        getNetWorkData();
     }
 
     @Override
-    protected void getRemoteData() {
+    public void onLoadMore() {
+        super.onLoadMore();
+        getNetWorkData();
+    }
+
+    public void getNetWorkData() {
         mViewModel.getCourseList(mCatalogId, lastId, "20");
     }
 }

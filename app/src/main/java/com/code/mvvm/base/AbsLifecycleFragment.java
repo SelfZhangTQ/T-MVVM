@@ -53,6 +53,7 @@ public abstract class AbsLifecycleFragment<T extends BaseViewModel> extends Base
         showLoading();
     }
 
+
     /**
      * 获取网络数据
      */

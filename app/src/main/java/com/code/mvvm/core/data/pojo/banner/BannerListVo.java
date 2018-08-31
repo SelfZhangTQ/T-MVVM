@@ -1,10 +1,9 @@
 package com.code.mvvm.core.data.pojo.banner;
 
-import com.code.mvvm.core.data.pojo.BaseVo;
 
 import java.util.List;
 
-public class BannerListVo extends BaseVo
+public class BannerListVo
 {
     public List<BannerVo> data;
 

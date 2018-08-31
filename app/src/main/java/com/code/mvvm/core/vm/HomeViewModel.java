@@ -8,7 +8,9 @@ import android.support.annotation.NonNull;
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
+import com.code.mvvm.core.data.pojo.banner.BannerVo;
 import com.code.mvvm.core.data.pojo.home.HomeListVo;
+import com.code.mvvm.core.data.pojo.home.HomeMergeVo;
 import com.code.mvvm.core.data.source.HomeRepository;
 
 /**
@@ -19,6 +21,10 @@ public class HomeViewModel extends BaseViewModel<HomeRepository> {
     private MutableLiveData<HomeListVo> homeData;
 
     private MutableLiveData<BannerListVo> bannerData;
+
+    private MutableLiveData<HomeMergeVo> mergeData;
+
+    final HomeMergeVo homeMergeVo = new HomeMergeVo();
 
     public HomeViewModel(@NonNull Application application) {
         super(application);
@@ -37,6 +43,13 @@ public class HomeViewModel extends BaseViewModel<HomeRepository> {
             bannerData = new MutableLiveData<>();
         }
         return bannerData;
+    }
+
+    public LiveData<HomeMergeVo> getMergeData() {
+        if (mergeData == null) {
+            mergeData = new MutableLiveData<>();
+        }
+        return mergeData;
     }
 
     private void loadHomeList(String id) {
@@ -64,9 +77,10 @@ public class HomeViewModel extends BaseViewModel<HomeRepository> {
             @Override
             public void onNext(Object object) {
                 if (object instanceof BannerListVo) {
-                    bannerData.postValue((BannerListVo) object);
+                    homeMergeVo.bannerListVo = (BannerListVo) object;
                 } else if (object instanceof HomeListVo) {
-                    homeData.postValue((HomeListVo) object);
+                    homeMergeVo.homeListVo = (HomeListVo) object;
+                    mergeData.postValue(homeMergeVo);
                     loadState.postValue(Constants.SUCCESS_STATE);
                 }
 

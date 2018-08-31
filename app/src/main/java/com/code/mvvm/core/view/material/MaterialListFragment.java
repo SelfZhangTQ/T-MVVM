@@ -84,7 +84,8 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
     }
 
     @Override
-    protected void getRemoteData() {
+    public void onLoadMore() {
+        super.onLoadMore();
         mViewModel.getMaterialMoreList("0", subId, lastId, "20");
     }
 

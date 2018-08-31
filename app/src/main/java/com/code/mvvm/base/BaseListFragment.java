@@ -3,6 +3,7 @@ package com.code.mvvm.base;
 import android.os.Bundle;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import com.trecyclerview.multitype.Items;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -86,7 +88,7 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
         isLoadMore = false;
     }
 
-    protected void setData(Collection<?> collection) {
+    protected void setData(List<?> collection) {
         if (isLoadMore) {
             onLoadMoreSuccess(collection);
         } else {
@@ -98,12 +100,12 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
     public void onRefresh() {
         lastId = null;
         isRefresh = true;
+        isLoadMore = false;
     }
 
     @Override
     public void onLoadMore() {
         isLoadMore = true;
-        getRemoteData();
     }
 
     protected void setBannerData(BannerListVo headAdList) {
@@ -111,19 +113,24 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
     }
 
     protected void onRefreshSuccess(Collection<?> collection) {
+        newItems.clear();
         newItems.addAll(collection);
         oldItems.clear();
         oldItems.addAll(newItems);
-        mRecyclerView.refreshComplete(oldItems,collection.size() < 20);
-        newItems.clear();
+        if (collection.size() < 20) {
+            mRecyclerView.refreshComplete(oldItems, true);
+        } else {
+            mRecyclerView.refreshComplete(oldItems, false);
+        }
+        isRefresh = false;
     }
 
-    protected void onLoadMoreSuccess(Collection<?> collection) {
+    protected void onLoadMoreSuccess(List<?> collection) {
         isLoading = true;
         isLoadMore = false;
         oldItems.addAll(collection);
         if (collection.size() < 20) {
-            mRecyclerView.setNoMore(collection.size());
+            mRecyclerView.setNoMore(collection);
         } else {
             mRecyclerView.loadMoreComplete(collection.size());
         }
@@ -136,6 +143,7 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
         newItems.clear();
         result.dispatchUpdatesTo(adapter);
     }
+
     /**
      * @return
      */

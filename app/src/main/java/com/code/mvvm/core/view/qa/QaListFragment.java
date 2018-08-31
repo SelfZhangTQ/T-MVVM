@@ -55,23 +55,29 @@ public class QaListFragment extends BaseListFragment<QaViewModel> {
     @Override
     protected void onStateRefresh() {
         super.onStateRefresh();
-        getRemoteData();
+        getNetWorkData();
     }
 
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
-        getRemoteData();
+        getNetWorkData();
     }
 
     @Override
     public void onRefresh() {
         super.onRefresh();
-        getRemoteData();
+        getNetWorkData();
     }
 
+    public void getNetWorkData() {
+        mViewModel.getQAList(lastId, "20");
+    }
+
+
     @Override
-    protected void getRemoteData() {
+    public void onLoadMore() {
+        super.onLoadMore();
         mViewModel.getQAList(lastId, "20");
     }
 }

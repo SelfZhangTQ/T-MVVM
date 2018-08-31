@@ -2,6 +2,7 @@ package com.code.mvvm.core.data.pojo.home;
 
 import com.code.mvvm.core.data.pojo.BaseVo;
 import com.code.mvvm.core.data.pojo.article.ArticleInfoVo;
+import com.code.mvvm.core.data.pojo.banner.BannerVo;
 import com.code.mvvm.core.data.pojo.book.BookVo;
 import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
 import com.code.mvvm.core.data.pojo.image.ImageInfoVo;
@@ -19,6 +20,7 @@ public class HomeListVo extends BaseVo implements Serializable {
     public DataBean data;
 
     public static class DataBean {
+        public List<BannerVo> data;
         public List<CourseInfoVo> course;
         public List<ArticleInfoVo> lecture;
         public List<LessonBean> lesson;
