@@ -113,7 +113,6 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
     }
 
     protected void onRefreshSuccess(Collection<?> collection) {
-        newItems.clear();
         newItems.addAll(collection);
         oldItems.clear();
         oldItems.addAll(newItems);

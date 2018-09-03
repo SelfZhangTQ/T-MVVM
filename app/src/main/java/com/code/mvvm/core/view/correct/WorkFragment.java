@@ -42,7 +42,8 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
             public void onChanged(@Nullable WorkMergeVo workMergeVo) {
                 if (workMergeVo != null) {
                     newItems.clear();
-                    setBannerData(workMergeVo.bannerListVo);
+                    newItems.add(workMergeVo.bannerListVo);
+//                    setBannerData(workMergeVo.bannerListVo);
                     lastId = workMergeVo.worksListVo.data.content.get(workMergeVo.worksListVo.data.content.size() - 1).tid;
                     uTime = workMergeVo.worksListVo.data.content.get(workMergeVo.worksListVo.data.content.size() - 1).utime;
                     setData(workMergeVo.worksListVo.data.content);
