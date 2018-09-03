@@ -19,8 +19,11 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
 
 
     private MutableLiveData<MaterialTypeVo> mMaterialTypeData;
+
     private MutableLiveData<MaterialVo> mMaterialData;
+
     private MutableLiveData<MaterialVo> mMaterialMoreData;
+
     private MutableLiveData<MaterialRecommendVo> mMaterialRecommendData;
 
 

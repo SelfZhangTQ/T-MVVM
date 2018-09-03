@@ -20,7 +20,9 @@ public class FollowDrawViewModel extends BaseViewModel<FollowDrawRepository> {
     }
 
     private MutableLiveData<FollowDrawTypeVo> mFollowDrawTypeData;
+
     private MutableLiveData<FollowDrawRecommendVo> mFollowDrawData;
+
     private MutableLiveData<FollowDrawRecommendVo> mFollowDrawRemData;
 
     public LiveData<FollowDrawTypeVo> getFollowDrawType() {

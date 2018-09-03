@@ -19,8 +19,11 @@ import com.code.mvvm.core.data.source.WorkRepository;
  * @author：tqzhang on 18/7/31 15:32
  */
 public class WorkViewModel extends BaseViewModel<WorkRepository> {
+
     private MutableLiveData<WorksListVo> mWorkMoreData;
+
     private MutableLiveData<WorkDetailVo> mWorkDetailData;
+
     private MutableLiveData<WorkRecommentVo> mWorkRecommentData;
 
     private MutableLiveData<WorkMergeVo> mWorkMergeData;

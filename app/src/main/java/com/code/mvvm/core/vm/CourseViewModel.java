@@ -25,9 +25,13 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
     }
 
     private MutableLiveData<CourseTypeVo> mCourseType;
+
     private MutableLiveData<CourseListVo> mCourseListData;
+
     private MutableLiveData<CourseRemVo> mCourseRemData;
+
     private MutableLiveData<CourseDetailRemVideoVo> mCourseDetailRemData;
+
     private MutableLiveData<CourseDetailVo> mCourseDetailData;
 
     public LiveData<CourseTypeVo> getCourseType() {

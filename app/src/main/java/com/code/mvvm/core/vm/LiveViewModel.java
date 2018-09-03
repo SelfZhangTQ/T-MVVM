@@ -17,7 +17,9 @@ import com.code.mvvm.core.data.source.LiveRepository;
 public class LiveViewModel extends BaseViewModel<LiveRepository> {
 
     private MutableLiveData<LiveTypeVo> liveTypeData;
+
     private MutableLiveData<LiveListVo> liveData;
+
     private MutableLiveData<LiveListVo> liveRemData;
 
     public LiveViewModel(@NonNull Application application) {

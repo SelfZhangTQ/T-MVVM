@@ -15,7 +15,9 @@ import com.code.mvvm.core.data.source.ArticleRepository;
  * @author：tqzhang on 18/7/26 16:15
  */
 public class ArticleViewModel extends BaseViewModel<ArticleRepository> {
+
     private MutableLiveData<ArticleVo> mArticleData;
+
     private MutableLiveData<ArticleTypeVo> mArticleTypeData;
 
     public ArticleViewModel(@NonNull Application application) {
