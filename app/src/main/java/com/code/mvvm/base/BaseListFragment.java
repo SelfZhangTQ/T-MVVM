@@ -129,9 +129,9 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
         isLoadMore = false;
         oldItems.addAll(collection);
         if (collection.size() < 20) {
-            mRecyclerView.setNoMore(collection);
+            mRecyclerView.loadMoreComplete(collection,true);
         } else {
-            mRecyclerView.loadMoreComplete(collection.size());
+            mRecyclerView.loadMoreComplete(collection,false);
         }
     }
 

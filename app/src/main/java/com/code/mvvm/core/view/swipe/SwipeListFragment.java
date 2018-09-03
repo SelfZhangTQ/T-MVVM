@@ -18,6 +18,7 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.pojo.FootVo;
 
 import java.util.Collection;
+import java.util.List;
 
 import static com.trecyclerview.view.LoadingMoreFooter.STATE_LOADING;
 
@@ -84,7 +85,7 @@ public abstract class SwipeListFragment<T extends BaseViewModel> extends AbsLife
         isLoadMore = false;
     }
 
-    protected void setData(Collection<?> collection) {
+    protected void setData(List<?> collection) {
         if (isLoadMore) {
             onLoadMoreSuccess(collection);
         } else {
@@ -130,11 +131,11 @@ public abstract class SwipeListFragment<T extends BaseViewModel> extends AbsLife
         notifyDataSetChanged();
     }
 
-    protected void onLoadMoreSuccess(Collection<?> collection) {
+    protected void onLoadMoreSuccess(List<?> collection) {
         oldItems.remove(oldItems.size() - 1);
         oldItems.addAll(collection);
         notifyMoreDataChanged(oldItems.size() - collection.size(), oldItems.size());
-        mRecyclerView.loadMoreComplete(collection.size());
+        mRecyclerView.loadMoreComplete(collection,false);
         isLoading = true;
         isLoadMore = false;
         newItems.clear();
