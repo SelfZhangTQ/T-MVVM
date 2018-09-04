@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.util.AdapterPool;
@@ -91,6 +92,6 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
     }
 
     public void getNetWorkData() {
-        mViewModel.getCourseList(mCatalogId, lastId, "20");
+        mViewModel.getCourseList(mCatalogId, lastId, Constants.PAGE_RN);
     }
 }

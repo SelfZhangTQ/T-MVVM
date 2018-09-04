@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.book.BookListVo;
 import com.code.mvvm.core.vm.BookViewModel;
 import com.code.mvvm.util.AdapterPool;
@@ -82,7 +83,7 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
     }
 
     private void getNetWorkData() {
-        mViewModel.getBookList(typeId, lastId, "20");
+        mViewModel.getBookList(typeId, lastId, Constants.PAGE_RN);
 
     }
 

@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
@@ -81,7 +82,7 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getCourseRemList("20");
+        mViewModel.getCourseRemList(Constants.PAGE_RN);
     }
 
 

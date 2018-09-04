@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.vm.ActivityViewModel;
 import com.code.mvvm.util.AdapterPool;
@@ -69,13 +70,13 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
     }
 
     public void getNetWorkData() {
-        mViewModel.getActivityList(lastId, "20");
+        mViewModel.getActivityList(lastId, Constants.PAGE_RN);
     }
 
     @Override
     public void onLoadMore() {
         super.onLoadMore();
-        mViewModel.getActivityList(lastId, "20");
+        mViewModel.getActivityList(lastId, Constants.PAGE_RN);
     }
 
 

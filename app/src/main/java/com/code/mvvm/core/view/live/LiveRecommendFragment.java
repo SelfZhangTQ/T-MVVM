@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.live.LiveListVo;
 import com.code.mvvm.core.vm.LiveViewModel;
 import com.code.mvvm.util.AdapterPool;
@@ -79,7 +80,7 @@ public class LiveRecommendFragment extends BaseListFragment<LiveViewModel> {
     }
 
     protected void getNetWorkData() {
-        mViewModel.getLiveRemList(lastId, "20");
+        mViewModel.getLiveRemList(lastId, Constants.PAGE_RN);
     }
 
 

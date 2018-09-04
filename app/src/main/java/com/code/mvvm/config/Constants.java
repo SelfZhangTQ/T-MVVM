@@ -31,6 +31,9 @@ public class Constants {
     public static final String TYPE_LIVE = "6";
     public static final String TYPE_LESSON = "7";
 
+
+    public static final String PAGE_RN = "20";
+
     private static final int MAX_HEAP_SIZE = (int) Runtime.getRuntime().maxMemory();
     public static final int MAX_CACHE_MEMORY_SIZE = MAX_HEAP_SIZE / 4;
     public static final int MAX_CACHE_DISK_SIZE = 250 * 1024 * 1024;

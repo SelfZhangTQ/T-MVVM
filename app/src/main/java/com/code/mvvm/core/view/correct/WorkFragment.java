@@ -2,21 +2,17 @@ package com.code.mvvm.core.view.correct;
 
 import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.core.data.pojo.banner.BannerListVo;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.correct.WorkMergeVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.listener.OnRefreshListener;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -43,7 +39,6 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
                 if (workMergeVo != null) {
                     newItems.clear();
                     newItems.add(workMergeVo.bannerListVo);
-//                    setBannerData(workMergeVo.bannerListVo);
                     lastId = workMergeVo.worksListVo.data.content.get(workMergeVo.worksListVo.data.content.size() - 1).tid;
                     uTime = workMergeVo.worksListVo.data.content.get(workMergeVo.worksListVo.data.content.size() - 1).utime;
                     setData(workMergeVo.worksListVo.data.content);
@@ -88,7 +83,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     @Override
     public void onLoadMore() {
         super.onLoadMore();
-        mViewModel.getWorkMoreData("", lastId, uTime, "20");
+        mViewModel.getWorkMoreData("", lastId, uTime, Constants.PAGE_RN);
     }
 
     @Override

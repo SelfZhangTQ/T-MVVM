@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawRecommendVo;
 import com.code.mvvm.core.vm.FollowDrawViewModel;
 import com.code.mvvm.util.AdapterPool;
@@ -75,7 +76,7 @@ public class FollowDrawRecommendFragment extends BaseListFragment<FollowDrawView
     }
 
     private void getNetWorkData() {
-        mViewModel.getFollowDrawRemList(lastId, "20");
+        mViewModel.getFollowDrawRemList(lastId, Constants.PAGE_RN);
 
     }
 }

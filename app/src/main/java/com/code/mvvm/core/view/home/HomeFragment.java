@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
@@ -13,7 +12,6 @@ import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.book.BookList;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
 import com.code.mvvm.core.data.pojo.home.CatagoryVo;
-import com.code.mvvm.core.data.pojo.home.HomeListVo;
 import com.code.mvvm.core.data.pojo.home.HomeMergeVo;
 import com.code.mvvm.core.data.pojo.material.MaterialListVo;
 import com.code.mvvm.core.vm.HomeViewModel;
@@ -99,19 +97,19 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
     private void addItems(HomeMergeVo homeMergeVo) {
         newItems.add(homeMergeVo.bannerListVo);
         newItems.add(new CatagoryVo("title"));
-        newItems.add(new TypeVo("直播推荐"));
+        newItems.add(new TypeVo(getResources().getString(R.string.recommend_live_type)));
         if (homeMergeVo.homeListVo.data.live_recommend.size() > 0) {
             newItems.addAll(homeMergeVo.homeListVo.data.live_recommend);
         }
-        newItems.add(new TypeVo("视频课程"));
+        newItems.add(new TypeVo(getResources().getString(R.string.recommend_video_type)));
         if (homeMergeVo.homeListVo.data.course.size() > 0) {
             newItems.addAll(homeMergeVo.homeListVo.data.course);
         }
-        newItems.add(new TypeVo("图书推荐"));
+        newItems.add(new TypeVo(getResources().getString(R.string.recommend_book_type)));
         if (homeMergeVo.homeListVo.data.publishingbook.size() > 0) {
             newItems.add(new BookList(homeMergeVo.homeListVo.data.publishingbook));
         }
-        newItems.add(new TypeVo("专题"));
+        newItems.add(new TypeVo(getResources().getString(R.string.special_tab_name)));
         if (homeMergeVo.homeListVo.data.matreialsubject.size() > 0) {
             newItems.add(new MaterialListVo(homeMergeVo.homeListVo.data.matreialsubject));
         }

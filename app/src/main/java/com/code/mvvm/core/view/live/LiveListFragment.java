@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.live.LiveListVo;
 import com.code.mvvm.core.vm.LiveViewModel;
 import com.code.mvvm.util.AdapterPool;
@@ -81,6 +82,6 @@ private String typeId;
     }
 
     protected void getNetWorkData() {
-        mViewModel.getLiveList(typeId, lastId, "20");
+        mViewModel.getLiveList(typeId, lastId, Constants.PAGE_RN);
     }
 }

@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
 import com.code.mvvm.core.vm.QaViewModel;
 import com.code.mvvm.util.AdapterPool;
@@ -71,13 +72,13 @@ public class QaListFragment extends BaseListFragment<QaViewModel> {
     }
 
     public void getNetWorkData() {
-        mViewModel.getQAList(lastId, "20");
+        mViewModel.getQAList(lastId, Constants.PAGE_RN);
     }
 
 
     @Override
     public void onLoadMore() {
         super.onLoadMore();
-        mViewModel.getQAList(lastId, "20");
+        mViewModel.getQAList(lastId, Constants.PAGE_RN);
     }
 }

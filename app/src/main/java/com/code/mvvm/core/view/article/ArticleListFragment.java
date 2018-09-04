@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.article.ArticleVo;
 import com.code.mvvm.core.vm.ArticleViewModel;
 import com.code.mvvm.util.AdapterPool;
@@ -69,6 +70,6 @@ public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getArticleList(getArguments().getString("type_id"), lastId, "20");
+        mViewModel.getArticleList(getArguments().getString("type_id"), lastId, Constants.PAGE_RN);
     }
 }

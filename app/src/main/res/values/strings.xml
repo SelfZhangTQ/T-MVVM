@@ -16,7 +16,10 @@
     <string name="follow_draw_title_name">跟着画</string>
     <string name="article_title_name">精讲</string>
     <string name="material_title_name">图库</string>
-
     <string name="recommend_tab_name">推荐</string>
+
+    <string name="recommend_live_type">直播推荐</string>
+    <string name="recommend_video_type">视频课程</string>
+    <string name="recommend_book_type">图书推荐</string>
 
 </resources>
