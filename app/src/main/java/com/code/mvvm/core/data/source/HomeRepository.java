@@ -9,17 +9,14 @@ import com.code.mvvm.network.rx.RxSchedulers;
 import com.code.mvvm.network.rx.RxSubscriber;
 
 import rx.Observable;
-import rx.functions.Action1;
 
 /**
  * @author：tqzhang on 18/7/26 16:18
  */
 public class HomeRepository extends BaseRepository {
-    public HomeRepository() {
-        super();
-    }
 
     private Observable<HomeListVo> mHomeListObservable;
+
     private Observable<BannerListVo> mBannerObservable;
 
     public void loadHomeData(String id) {
@@ -37,7 +34,7 @@ public class HomeRepository extends BaseRepository {
 
     public void loadRequestMerge(final OnResultCallBack listener) {
         addSubscribe(Observable.concatDelayError(mBannerObservable, mHomeListObservable)
-                .compose(RxSchedulers.<Object>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<Object>() {
 
                     @Override

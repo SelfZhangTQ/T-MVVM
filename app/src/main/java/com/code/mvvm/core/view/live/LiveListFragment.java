@@ -1,14 +1,11 @@
 package com.code.mvvm.core.view.live;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.live.LiveListVo;
 import com.code.mvvm.core.vm.LiveViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -33,13 +30,10 @@ private String typeId;
 
     @Override
     protected void dataObserver() {
-        mViewModel.getLiveList().observe(this, new Observer<LiveListVo>() {
-            @Override
-            public void onChanged(@Nullable LiveListVo liveListVo) {
-                if (liveListVo != null && liveListVo.data!= null) {
-                    lastId = liveListVo.data.get(liveListVo.data.size() - 1).liveid;
-                    setData(liveListVo.data);
-                }
+        mViewModel.getLiveList().observe(this, liveListVo -> {
+            if (liveListVo != null && liveListVo.data!= null) {
+                lastId = liveListVo.data.get(liveListVo.data.size() - 1).liveid;
+                setData(liveListVo.data);
             }
         });
     }
@@ -47,12 +41,12 @@ private String typeId;
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
-        return new LinearLayoutManager(getActivity());
+        return new LinearLayoutManager(activity);
     }
 
     @Override
     protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getLiveAdapter(getActivity());
+        return AdapterPool.newInstance().getLiveAdapter(activity);
     }
 
 

@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
-import com.code.mvvm.core.data.pojo.banner.BannerVo;
 import com.code.mvvm.core.data.pojo.home.HomeListVo;
 import com.code.mvvm.core.data.pojo.home.HomeMergeVo;
 import com.code.mvvm.core.data.source.HomeRepository;

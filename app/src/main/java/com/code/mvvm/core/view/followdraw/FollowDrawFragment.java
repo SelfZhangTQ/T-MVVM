@@ -1,8 +1,6 @@
 package com.code.mvvm.core.view.followdraw;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseFragment;
@@ -34,12 +32,9 @@ public class FollowDrawFragment extends BaseViewPagerFragment<FollowDrawViewMode
 
     @Override
     protected void dataObserver() {
-        mViewModel.getFollowDrawType().observe(this, new Observer<FollowDrawTypeVo>() {
-            @Override
-            public void onChanged(@Nullable FollowDrawTypeVo followDrawTypeVo) {
-                if (followDrawTypeVo != null) {
-                    setData(followDrawTypeVo);
-                }
+        mViewModel.getFollowDrawType().observe(this, followDrawTypeVo -> {
+            if (followDrawTypeVo != null) {
+                setData(followDrawTypeVo);
             }
         });
     }

@@ -1,14 +1,11 @@
 package com.code.mvvm.core.view.dynamic;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.dynamic.DynamicListVo;
 import com.code.mvvm.core.vm.DynamicViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -30,13 +27,10 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getDynamicList().observe(this, new Observer<DynamicListVo>() {
-            @Override
-            public void onChanged(@Nullable DynamicListVo dynamicListVo) {
-                if (dynamicListVo != null) {
-                    lastId = dynamicListVo.data.get(dynamicListVo.data.size() - 1).feedid;
-                    setData(dynamicListVo.data);
-                }
+        mViewModel.getDynamicList().observe(this, dynamicListVo -> {
+            if (dynamicListVo != null) {
+                lastId = dynamicListVo.data.get(dynamicListVo.data.size() - 1).feedid;
+                setData(dynamicListVo.data);
             }
         });
     }
@@ -49,7 +43,7 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
 
     @Override
     protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getDynamicAdapter(getActivity());
+        return AdapterPool.newInstance().getDynamicAdapter(activity);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.code.mvvm.util;
 
 import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 
 /**
  * @author：tqzhang on 18/8/18 21:33

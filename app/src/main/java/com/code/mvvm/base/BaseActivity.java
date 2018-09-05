@@ -7,9 +7,6 @@ import android.view.View;
 import com.tqzhang.stateview.core.LoadManager;
 import com.tqzhang.stateview.stateview.BaseStateControl;
 
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
-
 /**
  * @author：tqzhang on 18/3/12 19:22
  */

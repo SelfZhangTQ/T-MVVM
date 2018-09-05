@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
-import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.code.mvvm.util.AdapterPool;

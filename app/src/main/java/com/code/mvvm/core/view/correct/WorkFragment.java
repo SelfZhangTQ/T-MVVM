@@ -1,18 +1,15 @@
 package com.code.mvvm.core.view.correct;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.correct.WorkMergeVo;
-import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.code.mvvm.util.AdapterPool;
+import com.danikula.videocache.Preconditions;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -33,28 +30,23 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getWorkMergeData().observe(this, new Observer<WorkMergeVo>() {
-            @Override
-            public void onChanged(@Nullable WorkMergeVo workMergeVo) {
-                if (workMergeVo != null) {
-                    newItems.clear();
-                    newItems.add(workMergeVo.bannerListVo);
-                    lastId = workMergeVo.worksListVo.data.content.get(workMergeVo.worksListVo.data.content.size() - 1).tid;
-                    uTime = workMergeVo.worksListVo.data.content.get(workMergeVo.worksListVo.data.content.size() - 1).utime;
-                    setData(workMergeVo.worksListVo.data.content);
-                }
+        mViewModel.getWorkMergeData().observe(this, workMergeVo -> {
+            if (workMergeVo != null) {
+                newItems.clear();
+                newItems.add(workMergeVo.bannerListVo);
+                lastId = workMergeVo.worksListVo.data.content.get(workMergeVo.worksListVo.data.content.size() - 1).tid;
+                uTime = workMergeVo.worksListVo.data.content.get(workMergeVo.worksListVo.data.content.size() - 1).utime;
+                setData(workMergeVo.worksListVo.data.content);
             }
         });
-        mViewModel.getWorkMoreData().observe(this, new Observer<WorksListVo>() {
-            @Override
-            public void onChanged(@Nullable final WorksListVo worksListVo) {
-                if (worksListVo == null && worksListVo.data != null && worksListVo.data.content != null) {
-                    return;
-                }
-                lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
-                uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
-                setData(worksListVo.data.content);
+        mViewModel.getWorkMoreData().observe(this, worksListVo -> {
+            Preconditions.checkAllNotNull(worksListVo);
+            if (worksListVo == null) {
+                return;
             }
+            lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
+            uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
+            setData(worksListVo.data.content);
         });
     }
 

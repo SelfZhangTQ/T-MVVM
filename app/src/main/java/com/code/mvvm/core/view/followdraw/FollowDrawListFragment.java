@@ -1,14 +1,11 @@
 package com.code.mvvm.core.view.followdraw;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.followdraw.FollowDrawRecommendVo;
 import com.code.mvvm.core.vm.FollowDrawViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -33,16 +30,13 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
 
     @Override
     protected void dataObserver() {
-        mViewModel.geFollowDrawList().observe(this, new Observer<FollowDrawRecommendVo>() {
-            @Override
-            public void onChanged(@Nullable FollowDrawRecommendVo followDrawRecommendObject) {
-                if (followDrawRecommendObject == null) {
-                    return;
-                }
-                lastId = followDrawRecommendObject.
-                        data.get(followDrawRecommendObject.data.size() - 1).lessonid;
-                setData(followDrawRecommendObject.data);
+        mViewModel.geFollowDrawList().observe(this, followDrawRecommendObject -> {
+            if (followDrawRecommendObject == null) {
+                return;
             }
+            lastId = followDrawRecommendObject.
+                    data.get(followDrawRecommendObject.data.size() - 1).lessonid;
+            setData(followDrawRecommendObject.data);
         });
     }
 
@@ -54,7 +48,7 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
 
     @Override
     protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getFollowAdapter(getActivity());
+        return AdapterPool.newInstance().getFollowAdapter(activity);
     }
 
     @Override

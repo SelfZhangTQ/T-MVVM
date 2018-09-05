@@ -1,8 +1,6 @@
 package com.code.mvvm.core.view.course;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseFragment;
@@ -33,14 +31,11 @@ public class VideoFragment extends BaseViewPagerFragment<CourseViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getCourseType().observe(this, new Observer<CourseTypeVo>() {
-            @Override
-            public void onChanged(@Nullable CourseTypeVo courseTypeVo) {
-                if (courseTypeVo == null) {
-                    return;
-                }
-                setData(courseTypeVo);
+        mViewModel.getCourseType().observe(this, courseTypeVo -> {
+            if (courseTypeVo == null) {
+                return;
             }
+            setData(courseTypeVo);
         });
     }
 

@@ -1,8 +1,6 @@
 package com.code.mvvm.core.view.home;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -37,12 +35,9 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getMergeData().observe(this, new Observer<HomeMergeVo>() {
-            @Override
-            public void onChanged(@Nullable HomeMergeVo homeMergeVo) {
-                if (homeMergeVo != null) {
-                    addItems(homeMergeVo);
-                }
+        mViewModel.getMergeData().observe(this, homeMergeVo -> {
+            if (homeMergeVo != null) {
+                addItems(homeMergeVo);
             }
         });
     }

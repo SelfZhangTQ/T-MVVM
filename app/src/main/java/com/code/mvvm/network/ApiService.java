@@ -22,9 +22,9 @@ import com.code.mvvm.core.data.pojo.home.HomeListVo;
 import com.code.mvvm.core.data.pojo.live.LiveDetailsVo;
 import com.code.mvvm.core.data.pojo.live.LiveListVo;
 import com.code.mvvm.core.data.pojo.live.LiveTypeVo;
-import com.code.mvvm.core.data.pojo.material.MaterialVo;
 import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
+import com.code.mvvm.core.data.pojo.material.MaterialVo;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
 
 import retrofit2.http.Field;

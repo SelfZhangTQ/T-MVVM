@@ -1,14 +1,11 @@
 package com.code.mvvm.core.view.course;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -35,15 +32,12 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getCourseList().observe(this, new Observer<CourseListVo>() {
-            @Override
-            public void onChanged(@Nullable CourseListVo courseListVo) {
-                if (courseListVo != null && courseListVo.data != null) {
-                    lastId = courseListVo.data.get(courseListVo.data.size() - 1).courseid;
-                    setData(courseListVo.data);
-                }
-
+        mViewModel.getCourseList().observe(this, courseListVo -> {
+            if (courseListVo != null && courseListVo.data != null) {
+                lastId = courseListVo.data.get(courseListVo.data.size() - 1).courseid;
+                setData(courseListVo.data);
             }
+
         });
     }
 

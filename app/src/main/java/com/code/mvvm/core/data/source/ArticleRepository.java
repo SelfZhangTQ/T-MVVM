@@ -15,7 +15,7 @@ public class ArticleRepository extends BaseRepository {
 
     public void loadArticleRemList(final String lectureLevel, final String lastId, final String rn, final OnResultCallBack<ArticleVo> listener) {
         addSubscribe(apiService.getArticleRemList(lectureLevel, lastId, rn)
-                .compose(RxSchedulers.<ArticleVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<ArticleVo>() {
                     @Override
                     protected void onNoNetWork() {

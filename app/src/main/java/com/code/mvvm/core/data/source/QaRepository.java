@@ -10,9 +10,10 @@ import com.code.mvvm.network.rx.RxSubscriber;
  * @author：tqzhang  on 18/8/2 10:52
  */
 public class QaRepository extends BaseRepository {
+
     public void loadQAList(String lastId, String rn, final OnResultCallBack<QaListVo> listener) {
         addSubscribe(apiService.getQAList(lastId, rn)
-                .compose(RxSchedulers.<QaListVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<QaListVo>() {
                     @Override
                     protected void onNoNetWork() {

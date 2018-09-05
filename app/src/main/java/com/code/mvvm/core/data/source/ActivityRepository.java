@@ -13,7 +13,7 @@ public class ActivityRepository extends BaseRepository {
 
     public void loadActivityList(String lastId, String rn, final OnResultCallBack listener) {
         addSubscribe(apiService.getActivityList(lastId, rn)
-                .compose(RxSchedulers.<ActivityListVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<ActivityListVo>() {
                     @Override
                     protected void onNoNetWork() {

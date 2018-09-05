@@ -15,15 +15,16 @@ import com.code.mvvm.core.data.source.FollowDrawRepository;
  * @author：tqzhang  on 18/7/31 16:05
  */
 public class FollowDrawViewModel extends BaseViewModel<FollowDrawRepository> {
-    public FollowDrawViewModel(@NonNull Application application) {
-        super(application);
-    }
 
     private MutableLiveData<FollowDrawTypeVo> mFollowDrawTypeData;
 
     private MutableLiveData<FollowDrawRecommendVo> mFollowDrawData;
 
     private MutableLiveData<FollowDrawRecommendVo> mFollowDrawRemData;
+
+    public FollowDrawViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     public LiveData<FollowDrawTypeVo> getFollowDrawType() {
         if (mFollowDrawTypeData == null) {

@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.App;
 import com.code.mvvm.R;
-import com.code.mvvm.base.BaseViewHolder;
 import com.code.mvvm.core.data.pojo.article.ArticleInfoVo;
 import com.code.mvvm.util.DisplayUtil;
 import com.trecyclerview.holder.AbsViewHolder;

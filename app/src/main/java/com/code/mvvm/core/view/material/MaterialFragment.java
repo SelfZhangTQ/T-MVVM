@@ -1,8 +1,6 @@
 package com.code.mvvm.core.view.material;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseFragment;
@@ -32,12 +30,9 @@ public class MaterialFragment extends BaseViewPagerFragment<MaterialViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getMaterialType().observe(this, new Observer<MaterialTypeVo>() {
-            @Override
-            public void onChanged(@Nullable MaterialTypeVo materialTypeVo) {
-                if (materialTypeVo != null) {
-                    setData(materialTypeVo);
-                }
+        mViewModel.getMaterialType().observe(this, materialTypeVo -> {
+            if (materialTypeVo != null) {
+                setData(materialTypeVo);
             }
         });
     }

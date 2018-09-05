@@ -30,7 +30,6 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
 
     private WorkMergeVo workMergeVo = new WorkMergeVo();
 
-
     public WorkViewModel(@NonNull Application application) {
         super(application);
     }

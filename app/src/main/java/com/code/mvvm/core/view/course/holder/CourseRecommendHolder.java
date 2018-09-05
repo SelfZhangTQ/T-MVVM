@@ -2,22 +2,16 @@ package com.code.mvvm.core.view.course.holder;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.code.mvvm.App;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseHolder;
-import com.trecyclerview.multitype.AbsItemView;
 
 /**
  * @author：tqzhang on 18/7/16 17:37

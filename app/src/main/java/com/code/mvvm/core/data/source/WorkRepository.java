@@ -10,7 +10,6 @@ import com.code.mvvm.network.rx.RxSchedulers;
 import com.code.mvvm.network.rx.RxSubscriber;
 
 import rx.Observable;
-import rx.functions.Action1;
 
 /**
  * @author：tqzhang on 18/7/31 15:32
@@ -18,10 +17,12 @@ import rx.functions.Action1;
 public class WorkRepository extends BaseRepository {
 
     private Observable<WorksListVo> mWorkData;
+
     private Observable<BannerListVo> mBannerData;
 
     private Observable<WorkDetailVo> mWorkDetail;
-    private Observable<WorkRecommentVo> mWorkRecomment;
+
+    private Observable<WorkRecommentVo> mWorkRecommend;
 
     public void loadWorkData(String corrected, String rn) {
         mWorkData = apiService.getWorkData(corrected, rn);
@@ -29,7 +30,7 @@ public class WorkRepository extends BaseRepository {
 
     public void loadWorkMoreData(String corrected, String lastId, String uTime, String rn, final OnResultCallBack<WorksListVo> listener) {
         addSubscribe(apiService.getWorkMoreData(lastId, uTime, rn)
-                .compose(RxSchedulers.<WorksListVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<WorksListVo>() {
                     @Override
                     protected void onNoNetWork() {
@@ -59,7 +60,7 @@ public class WorkRepository extends BaseRepository {
 
     public void loadRequestMerge(final OnResultCallBack<Object> listener) {
         addSubscribe(Observable.concatDelayError(mBannerData, mWorkData)
-                .compose(RxSchedulers.<Object>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<Object>() {
                     @Override
                     protected void onNoNetWork() {
@@ -84,11 +85,11 @@ public class WorkRepository extends BaseRepository {
     }
 
     public void loadWorkRecommendData(String correctId, final OnResultCallBack<WorkRecommentVo> listener) {
-        mWorkRecomment = apiService.getWorkRecommendData(correctId);
+        mWorkRecommend = apiService.getWorkRecommendData(correctId);
     }
 
     public void loadWorkMergeData(final OnResultCallBack<Object> listener) {
-        addSubscribe(Observable.concatDelayError(mWorkDetail, mWorkRecomment)
+        addSubscribe(Observable.concatDelayError(mWorkDetail, mWorkRecommend)
                 .compose(RxSchedulers.<Object>io_main())
                 .subscribe(new RxSubscriber<Object>() {
                     @Override

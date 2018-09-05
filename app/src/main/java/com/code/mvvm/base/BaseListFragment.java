@@ -1,9 +1,7 @@
 package com.code.mvvm.base;
 
 import android.os.Bundle;
-import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -12,10 +10,8 @@ import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.vm.BaseViewModel;
-import com.code.mvvm.util.DiffCallback;
 import com.trecyclerview.TRecyclerView;
 import com.trecyclerview.listener.OnRefreshListener;
-import com.trecyclerview.listener.OnScrollStateListener;
 import com.trecyclerview.multitype.Items;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
@@ -66,17 +62,14 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(createLayoutManager());
         mRecyclerView.addOnRefreshListener(this);
-        mRecyclerView.addOnScrollStateListener(new OnScrollStateListener() {
-            @Override
-            public void onScrollStateChanged(int state) {
-                if (state == RecyclerView.SCROLL_STATE_IDLE) {
-                    if (activity != null) {
-                        Glide.with(activity).resumeRequests();
-                    }
-                } else {
-                    if (activity != null) {
-                        Glide.with(activity).pauseRequests();
-                    }
+        mRecyclerView.addOnScrollStateListener(state1 -> {
+            if (state1 == RecyclerView.SCROLL_STATE_IDLE) {
+                if (activity != null) {
+                    Glide.with(activity).resumeRequests();
+                }
+            } else {
+                if (activity != null) {
+                    Glide.with(activity).pauseRequests();
                 }
             }
         });
@@ -135,21 +128,13 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
         }
     }
 
-    protected void diffNotifyDataChanged() {
-        DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffCallback(oldItems, newItems), true);
-        oldItems.clear();
-        oldItems.addAll(newItems);
-        newItems.clear();
-        result.dispatchUpdatesTo(adapter);
-    }
-
     /**
-     * @return
+     * @return MultiTypeAdapter
      */
     protected abstract MultiTypeAdapter createAdapter();
 
     /**
-     * @return
+     * @return LayoutManager
      */
     protected abstract RecyclerView.LayoutManager createLayoutManager();
 

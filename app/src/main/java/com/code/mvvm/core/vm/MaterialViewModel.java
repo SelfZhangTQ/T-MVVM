@@ -7,16 +7,15 @@ import android.support.annotation.NonNull;
 
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.material.MaterialVo;
 import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
+import com.code.mvvm.core.data.pojo.material.MaterialVo;
 import com.code.mvvm.core.data.source.MaterialRepository;
 
 /**
  * @author：tqzhang  on 18/7/28 13:32
  */
 public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
-
 
     private MutableLiveData<MaterialTypeVo> mMaterialTypeData;
 
@@ -25,7 +24,6 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
     private MutableLiveData<MaterialVo> mMaterialMoreData;
 
     private MutableLiveData<MaterialRecommendVo> mMaterialRecommendData;
-
 
     public MaterialViewModel(@NonNull Application application) {
         super(application);

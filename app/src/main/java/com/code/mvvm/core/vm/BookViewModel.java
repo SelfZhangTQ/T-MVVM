@@ -16,9 +16,9 @@ import com.code.mvvm.core.data.source.BookRepository;
  */
 public class BookViewModel extends BaseViewModel<BookRepository> {
 
-    private MutableLiveData<BookListVo> mBookData = new MutableLiveData<>();
+    private MutableLiveData<BookListVo> mBookData;
 
-    private MutableLiveData<BookTypeVo> mBookType = new MutableLiveData<>();
+    private MutableLiveData<BookTypeVo> mBookType;
 
     public BookViewModel(@NonNull Application application) {
         super(application);

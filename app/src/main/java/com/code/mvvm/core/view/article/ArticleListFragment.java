@@ -1,14 +1,11 @@
 package com.code.mvvm.core.view.article;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.article.ArticleVo;
 import com.code.mvvm.core.vm.ArticleViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -18,6 +15,8 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
  */
 public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
 
+    private String typeId;
+
     public static ArticleListFragment newInstance() {
         return new ArticleListFragment();
     }
@@ -25,17 +24,17 @@ public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
     @Override
     public void initView(Bundle state) {
         super.initView(state);
+        if (getArguments() != null) {
+            typeId = getArguments().getString("type_id");
+        }
     }
 
     @Override
     protected void dataObserver() {
-        mViewModel.getArticleList().observe(this, new Observer<ArticleVo>() {
-            @Override
-            public void onChanged(@Nullable ArticleVo articleVo) {
-                if (articleVo != null) {
-                    lastId = articleVo.data.list.get(articleVo.data.list.size() - 1).newsid;
-                    setData(articleVo.data.list);
-                }
+        mViewModel.getArticleList().observe(this, articleVo -> {
+            if (articleVo != null) {
+                lastId = articleVo.data.list.get(articleVo.data.list.size() - 1).newsid;
+                setData(articleVo.data.list);
             }
         });
     }
@@ -53,7 +52,7 @@ public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
 
     @Override
     protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getArticleAdapter(getActivity());
+        return AdapterPool.newInstance().getArticleAdapter(activity);
     }
 
     @Override
@@ -70,6 +69,6 @@ public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getArticleList(getArguments().getString("type_id"), lastId, Constants.PAGE_RN);
+        mViewModel.getArticleList(typeId, lastId, Constants.PAGE_RN);
     }
 }

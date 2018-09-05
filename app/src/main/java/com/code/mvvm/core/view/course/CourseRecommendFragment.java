@@ -1,8 +1,6 @@
 package com.code.mvvm.core.view.course;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -31,20 +29,17 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getCourseRemList().observe(this, new Observer<CourseRemVo>() {
-            @Override
-            public void onChanged(@Nullable CourseRemVo courseRemVo) {
-                if (courseRemVo != null) {
-                    setData(courseRemVo);
-                }
-
+        mViewModel.getCourseRemList().observe(this, courseRemVo -> {
+            if (courseRemVo != null) {
+                setData(courseRemVo);
             }
+
         });
     }
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
-        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+        GridLayoutManager layoutManager = new GridLayoutManager(activity, 2);
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
@@ -59,7 +54,7 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
 
     @Override
     protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getCourseRemAdapter(getActivity());
+        return AdapterPool.newInstance().getCourseRemAdapter(activity);
     }
 
     @Override

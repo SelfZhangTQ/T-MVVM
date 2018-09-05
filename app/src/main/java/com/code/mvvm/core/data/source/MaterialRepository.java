@@ -2,9 +2,9 @@ package com.code.mvvm.core.data.source;
 
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.core.data.BaseRepository;
-import com.code.mvvm.core.data.pojo.material.MaterialVo;
 import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
+import com.code.mvvm.core.data.pojo.material.MaterialVo;
 import com.code.mvvm.network.rx.RxSchedulers;
 import com.code.mvvm.network.rx.RxSubscriber;
 
@@ -16,7 +16,7 @@ public class MaterialRepository extends BaseRepository {
     public void loadMaterialList(String mCatalogId, String mLevel, String rn, final OnResultCallBack<MaterialVo> listener) {
 
         addSubscribe(apiService.getMaterialList(mCatalogId, mLevel, rn)
-                .compose(RxSchedulers.<MaterialVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<MaterialVo>() {
                     @Override
                     protected void onNoNetWork() {
@@ -38,7 +38,7 @@ public class MaterialRepository extends BaseRepository {
 
     public void loadMaterialMoreList(String mCatalogId, String mLevel, String lastId, String rn, final OnResultCallBack<MaterialVo> listener) {
         addSubscribe(apiService.getMaterialMoreList(mCatalogId, mLevel, lastId, rn)
-                .compose(RxSchedulers.<MaterialVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<MaterialVo>() {
                     @Override
                     protected void onNoNetWork() {
@@ -60,7 +60,7 @@ public class MaterialRepository extends BaseRepository {
 
     public void loadMaterialRemList(String mCatalogId, String lastId, String rn, final OnResultCallBack<MaterialRecommendVo> listener) {
         apiService.getMaterialRemList(mCatalogId, lastId, rn)
-                .compose(RxSchedulers.<com.code.mvvm.core.data.pojo.material.MaterialRecommendVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<MaterialRecommendVo>() {
                     @Override
                     protected void onNoNetWork() {
@@ -82,7 +82,7 @@ public class MaterialRepository extends BaseRepository {
 
     public void loadMaterialTypeData(final OnResultCallBack<MaterialTypeVo> listener) {
         apiService.getMaterialInfo()
-                .compose(RxSchedulers.<MaterialTypeVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<MaterialTypeVo>() {
                     @Override
                     protected void onNoNetWork() {

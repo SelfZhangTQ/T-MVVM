@@ -1,8 +1,6 @@
 package com.code.mvvm.core.view.article;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseFragment;
@@ -33,12 +31,9 @@ public class ArticleFragment extends BaseViewPagerFragment<ArticleViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getArticleType().observe(this, new Observer<ArticleTypeVo>() {
-            @Override
-            public void onChanged(@Nullable ArticleTypeVo articleTypeVo) {
-                if (articleTypeVo != null) {
-                    setData(articleTypeVo);
-                }
+        mViewModel.getArticleType().observe(this, articleTypeVo -> {
+            if (articleTypeVo != null) {
+                setData(articleTypeVo);
             }
         });
 

@@ -10,9 +10,10 @@ import com.code.mvvm.network.rx.RxSubscriber;
  * @author：tqzhang on 18/8/13 15:21
  */
 public class DynamicRepository extends BaseRepository {
+
     public void loadDynamicList(String rn, String token, String lastId, final OnResultCallBack<DynamicListVo> listener) {
         addSubscribe(apiService.getDynamicList(rn, token, lastId)
-                .compose(RxSchedulers.<DynamicListVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<DynamicListVo>() {
                     @Override
                     protected void onNoNetWork() {

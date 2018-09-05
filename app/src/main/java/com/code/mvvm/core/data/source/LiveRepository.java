@@ -8,12 +8,13 @@ import com.code.mvvm.network.rx.RxSchedulers;
 import com.code.mvvm.network.rx.RxSubscriber;
 
 /**
- * @author：tqzhang  on 18/8/2 13:36
+ * @author：tqzhang on 18/8/2 13:36
  */
 public class LiveRepository extends BaseRepository {
+
     public void loadLiveList(String mCatalogId, String id, String rn, final OnResultCallBack<LiveListVo> onResultCallBack) {
         addSubscribe(apiService.getLiveList(mCatalogId, id, rn)
-                .compose(RxSchedulers.<LiveListVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<LiveListVo>() {
 
                     @Override
@@ -29,9 +30,10 @@ public class LiveRepository extends BaseRepository {
                 }));
     }
 
+
     public void loadLiveRemList(String id, String rn, final OnResultCallBack<LiveListVo> onResultCallBack) {
         addSubscribe(apiService.getLiveRem(id, rn)
-                .compose(RxSchedulers.<LiveListVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<LiveListVo>() {
 
                     @Override
@@ -48,24 +50,24 @@ public class LiveRepository extends BaseRepository {
 
     public void loadLiveTypeData(final OnResultCallBack<LiveTypeVo> listener) {
         addSubscribe(apiService.getLiveType()
-           .compose(RxSchedulers.<LiveTypeVo>io_main())
-           .subscribe(new RxSubscriber<LiveTypeVo>() {
-               @Override
-               protected void onNoNetWork() {
-                   super.onNoNetWork();
-                   listener.onNoNetWork();
-               }
+                .compose(RxSchedulers.io_main())
+                .subscribe(new RxSubscriber<LiveTypeVo>() {
+                    @Override
+                    protected void onNoNetWork() {
+                        super.onNoNetWork();
+                        listener.onNoNetWork();
+                    }
 
-               @Override
-               public void onSuccess(LiveTypeVo liveTypeVo) {
-                   listener.onNext(liveTypeVo);
-               }
+                    @Override
+                    public void onSuccess(LiveTypeVo liveTypeVo) {
+                        listener.onNext(liveTypeVo);
+                    }
 
-               @Override
-               public void onFailure(String msg) {
-                   listener.onError(msg);
-               }
-           }));
+                    @Override
+                    public void onFailure(String msg) {
+                        listener.onError(msg);
+                    }
+                }));
 
     }
 }

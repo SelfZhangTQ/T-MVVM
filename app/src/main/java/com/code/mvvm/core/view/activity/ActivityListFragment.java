@@ -1,14 +1,11 @@
 package com.code.mvvm.core.view.activity;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.vm.ActivityViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -28,15 +25,12 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getActivityList().observe(this, new Observer<ActivityListVo>() {
-            @Override
-            public void onChanged(@Nullable ActivityListVo activityListVo) {
-                if (activityListVo != null) {
-                    lastId = activityListVo.data.get(activityListVo.data.size() - 1).newsid;
-                    setData(activityListVo.data);
-                }
-
+        mViewModel.getActivityList().observe(this, activityListVo -> {
+            if (activityListVo != null) {
+                lastId = activityListVo.data.get(activityListVo.data.size() - 1).newsid;
+                setData(activityListVo.data);
             }
+
         });
     }
 
@@ -48,12 +42,12 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
-        return new LinearLayoutManager(getActivity());
+        return new LinearLayoutManager(activity);
     }
 
     @Override
     protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getActivityAdapter(getActivity());
+        return AdapterPool.newInstance().getActivityAdapter(activity);
     }
 
     @Override

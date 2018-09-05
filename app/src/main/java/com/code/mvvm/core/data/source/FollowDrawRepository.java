@@ -11,9 +11,10 @@ import com.code.mvvm.network.rx.RxSubscriber;
  * @author：tqzhang   on 18/7/31 16:06
  */
 public class FollowDrawRepository extends BaseRepository {
+
     public void loadFollowDrawList(String mainTypeId, String lastId, String rn, final OnResultCallBack<FollowDrawRecommendVo> listener) {
         addSubscribe(apiService.getollowDrawList(mainTypeId, lastId, rn)
-                .compose(RxSchedulers.<FollowDrawRecommendVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<FollowDrawRecommendVo>() {
                     @Override
                     protected void onNoNetWork() {
@@ -35,7 +36,7 @@ public class FollowDrawRepository extends BaseRepository {
 
     public void loadFollowDrawRemList(String lastId, String rn, final OnResultCallBack<FollowDrawRecommendVo> listener) {
         addSubscribe(apiService.getFollowDrawRemList(lastId, rn)
-                .compose(RxSchedulers.<FollowDrawRecommendVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<FollowDrawRecommendVo>() {
                     @Override
                     protected void onNoNetWork() {
@@ -57,7 +58,7 @@ public class FollowDrawRepository extends BaseRepository {
 
     public void loadFollowDrawType(final OnResultCallBack<FollowDrawTypeVo> listener) {
         addSubscribe(apiService.getFollowDrawType()
-                .compose(RxSchedulers.<FollowDrawTypeVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<FollowDrawTypeVo>() {
                     @Override
                     protected void onNoNetWork() {

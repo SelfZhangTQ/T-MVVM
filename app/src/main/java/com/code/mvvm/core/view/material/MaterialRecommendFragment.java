@@ -1,14 +1,11 @@
 package com.code.mvvm.core.view.material;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.vm.MaterialViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -31,15 +28,12 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
 
     @Override
     protected void dataObserver() {
-        mViewModel.getMaterialRecommendList().observe(this, new Observer<MaterialRecommendVo>() {
-            @Override
-            public void onChanged(@Nullable MaterialRecommendVo materialRecommendVo) {
-                if (materialRecommendVo != null) {
-                    lastId = materialRecommendVo.data.content.get(materialRecommendVo.data.content.size() - 1).subjectid;
-                    setData(materialRecommendVo.data.content);
-                }
-
+        mViewModel.getMaterialRecommendList().observe(this, materialRecommendVo -> {
+            if (materialRecommendVo != null) {
+                lastId = materialRecommendVo.data.content.get(materialRecommendVo.data.content.size() - 1).subjectid;
+                setData(materialRecommendVo.data.content);
             }
+
         });
     }
 
@@ -51,7 +45,7 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
 
     @Override
     protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getMaterialRemAdapter(getActivity());
+        return AdapterPool.newInstance().getMaterialRemAdapter(activity);
     }
 
     @Override

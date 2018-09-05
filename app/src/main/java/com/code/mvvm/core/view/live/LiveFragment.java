@@ -1,8 +1,6 @@
 package com.code.mvvm.core.view.live;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.code.mvvm.base.BaseFragment;
 import com.code.mvvm.base.BaseViewPagerFragment;
@@ -33,12 +31,9 @@ public class LiveFragment extends BaseViewPagerFragment<LiveViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getLiveType().observe(this, new Observer<LiveTypeVo>() {
-            @Override
-            public void onChanged(@Nullable LiveTypeVo liveTypeVo) {
-                if (liveTypeVo!=null) {
-                    setData(liveTypeVo);
-                }
+        mViewModel.getLiveType().observe(this, liveTypeVo -> {
+            if (liveTypeVo!=null) {
+                setData(liveTypeVo);
             }
         });
     }

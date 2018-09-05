@@ -1,20 +1,15 @@
 package com.code.mvvm.base;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.tqzhang.stateview.core.LoadManager;
 import com.tqzhang.stateview.stateview.BaseStateControl;
-
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
 
 /**
  * @author：tqzhang on 18/3/12 19:25
@@ -31,7 +26,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
         rootView = inflater.inflate(getLayoutResId(), null, false);
-        activity = getSupportActivity();
         loadManager = new LoadManager.Builder()
                 .setViewParams(rootView)
                 .setListener(new BaseStateControl.OnRefreshListener() {
@@ -135,17 +129,6 @@ public abstract class BaseFragment extends Fragment {
         super.onDetach();
         this.activity = null;
     }
-
-    public FragmentActivity getSupportActivity() {
-        return super.getActivity();
-    }
-
-
-    public Context getApplicationContext() {
-        return this.activity == null ? (getActivity() == null ?
-                null : getActivity().getApplicationContext()) : this.activity.getApplicationContext();
-    }
-
     @SuppressWarnings("unchecked")
     protected <T extends View> T getViewById(int id) {
         return (T) rootView.findViewById(id);

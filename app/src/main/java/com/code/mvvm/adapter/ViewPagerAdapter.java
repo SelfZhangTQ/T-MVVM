@@ -3,7 +3,6 @@ package com.code.mvvm.adapter;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-
 import com.code.mvvm.base.BaseFragment;
 
 import java.util.ArrayList;

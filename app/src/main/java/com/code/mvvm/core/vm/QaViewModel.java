@@ -21,7 +21,6 @@ public class QaViewModel extends BaseViewModel<QaRepository> {
         super(application);
     }
 
-
     public LiveData<QaListVo> getQAList() {
         if (mQAData == null) {
             mQAData = new MutableLiveData<>();

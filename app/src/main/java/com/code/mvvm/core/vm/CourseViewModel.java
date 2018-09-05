@@ -7,22 +7,17 @@ import android.support.annotation.NonNull;
 
 import com.code.mvvm.callback.OnResultCallBack;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
-import com.code.mvvm.core.data.pojo.home.HomeListVo;
 import com.code.mvvm.core.data.source.CourseRepository;
 
 /**
  * @author：zhangtianqiu on 18/7/31 15:13
  */
 public class CourseViewModel extends BaseViewModel<CourseRepository> {
-    public CourseViewModel(@NonNull Application application) {
-        super(application);
-    }
 
     private MutableLiveData<CourseTypeVo> mCourseType;
 
@@ -33,6 +28,10 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
     private MutableLiveData<CourseDetailRemVideoVo> mCourseDetailRemData;
 
     private MutableLiveData<CourseDetailVo> mCourseDetailData;
+
+    public CourseViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     public LiveData<CourseTypeVo> getCourseType() {
         if (mCourseType == null) {
@@ -112,7 +111,7 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
     }
 
     public void getCourseRemList(String rn) {
-        mRepository.loadCourseRemList(rn, new OnResultCallBack<CourseRemVo>() {
+        mRepository.loadCourseRemList(new OnResultCallBack<CourseRemVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

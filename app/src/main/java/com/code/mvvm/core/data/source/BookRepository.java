@@ -14,7 +14,7 @@ public class BookRepository extends BaseRepository {
 
     public void loadBookList(String fCatalogId, String lastId, String rn, final OnResultCallBack listener) {
         addSubscribe(apiService.getBookList(fCatalogId, lastId, rn)
-                .compose(RxSchedulers.<BookListVo>io_main())
+                .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<BookListVo>() {
                     @Override
                     protected void onNoNetWork() {

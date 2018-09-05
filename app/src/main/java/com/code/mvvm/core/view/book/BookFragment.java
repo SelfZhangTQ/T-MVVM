@@ -1,8 +1,6 @@
 package com.code.mvvm.core.view.book;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.code.mvvm.base.BaseFragment;
 import com.code.mvvm.base.BaseViewPagerFragment;
@@ -31,14 +29,11 @@ public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
 
     @Override
     protected void dataObserver() {
-        mViewModel.getBookType().observe(this, new Observer<BookTypeVo>() {
-            @Override
-            public void onChanged(@Nullable BookTypeVo bookTypeVo) {
-                if (bookTypeVo == null) {
-                    return;
-                }
-                setData(bookTypeVo);
+        mViewModel.getBookType().observe(this, bookTypeVo -> {
+            if (bookTypeVo == null) {
+                return;
             }
+            setData(bookTypeVo);
         });
     }
 
