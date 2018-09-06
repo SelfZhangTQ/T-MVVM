@@ -69,7 +69,17 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
 
     }
 
+    /**
+     * success
+     *
+     * @param t
+     */
     public abstract void onSuccess(T t);
 
+    /**
+     * failure
+     *
+     * @param msg
+     */
     public abstract void onFailure(String msg);
 }

@@ -18,7 +18,6 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
 import java.util.Collection;
 import java.util.List;
 
-
 /**
  * @author：tqzhang on 18/7/10 16:20
  */
@@ -129,11 +128,13 @@ public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifec
     }
 
     /**
+     * adapter
      * @return MultiTypeAdapter
      */
     protected abstract MultiTypeAdapter createAdapter();
 
     /**
+     * LayoutManager
      * @return LayoutManager
      */
     protected abstract RecyclerView.LayoutManager createLayoutManager();
