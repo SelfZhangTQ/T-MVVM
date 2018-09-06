@@ -1,6 +1,5 @@
 package com.code.mvvm.core.view.dynamic;
 
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
@@ -18,12 +17,6 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
     public static DynamicFragment newInstance() {
         return new DynamicFragment();
     }
-
-    @Override
-    public void initView(Bundle state) {
-        super.initView(state);
-    }
-
 
     @Override
     protected void dataObserver() {

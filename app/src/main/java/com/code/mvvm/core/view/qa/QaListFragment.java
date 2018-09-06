@@ -1,6 +1,5 @@
 package com.code.mvvm.core.view.qa;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -17,11 +16,6 @@ public class QaListFragment extends BaseListFragment<QaViewModel> {
 
     public static QaListFragment newInstance() {
         return new QaListFragment();
-    }
-
-    @Override
-    public void initView(Bundle state) {
-        super.initView(state);
     }
 
     @Override

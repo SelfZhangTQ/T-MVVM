@@ -1,6 +1,5 @@
 package com.code.mvvm.core.view.material;
 
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
@@ -18,12 +17,6 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
 
     public static MaterialRecommendFragment newInstance() {
         return new MaterialRecommendFragment();
-    }
-
-    @Override
-    public void initView(Bundle state) {
-        super.initView(state);
-
     }
 
     @Override

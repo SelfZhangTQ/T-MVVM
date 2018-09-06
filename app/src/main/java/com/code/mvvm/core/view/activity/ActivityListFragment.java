@@ -1,6 +1,5 @@
 package com.code.mvvm.core.view.activity;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -16,11 +15,6 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
 public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
     public static ActivityListFragment newInstance() {
         return new ActivityListFragment();
-    }
-
-    @Override
-    public void initView(Bundle state) {
-        super.initView(state);
     }
 
     @Override

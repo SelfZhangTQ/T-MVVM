@@ -1,6 +1,5 @@
 package com.code.mvvm.core.view.followdraw;
 
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
@@ -17,12 +16,6 @@ public class FollowDrawRecommendFragment extends BaseListFragment<FollowDrawView
     public static FollowDrawRecommendFragment newInstance() {
         return new FollowDrawRecommendFragment();
     }
-
-    @Override
-    public void initView(Bundle state) {
-        super.initView(state);
-    }
-
     @Override
     protected void dataObserver() {
         mViewModel.getFollowDrawRemList().observe(this, followDrawRecommendObject -> {
