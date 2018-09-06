@@ -23,7 +23,7 @@ public class HomeViewModel extends BaseViewModel<HomeRepository> {
 
     private MutableLiveData<HomeMergeVo> mergeData;
 
-    final HomeMergeVo homeMergeVo = new HomeMergeVo();
+    private final HomeMergeVo homeMergeVo = new HomeMergeVo();
 
     public HomeViewModel(@NonNull Application application) {
         super(application);

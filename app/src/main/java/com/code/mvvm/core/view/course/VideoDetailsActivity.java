@@ -185,8 +185,8 @@ public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> 
 
     private void setData(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
         Items items = new Items();
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendHolder(VideoDetailsActivity.this));
+        MultiTypeAdapter adapter = new MultiTypeAdapter.Builder<>()
+        .bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendHolder(VideoDetailsActivity.this)).build();
         mRecyclerView.setAdapter(adapter);
         items.addAll(lessonDetailAboutVideoBean.getData().getCourse_list());
         mRecyclerView.refreshComplete(items, false);

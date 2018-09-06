@@ -71,12 +71,12 @@ public class WorkDetailsActivity extends AbsLifecycleActivity<WorkViewModel> {
     }
 
     private void initAdapter() {
-        adapter = new MultiTypeAdapter();
-        adapter.bind(WorkDetailVo.class, new CorrectPicHolder(weakReference.get()));
-        adapter.bind(CourseInfoVo.class, new HomeVideoItemView(weakReference.get()));
-        adapter.bind(LiveRecommendVo.class, new HomeLiveItemView(weakReference.get()));
-        adapter.bind(WorkInfoVo.class, new CorrectRemItemHolder(weakReference.get()));
-        adapter.bind(TypeVo.class, new TypeItemView(weakReference.get()));
+        adapter = new MultiTypeAdapter.Builder<>()
+        .bind(WorkDetailVo.class, new CorrectPicHolder(weakReference.get()))
+        .bind(CourseInfoVo.class, new HomeVideoItemView(weakReference.get()))
+        .bind(LiveRecommendVo.class, new HomeLiveItemView(weakReference.get()))
+        .bind(WorkInfoVo.class, new CorrectRemItemHolder(weakReference.get()))
+        .bind(TypeVo.class, new TypeItemView(weakReference.get())).build();
 
     }
     @Override

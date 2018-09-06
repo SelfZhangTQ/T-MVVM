@@ -27,8 +27,6 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 
-import static com.trecyclerview.multitype.MultiTypeAsserts.assertAllRegistered;
-
 /**
  * @author：zhangtianqiu on 18/7/7 15:09
  */
@@ -162,15 +160,14 @@ public class LiveDetailsActivity extends BaseActivity {
 
     private void setData(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
         Items items = new Items();
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendHolder(LiveDetailsActivity.this));
+        MultiTypeAdapter adapter = new MultiTypeAdapter.Builder<>()
+                .bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendHolder(LiveDetailsActivity.this)).build();
         mRecyclerView.setAdapter(adapter);
         for (int i = 0; i < lessonDetailAboutVideoBean.getData().getCourse_list().size(); i++) {
             items.add(lessonDetailAboutVideoBean.getData().getCourse_list().get(i));
         }
         adapter.setItems(items);
         adapter.notifyDataSetChanged();
-        assertAllRegistered(adapter, items);
     }
 
 }

@@ -47,7 +47,6 @@ import com.code.mvvm.core.view.material.holder.MaterialItemHolder;
 import com.code.mvvm.core.view.material.holder.MaterialListHolder;
 import com.code.mvvm.core.view.qa.holder.QaListItemHolder;
 import com.code.mvvm.widget.banner.BannerItemView;
-import com.trecyclerview.multitype.AbsItemView;
 import com.trecyclerview.multitype.ClassLinker;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.pojo.FootVo;
@@ -57,11 +56,11 @@ import com.trecyclerview.view.FootViewHolder;
 import com.trecyclerview.view.HeaderViewHolder;
 
 /**
- * @author：tqzhang  on 18/8/3 16:25
+ * @author：tqzhang on 18/8/3 16:25
  */
 public class AdapterPool {
 
-    public static AdapterPool adapterPool;
+    private static AdapterPool adapterPool;
 
     public static AdapterPool newInstance() {
         if (adapterPool == null) {
@@ -75,166 +74,143 @@ public class AdapterPool {
         return adapterPool;
     }
 
-    public MultiTypeAdapter getNoHeadAdapter(MultiTypeAdapter adapter, Context context) {
-        adapter.bind(FootVo.class, new FootViewHolder(context,ProgressStyle.Pacman));
-        return adapter;
+    public MultiTypeAdapter getNoHeadAdapter(MultiTypeAdapter.Builder builder, Context context) {
+        return builder
+                .bind(FootVo.class, new FootViewHolder(context, ProgressStyle.Pacman))
+                .build();
     }
 
-    public MultiTypeAdapter getNoFootAdapter(MultiTypeAdapter adapter, Context context) {
-        adapter.bind(HeaderVo.class, new HeaderViewHolder(context,ProgressStyle.Pacman));
-        return adapter;
+    public MultiTypeAdapter getNoFootAdapter(MultiTypeAdapter.Builder builder, Context context) {
+        return builder
+                .bind(HeaderVo.class, new HeaderViewHolder(context, ProgressStyle.Pacman))
+                .build();
     }
 
-    public MultiTypeAdapter getAdapter(MultiTypeAdapter adapter, Context context) {
-        adapter.bind(HeaderVo.class, new HeaderViewHolder(context,ProgressStyle.Pacman));
-        adapter.bind(FootVo.class, new FootViewHolder(context, ProgressStyle.Pacman));
-        return adapter;
+    public MultiTypeAdapter getAdapter(MultiTypeAdapter.Builder builder, Context context) {
+        return builder.bind(HeaderVo.class, new HeaderViewHolder(context, ProgressStyle.Pacman))
+                .bind(FootVo.class, new FootViewHolder(context, ProgressStyle.Pacman))
+                .build();
     }
 
     public MultiTypeAdapter getWorkAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(BannerListVo.class, new BannerItemView(context));
-        adapter.bind(WorksListVo.Works.class, new CorrectItemHolder(context));
-        return getAdapter(adapter, context);
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(BannerListVo.class, new BannerItemView(context))
+                .bind(WorksListVo.Works.class, new CorrectItemHolder(context)), context);
     }
 
     public MultiTypeAdapter getSwipeCorrectAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(BannerListVo.class, new BannerItemView(context));
-        adapter.bind(WorksListVo.Works.class, new CorrectItemHolder(context));
-        return getAdapter(adapter, context);
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(BannerListVo.class, new BannerItemView(context))
+                .bind(WorksListVo.Works.class, new CorrectItemHolder(context)), context);
     }
 
     public MultiTypeAdapter getBookAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(BookVo.class, new BookListHolder(context));
-        return getAdapter(adapter, context);
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(BookVo.class, new BookListHolder(context)), context);
     }
 
     public MultiTypeAdapter getActivityAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(ActivityListVo.DataBean.class, new ActivityItemHolder(context));
-        return getAdapter(adapter, context);
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(ActivityListVo.DataBean.class, new ActivityItemHolder(context)), context);
     }
 
     public MultiTypeAdapter getArticleAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(ArticleInfoVo.class).to(new ArticleRem1ItemHolder(context), new ArticleRem2ItemHolder(context), new ArticleRem3ItemHolder(context))
-                .withClassLinker(new ClassLinker<ArticleInfoVo>() {
-                    @NonNull
-                    @Override
-                    public Class<? extends AbsItemView<ArticleInfoVo, ?>> index(int position, @NonNull ArticleInfoVo listBean) {
-                        if ("1".equals(listBean.thumbtype)) {
-                            return ArticleRem1ItemHolder.class;
-                        } else if ("2".equals(listBean.thumbtype)) {
-                            return ArticleRem2ItemHolder.class;
-                        } else if ("3".equals(listBean.thumbtype)) {
-                            return ArticleRem3ItemHolder.class;
-                        }
-                        return null;
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bindArray(ArticleInfoVo.class, new ArticleRem1ItemHolder(context), new ArticleRem2ItemHolder(context), new ArticleRem3ItemHolder(context))
+                .withClass((ClassLinker<ArticleInfoVo>) (position, listBean) -> {
+                    if ("1".equals(listBean.thumbtype)) {
+                        return ArticleRem1ItemHolder.class;
+                    } else if ("2".equals(listBean.thumbtype)) {
+                        return ArticleRem2ItemHolder.class;
+                    } else if ("3".equals(listBean.thumbtype)) {
+                        return ArticleRem3ItemHolder.class;
                     }
-                });
-        return getAdapter(adapter, context);
+                    return null;
+                }), context);
     }
 
     public MultiTypeAdapter getCourseRemAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(TypeVo.class, new TypeItemView(context));
-        adapter.bind(BannerListVo.class, new BannerItemView(context));
-        adapter.bind(CourseInfoVo.class, new HomeVideoItemView(context));
-        adapter.bind(LiveRecommendVo.class, new HomeLiveItemView(context));
-        return getNoFootAdapter(adapter, context);
+        return getNoFootAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(TypeVo.class, new TypeItemView(context))
+                .bind(BannerListVo.class, new BannerItemView(context))
+                .bind(CourseInfoVo.class, new HomeVideoItemView(context))
+                .bind(LiveRecommendVo.class, new HomeLiveItemView(context)), context);
 
     }
 
     public MultiTypeAdapter getCourseListAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(CourseInfoVo.class, new CourseItemHolder(context));
-        return getAdapter(adapter, context);
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(CourseInfoVo.class, new CourseItemHolder(context)), context);
 
     }
 
     public MultiTypeAdapter getFollowAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(FollowDrawInfoVo.class, new FollowDrawListHolder(context));
-        return getAdapter(adapter, context);
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(FollowDrawInfoVo.class, new FollowDrawListHolder(context)), context);
     }
 
     public MultiTypeAdapter getQaAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(QaListVo.DataBean.class, new QaListItemHolder(context));
-        return getAdapter(adapter, context);
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(QaListVo.DataBean.class, new QaListItemHolder(context)), context);
     }
 
     public MultiTypeAdapter getMaterialListAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(MaterialInfoVo.class, new MaterialListHolder(context));
-        return getAdapter(adapter, context);
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(MaterialInfoVo.class, new MaterialListHolder(context)), context);
     }
 
     public MultiTypeAdapter getMaterialRemAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(MatreialSubjectVo.class, new MaterialItemHolder(context));
-        return getAdapter(adapter, context);
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(MatreialSubjectVo.class, new MaterialItemHolder(context)), context);
     }
 
     public MultiTypeAdapter getLiveAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(LiveRecommendVo.class, new LiveListItemHolder(context));
-        return getAdapter(adapter, context);
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(LiveRecommendVo.class, new LiveListItemHolder(context)), context);
     }
 
     public MultiTypeAdapter getLiveRemAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(LiveRecommendVo.class, new LiveItemHolder(context));
-        return getAdapter(adapter, context);
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(LiveRecommendVo.class, new LiveItemHolder(context)), context);
     }
 
     public MultiTypeAdapter getHomeAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(BannerListVo.class, new BannerItemView(context));
-        adapter.bind(TypeVo.class, new TypeItemView(context));
-        adapter.bind(CatagoryVo.class, new CategoryItemView(context));
-        adapter.bind(BookList.class, new BookItemHolder(context));
-        adapter.bind(CourseInfoVo.class, new HomeVideoItemView(context));
-        adapter.bind(LiveRecommendVo.class, new HomeLiveItemView(context));
-        adapter.bind(MaterialListVo.class, new HomeMaterialItemView(context));
-        return getNoFootAdapter(adapter, context);
+        return getNoFootAdapter(new MultiTypeAdapter.Builder<>()
+                .bind(BannerListVo.class, new BannerItemView(context))
+                .bind(TypeVo.class, new TypeItemView(context))
+                .bind(CatagoryVo.class, new CategoryItemView(context))
+                .bind(BookList.class, new BookItemHolder(context))
+                .bind(CourseInfoVo.class, new HomeVideoItemView(context))
+                .bind(LiveRecommendVo.class, new HomeLiveItemView(context))
+                .bind(MaterialListVo.class, new HomeMaterialItemView(context)), context);
     }
 
     public MultiTypeAdapter getDynamicAdapter(Context context) {
-        MultiTypeAdapter adapter = new MultiTypeAdapter();
-        adapter.bind(DynamicInfoVo.class)
-                .to(new DynamicCorrectHolder(context),
+        return getAdapter(new MultiTypeAdapter.Builder<>()
+                .bindArray(DynamicInfoVo.class, new DynamicCorrectHolder(context),
                         new DynamicWorkHolder(context),
                         new DynamicSubjectHolder(context),
                         new DynamicArticleHolder(context),
                         new DynamicCourseHolder(context),
                         new DynamicLiveHolder(context),
-                        new DynamicFollowHolder(context)
-                )
-                .withClassLinker(new ClassLinker<DynamicInfoVo>() {
-                    @NonNull
-                    @Override
-                    public Class<? extends AbsItemView<DynamicInfoVo, ?>> index(int position, @NonNull DynamicInfoVo dynamicInfoVo) {
-                        if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_CORRECT)) {
-                            return DynamicCorrectHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_WORK)) {
-                            return DynamicWorkHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_MATERIAL_SUBJECT)) {
-                            return DynamicSubjectHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_ARTICLE)) {
-                            return DynamicArticleHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_FOLLOW_DRAW)) {
-                            return DynamicFollowHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_LIVE)) {
-                            return DynamicLiveHolder.class;
-                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_LESSON)) {
-                            return DynamicCourseHolder.class;
-                        }
-                        return null;
+                        new DynamicFollowHolder(context))
+                .withClass((ClassLinker<DynamicInfoVo>) (position, dynamicInfoVo) -> {
+                    if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_CORRECT)) {
+                        return DynamicCorrectHolder.class;
+                    } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_WORK)) {
+                        return DynamicWorkHolder.class;
+                    } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_MATERIAL_SUBJECT)) {
+                        return DynamicSubjectHolder.class;
+                    } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_ARTICLE)) {
+                        return DynamicArticleHolder.class;
+                    } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_FOLLOW_DRAW)) {
+                        return DynamicFollowHolder.class;
+                    } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_LIVE)) {
+                        return DynamicLiveHolder.class;
+                    } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_LESSON)) {
+                        return DynamicCourseHolder.class;
                     }
-                });
-        return getAdapter(adapter, context);
+                    return null;
+                }), context);
     }
 }
