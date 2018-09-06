@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.vm.MaterialViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -66,7 +65,7 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
     }
 
     public void getNetWorkData() {
-        mViewModel.getMaterialRemList("0", lastId, Constants.PAGE_RN);
+        mViewModel.getMaterialRemList("0", lastId);
     }
 
 

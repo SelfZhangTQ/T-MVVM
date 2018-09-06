@@ -1,7 +1,7 @@
 package com.code.mvvm.core.data.source;
 
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.home.HomeListVo;
@@ -32,7 +32,7 @@ public class HomeRepository extends BaseRepository {
     }
 
 
-    public void loadRequestMerge(final OnResultCallBack listener) {
+    public void loadRequestMerge(final CallBack listener) {
         addSubscribe(Observable.concatDelayError(mBannerObservable, mHomeListObservable)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<Object>() {

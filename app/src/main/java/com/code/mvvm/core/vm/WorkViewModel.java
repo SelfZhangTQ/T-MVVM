@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.correct.WorkDetailVo;
@@ -62,8 +62,8 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
         return mWorkRecommentData;
     }
 
-    public void getWorkMoreData(String corrected, String lastId, String utime, String rn) {
-        mRepository.loadWorkMoreData(corrected, lastId, utime, rn, new OnResultCallBack<WorksListVo>() {
+    public void getWorkMoreData(String corrected, String lastId, String utime) {
+        mRepository.loadWorkMoreData(corrected, lastId, utime, Constants.PAGE_RN, new CallBack<WorksListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -98,7 +98,7 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
     public void getRequestMerge() {
         getBannerData("1", "4", "109", "", null);
         getWorkData("80", "20");
-        mRepository.loadRequestMerge(new OnResultCallBack<Object>() {
+        mRepository.loadRequestMerge(new CallBack<Object>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -123,7 +123,7 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
     }
 
     private void getWorkDetailData(String correctId) {
-        mRepository.loadWorkDetailData(correctId, new OnResultCallBack<WorkDetailVo>() {
+        mRepository.loadWorkDetailData(correctId, new CallBack<WorkDetailVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -143,7 +143,7 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
     }
 
     public void getWorkRecommendData(String correctId) {
-        mRepository.loadWorkRecommendData(correctId, new OnResultCallBack<WorkRecommentVo>() {
+        mRepository.loadWorkRecommendData(correctId, new CallBack<WorkRecommentVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -165,7 +165,7 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
     public void getWorkMergeData(String correctId) {
         getWorkDetailData(correctId);
         getWorkRecommendData(correctId);
-        mRepository.loadWorkMergeData(new OnResultCallBack<Object>() {
+        mRepository.loadWorkMergeData(new CallBack<Object>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

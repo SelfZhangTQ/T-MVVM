@@ -2,6 +2,9 @@ package com.code.mvvm.core.data.pojo.live;
 
 import com.code.mvvm.core.data.pojo.user.UserInfoVo;
 
+/**
+ * @author
+ */
 public class LiveRecommendVo {
     public String live_thumb_url;
     public String share_img;

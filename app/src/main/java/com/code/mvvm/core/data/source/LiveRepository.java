@@ -1,6 +1,6 @@
 package com.code.mvvm.core.data.source;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.live.LiveListVo;
 import com.code.mvvm.core.data.pojo.live.LiveTypeVo;
@@ -12,7 +12,7 @@ import com.code.mvvm.network.rx.RxSubscriber;
  */
 public class LiveRepository extends BaseRepository {
 
-    public void loadLiveList(String mCatalogId, String id, String rn, final OnResultCallBack<LiveListVo> onResultCallBack) {
+    public void loadLiveList(String mCatalogId, String id, String rn, final CallBack<LiveListVo> onResultCallBack) {
         addSubscribe(apiService.getLiveList(mCatalogId, id, rn)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<LiveListVo>() {
@@ -31,7 +31,7 @@ public class LiveRepository extends BaseRepository {
     }
 
 
-    public void loadLiveRemList(String id, String rn, final OnResultCallBack<LiveListVo> onResultCallBack) {
+    public void loadLiveRemList(String id, String rn, final CallBack<LiveListVo> onResultCallBack) {
         addSubscribe(apiService.getLiveRem(id, rn)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<LiveListVo>() {
@@ -48,7 +48,7 @@ public class LiveRepository extends BaseRepository {
                 }));
     }
 
-    public void loadLiveTypeData(final OnResultCallBack<LiveTypeVo> listener) {
+    public void loadLiveTypeData(final CallBack<LiveTypeVo> listener) {
         addSubscribe(apiService.getLiveType()
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<LiveTypeVo>() {

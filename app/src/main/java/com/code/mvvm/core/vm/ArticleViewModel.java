@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.article.ArticleTypeVo;
 import com.code.mvvm.core.data.pojo.article.ArticleVo;
@@ -38,8 +38,8 @@ public class ArticleViewModel extends BaseViewModel<ArticleRepository> {
         return mArticleTypeData;
     }
 
-    public void getArticleList(String lectureLevel1, String lastId, String rn) {
-        mRepository.loadArticleRemList(lectureLevel1, lastId, rn, new OnResultCallBack<ArticleVo>() {
+    public void getArticleList(String lectureLevel1, String lastId) {
+        mRepository.loadArticleRemList(lectureLevel1, lastId, Constants.PAGE_RN, new CallBack<ArticleVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -59,7 +59,7 @@ public class ArticleViewModel extends BaseViewModel<ArticleRepository> {
     }
 
     public void getArticleTypeData() {
-        mRepository.loadArticleType(new OnResultCallBack<ArticleTypeVo>() {
+        mRepository.loadArticleType(new CallBack<ArticleTypeVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

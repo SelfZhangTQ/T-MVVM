@@ -5,7 +5,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.vm.BookViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -77,7 +76,7 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
     }
 
     private void getNetWorkData() {
-        mViewModel.getBookList(typeId, lastId, Constants.PAGE_RN);
+        mViewModel.getBookList(typeId, lastId);
 
     }
 

@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.vm.DynamicViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -65,7 +64,7 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
     }
 
     private void getDynamicListData() {
-        mViewModel.getDynamicList(Constants.PAGE_RN, "818d8a6b54870bdffc333376723289d9", lastId);
+        mViewModel.getDynamicList( "818d8a6b54870bdffc333376723289d9", lastId);
 
     }
 }

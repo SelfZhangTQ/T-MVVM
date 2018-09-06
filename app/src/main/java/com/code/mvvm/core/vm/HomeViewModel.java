@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.home.HomeListVo;
@@ -67,7 +67,7 @@ public class HomeViewModel extends BaseViewModel<HomeRepository> {
     public void getRequestMerge() {
         getBannerData("1", "4", "109", "", null);
         loadHomeList("0");
-        mRepository.loadRequestMerge(new OnResultCallBack<Object>() {
+        mRepository.loadRequestMerge(new CallBack<Object>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

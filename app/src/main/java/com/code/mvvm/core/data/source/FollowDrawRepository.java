@@ -1,6 +1,6 @@
 package com.code.mvvm.core.data.source;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawRecommendVo;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawTypeVo;
@@ -12,7 +12,7 @@ import com.code.mvvm.network.rx.RxSubscriber;
  */
 public class FollowDrawRepository extends BaseRepository {
 
-    public void loadFollowDrawList(String mainTypeId, String lastId, String rn, final OnResultCallBack<FollowDrawRecommendVo> listener) {
+    public void loadFollowDrawList(String mainTypeId, String lastId, String rn, final CallBack<FollowDrawRecommendVo> listener) {
         addSubscribe(apiService.getollowDrawList(mainTypeId, lastId, rn)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<FollowDrawRecommendVo>() {
@@ -34,7 +34,7 @@ public class FollowDrawRepository extends BaseRepository {
                 }));
     }
 
-    public void loadFollowDrawRemList(String lastId, String rn, final OnResultCallBack<FollowDrawRecommendVo> listener) {
+    public void loadFollowDrawRemList(String lastId, String rn, final CallBack<FollowDrawRecommendVo> listener) {
         addSubscribe(apiService.getFollowDrawRemList(lastId, rn)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<FollowDrawRecommendVo>() {
@@ -56,7 +56,7 @@ public class FollowDrawRepository extends BaseRepository {
                 }));
     }
 
-    public void loadFollowDrawType(final OnResultCallBack<FollowDrawTypeVo> listener) {
+    public void loadFollowDrawType(final CallBack<FollowDrawTypeVo> listener) {
         addSubscribe(apiService.getFollowDrawType()
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<FollowDrawTypeVo>() {

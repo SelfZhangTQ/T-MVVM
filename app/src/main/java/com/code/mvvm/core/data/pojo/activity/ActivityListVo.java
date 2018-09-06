@@ -24,7 +24,7 @@ public class ActivityListVo implements Serializable {
             public String rid;
             public String img;
             public Object description;
-            public int resource_type;
+            public Integer resource_type;
 
         }
     }

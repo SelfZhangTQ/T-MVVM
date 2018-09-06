@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.live.LiveListVo;
 import com.code.mvvm.core.data.pojo.live.LiveTypeVo;
@@ -47,8 +47,8 @@ public class LiveViewModel extends BaseViewModel<LiveRepository> {
         return liveRemData;
     }
 
-    public void getLiveList(String fCatalogId, String id, String rn) {
-        mRepository.loadLiveList(fCatalogId, id, rn, new OnResultCallBack<LiveListVo>() {
+    public void getLiveList(String fCatalogId, String id) {
+        mRepository.loadLiveList(fCatalogId, id, Constants.PAGE_RN, new CallBack<LiveListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -68,8 +68,8 @@ public class LiveViewModel extends BaseViewModel<LiveRepository> {
 
     }
 
-    public void getLiveRemList(String id, String rn) {
-        mRepository.loadLiveRemList(id, rn, new OnResultCallBack<LiveListVo>() {
+    public void getLiveRemList(String id) {
+        mRepository.loadLiveRemList(id, Constants.PAGE_RN, new CallBack<LiveListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -90,7 +90,7 @@ public class LiveViewModel extends BaseViewModel<LiveRepository> {
     }
 
     public void getLiveTypeData() {
-        mRepository.loadLiveTypeData(new OnResultCallBack<LiveTypeVo>() {
+        mRepository.loadLiveTypeData(new CallBack<LiveTypeVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

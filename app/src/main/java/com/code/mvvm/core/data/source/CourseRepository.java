@@ -1,6 +1,6 @@
 package com.code.mvvm.core.data.source;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
@@ -22,7 +22,7 @@ public class CourseRepository extends BaseRepository {
 
     private Observable<CourseDetailRemVideoVo> mCourseDetailRemVideoObservable;
 
-    public void loadCourseList(String fCatalogId,String lastId, String rn, final OnResultCallBack<CourseListVo> onResultCallBack) {
+    public void loadCourseList(String fCatalogId,String lastId, String rn, final CallBack<CourseListVo> onResultCallBack) {
         addSubscribe(apiService.getCourseList(fCatalogId,lastId,rn)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<CourseListVo>() {
@@ -44,7 +44,7 @@ public class CourseRepository extends BaseRepository {
                 }));
     }
 
-    public void loadCourseRemList(final OnResultCallBack<CourseRemVo> onResultCallBack) {
+    public void loadCourseRemList(final CallBack<CourseRemVo> onResultCallBack) {
         addSubscribe(apiService.getCourseRemList()
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<CourseRemVo>() {
@@ -66,7 +66,7 @@ public class CourseRepository extends BaseRepository {
                 }));
     }
 
-    public void loadCourseType(final OnResultCallBack<CourseTypeVo> listener) {
+    public void loadCourseType(final CallBack<CourseTypeVo> listener) {
         addSubscribe(apiService.getCourseType()
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<CourseTypeVo>() {

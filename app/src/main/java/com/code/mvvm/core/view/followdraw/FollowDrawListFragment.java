@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.vm.FollowDrawViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -76,6 +75,6 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
     }
 
     private void getNetWorkData() {
-        mViewModel.getFollowDrawList(typeId, lastId, Constants.PAGE_RN);
+        mViewModel.getFollowDrawList(typeId, lastId);
     }
 }

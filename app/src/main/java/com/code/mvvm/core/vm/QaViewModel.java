@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
 import com.code.mvvm.core.data.source.QaRepository;
@@ -29,7 +29,7 @@ public class QaViewModel extends BaseViewModel<QaRepository> {
     }
 
     public void getQAList(String lastId, String rn) {
-        mRepository.loadQAList(lastId, rn, new OnResultCallBack<QaListVo>() {
+        mRepository.loadQAList(lastId, rn, new CallBack<QaListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

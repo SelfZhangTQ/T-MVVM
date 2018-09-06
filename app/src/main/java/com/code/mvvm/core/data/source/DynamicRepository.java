@@ -1,6 +1,6 @@
 package com.code.mvvm.core.data.source;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.dynamic.DynamicListVo;
 import com.code.mvvm.network.rx.RxSchedulers;
@@ -11,7 +11,7 @@ import com.code.mvvm.network.rx.RxSubscriber;
  */
 public class DynamicRepository extends BaseRepository {
 
-    public void loadDynamicList(String rn, String token, String lastId, final OnResultCallBack<DynamicListVo> listener) {
+    public void loadDynamicList(String rn, String token, String lastId, final CallBack<DynamicListVo> listener) {
         addSubscribe(apiService.getDynamicList(rn, token, lastId)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<DynamicListVo>() {

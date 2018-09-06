@@ -11,7 +11,7 @@ public class ArticleTypeVo extends BaseVo {
     public List<DataBean> data;
 
     public static class DataBean {
-        public int maintypeid;
+        public Integer maintypeid;
         public String maintypename;
     }
 }

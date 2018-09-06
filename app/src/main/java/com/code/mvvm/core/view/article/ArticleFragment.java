@@ -16,7 +16,7 @@ import java.util.List;
  * @author：tqzhang  on 18/7/2 14:24
  */
 public class ArticleFragment extends BaseViewPagerFragment<ArticleViewModel> {
-    private List<ArticleTypeVo.DataBean> titleName;
+    private List<ArticleTypeVo.DataBean> titleName = new ArrayList<>();
 
     public static ArticleFragment newInstance() {
         return new ArticleFragment();
@@ -25,7 +25,6 @@ public class ArticleFragment extends BaseViewPagerFragment<ArticleViewModel> {
     @Override
     public void initView(Bundle state) {
         super.initView(state);
-        titleName = new ArrayList<>();
         getTabData();
     }
 

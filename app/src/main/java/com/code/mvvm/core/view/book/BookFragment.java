@@ -14,7 +14,7 @@ import java.util.List;
  * @author：tqzhang on 18/6/30 11:13
  */
 public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
-    private List<BookTypeVo.ClassContent> titleName;
+    private List<BookTypeVo.ClassContent> titleName = new ArrayList<>();
 
     public static BookFragment newInstance() {
         return new BookFragment();
@@ -23,7 +23,6 @@ public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
     @Override
     public void initView(Bundle state) {
         super.initView(state);
-        titleName = new ArrayList<>();
         getTabData();
     }
 

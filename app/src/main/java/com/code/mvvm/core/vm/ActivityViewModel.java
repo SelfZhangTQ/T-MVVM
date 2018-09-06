@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.data.source.ActivityRepository;
@@ -28,8 +28,8 @@ public class ActivityViewModel extends BaseViewModel<ActivityRepository> {
         return activityData;
     }
 
-    public void getActivityList(String id, String rn) {
-        mRepository.loadActivityList(id, rn, new OnResultCallBack<ActivityListVo>() {
+    public void getActivityList(String id) {
+        mRepository.loadActivityList(id, Constants.PAGE_RN, new CallBack<ActivityListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

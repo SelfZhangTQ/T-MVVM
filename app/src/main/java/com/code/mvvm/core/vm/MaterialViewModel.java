@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
@@ -59,8 +59,8 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
     }
 
 
-    public void getMaterialList(String fCatalogId, String level, String rn) {
-        mRepository.loadMaterialList(fCatalogId, level, rn, new OnResultCallBack<MaterialVo>() {
+    public void getMaterialList(String fCatalogId, String level) {
+        mRepository.loadMaterialList(fCatalogId, level, Constants.PAGE_RN, new CallBack<MaterialVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -79,8 +79,8 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
         });
     }
 
-    public void getMaterialMoreList(String fCatalogId, String level, String lastId, String rn) {
-        mRepository.loadMaterialMoreList(fCatalogId, level, lastId, rn, new OnResultCallBack<MaterialVo>() {
+    public void getMaterialMoreList(String fCatalogId, String level, String lastId) {
+        mRepository.loadMaterialMoreList(fCatalogId, level, lastId, Constants.PAGE_RN, new CallBack<MaterialVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -99,8 +99,8 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
         });
     }
 
-    public void getMaterialRemList(String fCatalogId, String lastId, String rn) {
-        mRepository.loadMaterialRemList(fCatalogId, lastId, rn, new OnResultCallBack<MaterialRecommendVo>() {
+    public void getMaterialRemList(String fCatalogId, String lastId) {
+        mRepository.loadMaterialRemList(fCatalogId, lastId, Constants.PAGE_RN, new CallBack<MaterialRecommendVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -120,7 +120,7 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
     }
 
     public void getMaterialTypeData() {
-        mRepository.loadMaterialTypeData(new OnResultCallBack<MaterialTypeVo>() {
+        mRepository.loadMaterialTypeData(new CallBack<MaterialTypeVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

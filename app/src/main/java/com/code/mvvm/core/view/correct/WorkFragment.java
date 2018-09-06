@@ -6,7 +6,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.danikula.videocache.Preconditions;
@@ -75,7 +74,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     @Override
     public void onLoadMore() {
         super.onLoadMore();
-        mViewModel.getWorkMoreData("", lastId, uTime, Constants.PAGE_RN);
+        mViewModel.getWorkMoreData("", lastId, uTime);
     }
 
     @Override

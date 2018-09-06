@@ -5,13 +5,13 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.dynamic.DynamicListVo;
 import com.code.mvvm.core.data.source.DynamicRepository;
 
 /**
- * @author：tqzhang  on 18/8/13 15:21
+ * @author：tqzhang on 18/8/13 15:21
  */
 public class DynamicViewModel extends BaseViewModel<DynamicRepository> {
 
@@ -28,8 +28,8 @@ public class DynamicViewModel extends BaseViewModel<DynamicRepository> {
         return mDynamicListData;
     }
 
-    public void getDynamicList(String rn, String token,String lastId) {
-        mRepository.loadDynamicList(rn, token,lastId, new OnResultCallBack<DynamicListVo>() {
+    public void getDynamicList(String token, String lastId) {
+        mRepository.loadDynamicList(Constants.PAGE_RN, token, lastId, new CallBack<DynamicListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

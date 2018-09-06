@@ -15,7 +15,7 @@ import java.util.List;
  * @author：tqzhang on 18/5/2 19:20
  */
 public class VideoFragment extends BaseViewPagerFragment<CourseViewModel> {
-    private List<CourseTypeVo.DataBean> titleName;
+    private List<CourseTypeVo.DataBean> titleName = new ArrayList<>();
 
     public static VideoFragment newInstance() {
         return new VideoFragment();
@@ -25,7 +25,6 @@ public class VideoFragment extends BaseViewPagerFragment<CourseViewModel> {
     public void initView(Bundle state) {
         super.initView(state);
         setTitle(getResources().getString(R.string.video_title_name));
-        titleName = new ArrayList<>();
         getTabData();
     }
 

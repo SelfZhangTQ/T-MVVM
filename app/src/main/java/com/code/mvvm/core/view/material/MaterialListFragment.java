@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.vm.MaterialViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -78,11 +77,11 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
     @Override
     public void onLoadMore() {
         super.onLoadMore();
-        mViewModel.getMaterialMoreList("0", subId, lastId, Constants.PAGE_RN);
+        mViewModel.getMaterialMoreList("0", subId, lastId);
     }
 
     private void getNewData() {
-        mViewModel.getMaterialList("0", subId, Constants.PAGE_RN);
+        mViewModel.getMaterialList("0", subId);
 
     }
 }

@@ -1,6 +1,6 @@
 package com.code.mvvm.core.data.source;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.book.BookListVo;
 import com.code.mvvm.core.data.pojo.book.BookTypeVo;
@@ -12,7 +12,7 @@ import com.code.mvvm.network.rx.RxSubscriber;
  */
 public class BookRepository extends BaseRepository {
 
-    public void loadBookList(String fCatalogId, String lastId, String rn, final OnResultCallBack listener) {
+    public void loadBookList(String fCatalogId, String lastId, String rn, final CallBack listener) {
         addSubscribe(apiService.getBookList(fCatalogId, lastId, rn)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<BookListVo>() {
@@ -34,7 +34,7 @@ public class BookRepository extends BaseRepository {
                 }));
     }
 
-    public void loadBookTypeData(final OnResultCallBack<BookTypeVo> listener) {
+    public void loadBookTypeData(final CallBack<BookTypeVo> listener) {
         addSubscribe(apiService.getBookType()
                 .compose(RxSchedulers.<BookTypeVo>io_main())
                 .subscribe(new RxSubscriber<BookTypeVo>() {

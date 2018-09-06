@@ -75,7 +75,7 @@ public class ArticleSubjectVo extends BaseVo {
 			private String hits;
 			private String cmtcount;
 			private String url;
-			private int fav;
+			private Integer fav;
 			/**
 			 * rid : 727512
 			 * img : https://img.meiyuanbang.com/cms/lecture/2017-05-08/F7FAFB7B5907F5BDDE75070FABAD1D3F.jpg

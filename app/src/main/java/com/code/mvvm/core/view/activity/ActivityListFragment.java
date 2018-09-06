@@ -4,7 +4,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.vm.ActivityViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -58,13 +57,13 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
     }
 
     public void getNetWorkData() {
-        mViewModel.getActivityList(lastId, Constants.PAGE_RN);
+        mViewModel.getActivityList(lastId);
     }
 
     @Override
     public void onLoadMore() {
         super.onLoadMore();
-        mViewModel.getActivityList(lastId, Constants.PAGE_RN);
+        mViewModel.getActivityList(lastId);
     }
 
 

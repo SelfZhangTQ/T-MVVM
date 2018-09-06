@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
@@ -71,7 +71,7 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
 
 
     public void getCourseTypeData() {
-        mRepository.loadCourseType(new OnResultCallBack<CourseTypeVo>() {
+        mRepository.loadCourseType(new CallBack<CourseTypeVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -90,8 +90,8 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
         });
     }
 
-    public void getCourseList(String fCatalogId, String lastId, String rn) {
-        mRepository.loadCourseList(fCatalogId, lastId, rn, new OnResultCallBack<CourseListVo>() {
+    public void getCourseList(String fCatalogId, String lastId) {
+        mRepository.loadCourseList(fCatalogId, lastId, Constants.PAGE_RN, new CallBack<CourseListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -111,7 +111,7 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
     }
 
     public void getCourseRemList(String rn) {
-        mRepository.loadCourseRemList(new OnResultCallBack<CourseRemVo>() {
+        mRepository.loadCourseRemList(new CallBack<CourseRemVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

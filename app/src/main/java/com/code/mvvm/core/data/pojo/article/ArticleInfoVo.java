@@ -25,7 +25,7 @@ public class ArticleInfoVo {
     public String hits;
     public String cmtcount;
     public String url;
-    public int fav;
+    public Integer fav;
     /**
      * rid : 725480
      * img : https://img.meiyuanbang.com/cms/lecture/2017-02-09/3258F96F8344A12A78D5841EEA71A0E0.jpg
@@ -35,10 +35,10 @@ public class ArticleInfoVo {
     public List<ImgBean> img;
 
     public static class ImgBean {
-        public int rid;
+        public Integer rid;
         public String img;
         public Object description;
-        public int resource_type;
+        public Integer resource_type;
 
     }
 }

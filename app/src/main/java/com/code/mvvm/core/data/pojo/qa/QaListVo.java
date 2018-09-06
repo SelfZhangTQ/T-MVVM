@@ -34,7 +34,7 @@ public class QaListVo {
         public String reserve2;
         public String reserve3;
         public List<ImgsBean> imgs;
-        public int fav;
+        public Integer fav;
         public String share_url;
         public String url;
 

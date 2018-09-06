@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.book.BookListVo;
 import com.code.mvvm.core.data.pojo.book.BookTypeVo;
@@ -38,8 +38,8 @@ public class BookViewModel extends BaseViewModel<BookRepository> {
         return mBookType;
     }
 
-    public void getBookList(String mCatalogId, String lastId, String rn) {
-        mRepository.loadBookList(mCatalogId, lastId, rn, new OnResultCallBack<BookListVo>() {
+    public void getBookList(String mCatalogId, String lastId) {
+        mRepository.loadBookList(mCatalogId, lastId, Constants.PAGE_RN, new CallBack<BookListVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);
@@ -59,7 +59,7 @@ public class BookViewModel extends BaseViewModel<BookRepository> {
     }
 
     public void getBookTypeData() {
-        mRepository.loadBookTypeData(new OnResultCallBack<BookTypeVo>() {
+        mRepository.loadBookTypeData(new CallBack<BookTypeVo>() {
             @Override
             public void onNoNetWork() {
                 loadState.postValue(Constants.NET_WORK_STATE);

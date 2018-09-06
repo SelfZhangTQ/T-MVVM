@@ -1,6 +1,6 @@
 package com.code.mvvm.core.data.source;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
@@ -13,7 +13,7 @@ import com.code.mvvm.network.rx.RxSubscriber;
  */
 public class MaterialRepository extends BaseRepository {
 
-    public void loadMaterialList(String mCatalogId, String mLevel, String rn, final OnResultCallBack<MaterialVo> listener) {
+    public void loadMaterialList(String mCatalogId, String mLevel, String rn, final CallBack<MaterialVo> listener) {
 
         addSubscribe(apiService.getMaterialList(mCatalogId, mLevel, rn)
                 .compose(RxSchedulers.io_main())
@@ -36,7 +36,7 @@ public class MaterialRepository extends BaseRepository {
                 }));
     }
 
-    public void loadMaterialMoreList(String mCatalogId, String mLevel, String lastId, String rn, final OnResultCallBack<MaterialVo> listener) {
+    public void loadMaterialMoreList(String mCatalogId, String mLevel, String lastId, String rn, final CallBack<MaterialVo> listener) {
         addSubscribe(apiService.getMaterialMoreList(mCatalogId, mLevel, lastId, rn)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<MaterialVo>() {
@@ -58,7 +58,7 @@ public class MaterialRepository extends BaseRepository {
                 }));
     }
 
-    public void loadMaterialRemList(String mCatalogId, String lastId, String rn, final OnResultCallBack<MaterialRecommendVo> listener) {
+    public void loadMaterialRemList(String mCatalogId, String lastId, String rn, final CallBack<MaterialRecommendVo> listener) {
         apiService.getMaterialRemList(mCatalogId, lastId, rn)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<MaterialRecommendVo>() {
@@ -80,7 +80,7 @@ public class MaterialRepository extends BaseRepository {
                 });
     }
 
-    public void loadMaterialTypeData(final OnResultCallBack<MaterialTypeVo> listener) {
+    public void loadMaterialTypeData(final CallBack<MaterialTypeVo> listener) {
         apiService.getMaterialInfo()
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<MaterialTypeVo>() {

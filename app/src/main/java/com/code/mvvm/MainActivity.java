@@ -19,9 +19,13 @@ import com.code.mvvm.core.view.home.HomeFragment;
 public class MainActivity extends BaseActivity {
 
     private HomeFragment mHomeFragment;
+
     private WorkFragment mWorkFragment;
+
     private VideoFragment mVideoFragment;
+
     private MineFragment mMineFragment;
+
 
     @Override
     public int getLayoutId() {

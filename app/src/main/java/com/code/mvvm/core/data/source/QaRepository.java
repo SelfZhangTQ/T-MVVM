@@ -1,6 +1,6 @@
 package com.code.mvvm.core.data.source;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
 import com.code.mvvm.network.rx.RxSchedulers;
@@ -11,7 +11,7 @@ import com.code.mvvm.network.rx.RxSubscriber;
  */
 public class QaRepository extends BaseRepository {
 
-    public void loadQAList(String lastId, String rn, final OnResultCallBack<QaListVo> listener) {
+    public void loadQAList(String lastId, String rn, final CallBack<QaListVo> listener) {
         addSubscribe(apiService.getQAList(lastId, rn)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<QaListVo>() {

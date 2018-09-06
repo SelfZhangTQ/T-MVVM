@@ -1,7 +1,7 @@
 package com.code.mvvm.core.data.source;
 
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.article.ArticleTypeVo;
 import com.code.mvvm.core.data.pojo.article.ArticleVo;
@@ -13,7 +13,7 @@ import com.code.mvvm.network.rx.RxSubscriber;
  */
 public class ArticleRepository extends BaseRepository {
 
-    public void loadArticleRemList(final String lectureLevel, final String lastId, final String rn, final OnResultCallBack<ArticleVo> listener) {
+    public void loadArticleRemList(final String lectureLevel, final String lastId, final String rn, final CallBack<ArticleVo> listener) {
         addSubscribe(apiService.getArticleRemList(lectureLevel, lastId, rn)
                 .compose(RxSchedulers.io_main())
                 .subscribe(new RxSubscriber<ArticleVo>() {
@@ -36,7 +36,7 @@ public class ArticleRepository extends BaseRepository {
 
     }
 
-    public void loadArticleType(final OnResultCallBack<ArticleTypeVo> listener) {
+    public void loadArticleType(final CallBack<ArticleTypeVo> listener) {
         apiService.getArticleType()
                 .compose(RxSchedulers.<com.code.mvvm.core.data.pojo.article.ArticleTypeVo>io_main())
                 .subscribe(new RxSubscriber<ArticleTypeVo>() {

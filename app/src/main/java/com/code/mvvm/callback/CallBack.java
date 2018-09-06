@@ -3,7 +3,7 @@ package com.code.mvvm.callback;
 /**
  * @author：tqzhang on 18/7/31 12:33
  */
-public interface OnResultCallBack<T> {
+public interface CallBack<T> {
 
     /**
      * no network

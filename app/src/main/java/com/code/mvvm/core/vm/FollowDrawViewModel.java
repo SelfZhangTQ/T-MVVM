@@ -5,7 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.code.mvvm.callback.OnResultCallBack;
+import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawRecommendVo;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawTypeVo;
@@ -49,7 +49,7 @@ public class FollowDrawViewModel extends BaseViewModel<FollowDrawRepository> {
 
 
     public void getFollowDrawTypeData() {
-        mRepository.loadFollowDrawType(new OnResultCallBack<FollowDrawTypeVo>() {
+        mRepository.loadFollowDrawType(new CallBack<FollowDrawTypeVo>() {
             @Override
             public void onNoNetWork() {
 
@@ -69,8 +69,8 @@ public class FollowDrawViewModel extends BaseViewModel<FollowDrawRepository> {
 
     }
 
-    public void getFollowDrawList(String maintypeid, String lastId, String rn) {
-        mRepository.loadFollowDrawList(maintypeid, lastId, rn, new OnResultCallBack<FollowDrawRecommendVo>() {
+    public void getFollowDrawList(String maintypeid, String lastId) {
+        mRepository.loadFollowDrawList(maintypeid, lastId, Constants.PAGE_RN, new CallBack<FollowDrawRecommendVo>() {
             @Override
             public void onNoNetWork() {
 
@@ -90,8 +90,8 @@ public class FollowDrawViewModel extends BaseViewModel<FollowDrawRepository> {
 
     }
 
-    public void getFollowDrawRemList(String lastId, String rn) {
-        mRepository.loadFollowDrawRemList(lastId, rn, new OnResultCallBack<FollowDrawRecommendVo>() {
+    public void getFollowDrawRemList(String lastId) {
+        mRepository.loadFollowDrawRemList(lastId, Constants.PAGE_RN, new CallBack<FollowDrawRecommendVo>() {
             @Override
             public void onNoNetWork() {
 
