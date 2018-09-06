@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_root_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
@@ -8,7 +9,8 @@
     <RelativeLayout
         android:id="@+id/rl_video_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
         <ImageView
             android:id="@+id/iv_video_image"
@@ -16,10 +18,12 @@
             android:layout_height="wrap_content" />
 
         <LinearLayout
+            android:id="@+id/tv_video_look_num"
             android:layout_width="wrap_content"
             android:layout_height="17dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
             android:background="#B3333333"
             android:orientation="horizontal"
             android:paddingLeft="5dp"
@@ -37,44 +41,50 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:gravity="center"
+                android:text="122345"
                 android:textColor="@color/white"
                 android:textSize="10sp" />
         </LinearLayout>
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_video_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:ellipsize="end"
-        android:lineSpacingExtra="3dp"
-        android:maxLines="2"
-        android:textColor="@color/color_333333"
-        android:textSize="14sp"
-        android:textStyle="bold" />
-
-
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/iv_user_icon"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="80dp">
 
         <TextView
-            android:id="@+id/tv_user_name"
+            android:id="@+id/tv_video_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:lineSpacingExtra="3dp"
+            android:maxLines="2"
             android:textColor="@color/color_333333"
-            android:textSize="14sp" />
-    </LinearLayout>
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_user_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/color_333333"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

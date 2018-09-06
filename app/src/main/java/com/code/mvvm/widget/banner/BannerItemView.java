@@ -53,12 +53,17 @@ public class BannerItemView extends AbsViewHolder<BannerListVo, BannerItemView.V
                 return imageViewList;
             }
         }).build(bannerAdListVo.data);
-        RecyclerView.LayoutParams clp = (RecyclerView.LayoutParams) holder.mBannerView.getLayoutParams();
+
+    }
+
+    @Override
+    protected void onViewAttachedToWindow(@NonNull ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        RecyclerView.LayoutParams clp = (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
         if (clp instanceof StaggeredGridLayoutManager.LayoutParams) {
             ((StaggeredGridLayoutManager.LayoutParams) clp).setFullSpan(true);
         }
     }
-
 
     static class ViewHolder extends BaseHolder {
 

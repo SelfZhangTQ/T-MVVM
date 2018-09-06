@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.code.mvvm.R;
@@ -85,6 +86,14 @@ public class CategoryItemView extends AbsViewHolder<CatagoryVo, CategoryItemView
         });
     }
 
+    @Override
+    protected void onViewAttachedToWindow(@NonNull ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        RecyclerView.LayoutParams clp = (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
+        if (clp instanceof StaggeredGridLayoutManager.LayoutParams) {
+            ((StaggeredGridLayoutManager.LayoutParams) clp).setFullSpan(true);
+        }
+    }
 
     public static class ViewHolder extends BaseHolder {
 

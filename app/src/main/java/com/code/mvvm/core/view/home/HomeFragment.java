@@ -1,22 +1,18 @@
 package com.code.mvvm.core.view.home;
 
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.book.BookList;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
 import com.code.mvvm.core.data.pojo.home.CatagoryVo;
 import com.code.mvvm.core.data.pojo.home.HomeMergeVo;
-import com.code.mvvm.core.data.pojo.material.MaterialListVo;
 import com.code.mvvm.core.vm.HomeViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
-import com.trecyclerview.pojo.FootVo;
-import com.trecyclerview.pojo.HeaderVo;
 
 
 /**
@@ -63,21 +59,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
-        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
-        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                return (oldItems.get(position) instanceof MaterialListVo
-                        || oldItems.get(position) instanceof CatagoryVo
-                        || oldItems.get(position) instanceof TypeVo
-                        || oldItems.get(position) instanceof BookList
-                        || oldItems.get(position) instanceof BannerListVo
-                        || oldItems.get(position) instanceof HeaderVo
-                        || oldItems.get(position) instanceof FootVo) ? 2 : 1;
-            }
-        });
-
-        return layoutManager;
+        return new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
     }
 
     @Override
@@ -106,7 +88,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
         }
         newItems.add(new TypeVo(getResources().getString(R.string.special_tab_name)));
         if (homeMergeVo.homeListVo.data.matreialsubject.size() > 0) {
-            newItems.add(new MaterialListVo(homeMergeVo.homeListVo.data.matreialsubject));
+            newItems.addAll(homeMergeVo.homeListVo.data.matreialsubject);
         }
         oldItems.clear();
         oldItems.addAll(newItems);

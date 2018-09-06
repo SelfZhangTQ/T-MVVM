@@ -19,15 +19,15 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseHolder;
 
 /**
- * @author：tqzhang  on 18/6/19 15:00
+ * @author：tqzhang on 18/6/19 15:00
  */
 public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHolder.ViewHolder> {
     private int commonWidth;
 
     public CourseItemHolder(Context context) {
         super(context);
-        commonWidth = (int) (((float) DisplayUtil.getScreenWidth(App.instance())
-                - DisplayUtil.dp2px(App.instance(), 20)) / 2);
+        commonWidth = (int) ((float) DisplayUtil.getScreenWidth(App.instance())
+                / 2);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHold
         });
         holder.mUserName.setText(courseListBean.userinfo.sname);
         holder.mVideoTitle.setText(courseListBean.title);
-        holder.mLookNum.setText(new StringBuilder(courseListBean.hits).append("人看过"));
+        holder.mLookNum.setText(new StringBuilder(String.valueOf(courseListBean.hits)).append("人看过"));
     }
 
 

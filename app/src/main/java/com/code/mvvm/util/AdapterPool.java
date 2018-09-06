@@ -16,7 +16,6 @@ import com.code.mvvm.core.data.pojo.followdraw.FollowDrawInfoVo;
 import com.code.mvvm.core.data.pojo.home.CatagoryVo;
 import com.code.mvvm.core.data.pojo.live.LiveRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialInfoVo;
-import com.code.mvvm.core.data.pojo.material.MaterialListVo;
 import com.code.mvvm.core.data.pojo.material.MatreialSubjectVo;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
 import com.code.mvvm.core.view.activity.holder.ActivityItemHolder;
@@ -39,7 +38,6 @@ import com.code.mvvm.core.view.followdraw.holder.FollowDrawListHolder;
 import com.code.mvvm.core.view.home.holder.CategoryItemView;
 import com.code.mvvm.core.view.home.holder.HomeLiveItemView;
 import com.code.mvvm.core.view.home.holder.HomeMaterialItemView;
-import com.code.mvvm.core.view.home.holder.HomeVideoItemView;
 import com.code.mvvm.core.view.live.holder.LiveItemHolder;
 import com.code.mvvm.core.view.live.holder.LiveListItemHolder;
 import com.code.mvvm.core.view.material.holder.MaterialItemHolder;
@@ -132,7 +130,7 @@ public class AdapterPool {
         return getNoFootAdapter(new MultiTypeAdapter.Builder<>()
                 .bind(TypeVo.class, new TypeItemView(context))
                 .bind(BannerListVo.class, new BannerItemView(context))
-                .bind(CourseInfoVo.class, new HomeVideoItemView(context))
+                .bind(CourseInfoVo.class, new CourseItemHolder(context))
                 .bind(LiveRecommendVo.class, new HomeLiveItemView(context)), context);
 
     }
@@ -179,9 +177,9 @@ public class AdapterPool {
                 .bind(TypeVo.class, new TypeItemView(context))
                 .bind(CatagoryVo.class, new CategoryItemView(context))
                 .bind(BookList.class, new BookItemHolder(context))
-                .bind(CourseInfoVo.class, new HomeVideoItemView(context))
+                .bind(CourseInfoVo.class, new CourseItemHolder(context))
                 .bind(LiveRecommendVo.class, new HomeLiveItemView(context))
-                .bind(MaterialListVo.class, new HomeMaterialItemView(context)), context);
+                .bind(MatreialSubjectVo.class, new HomeMaterialItemView(context)), context);
     }
 
     public MultiTypeAdapter getDynamicAdapter(Context context) {

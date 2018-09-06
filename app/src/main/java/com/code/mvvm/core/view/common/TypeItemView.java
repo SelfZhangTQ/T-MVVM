@@ -36,12 +36,16 @@ public class TypeItemView extends AbsViewHolder<TypeVo, TypeItemView.ViewHolder>
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull TypeVo typeVo) {
         holder.mClassifyType.setText(typeVo.title);
-        RecyclerView.LayoutParams clp = (RecyclerView.LayoutParams) holder.mRootLayout.getLayoutParams();
+    }
+
+    @Override
+    protected void onViewAttachedToWindow(@NonNull ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        RecyclerView.LayoutParams clp = (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
         if (clp instanceof StaggeredGridLayoutManager.LayoutParams) {
             ((StaggeredGridLayoutManager.LayoutParams) clp).setFullSpan(true);
         }
     }
-
 
     static class ViewHolder extends BaseHolder {
 

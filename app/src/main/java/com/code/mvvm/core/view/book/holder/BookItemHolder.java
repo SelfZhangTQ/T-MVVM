@@ -2,6 +2,8 @@ package com.code.mvvm.core.view.book.holder;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -58,7 +60,14 @@ public class BookItemHolder extends AbsViewHolder<BookList, BookItemHolder.ViewH
         holder.bookPress2.setText(mBookList.publishingbook.get(1).publishing_name);
         holder.bookPress3.setText(mBookList.publishingbook.get(2).publishing_name);
     }
-
+    @Override
+    protected void onViewAttachedToWindow(@NonNull ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        RecyclerView.LayoutParams clp = (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
+        if (clp instanceof StaggeredGridLayoutManager.LayoutParams) {
+            ((StaggeredGridLayoutManager.LayoutParams) clp).setFullSpan(true);
+        }
+    }
 
     static class ViewHolder extends BaseHolder {
 

@@ -2,29 +2,35 @@ package com.code.mvvm.core.view.home.holder;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
-import com.code.mvvm.adapter.HomeListAdapter;
-import com.code.mvvm.core.data.pojo.material.MaterialListVo;
+import com.code.mvvm.core.data.pojo.material.MatreialSubjectVo;
+import com.code.mvvm.glide.GlideRoundTransform;
+import com.code.mvvm.util.DisplayUtil;
+import com.code.mvvm.widget.CustomHeightImageView;
 import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseHolder;
 
 /**
  * @author：tqzhang on 18/6/19 15:16
  */
-public class HomeMaterialItemView extends AbsViewHolder<MaterialListVo, HomeMaterialItemView.ViewHolder> {
+public class HomeMaterialItemView extends AbsViewHolder<MatreialSubjectVo, HomeMaterialItemView.ViewHolder> {
 
-
+    private int commonWidth ;
     public HomeMaterialItemView(Context context) {
         super(context);
+        commonWidth= (int) (((float) DisplayUtil.getScreenWidth(mContext)
+                - DisplayUtil.dp2px(mContext, 8)) / 2);
     }
 
     @Override
     public int getLayoutResId() {
-        return R.layout.home_matreial_item;
+//        return R.layout.home_matreial_item;
+        return R.layout.item_home_list;
     }
 
     @Override
@@ -34,23 +40,33 @@ public class HomeMaterialItemView extends AbsViewHolder<MaterialListVo, HomeMate
 
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull MaterialListVo matreialsubject) {
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        holder.mRecyclerView.setLayoutManager(layoutManager);
-        HomeListAdapter adapter = new HomeListAdapter(mContext, null, 0);
-        holder.mRecyclerView.setAdapter(adapter);
-        holder.mRecyclerView.setNestedScrollingEnabled(false);
-        adapter.setList(matreialsubject.matreialsubject);
-        adapter.notifyDataSetChanged();
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull MatreialSubjectVo matreialsubject) {
+//        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+//        holder.mRecyclerView.setLayoutManager(layoutManager);
+//        HomeListAdapter adapter = new HomeListAdapter(mContext, null, 0);
+//        holder.mRecyclerView.setAdapter(adapter);
+//        holder.mRecyclerView.setNestedScrollingEnabled(false);
+//        adapter.setList(matreialsubject.matreialsubject);
+//        adapter.notifyDataSetChanged();
+        float dv = (float) matreialsubject.picurl.l.h / (float) matreialsubject.picurl.l.w;
+        int height = (int) (dv * commonWidth);
+        holder.videoImg.setLayoutParams(new RelativeLayout.LayoutParams(commonWidth, height));
+        Glide.with(mContext).load(matreialsubject.picurl.l.url)
+                .placeholder(R.color.black_e8e8e8)
+                .transform(new GlideRoundTransform(mContext, 4))
+                .override(commonWidth, (int) (dv * commonWidth)).into(holder.videoImg);
+        holder.videoTitle.setText(matreialsubject.title);
     }
 
     static class ViewHolder extends BaseHolder {
 
-        private RecyclerView mRecyclerView;
+         CustomHeightImageView videoImg;
+         TextView videoTitle;
 
         private ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mRecyclerView = getViewById(R.id.recycler_view);
+            videoImg = getViewById(R.id.iv_pic_image);
+            videoTitle = getViewById(R.id.video_title);
         }
 
     }
