@@ -27,8 +27,8 @@ public class CorrectRemItemHolder extends AbsViewHolder<WorkInfoVo, CorrectRemIt
 
     public CorrectRemItemHolder(Context context) {
         super(context);
-        commonwidth = (int) (((float) DisplayUtil.getScreenWidth(App.instance())
-                - 30 * DisplayUtil.getDisplayDensity(App.instance())) / 2);
+        commonwidth = (int) (((float) DisplayUtil.getScreenWidth(mContext)
+                - 30 * DisplayUtil.getDisplayDensity(mContext)) / 2);
 
     }
 
@@ -75,12 +75,7 @@ public class CorrectRemItemHolder extends AbsViewHolder<WorkInfoVo, CorrectRemIt
         holder.mTvDesc.setText(data.content);
         holder.mUserName.setText(data.teacher_info.sname);
         Glide.with(mContext).load(data.teacher_info.avatar).transform(new GlideCircleTransform(mContext)).into(holder.mUserIcon);
-        holder.mCHRootLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                WorkDetailsActivity.start(mContext, data.correctid);
-            }
-        });
+        holder.mCHRootLayout.setOnClickListener(v -> WorkDetailsActivity.start(mContext, data.correctid));
     }
 
 

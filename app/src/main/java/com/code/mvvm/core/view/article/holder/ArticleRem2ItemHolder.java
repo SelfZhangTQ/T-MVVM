@@ -14,7 +14,7 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseHolder;
 
 /**
- * @author：tqzhang  on 18/6/19 15:16
+ * @author：tqzhang on 18/6/19 15:16
  */
 public class ArticleRem2ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleRem2ItemHolder.ViewHolder> {
 
@@ -41,7 +41,7 @@ public class ArticleRem2ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleR
 
         holder.tvHits.setText(matreialsubject.hits);
         holder.tvTitle.setText(matreialsubject.title);
-        if (matreialsubject.stick_date != null && !"".equals(matreialsubject.stick_date) && Integer.valueOf(matreialsubject.stick_date) > 0) {
+        if (!TextUtils.isEmpty(matreialsubject.stick_date) && Integer.valueOf(matreialsubject.stick_date) > 0) {
             holder.tvTagTop.setVisibility(View.VISIBLE);
         } else {
             holder.tvTagTop.setVisibility(View.GONE);

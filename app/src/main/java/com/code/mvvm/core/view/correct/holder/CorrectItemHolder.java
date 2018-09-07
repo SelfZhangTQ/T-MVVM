@@ -27,8 +27,8 @@ public class CorrectItemHolder extends AbsViewHolder<WorksListVo.Works, CorrectI
 
     public CorrectItemHolder(Context context) {
         super(context);
-        commonWidth = (int) (((float) DisplayUtil.getScreenWidth(App.instance())
-                - 30 * DisplayUtil.getDisplayDensity(App.instance())) / 2);
+        commonWidth = (int) (((float) DisplayUtil.getScreenWidth(mContext)
+                - 30 * DisplayUtil.getDisplayDensity(mContext)) / 2);
 
     }
 
@@ -72,12 +72,7 @@ public class CorrectItemHolder extends AbsViewHolder<WorksListVo.Works, CorrectI
         holder.mTvDesc.setText(data.correct.content);
         holder.mUserName.setText(data.correct.teacher_info.sname);
         Glide.with(mContext).load(data.correct.teacher_info.avatar).transform(new GlideCircleTransform(mContext)).into(holder.mUserIcon);
-        holder.mCHRootLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                WorkDetailsActivity.start(mContext, data.correct.correctid);
-            }
-        });
+        holder.mCHRootLayout.setOnClickListener(v -> WorkDetailsActivity.start(mContext, data.correct.correctid));
     }
 
     public class ViewHolder extends BaseHolder {

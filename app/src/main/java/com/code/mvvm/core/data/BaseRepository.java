@@ -7,17 +7,20 @@ import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * @author：tqzhang  on 18/7/26 16:15
+ * @author：tqzhang on 18/7/26 16:15
  */
 public abstract class BaseRepository {
+
+    private CompositeSubscription mCompositeSubscription;
 
     protected ApiService apiService;
 
     public BaseRepository() {
-        apiService = HttpHelper.getInstance().create(ApiService.class);
+        if (null == apiService) {
+            apiService = HttpHelper.getInstance().create(ApiService.class);
+        }
     }
 
-    private CompositeSubscription mCompositeSubscription;
 
     protected void addSubscribe(Subscription subscription) {
         if (mCompositeSubscription == null) {

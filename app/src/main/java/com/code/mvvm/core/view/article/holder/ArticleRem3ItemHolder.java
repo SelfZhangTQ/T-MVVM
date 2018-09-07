@@ -42,12 +42,12 @@ public class ArticleRem3ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleR
         // 图片适配
         double dv2 = 1;
         LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
-                (commonWidth - 2 * App.instance()
+                (commonWidth - 2 * mContext
                         .getResources().getDimensionPixelSize(
                                 R.dimen.concise_three_img_margin))
                         / 3,
                 (int) (dv2
-                        * (commonWidth - 2 * App.instance().getResources()
+                        * (commonWidth - 2 * mContext.getResources()
                         .getDimensionPixelSize(
                                 R.dimen.concise_three_img_margin))
                         / 3));
@@ -67,7 +67,7 @@ public class ArticleRem3ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleR
         }
         holder.tvHits.setText(matreialsubject.hits);
         holder.tv_title.setText(matreialsubject.title);
-        if (matreialsubject.stick_date != null && !"".equals(matreialsubject.stick_date) && Integer.valueOf(matreialsubject.stick_date) > 0) {
+        if (!TextUtils.isEmpty(matreialsubject.stick_date) && Integer.valueOf(matreialsubject.stick_date) > 0) {
             holder.tvTagTop.setVisibility(View.VISIBLE);
         } else {
             holder.tvTagTop.setVisibility(View.GONE);

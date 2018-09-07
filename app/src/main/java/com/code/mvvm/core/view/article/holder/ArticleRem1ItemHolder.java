@@ -17,7 +17,7 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseHolder;
 
 /**
- * @author：tqzhang  on 18/6/19 15:16
+ * @author：tqzhang on 18/6/19 15:16
  */
 public class ArticleRem1ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleRem1ItemHolder.ViewHolder> {
     private int commonWidth;
@@ -53,7 +53,7 @@ public class ArticleRem1ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleR
         } else {
             holder.tvTagTop.setVisibility(View.GONE);
         }
-        if (matreialsubject.newstype != null && !"".equals(matreialsubject.newstype) && Integer.valueOf(matreialsubject.newstype) == 2) {
+        if (!TextUtils.isEmpty(matreialsubject.newstype) && Integer.valueOf(matreialsubject.newstype) == 2) {
             holder.tvTagSubject.setVisibility(View.VISIBLE);
         } else {
             holder.tvTagSubject.setVisibility(View.GONE);

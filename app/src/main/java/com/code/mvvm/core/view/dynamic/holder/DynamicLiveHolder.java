@@ -22,10 +22,12 @@ import com.trecyclerview.holder.BaseHolder;
  * @author：tqzhang  on 18/7/4 15:35
  */
 public class DynamicLiveHolder extends AbsViewHolder<DynamicInfoVo, DynamicLiveHolder.ViewHolder> {
-    private int contentWidth = DisplayUtil.getScreenWidth(App.instance()) - DisplayUtil.dp2px(App.instance(), 95);
+    private int contentWidth;
 
     public DynamicLiveHolder(Context context) {
         super(context);
+        contentWidth = DisplayUtil.getScreenWidth(mContext) - DisplayUtil.dp2px(mContext, 95);
+
     }
 
     @Override

@@ -23,13 +23,15 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseHolder;
 
 /**
- * @author：tqzhang  on 18/7/4 15:35
+ * @author：tqzhang on 18/7/4 15:35
  */
 public class DynamicFollowHolder extends AbsViewHolder<DynamicInfoVo, DynamicFollowHolder.ViewHolder> {
-    private int contentWidth = DisplayUtil.getScreenWidth(App.instance()) - DisplayUtil.dp2px(App.instance(), 95);
+    private int contentWidth;
 
     public DynamicFollowHolder(Context context) {
         super(context);
+        contentWidth = DisplayUtil.getScreenWidth(App.instance()) - DisplayUtil.dp2px(App.instance(), 95);
+
     }
 
     @Override

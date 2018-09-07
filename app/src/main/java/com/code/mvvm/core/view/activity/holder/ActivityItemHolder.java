@@ -49,16 +49,16 @@ public class ActivityItemHolder extends AbsViewHolder<ActivityListVo.DataBean, A
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, (int) (dv * commonWidth));
         params.setMargins(
-                App.instance().getResources()
+               mContext.getResources()
                         .getDimensionPixelSize(
                                 R.dimen.concise_three_layout_margin),
-                App.instance().getResources()
+                mContext.getResources()
                         .getDimensionPixelSize(
                                 R.dimen.concise_img_margin_top),
-                App.instance().getResources()
+                mContext.getResources()
                         .getDimensionPixelSize(
                                 R.dimen.concise_three_layout_margin),
-                App.instance().getResources()
+                mContext.getResources()
                         .getDimensionPixelSize(
                                 R.dimen.concise_img_margin_bottom));
 

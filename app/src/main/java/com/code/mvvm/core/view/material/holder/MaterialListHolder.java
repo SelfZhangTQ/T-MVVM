@@ -24,8 +24,8 @@ public class MaterialListHolder extends AbsViewHolder<MaterialInfoVo, MaterialLi
 
     public MaterialListHolder(Context context) {
         super(context);
-        commonWidth = (int) (((float) DisplayUtil.getScreenWidth(App.instance())
-                - DisplayUtil.dp2px(App.instance(), 30)) / 2);
+        commonWidth = (int) (((float) DisplayUtil.getScreenWidth(mContext)
+                - DisplayUtil.dp2px(mContext, 30)) / 2);
 
     }
 

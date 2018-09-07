@@ -26,7 +26,7 @@ public class DynamicWorkHolder extends AbsViewHolder<DynamicInfoVo, DynamicWorkH
 
     public DynamicWorkHolder(Context context) {
         super(context);
-        contentWidth = DisplayUtil.getScreenWidth(App.instance()) - DisplayUtil.dp2px(App.instance(), 15 + 40 + 10 + 30);
+        contentWidth = DisplayUtil.getScreenWidth(mContext) - DisplayUtil.dp2px(mContext, 15 + 40 + 10 + 30);
 
     }
 

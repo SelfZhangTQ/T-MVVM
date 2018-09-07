@@ -26,7 +26,7 @@ public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHold
 
     public CourseItemHolder(Context context) {
         super(context);
-        commonWidth = (int) ((float) DisplayUtil.getScreenWidth(App.instance())
+        commonWidth = (int) ((float) DisplayUtil.getScreenWidth(mContext)
                 / 2);
     }
 
@@ -49,13 +49,10 @@ public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHold
         holder.mVideoImage.setScaleType(ImageView.ScaleType.FIT_XY);
         Glide.with(mContext).load(courseListBean.thumb_url).placeholder(R.color.black_e8e8e8).into(holder.mVideoImage);
         Glide.with(mContext).load(courseListBean.userinfo.avatar).transform(new GlideCircleTransform(mContext)).into(holder.mUserIcon);
-        holder.mVideoImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, VideoDetailsActivity.class);
-                intent.putExtra("course_id", courseListBean.courseid);
-                mContext.startActivity(intent);
-            }
+        holder.mVideoImage.setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, VideoDetailsActivity.class);
+            intent.putExtra("course_id", courseListBean.courseid);
+            mContext.startActivity(intent);
         });
         holder.mUserName.setText(courseListBean.userinfo.sname);
         holder.mVideoTitle.setText(courseListBean.title);
