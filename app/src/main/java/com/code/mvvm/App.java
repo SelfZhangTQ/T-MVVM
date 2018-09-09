@@ -29,7 +29,10 @@ public class App extends Application implements ComponentCallbacks2 {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
-        HttpHelper.init(URL.BASE_URL);
+        new HttpHelper.Builder()
+                .initOkHttp()
+                .createRetrofit(URL.BASE_URL)
+                .build();
         new LoadState.Builder()
                 .register(new ErrorState())
                 .register(new LoadingState())
