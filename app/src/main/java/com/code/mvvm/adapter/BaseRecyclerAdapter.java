@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author zhangtianqiu on 17/6/6 12:08
+ * @author tianqiuzhang on 17/6/6 12:08
  */
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
 

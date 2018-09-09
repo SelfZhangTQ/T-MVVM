@@ -1,7 +1,9 @@
 package com.code.mvvm.network;
 
 
-import java.util.List;
+import com.code.mvvm.config.URL;
+import com.code.mvvm.util.Preconditions;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -24,6 +26,8 @@ public class HttpHelper {
 
     private static OkHttpClient.Builder mBuilder;
 
+    private static String BASE_URL;
+
     private HttpHelper() {
     }
 
@@ -38,58 +42,98 @@ public class HttpHelper {
         return mHttpHelper;
     }
 
-
-    /**
-     * 初始化OKHttpClient,设置缓存,设置超时时间,设置打印日志
-     */
-    private static OkHttpClient.Builder initBuilder() {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        if (mBuilder == null) {
-            synchronized (HttpHelper.class) {
-                if (mBuilder == null) {
-                    mBuilder = new OkHttpClient.Builder()
-                            .addInterceptor(interceptor)
-                            .connectTimeout(30, TimeUnit.SECONDS)
-                            .writeTimeout(30, TimeUnit.SECONDS)
-                            .readTimeout(30, TimeUnit.SECONDS);
-                }
-            }
-        }
-        return mBuilder;
-    }
-
-    public static OkHttpClient.Builder addInterceptor(Interceptor mInterceptor) {
-        mBuilder.addNetworkInterceptor(mInterceptor);
-        return mBuilder;
-    }
-
-    private static OkHttpClient initOkHttpClient() {
-        return mBuilder.build();
-    }
-
-    private static void initRetrofit(String baseUrl) {
-        Retrofit.Builder builder = new Retrofit.Builder()
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(baseUrl);
-        mRetrofit = builder.client(initOkHttpClient())
+    public static void init(String baseUrl) {
+        new HttpHelper.Builder()
+                .initOkHttp()
+                .createRetrofit(baseUrl)
                 .build();
     }
 
-    public static void init(List<Interceptor> mInterceptor, String baseUrl) {
-        if (mInterceptor != null && mInterceptor.size() > 0) {
-            for (Interceptor interceptor : mInterceptor) {
-                initBuilder().addNetworkInterceptor(interceptor);
-            }
-        } else {
-            initBuilder();
+
+    public static class Builder {
+        private OkHttpClient mOkHttpClient;
+
+        private OkHttpClient.Builder mBuilder;
+
+        private Retrofit mRetrofit;
+
+        public Builder() {
         }
 
-        initRetrofit(baseUrl);
+        /**
+         * create OkHttp 初始化OKHttpClient,设置缓存,设置超时时间,设置打印日志
+         *
+         * @return Builder
+         */
+        public Builder initOkHttp() {
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new HttpLogger());
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            if (mBuilder == null) {
+                synchronized (HttpHelper.class) {
+                    if (mBuilder == null) {
+                        mBuilder = new OkHttpClient.Builder()
+                                .addInterceptor(interceptor)
+                                .connectTimeout(30, TimeUnit.SECONDS)
+                                .writeTimeout(30, TimeUnit.SECONDS)
+                                .readTimeout(30, TimeUnit.SECONDS)
+                        ;
+                    }
+                }
+            }
+
+            return this;
+        }
+
+        /**
+         * 添加拦截器
+         *
+         * @param mInterceptor Interceptor
+         * @return Builder
+         */
+        public Builder addInterceptor(Interceptor mInterceptor) {
+            Preconditions.checkNotNull(mInterceptor);
+            this.mBuilder.addNetworkInterceptor(mInterceptor);
+            return this;
+        }
+
+        /**
+         * create retrofit
+         *
+         * @param baseUrl baseUrl
+         * @return Builder
+         */
+        public Builder createRetrofit(String baseUrl) {
+            Preconditions.checkNotNull(baseUrl);
+            Retrofit.Builder builder = new Retrofit.Builder()
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl(baseUrl);
+            BASE_URL = baseUrl;
+            this.mOkHttpClient = mBuilder.build();
+            this.mRetrofit = builder.client(mOkHttpClient)
+                    .build();
+            return this;
+        }
+
+        public void build() {
+            HttpHelper.getInstance().build(this);
+        }
+
+    }
+
+    private void build(Builder builder) {
+        Preconditions.checkNotNull(builder);
+        Preconditions.checkNotNull(builder.mBuilder);
+        Preconditions.checkNotNull(builder.mOkHttpClient);
+        Preconditions.checkNotNull(builder.mRetrofit);
+        mBuilder = builder.mBuilder;
+        mOkHttpClient = builder.mOkHttpClient;
+        mRetrofit = builder.mRetrofit;
     }
 
     public <T> T create(Class<T> clz) {
+        Preconditions.checkNotNull(clz);
+        Preconditions.checkNotNull(mRetrofit);
         return mRetrofit.create(clz);
     }
 

@@ -13,8 +13,6 @@ import com.tqzhang.stateview.stateview.BaseStateControl;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected int mScreenWidth;
-
     protected LoadManager loadManager;
 
     @Override

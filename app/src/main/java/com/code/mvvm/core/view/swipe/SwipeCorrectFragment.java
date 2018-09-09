@@ -94,7 +94,7 @@ public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getWorkMoreData("", lastId, utime, "20");
+        mViewModel.getWorkMoreData("", lastId, utime);
     }
 
     @Override
