@@ -93,7 +93,6 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
 
     public void getCourseList(String fCatalogId, String lastId) {
         Preconditions.checkNotNull(fCatalogId);
-        Preconditions.checkNotNull(lastId);
         mRepository.loadCourseList(fCatalogId, lastId, Constants.PAGE_RN, new CallBack<CourseListVo>() {
             @Override
             public void onNoNetWork() {
