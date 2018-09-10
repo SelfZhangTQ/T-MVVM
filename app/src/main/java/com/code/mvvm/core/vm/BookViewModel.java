@@ -10,6 +10,7 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.book.BookListVo;
 import com.code.mvvm.core.data.pojo.book.BookTypeVo;
 import com.code.mvvm.core.data.source.BookRepository;
+import com.code.mvvm.util.Preconditions;
 
 /**
  * @author：tqzhang on 18/7/28 13:32
@@ -39,6 +40,8 @@ public class BookViewModel extends BaseViewModel<BookRepository> {
     }
 
     public void getBookList(String mCatalogId, String lastId) {
+        Preconditions.checkNotNull(mCatalogId);
+        Preconditions.checkNotNull(lastId);
         mRepository.loadBookList(mCatalogId, lastId, Constants.PAGE_RN, new CallBack<BookListVo>() {
             @Override
             public void onNoNetWork() {

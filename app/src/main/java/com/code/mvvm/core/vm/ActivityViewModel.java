@@ -9,6 +9,7 @@ import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.data.source.ActivityRepository;
+import com.code.mvvm.util.Preconditions;
 
 /**
  * @author：tqzhang on 18/7/27 15:23
@@ -29,6 +30,7 @@ public class ActivityViewModel extends BaseViewModel<ActivityRepository> {
     }
 
     public void getActivityList(String id) {
+        Preconditions.checkNotNull(id);
         mRepository.loadActivityList(id, Constants.PAGE_RN, new CallBack<ActivityListVo>() {
             @Override
             public void onNoNetWork() {

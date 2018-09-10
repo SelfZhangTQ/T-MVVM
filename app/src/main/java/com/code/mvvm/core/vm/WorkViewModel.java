@@ -13,6 +13,7 @@ import com.code.mvvm.core.data.pojo.correct.WorkMergeVo;
 import com.code.mvvm.core.data.pojo.correct.WorkRecommentVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.data.source.WorkRepository;
+import com.code.mvvm.util.Preconditions;
 
 
 /**
@@ -63,6 +64,9 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
     }
 
     public void getWorkMoreData(String corrected, String lastId, String utime) {
+        Preconditions.checkNotNull(corrected);
+        Preconditions.checkNotNull(lastId);
+        Preconditions.checkNotNull(utime);
         mRepository.loadWorkMoreData(corrected, lastId, utime, Constants.PAGE_RN, new CallBack<WorksListVo>() {
             @Override
             public void onNoNetWork() {
@@ -83,6 +87,8 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
     }
 
     public void getWorkData(String corrected, String rn) {
+        Preconditions.checkNotNull(corrected);
+        Preconditions.checkNotNull(rn);
         mRepository.loadWorkData(corrected, rn);
 
     }

@@ -10,6 +10,7 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.article.ArticleTypeVo;
 import com.code.mvvm.core.data.pojo.article.ArticleVo;
 import com.code.mvvm.core.data.source.ArticleRepository;
+import com.code.mvvm.util.Preconditions;
 
 /**
  * @author：tqzhang on 18/7/26 16:15
@@ -39,6 +40,8 @@ public class ArticleViewModel extends BaseViewModel<ArticleRepository> {
     }
 
     public void getArticleList(String lectureLevel1, String lastId) {
+        Preconditions.checkNotNull(lectureLevel1);
+        Preconditions.checkNotNull(lastId);
         mRepository.loadArticleRemList(lectureLevel1, lastId, Constants.PAGE_RN, new CallBack<ArticleVo>() {
             @Override
             public void onNoNetWork() {

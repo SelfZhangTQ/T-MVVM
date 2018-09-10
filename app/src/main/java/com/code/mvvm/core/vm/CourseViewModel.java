@@ -13,6 +13,7 @@ import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
 import com.code.mvvm.core.data.source.CourseRepository;
+import com.code.mvvm.util.Preconditions;
 
 /**
  * @author：zhangtianqiu on 18/7/31 15:13
@@ -91,6 +92,8 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
     }
 
     public void getCourseList(String fCatalogId, String lastId) {
+        Preconditions.checkNotNull(fCatalogId);
+        Preconditions.checkNotNull(lastId);
         mRepository.loadCourseList(fCatalogId, lastId, Constants.PAGE_RN, new CallBack<CourseListVo>() {
             @Override
             public void onNoNetWork() {
