@@ -28,7 +28,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 
 /**
- * @author：zhangtianqiu on 18/7/7 15:09
+ * @author：tqzhang on 18/7/7 15:09
  */
 public class LiveDetailsActivity extends BaseActivity {
     LiveVideoPlayer mVideoPlayer;

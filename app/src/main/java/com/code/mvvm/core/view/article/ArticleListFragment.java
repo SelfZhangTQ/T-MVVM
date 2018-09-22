@@ -10,7 +10,7 @@ import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：zhangtianqiu on 18/7/2 14:40
+ * @author：tqzhang on 18/7/2 14:40
  */
 public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
 

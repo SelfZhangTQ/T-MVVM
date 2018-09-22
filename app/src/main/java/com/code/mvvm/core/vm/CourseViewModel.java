@@ -16,7 +16,7 @@ import com.code.mvvm.core.data.source.CourseRepository;
 import com.code.mvvm.util.Preconditions;
 
 /**
- * @author：zhangtianqiu on 18/7/31 15:13
+ * @author：tqzhang on 18/7/31 15:13
  */
 public class CourseViewModel extends BaseViewModel<CourseRepository> {
 

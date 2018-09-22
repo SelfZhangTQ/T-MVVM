@@ -40,6 +40,7 @@ public class MainActivity extends BaseActivity {
         //init fragment
         initFragment(0);
 
+
     }
 
     private void initNavBar() {

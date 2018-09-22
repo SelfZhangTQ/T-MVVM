@@ -13,6 +13,7 @@ import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.core.view.course.holder.CourseRecommendHolder;
 import com.code.mvvm.core.vm.CourseViewModel;
+import com.code.mvvm.event.LiveBus;
 import com.code.mvvm.network.ApiService;
 import com.code.mvvm.network.HttpHelper;
 import com.code.mvvm.util.DisplayUtil;
@@ -98,6 +99,7 @@ public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> 
             }
         });
         getNetWorkData();
+
     }
 
 
@@ -191,5 +193,4 @@ public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> 
         items.addAll(lessonDetailAboutVideoBean.getData().getCourse_list());
         mRecyclerView.refreshComplete(items, false);
     }
-
 }

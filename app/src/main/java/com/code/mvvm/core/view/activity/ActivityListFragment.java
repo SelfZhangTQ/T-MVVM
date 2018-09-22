@@ -66,5 +66,4 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
         mViewModel.getActivityList(lastId);
     }
 
-
 }

@@ -3,7 +3,6 @@ package com.code.mvvm.core.view.home;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.data.pojo.book.BookList;
@@ -19,6 +18,7 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
  * @author：tqzhang on 18/5/2 18:46
  */
 public class HomeFragment extends BaseListFragment<HomeViewModel> {
+
     public static HomeFragment newInstance() {
         return new HomeFragment();
     }
@@ -36,6 +36,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
                 addItems(homeMergeVo);
             }
         });
+
     }
 
 
@@ -59,7 +60,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
-        return new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        return new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
     }
 
     @Override
@@ -94,5 +95,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
         oldItems.addAll(newItems);
         mRecyclerView.refreshComplete(oldItems, true);
         newItems.clear();
+
     }
+
 }

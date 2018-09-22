@@ -1,12 +1,16 @@
 package com.code.mvvm.core.view.correct;
 
+import android.arch.lifecycle.Observer;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.widget.Toast;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.vm.WorkViewModel;
+import com.code.mvvm.event.LiveBus;
 import com.code.mvvm.util.AdapterPool;
 import com.danikula.videocache.Preconditions;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -16,6 +20,7 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
  */
 public class WorkFragment extends BaseListFragment<WorkViewModel> {
     private String uTime;
+    private String LiveBus2;
 
     public static WorkFragment newInstance() {
         return new WorkFragment();
@@ -25,6 +30,13 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     public void initView(Bundle state) {
         super.initView(state);
         setTitle(getResources().getString(R.string.work_title_name));
+        LiveBus.getDefault().subscribe("livedata",String.class).observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                Toast.makeText(activity, ""+s, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
@@ -47,6 +59,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
             uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
             setData(worksListVo.data.content);
         });
+
     }
 
     @Override
@@ -63,6 +76,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     protected void lazyLoad() {
         super.lazyLoad();
         getNetWorkData();
+
     }
 
     @Override
@@ -86,4 +100,5 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     private void getNetWorkData() {
         mViewModel.getRequestMerge();
     }
+
 }

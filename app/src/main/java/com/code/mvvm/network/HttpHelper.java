@@ -1,8 +1,6 @@
 package com.code.mvvm.network;
 
 
-import com.code.mvvm.config.URL;
-import com.code.mvvm.util.Preconditions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,6 +10,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.code.mvvm.util.Preconditions.checkNotNull;
 
 /**
  * @author：tqzhang on 18/4/18 17:19
@@ -91,7 +91,7 @@ public class HttpHelper {
          * @return Builder
          */
         public Builder addInterceptor(Interceptor mInterceptor) {
-            Preconditions.checkNotNull(mInterceptor);
+            checkNotNull(mInterceptor);
             this.mBuilder.addNetworkInterceptor(mInterceptor);
             return this;
         }
@@ -103,7 +103,7 @@ public class HttpHelper {
          * @return Builder
          */
         public Builder createRetrofit(String baseUrl) {
-            Preconditions.checkNotNull(baseUrl);
+            checkNotNull(baseUrl);
             Retrofit.Builder builder = new Retrofit.Builder()
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
@@ -122,18 +122,18 @@ public class HttpHelper {
     }
 
     private void build(Builder builder) {
-        Preconditions.checkNotNull(builder);
-        Preconditions.checkNotNull(builder.mBuilder);
-        Preconditions.checkNotNull(builder.mOkHttpClient);
-        Preconditions.checkNotNull(builder.mRetrofit);
+        checkNotNull(builder);
+        checkNotNull(builder.mBuilder);
+        checkNotNull(builder.mOkHttpClient);
+        checkNotNull(builder.mRetrofit);
         mBuilder = builder.mBuilder;
         mOkHttpClient = builder.mOkHttpClient;
         mRetrofit = builder.mRetrofit;
     }
 
     public <T> T create(Class<T> clz) {
-        Preconditions.checkNotNull(clz);
-        Preconditions.checkNotNull(mRetrofit);
+        checkNotNull(clz);
+        checkNotNull(mRetrofit);
         return mRetrofit.create(clz);
     }
 

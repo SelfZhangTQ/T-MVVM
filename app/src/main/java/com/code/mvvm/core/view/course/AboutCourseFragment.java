@@ -6,7 +6,7 @@ import com.code.mvvm.base.BaseFragment;
 
 
 /**
- * @author：zhangtianqiu on 18/7/16 16:58
+ * @author：tqzhang on 18/7/16 16:58
  */
 public class AboutCourseFragment extends BaseFragment {
     @Override

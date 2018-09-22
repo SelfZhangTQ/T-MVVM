@@ -10,7 +10,7 @@ import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
- * @author：zhangtianqiu on 18/7/2 14:40
+ * @author：tqzhang on 18/7/2 14:40
  */
 public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel> {
     private String typeId;
@@ -22,9 +22,10 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
     @Override
     public void initView(Bundle state) {
         super.initView(state);
-        if (getArguments()!=null) {
+        if (getArguments() != null) {
             typeId = getArguments().getString("type_id");
         }
+
     }
 
     @Override

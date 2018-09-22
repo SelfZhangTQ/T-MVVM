@@ -148,7 +148,7 @@ BaseViewModel通过泛型类型参数BaseRepository子类初始化Repository数�
   4-1:ArticleFragment
 
     /**
-    * @author：zhangtianqiu on 18/7/2 14:40
+    * @author：tqzhang on 18/7/2 14:40
     */
     public class ArticleFragment extends AbsLifecycleFragment<ArticleViewModel> {
      protected TRecyclerView mRecyclerView;

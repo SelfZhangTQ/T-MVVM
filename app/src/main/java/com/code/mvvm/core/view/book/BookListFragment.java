@@ -1,10 +1,13 @@
 package com.code.mvvm.core.view.book;
 
+import android.arch.lifecycle.Observer;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.core.data.pojo.book.BookListVo;
 import com.code.mvvm.core.vm.BookViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -35,7 +38,7 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
             }
             if (bookListVo.data.content.size() > 0) {
                 lastId = bookListVo.data.content.get(bookListVo.data.content.size() - 1).bookid;
-                setData(bookListVo.data.content);
+                BookListFragment.this.setData(bookListVo.data.content);
             }
         });
     }

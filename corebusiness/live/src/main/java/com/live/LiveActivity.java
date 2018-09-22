@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.basiclibrary.base.BaseActivity;
 
 /**
- * @author：zhangtianqiu on 18/5/2 15:28
+ * @author：tqzhang on 18/5/2 15:28
  */
 public class LiveActivity extends BaseActivity {
     @Override

@@ -12,7 +12,7 @@ import com.code.mvvm.core.data.pojo.live.LiveTypeVo;
 import com.code.mvvm.core.data.source.LiveRepository;
 
 /**
- * @author：zhangtianqiu on 18/7/27 15:23
+ * @author：tqzhang on 18/7/27 15:23
  */
 public class LiveViewModel extends BaseViewModel<LiveRepository> {
 
