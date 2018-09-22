@@ -3,10 +3,10 @@ package com.code.mvvm.core.view.article;
 import android.os.Bundle;
 
 import com.code.mvvm.R;
-import com.code.mvvm.base.BaseFragment;
 import com.code.mvvm.base.BaseViewPagerFragment;
 import com.code.mvvm.core.data.pojo.article.ArticleTypeVo;
 import com.code.mvvm.core.vm.ArticleViewModel;
+import com.mvvm.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.R;
-import com.code.mvvm.base.AbsLifecycleActivity;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
 import com.code.mvvm.core.data.pojo.correct.WorkDetailVo;
 import com.code.mvvm.core.data.pojo.correct.WorkInfoVo;
@@ -18,6 +17,7 @@ import com.code.mvvm.core.view.correct.holder.CorrectRemItemHolder;
 import com.code.mvvm.core.view.course.holder.CourseItemHolder;
 import com.code.mvvm.core.view.home.holder.HomeLiveItemView;
 import com.code.mvvm.core.vm.WorkViewModel;
+import com.mvvm.base.AbsLifecycleActivity;
 import com.trecyclerview.TRecyclerView;
 import com.trecyclerview.multitype.Items;
 import com.trecyclerview.multitype.MultiTypeAdapter;

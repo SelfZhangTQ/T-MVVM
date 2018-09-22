@@ -9,7 +9,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
-import com.code.mvvm.core.vm.BaseViewModel;
+import com.mvvm.base.AbsLifecycleFragment;
+import com.mvvm.base.AbsViewModel;
 import com.trecyclerview.TRecyclerView;
 import com.trecyclerview.listener.OnRefreshListener;
 import com.trecyclerview.multitype.Items;
@@ -21,7 +22,7 @@ import java.util.List;
 /**
  * @author：tqzhang on 18/7/10 16:20
  */
-public abstract class BaseListFragment<T extends BaseViewModel> extends AbsLifecycleFragment<T> implements OnRefreshListener {
+public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecycleFragment<T> implements OnRefreshListener {
     protected TRecyclerView mRecyclerView;
 
     protected RelativeLayout mTitleBar;

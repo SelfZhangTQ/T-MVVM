@@ -2,7 +2,7 @@ package com.code.mvvm.core.view.course;
 
 import android.os.Bundle;
 
-import com.code.mvvm.base.BaseFragment;
+import com.mvvm.base.BaseFragment;
 
 
 /**

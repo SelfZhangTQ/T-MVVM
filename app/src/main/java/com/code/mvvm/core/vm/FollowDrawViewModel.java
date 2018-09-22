@@ -10,11 +10,13 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawRecommendVo;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawTypeVo;
 import com.code.mvvm.core.data.source.FollowDrawRepository;
+import com.mvvm.base.AbsViewModel;
+import com.mvvm.stateview.StateConstants;
 
 /**
  * @author：tqzhang  on 18/7/31 16:05
  */
-public class FollowDrawViewModel extends BaseViewModel<FollowDrawRepository> {
+public class FollowDrawViewModel extends AbsViewModel<FollowDrawRepository> {
 
     private MutableLiveData<FollowDrawTypeVo> mFollowDrawTypeData;
 
@@ -58,7 +60,7 @@ public class FollowDrawViewModel extends BaseViewModel<FollowDrawRepository> {
             @Override
             public void onNext(FollowDrawTypeVo followDrawTypeVo) {
                 mFollowDrawTypeData.postValue(followDrawTypeVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
@@ -79,7 +81,7 @@ public class FollowDrawViewModel extends BaseViewModel<FollowDrawRepository> {
             @Override
             public void onNext(FollowDrawRecommendVo followDrawRecommendObject) {
                 mFollowDrawData.postValue(followDrawRecommendObject);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
@@ -100,7 +102,7 @@ public class FollowDrawViewModel extends BaseViewModel<FollowDrawRepository> {
             @Override
             public void onNext(FollowDrawRecommendVo followDrawRecommendObject) {
                 mFollowDrawRemData.postValue(followDrawRecommendObject);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override

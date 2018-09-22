@@ -10,12 +10,15 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.article.ArticleTypeVo;
 import com.code.mvvm.core.data.pojo.article.ArticleVo;
 import com.code.mvvm.core.data.source.ArticleRepository;
-import com.code.mvvm.util.Preconditions;
+import com.mvvm.base.AbsViewModel;
+import com.mvvm.stateview.StateConstants;
+
+import static com.code.mvvm.util.Preconditions.checkNotNull;
 
 /**
  * @author：tqzhang on 18/7/26 16:15
  */
-public class ArticleViewModel extends BaseViewModel<ArticleRepository> {
+public class ArticleViewModel extends AbsViewModel<ArticleRepository> {
 
     private MutableLiveData<ArticleVo> mArticleData;
 
@@ -40,23 +43,22 @@ public class ArticleViewModel extends BaseViewModel<ArticleRepository> {
     }
 
     public void getArticleList(String lectureLevel1, String lastId) {
-        Preconditions.checkNotNull(lectureLevel1);
-        Preconditions.checkNotNull(lastId);
+        checkNotNull(lectureLevel1);
         mRepository.loadArticleRemList(lectureLevel1, lastId, Constants.PAGE_RN, new CallBack<ArticleVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(ArticleVo articleObject) {
                 mArticleData.postValue(articleObject);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }
@@ -65,18 +67,18 @@ public class ArticleViewModel extends BaseViewModel<ArticleRepository> {
         mRepository.loadArticleType(new CallBack<ArticleTypeVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(ArticleTypeVo articleTypeObject) {
                 mArticleTypeData.postValue(articleTypeObject);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }

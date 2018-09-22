@@ -11,8 +11,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.code.mvvm.R;
-import com.code.mvvm.base.BaseActivity;
-import com.code.mvvm.base.BaseFragment;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.view.activity.ActivityListFragment;
 import com.code.mvvm.core.view.article.ArticleFragment;
@@ -22,6 +20,8 @@ import com.code.mvvm.core.view.followdraw.FollowDrawFragment;
 import com.code.mvvm.core.view.live.LiveFragment;
 import com.code.mvvm.core.view.material.MaterialFragment;
 import com.code.mvvm.core.view.qa.QaListFragment;
+import com.mvvm.base.BaseActivity;
+import com.mvvm.base.BaseFragment;
 
 /**
  * @author：tqzhang on 18/7/2 14:17

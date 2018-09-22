@@ -7,9 +7,9 @@ import android.support.multidex.MultiDex;
 
 import com.bumptech.glide.Glide;
 import com.code.mvvm.config.URL;
-import com.code.mvvm.network.HttpHelper;
-import com.code.mvvm.stateview.ErrorState;
-import com.code.mvvm.stateview.LoadingState;
+import com.mvvm.http.HttpHelper;
+import com.mvvm.stateview.ErrorState;
+import com.mvvm.stateview.LoadingState;
 import com.tqzhang.stateview.core.LoadState;
 
 

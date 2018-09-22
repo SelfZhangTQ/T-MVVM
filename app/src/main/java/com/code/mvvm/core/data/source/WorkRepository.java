@@ -6,8 +6,8 @@ import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.correct.WorkDetailVo;
 import com.code.mvvm.core.data.pojo.correct.WorkRecommentVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
-import com.code.mvvm.network.rx.RxSchedulers;
 import com.code.mvvm.network.rx.RxSubscriber;
+import com.mvvm.http.rx.RxSchedulers;
 
 import rx.Observable;
 

@@ -6,11 +6,11 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.bottomnavigation.BottomNavigationBar;
 import com.bottomnavigation.BottomNavigationItem;
-import com.code.mvvm.base.BaseActivity;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.view.correct.WorkFragment;
 import com.code.mvvm.core.view.course.VideoFragment;
 import com.code.mvvm.core.view.home.HomeFragment;
+import com.mvvm.base.BaseActivity;
 
 
 /**

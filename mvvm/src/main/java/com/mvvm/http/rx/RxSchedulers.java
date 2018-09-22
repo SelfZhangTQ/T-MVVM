@@ -1,4 +1,4 @@
-package com.code.mvvm.network.rx;
+package com.mvvm.http.rx;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;

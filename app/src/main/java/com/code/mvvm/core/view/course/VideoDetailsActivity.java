@@ -8,15 +8,14 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
-import com.code.mvvm.base.AbsLifecycleActivity;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.core.view.course.holder.CourseRecommendHolder;
 import com.code.mvvm.core.vm.CourseViewModel;
-import com.code.mvvm.event.LiveBus;
 import com.code.mvvm.network.ApiService;
-import com.code.mvvm.network.HttpHelper;
 import com.code.mvvm.util.DisplayUtil;
+import com.mvvm.base.AbsLifecycleActivity;
+import com.mvvm.http.HttpHelper;
 import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;

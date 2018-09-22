@@ -16,7 +16,11 @@ import static com.code.mvvm.util.Preconditions.checkNotNull;
  * @author：tqzhang on 18/9/11 17:22
  */
 public class LiveBus {
-   
+    /**
+     * 页面第一次创建在onResume 方法中会收到消息
+     * <p>
+     * 页面重新显示 onStart 方法中会收到消息
+     */
 
     private static volatile LiveBus instance;
 

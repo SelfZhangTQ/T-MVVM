@@ -1,6 +1,7 @@
-package com.code.mvvm.network;
+package com.mvvm.http;
 
-import com.code.mvvm.util.Logger;
+
+import com.mvvm.util.Logger;
 
 import okhttp3.logging.HttpLoggingInterceptor;
 

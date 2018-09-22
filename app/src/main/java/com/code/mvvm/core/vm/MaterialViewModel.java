@@ -11,11 +11,13 @@ import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
 import com.code.mvvm.core.data.pojo.material.MaterialVo;
 import com.code.mvvm.core.data.source.MaterialRepository;
+import com.mvvm.base.AbsViewModel;
+import com.mvvm.stateview.StateConstants;
 
 /**
  * @author：tqzhang  on 18/7/28 13:32
  */
-public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
+public class MaterialViewModel extends AbsViewModel<MaterialRepository> {
 
     private MutableLiveData<MaterialTypeVo> mMaterialTypeData;
 
@@ -63,18 +65,18 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
         mRepository.loadMaterialList(fCatalogId, level, Constants.PAGE_RN, new CallBack<MaterialVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(MaterialVo materialListVo) {
                 mMaterialData.postValue(materialListVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }
@@ -83,18 +85,18 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
         mRepository.loadMaterialMoreList(fCatalogId, level, lastId, Constants.PAGE_RN, new CallBack<MaterialVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(MaterialVo materialListVo) {
                 mMaterialMoreData.postValue(materialListVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }
@@ -103,18 +105,18 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
         mRepository.loadMaterialRemList(fCatalogId, lastId, Constants.PAGE_RN, new CallBack<MaterialRecommendVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(MaterialRecommendVo materialRecommendObject) {
                 mMaterialRecommendData.postValue(materialRecommendObject);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }
@@ -123,18 +125,18 @@ public class MaterialViewModel extends BaseViewModel<MaterialRepository> {
         mRepository.loadMaterialTypeData(new CallBack<MaterialTypeVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(MaterialTypeVo materialTypeVo) {
                 mMaterialTypeData.postValue(materialTypeVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }

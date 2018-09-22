@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/artproject.iml" filepath="$PROJECT_DIR$/artproject.iml" />
       <module fileurl="file://$PROJECT_DIR$/basiccomponent/basiccomponent.iml" filepath="$PROJECT_DIR$/basiccomponent/basiccomponent.iml" />
       <module fileurl="file://$PROJECT_DIR$/basiccomponent/bottomnavigationbar/bottomnavigationbar.iml" filepath="$PROJECT_DIR$/basiccomponent/bottomnavigationbar/bottomnavigationbar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basiccomponent/library/library.iml" filepath="$PROJECT_DIR$/basiccomponent/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mvvm/mvvm.iml" filepath="$PROJECT_DIR$/mvvm/mvvm.iml" />
       <module fileurl="file://$PROJECT_DIR$/basiccomponent/tablayout/tablayout.iml" filepath="$PROJECT_DIR$/basiccomponent/tablayout/tablayout.iml" />
     </modules>
   </component>

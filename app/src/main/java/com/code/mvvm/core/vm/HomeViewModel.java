@@ -6,16 +6,17 @@ import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
 import com.code.mvvm.callback.CallBack;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.home.HomeListVo;
 import com.code.mvvm.core.data.pojo.home.HomeMergeVo;
 import com.code.mvvm.core.data.source.HomeRepository;
+import com.mvvm.base.AbsViewModel;
+import com.mvvm.stateview.StateConstants;
 
 /**
  * @author：tqzhang on 18/7/26 16:15
  */
-public class HomeViewModel extends BaseViewModel<HomeRepository> {
+public class HomeViewModel extends AbsViewModel<HomeRepository> {
 
     private MutableLiveData<HomeListVo> homeData;
 
@@ -70,7 +71,7 @@ public class HomeViewModel extends BaseViewModel<HomeRepository> {
         mRepository.loadRequestMerge(new CallBack<Object>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
@@ -80,7 +81,7 @@ public class HomeViewModel extends BaseViewModel<HomeRepository> {
                 } else if (object instanceof HomeListVo) {
                     homeMergeVo.homeListVo = (HomeListVo) object;
                     mergeData.postValue(homeMergeVo);
-                    loadState.postValue(Constants.SUCCESS_STATE);
+                    loadState.postValue(StateConstants.SUCCESS_STATE);
                 }
 
             }

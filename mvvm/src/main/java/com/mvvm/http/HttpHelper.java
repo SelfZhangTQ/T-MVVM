@@ -1,4 +1,4 @@
-package com.code.mvvm.network;
+package com.mvvm.http;
 
 
 
@@ -11,7 +11,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.code.mvvm.util.Preconditions.checkNotNull;
+import static com.mvvm.util.TUtil.checkNotNull;
 
 /**
  * @author：tqzhang on 18/4/18 17:19

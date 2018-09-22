@@ -1,4 +1,4 @@
-package com.code.mvvm.core.vm;
+package com.mvvm;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;

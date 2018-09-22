@@ -13,12 +13,15 @@ import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
 import com.code.mvvm.core.data.source.CourseRepository;
-import com.code.mvvm.util.Preconditions;
+import com.mvvm.base.AbsViewModel;
+import com.mvvm.stateview.StateConstants;
+
+import static com.code.mvvm.util.Preconditions.checkNotNull;
 
 /**
  * @author：tqzhang on 18/7/31 15:13
  */
-public class CourseViewModel extends BaseViewModel<CourseRepository> {
+public class CourseViewModel extends AbsViewModel<CourseRepository> {
 
     private MutableLiveData<CourseTypeVo> mCourseType;
 
@@ -75,39 +78,39 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
         mRepository.loadCourseType(new CallBack<CourseTypeVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(CourseTypeVo courseTypeVo) {
                 mCourseType.postValue(courseTypeVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }
 
     public void getCourseList(String fCatalogId, String lastId) {
-        Preconditions.checkNotNull(fCatalogId);
+        checkNotNull(fCatalogId);
         mRepository.loadCourseList(fCatalogId, lastId, Constants.PAGE_RN, new CallBack<CourseListVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(CourseListVo courseListVo) {
                 mCourseListData.postValue(courseListVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }
@@ -116,18 +119,18 @@ public class CourseViewModel extends BaseViewModel<CourseRepository> {
         mRepository.loadCourseRemList(new CallBack<CourseRemVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(CourseRemVo courseRemVo) {
                 mCourseRemData.postValue(courseRemVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }

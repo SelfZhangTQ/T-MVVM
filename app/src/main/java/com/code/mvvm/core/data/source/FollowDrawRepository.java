@@ -4,8 +4,8 @@ import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawRecommendVo;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawTypeVo;
-import com.code.mvvm.network.rx.RxSchedulers;
 import com.code.mvvm.network.rx.RxSubscriber;
+import com.mvvm.http.rx.RxSchedulers;
 
 /**
  * @author：tqzhang   on 18/7/31 16:06

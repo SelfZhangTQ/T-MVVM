@@ -1,17 +1,14 @@
 package com.code.mvvm.core.data;
 
 import com.code.mvvm.network.ApiService;
-import com.code.mvvm.network.HttpHelper;
+import com.mvvm.base.AbsRepository;
+import com.mvvm.http.HttpHelper;
 
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
 
 /**
  * @author：tqzhang on 18/7/26 16:15
  */
-public abstract class BaseRepository {
-
-    private CompositeSubscription mCompositeSubscription;
+public abstract class BaseRepository extends AbsRepository{
 
     protected ApiService apiService;
 
@@ -21,17 +18,4 @@ public abstract class BaseRepository {
         }
     }
 
-
-    protected void addSubscribe(Subscription subscription) {
-        if (mCompositeSubscription == null) {
-            mCompositeSubscription = new CompositeSubscription();
-        }
-        mCompositeSubscription.add(subscription);
-    }
-
-    public void unSubscribe() {
-        if (mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions()) {
-            mCompositeSubscription.clear();
-        }
-    }
 }

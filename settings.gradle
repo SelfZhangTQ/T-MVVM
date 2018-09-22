@@ -1,3 +1,4 @@
-include ':app',
+include ':app', ':mvvm',
+        ':basiccomponent:library',
         ':basiccomponent:tablayout',
         ':basiccomponent:bottomnavigationbar'

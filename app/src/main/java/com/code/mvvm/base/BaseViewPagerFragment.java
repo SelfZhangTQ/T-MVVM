@@ -7,10 +7,12 @@ import android.widget.TextView;
 
 import com.code.mvvm.R;
 import com.code.mvvm.adapter.ViewPagerAdapter;
-import com.code.mvvm.core.vm.BaseViewModel;
-import com.code.mvvm.stateview.LoadingState;
 import com.code.mvvm.widget.NestedViewPager;
 import com.flyco.tablayout.SlidingTabLayout;
+import com.mvvm.base.AbsLifecycleFragment;
+import com.mvvm.base.AbsViewModel;
+import com.mvvm.base.BaseFragment;
+import com.mvvm.stateview.LoadingState;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +21,7 @@ import java.util.List;
 /**
  * @author：tqzhang on 18/8/1 10:43
  */
-public abstract class BaseViewPagerFragment<T extends BaseViewModel> extends AbsLifecycleFragment<T> {
+public abstract class BaseViewPagerFragment<T extends AbsViewModel> extends AbsLifecycleFragment<T> {
 
     protected SlidingTabLayout mTabLayout;
 

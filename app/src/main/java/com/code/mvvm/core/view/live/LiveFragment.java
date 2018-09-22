@@ -2,10 +2,10 @@ package com.code.mvvm.core.view.live;
 
 import android.os.Bundle;
 
-import com.code.mvvm.base.BaseFragment;
 import com.code.mvvm.base.BaseViewPagerFragment;
 import com.code.mvvm.core.data.pojo.live.LiveTypeVo;
 import com.code.mvvm.core.vm.LiveViewModel;
+import com.mvvm.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,12 +1,13 @@
-package com.code.mvvm.stateview;
+package com.mvvm.stateview;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.code.mvvm.R;
 import com.tqzhang.stateview.stateview.BaseStateControl;
+
+import trecyclerview.com.mvvm.R;
 
 /**
  * @author：tqzhang on 18/7/16 15:07

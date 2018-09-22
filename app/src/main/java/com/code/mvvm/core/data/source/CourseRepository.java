@@ -7,8 +7,8 @@ import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
-import com.code.mvvm.network.rx.RxSchedulers;
 import com.code.mvvm.network.rx.RxSubscriber;
+import com.mvvm.http.rx.RxSchedulers;
 
 import rx.Observable;
 

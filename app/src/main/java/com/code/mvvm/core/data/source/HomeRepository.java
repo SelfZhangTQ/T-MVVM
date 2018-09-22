@@ -5,8 +5,8 @@ import com.code.mvvm.callback.CallBack;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.home.HomeListVo;
-import com.code.mvvm.network.rx.RxSchedulers;
 import com.code.mvvm.network.rx.RxSubscriber;
+import com.mvvm.http.rx.RxSchedulers;
 
 import rx.Observable;
 

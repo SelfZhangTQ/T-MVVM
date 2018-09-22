@@ -10,11 +10,13 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.live.LiveListVo;
 import com.code.mvvm.core.data.pojo.live.LiveTypeVo;
 import com.code.mvvm.core.data.source.LiveRepository;
+import com.mvvm.base.AbsViewModel;
+import com.mvvm.stateview.StateConstants;
 
 /**
  * @author：tqzhang on 18/7/27 15:23
  */
-public class LiveViewModel extends BaseViewModel<LiveRepository> {
+public class LiveViewModel extends AbsViewModel<LiveRepository> {
 
     private MutableLiveData<LiveTypeVo> liveTypeData;
 
@@ -51,18 +53,18 @@ public class LiveViewModel extends BaseViewModel<LiveRepository> {
         mRepository.loadLiveList(fCatalogId, id, Constants.PAGE_RN, new CallBack<LiveListVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(LiveListVo liveListVo) {
                 liveData.postValue(liveListVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
 
@@ -72,18 +74,18 @@ public class LiveViewModel extends BaseViewModel<LiveRepository> {
         mRepository.loadLiveRemList(id, Constants.PAGE_RN, new CallBack<LiveListVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(LiveListVo liveListVo) {
                 liveRemData.postValue(liveListVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
 
@@ -93,18 +95,18 @@ public class LiveViewModel extends BaseViewModel<LiveRepository> {
         mRepository.loadLiveTypeData(new CallBack<LiveTypeVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(LiveTypeVo liveTypeVo) {
                 liveTypeData.postValue(liveTypeVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }

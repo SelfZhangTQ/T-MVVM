@@ -6,8 +6,8 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import com.code.mvvm.base.BaseFragment;
-import com.code.mvvm.stateview.LoadingState;
+import com.mvvm.base.BaseFragment;
+import com.mvvm.stateview.LoadingState;
 
 /**
  * @author：tqzhang  on 18/5/2 15:46

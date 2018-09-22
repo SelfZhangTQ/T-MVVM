@@ -6,11 +6,11 @@ import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.R;
-import com.code.mvvm.base.AbsLifecycleFragment;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
-import com.code.mvvm.core.vm.BaseViewModel;
 import com.code.mvvm.util.DiffCallback;
 import com.code.mvvm.util.DisplayUtil;
+import com.mvvm.base.AbsLifecycleFragment;
+import com.mvvm.base.AbsViewModel;
 import com.trecyclerview.SwipeRecyclerView;
 import com.trecyclerview.listener.OnLoadMoreListener;
 import com.trecyclerview.multitype.Items;
@@ -26,7 +26,7 @@ import static com.trecyclerview.view.LoadingMoreFooter.STATE_LOADING;
 /**
  * @author：tqzhang on 18/7/10 16:20
  */
-public abstract class SwipeListFragment<T extends BaseViewModel> extends AbsLifecycleFragment<T> implements OnLoadMoreListener {
+public abstract class SwipeListFragment<T extends AbsViewModel> extends AbsLifecycleFragment<T> implements OnLoadMoreListener {
     protected SwipeRefreshLayout mSwipeRefreshLayout;
 
     protected SwipeRecyclerView mRecyclerView;

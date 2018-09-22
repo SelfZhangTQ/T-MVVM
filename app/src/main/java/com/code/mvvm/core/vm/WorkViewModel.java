@@ -13,13 +13,16 @@ import com.code.mvvm.core.data.pojo.correct.WorkMergeVo;
 import com.code.mvvm.core.data.pojo.correct.WorkRecommentVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.data.source.WorkRepository;
-import com.code.mvvm.util.Preconditions;
+import com.mvvm.base.AbsViewModel;
+import com.mvvm.stateview.StateConstants;
+
+import static com.code.mvvm.util.Preconditions.checkNotNull;
 
 
 /**
  * @author：tqzhang on 18/7/31 15:32
  */
-public class WorkViewModel extends BaseViewModel<WorkRepository> {
+public class WorkViewModel extends AbsViewModel<WorkRepository> {
 
     private MutableLiveData<WorksListVo> mWorkMoreData;
 
@@ -64,31 +67,31 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
     }
 
     public void getWorkMoreData(String corrected, String lastId, String utime) {
-        Preconditions.checkNotNull(corrected);
-        Preconditions.checkNotNull(lastId);
-        Preconditions.checkNotNull(utime);
+        checkNotNull(corrected);
+        checkNotNull(lastId);
+        checkNotNull(utime);
         mRepository.loadWorkMoreData(corrected, lastId, utime, Constants.PAGE_RN, new CallBack<WorksListVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(WorksListVo worksListHotObject) {
                 mWorkMoreData.postValue(worksListHotObject);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }
 
     public void getWorkData(String corrected, String rn) {
-        Preconditions.checkNotNull(corrected);
-        Preconditions.checkNotNull(rn);
+        checkNotNull(corrected);
+        checkNotNull(rn);
         mRepository.loadWorkData(corrected, rn);
 
     }
@@ -107,7 +110,7 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
         mRepository.loadRequestMerge(new CallBack<Object>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
@@ -117,7 +120,7 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
                 } else if (object instanceof WorksListVo) {
                     workMergeVo.worksListVo = (WorksListVo) object;
                     mWorkMergeData.postValue(workMergeVo);
-                    loadState.postValue(Constants.SUCCESS_STATE);
+                    loadState.postValue(StateConstants.SUCCESS_STATE);
                 }
             }
 
@@ -132,18 +135,18 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
         mRepository.loadWorkDetailData(correctId, new CallBack<WorkDetailVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(WorkDetailVo correctDetailVo) {
                 mWorkDetailData.postValue(correctDetailVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }
@@ -152,18 +155,18 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
         mRepository.loadWorkRecommendData(correctId, new CallBack<WorkRecommentVo>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
             public void onNext(WorkRecommentVo correctRecommentVo) {
                 mWorkRecommentData.postValue(correctRecommentVo);
-                loadState.postValue(Constants.SUCCESS_STATE);
+                loadState.postValue(StateConstants.SUCCESS_STATE);
             }
 
             @Override
             public void onError(String e) {
-                loadState.postValue(Constants.ERROR_STATE);
+                loadState.postValue(StateConstants.ERROR_STATE);
             }
         });
     }
@@ -174,7 +177,7 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
         mRepository.loadWorkMergeData(new CallBack<Object>() {
             @Override
             public void onNoNetWork() {
-                loadState.postValue(Constants.NET_WORK_STATE);
+                loadState.postValue(StateConstants.NET_WORK_STATE);
             }
 
             @Override
@@ -183,7 +186,7 @@ public class WorkViewModel extends BaseViewModel<WorkRepository> {
                     mWorkDetailData.postValue((WorkDetailVo) object);
                 } else if (object instanceof WorkRecommentVo) {
                     mWorkRecommentData.postValue((WorkRecommentVo) object);
-                    loadState.postValue(Constants.SUCCESS_STATE);
+                    loadState.postValue(StateConstants.SUCCESS_STATE);
                 }
 
             }
