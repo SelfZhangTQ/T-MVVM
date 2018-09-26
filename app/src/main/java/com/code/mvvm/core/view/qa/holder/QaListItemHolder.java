@@ -16,7 +16,7 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseHolder;
 
 /**
- * @author：tqzhang  on 18/6/19 15:00
+ * @author：tqzhang on 18/6/19 15:00
  */
 public class QaListItemHolder extends AbsViewHolder<QaListVo.DataBean, QaListItemHolder.ViewHolder> {
     private int commonWidth;
@@ -51,9 +51,11 @@ public class QaListItemHolder extends AbsViewHolder<QaListVo.DataBean, QaListIte
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) holder.activityPic.getLayoutParams();
         params.height = (int) (dv * commonWidth);
         holder.activityPic.setLayoutParams(params);
-        Glide.with(mContext).load(dataBean.imgs.get(0).img)
-                .placeholder(R.color.black_e8e8e8)
-                .into(holder.activityPic);
+        if (dataBean.imgs != null && dataBean.imgs.size() > 0) {
+            Glide.with(mContext).load(dataBean.imgs.get(0).img)
+                    .placeholder(R.color.black_e8e8e8)
+                    .into(holder.activityPic);
+        }
     }
 
 

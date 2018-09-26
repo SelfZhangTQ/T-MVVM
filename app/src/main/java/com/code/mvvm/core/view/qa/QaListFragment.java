@@ -2,6 +2,7 @@ package com.code.mvvm.core.view.qa;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
@@ -21,11 +22,12 @@ public class QaListFragment extends BaseListFragment<QaViewModel> {
     @Override
     protected void dataObserver() {
         mViewModel.getQAList().observe(this, qaListVo -> {
-            if (qaListVo == null) {
+            if (qaListVo == null&&qaListVo.data!=null&&qaListVo.data.size()==0) {
                 return;
             }
             lastId = qaListVo.data.get(qaListVo.data.size() - 1).newsid;
             setData(qaListVo.data);
+            Log.e("dataObserver",oldItems.size()+"");
 
         });
     }
