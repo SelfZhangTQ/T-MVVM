@@ -61,7 +61,6 @@ public class BannerAdapter extends PagerAdapter{
                     if (pointSize == 2) {
                         mViewPagerOnItemClickListener.onItemClick(finalPosition>=2?finalPosition-2:finalPosition);
                     } else {
-
                         mViewPagerOnItemClickListener.onItemClick(finalPosition);
                     }
                 }
