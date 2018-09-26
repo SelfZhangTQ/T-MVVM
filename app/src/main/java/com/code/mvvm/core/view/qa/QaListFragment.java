@@ -27,8 +27,6 @@ public class QaListFragment extends BaseListFragment<QaViewModel> {
             }
             lastId = qaListVo.data.get(qaListVo.data.size() - 1).newsid;
             setData(qaListVo.data);
-            Log.e("dataObserver",oldItems.size()+"");
-
         });
     }
 
