@@ -1,16 +1,12 @@
 package com.code.mvvm.core.view.correct;
 
-import android.arch.lifecycle.Observer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.widget.Toast;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.core.vm.WorkViewModel;
-import com.code.mvvm.event.LiveBus;
 import com.code.mvvm.util.AdapterPool;
 import com.danikula.videocache.Preconditions;
 import com.trecyclerview.multitype.MultiTypeAdapter;
@@ -30,13 +26,6 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     public void initView(Bundle state) {
         super.initView(state);
         setTitle(getResources().getString(R.string.work_title_name));
-        LiveBus.getDefault().subscribe("livedata",String.class).observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                Toast.makeText(activity, ""+s, Toast.LENGTH_SHORT).show();
-            }
-        });
-
     }
 
     @Override

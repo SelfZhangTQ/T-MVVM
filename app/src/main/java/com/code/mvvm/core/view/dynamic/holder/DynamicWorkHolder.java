@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.code.mvvm.App;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.dynamic.DynamicInfoVo;
 import com.code.mvvm.glide.GlideCircleTransform;

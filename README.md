@@ -13,6 +13,11 @@
    * 复杂的页面，model也会很大，虽然使用方便了也很容易保证了数据的一致性，当时长期持有，不利于释放内存。<br/>
    * 数据双向绑定不利于View重用。<br/>
 
+
+#### 工程代码说明<br/>
+![image](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/mvvm3.png)
+
+
 ## 无图无真相<br/>
 ![image](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/1_video.gif)
 ![image](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/2_video.gif)<br/>

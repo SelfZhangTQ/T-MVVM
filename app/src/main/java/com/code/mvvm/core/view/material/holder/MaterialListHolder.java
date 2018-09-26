@@ -7,7 +7,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.code.mvvm.App;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.material.MaterialInfoVo;
 import com.code.mvvm.glide.GlideRoundTransform;
