@@ -192,4 +192,22 @@ public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> 
         items.addAll(lessonDetailAboutVideoBean.getData().getCourse_list());
         mRecyclerView.refreshComplete(items, false);
     }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (null!=mVideoPlayer){
+            mVideoPlayer.onVideoPause();
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (null!=mVideoPlayer){
+            mVideoPlayer.onVideoResume();
+        }
+    }
 }
