@@ -2,6 +2,7 @@
 
 ## 艺术帮是一款艺术图片应用，采用LiveData+ViewModel+RxJava+okHttp+Retrofit+Glide架构的项目,仅用于学习交流，不断完善中<br/>
    项目github地址:<https://github.com/SelfZhangTQ/T-MVVM> <br/>
+   [apk下载地址](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/apk.apk)
 #### 项目初衷 在此之前一直使用MVP,MVP缺点:<br/>
    * Presenter中除了逻辑以外，还有大量的View->Model，Model->View的逻辑操作，造成Presenter臃肿，维护困难。<br/>
    * 对UI的渲染放在了Presenter中，所以UI和Presenter的交互会过于频繁。<br/>
