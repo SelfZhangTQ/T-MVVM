@@ -20,7 +20,7 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
     @Override
     protected void dataObserver() {
         mViewModel.getDynamicList().observe(this, dynamicListVo -> {
-            if (dynamicListVo != null) {
+            if (dynamicListVo != null&&dynamicListVo.data!=null) {
                 lastId = dynamicListVo.data.get(dynamicListVo.data.size() - 1).feedid;
                 setData(dynamicListVo.data);
             }
@@ -64,7 +64,7 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
     }
 
     private void getDynamicListData() {
-        mViewModel.getDynamicList( "818d8a6b54870bdffc333376723289d9", lastId);
+        mViewModel.getDynamicList( "45ca1f01417c758505e2919e701c3f99", lastId);
 
     }
 }

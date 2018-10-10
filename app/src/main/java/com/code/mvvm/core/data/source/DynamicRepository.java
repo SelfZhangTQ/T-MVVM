@@ -23,7 +23,12 @@ public class DynamicRepository extends BaseRepository {
 
                     @Override
                     public void onSuccess(DynamicListVo dynamicListVo) {
-                        listener.onNext(dynamicListVo);
+                        if (dynamicListVo.data!=null){
+                            listener.onNext(dynamicListVo);
+                        }else {
+                            listener.onError("没有数据");
+                        }
+
                     }
 
                     @Override
