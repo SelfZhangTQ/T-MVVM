@@ -16,7 +16,6 @@ import com.trecyclerview.multitype.MultiTypeAdapter;
  */
 public class WorkFragment extends BaseListFragment<WorkViewModel> {
     private String uTime;
-    private String LiveBus2;
 
     public static WorkFragment newInstance() {
         return new WorkFragment();

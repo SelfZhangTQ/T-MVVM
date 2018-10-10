@@ -15,6 +15,9 @@ import java.net.UnknownHostException;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
 
+/**
+ * @author tqzhang
+ */
 public abstract class RxSubscriber<T> extends Subscriber<T> {
     @Override
     public void onStart() {

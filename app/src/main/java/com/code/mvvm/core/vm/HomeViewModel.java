@@ -30,21 +30,6 @@ public class HomeViewModel extends AbsViewModel<HomeRepository> {
         super(application);
     }
 
-
-    public LiveData<HomeListVo> getHomeList() {
-        if (homeData == null) {
-            homeData = new MutableLiveData<>();
-        }
-        return homeData;
-    }
-
-    public LiveData<BannerListVo> getBannerList() {
-        if (bannerData == null) {
-            bannerData = new MutableLiveData<>();
-        }
-        return bannerData;
-    }
-
     public LiveData<HomeMergeVo> getMergeData() {
         if (mergeData == null) {
             mergeData = new MutableLiveData<>();

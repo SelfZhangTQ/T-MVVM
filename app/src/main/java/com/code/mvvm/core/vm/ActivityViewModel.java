@@ -33,7 +33,6 @@ public class ActivityViewModel extends AbsViewModel<ActivityRepository> {
     }
 
     public void getActivityList(String id) {
-        checkNotNull(id);
         mRepository.loadActivityList(id, Constants.PAGE_RN, new CallBack<ActivityListVo>() {
             @Override
             public void onNoNetWork() {
