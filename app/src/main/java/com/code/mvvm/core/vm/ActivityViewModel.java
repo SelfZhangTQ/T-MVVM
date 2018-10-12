@@ -12,8 +12,6 @@ import com.code.mvvm.core.data.source.ActivityRepository;
 import com.mvvm.base.AbsViewModel;
 import com.mvvm.stateview.StateConstants;
 
-import static com.code.mvvm.util.Preconditions.checkNotNull;
-
 /**
  * @author：tqzhang on 18/7/27 15:23
  */

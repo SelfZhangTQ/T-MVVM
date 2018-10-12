@@ -2,7 +2,6 @@ package com.code.mvvm.core.view.qa;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;

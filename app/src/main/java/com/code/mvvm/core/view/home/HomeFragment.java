@@ -45,6 +45,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
     protected void lazyLoad() {
         super.lazyLoad();
         getNetWorkData();
+
     }
 
     @Override

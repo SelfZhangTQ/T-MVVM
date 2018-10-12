@@ -1,6 +1,7 @@
 package com.code.mvvm.util;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
@@ -44,6 +45,7 @@ import com.code.mvvm.core.view.material.holder.MaterialItemHolder;
 import com.code.mvvm.core.view.material.holder.MaterialListHolder;
 import com.code.mvvm.core.view.qa.holder.QaListItemHolder;
 import com.code.mvvm.widget.banner.BannerItemView;
+import com.trecyclerview.multitype.AbsItemView;
 import com.trecyclerview.multitype.ClassLinker;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.pojo.FootVo;
@@ -191,23 +193,27 @@ public class AdapterPool {
                         new DynamicCourseHolder(context),
                         new DynamicLiveHolder(context),
                         new DynamicFollowHolder(context))
-                .withClass((ClassLinker<DynamicInfoVo>) (position, dynamicInfoVo) -> {
-                    if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_CORRECT)) {
-                        return DynamicCorrectHolder.class;
-                    } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_WORK)) {
-                        return DynamicWorkHolder.class;
-                    } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_MATERIAL_SUBJECT)) {
-                        return DynamicSubjectHolder.class;
-                    } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_ARTICLE)) {
-                        return DynamicArticleHolder.class;
-                    } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_FOLLOW_DRAW)) {
-                        return DynamicFollowHolder.class;
-                    } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_LIVE)) {
-                        return DynamicLiveHolder.class;
-                    } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_LESSON)) {
-                        return DynamicCourseHolder.class;
+                .withClass(new ClassLinker<DynamicInfoVo>() {
+                    @NonNull
+                    @Override
+                    public Class<? extends AbsItemView<DynamicInfoVo, ?>> index(int position, @NonNull DynamicInfoVo dynamicInfoVo) {
+                        if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_CORRECT)) {
+                            return DynamicCorrectHolder.class;
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_WORK)) {
+                            return DynamicWorkHolder.class;
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_MATERIAL_SUBJECT)) {
+                            return DynamicSubjectHolder.class;
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_ARTICLE)) {
+                            return DynamicArticleHolder.class;
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_FOLLOW_DRAW)) {
+                            return DynamicFollowHolder.class;
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_LIVE)) {
+                            return DynamicLiveHolder.class;
+                        } else if (dynamicInfoVo.subjecttype.equals(Constants.TYPE_LESSON)) {
+                            return DynamicCourseHolder.class;
+                        }
+                        return null;
                     }
-                    return null;
                 }), context);
     }
 }

@@ -53,7 +53,10 @@ public class CommonActivity extends BaseActivity implements View.OnClickListener
         FragmentManager fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
         showFragment();
+
         barBack.setOnClickListener(this);
+
+
     }
 
     private void getIntentData() {
