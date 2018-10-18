@@ -6,10 +6,15 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
+import com.code.mvvm.core.data.pojo.correct.WorkMergeVo;
+import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.danikula.videocache.Preconditions;
+import com.mvvm.event.LiveBus;
+import com.mvvm.stateview.StateConstants;
 import com.trecyclerview.multitype.MultiTypeAdapter;
+
 
 /**
  * @author：tqzhang on 18/5/2 19:30
@@ -28,8 +33,13 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     }
 
     @Override
+    protected Object getStateEventKey() {
+        return Constants.EVENT_KEY_WORK_LIST_STATE;
+    }
+
+    @Override
     protected void dataObserver() {
-        mViewModel.getWorkMergeData().observe(this, workMergeVo -> {
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_WORK_LIST, WorkMergeVo.class).observe(this, workMergeVo -> {
             if (workMergeVo != null) {
                 newItems.clear();
                 newItems.add(workMergeVo.bannerListVo);
@@ -38,14 +48,14 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
                 setData(workMergeVo.worksListVo.data.content);
             }
         });
-        mViewModel.getWorkMoreData().observe(this, worksListVo -> {
-            Preconditions.checkAllNotNull(worksListVo);
-            if (worksListVo == null) {
-                return;
+
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_WORK_MORE, WorksListVo.class).observe(this, worksListVo -> {
+            if (worksListVo != null) {
+                lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
+                uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
+                setData(worksListVo.data.content);
             }
-            lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
-            uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
-            setData(worksListVo.data.content);
+
         });
 
     }
@@ -86,7 +96,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     }
 
     private void getNetWorkData() {
-        mViewModel.getRequestMerge();
+        mViewModel.getWorkListData();
     }
 
 }

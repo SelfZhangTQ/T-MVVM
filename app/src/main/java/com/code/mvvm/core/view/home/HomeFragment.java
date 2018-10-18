@@ -1,24 +1,31 @@
 package com.code.mvvm.core.view.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.book.BookList;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
+import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
 import com.code.mvvm.core.data.pojo.home.CatagoryVo;
 import com.code.mvvm.core.data.pojo.home.HomeMergeVo;
+import com.code.mvvm.core.view.course.VideoDetailsActivity;
 import com.code.mvvm.core.vm.HomeViewModel;
 import com.code.mvvm.util.AdapterPool;
+import com.mvvm.event.LiveBus;
+import com.trecyclerview.listener.OnItemClickListener;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 
 /**
  * @author：tqzhang on 18/5/2 18:46
  */
-public class HomeFragment extends BaseListFragment<HomeViewModel> {
+public class HomeFragment extends BaseListFragment<HomeViewModel> implements OnItemClickListener {
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -31,8 +38,13 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
     }
 
     @Override
+    protected Object getStateEventKey() {
+        return Constants.EVENT_KEY_HOME_STATE;
+    }
+
+    @Override
     protected void dataObserver() {
-        mViewModel.getMergeData().observe(this, homeMergeVo -> {
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_HOME, HomeMergeVo.class).observe(this, homeMergeVo -> {
             if (homeMergeVo != null) {
                 addItems(homeMergeVo);
             }
@@ -67,11 +79,13 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
 
     @Override
     protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getHomeAdapter(getActivity());
+        MultiTypeAdapter adapter = AdapterPool.newInstance().getHomeAdapter(getActivity());
+        adapter.setOnItemClickListener(this);
+        return adapter;
     }
 
     protected void getNetWorkData() {
-        mViewModel.getRequestMerge();
+        mViewModel.getHomeData();
     }
 
     private void addItems(HomeMergeVo homeMergeVo) {
@@ -97,7 +111,17 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> {
         oldItems.addAll(newItems);
         mRecyclerView.refreshComplete(oldItems, true);
         newItems.clear();
-
     }
 
+    @Override
+    public void onItemClick(View view, int i, Object object) {
+        if (object != null) {
+            if (object instanceof CourseInfoVo) {
+                Intent intent = new Intent(activity, VideoDetailsActivity.class);
+                intent.putExtra("course_id", ((CourseInfoVo) object).courseid);
+                activity.startActivity(intent);
+            }
+
+        }
+    }
 }

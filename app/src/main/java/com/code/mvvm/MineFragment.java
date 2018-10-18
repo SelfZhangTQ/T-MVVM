@@ -15,7 +15,6 @@ import com.mvvm.stateview.LoadingState;
 public class MineFragment extends BaseFragment {
     private WebView webView;
 
-
     public static MineFragment newInstance() {
         return new MineFragment();
     }

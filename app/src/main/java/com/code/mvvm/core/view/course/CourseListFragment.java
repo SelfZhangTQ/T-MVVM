@@ -1,12 +1,18 @@
 package com.code.mvvm.core.view.course;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
+import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
+import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.util.AdapterPool;
+import com.mvvm.event.LiveBus;
+import com.trecyclerview.listener.OnItemClickListener;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.pojo.FootVo;
 import com.trecyclerview.pojo.HeaderVo;
@@ -14,7 +20,7 @@ import com.trecyclerview.pojo.HeaderVo;
 /**
  * @author：tqzhang on 18/5/2 19:40
  */
-public class CourseListFragment extends BaseListFragment<CourseViewModel> {
+public class CourseListFragment extends BaseListFragment<CourseViewModel> implements OnItemClickListener {
     private String mCatalogId;
 
     public static CourseListFragment newInstance() {
@@ -22,16 +28,22 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
     }
 
     @Override
-    public void initView(Bundle state) {
-        super.initView(state);
-        if (getArguments() != null) {
-            mCatalogId = getArguments().getString("f_catalog_id", null);
-        }
+    protected Object getStateEventKey() {
+        return Constants.EVENT_KEY_COURSE_LIDT_STATE;
+    }
+
+    @Override
+    protected String getStateEventTag() {
+        return mCatalogId;
     }
 
     @Override
     protected void dataObserver() {
-        mViewModel.getCourseList().observe(this, courseListVo -> {
+        if (getArguments() != null) {
+            mCatalogId = getArguments().getString("f_catalog_id", null);
+        }
+
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_COURSE_LIDT,mCatalogId, CourseListVo.class).observe(this, courseListVo -> {
             if (courseListVo != null && courseListVo.data != null) {
                 lastId = courseListVo.data.get(courseListVo.data.size() - 1).courseid;
                 setData(courseListVo.data);
@@ -57,7 +69,9 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
 
     @Override
     protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getCourseListAdapter(getActivity());
+        MultiTypeAdapter adapter=AdapterPool.newInstance().getCourseListAdapter(getActivity());
+        adapter.setOnItemClickListener(this);
+        return adapter;
     }
 
     @Override
@@ -86,5 +100,17 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> {
 
     public void getNetWorkData() {
         mViewModel.getCourseList(mCatalogId, lastId);
+    }
+
+    @Override
+    public void onItemClick(View view, int i, Object object) {
+        if (object != null) {
+            if (object instanceof CourseInfoVo) {
+                Intent intent = new Intent(activity, VideoDetailsActivity.class);
+                intent.putExtra("course_id", ((CourseInfoVo) object).courseid);
+                activity.startActivity(intent);
+            }
+
+        }
     }
 }

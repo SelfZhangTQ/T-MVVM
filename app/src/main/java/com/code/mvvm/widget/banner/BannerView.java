@@ -17,12 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author：tqzhang  on 18/5/8 15:38
@@ -30,7 +30,7 @@ import rx.subscriptions.CompositeSubscription;
 public class BannerView extends RelativeLayout {
     ViewPager viewPager;
     LinearLayout points;
-    private CompositeSubscription compositeSubscription;
+    private CompositeDisposable compositeSubscription;
     //默认轮播时间，10s
     private int delayTime = 10;
     private List<ImageView> imageViewList;
@@ -149,7 +149,7 @@ public class BannerView extends RelativeLayout {
                         break;
                     case ViewPager.SCROLL_STATE_DRAGGING:
                         stopScroll();
-                        compositeSubscription.unsubscribe();
+                        compositeSubscription.clear();
                         break;
                 }
             }
@@ -186,20 +186,22 @@ public class BannerView extends RelativeLayout {
      * 图片开始轮播
      */
     private void startScroll() {
-        compositeSubscription = new CompositeSubscription();
+        compositeSubscription = new CompositeDisposable();
         isStopScroll = false;
-        Subscription subscription = Observable.timer(delayTime, TimeUnit.SECONDS)
+        Disposable subscription = Observable.timer(delayTime, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Long>() {
+                .subscribe(new Consumer<Long>() {
                     @Override
-                    public void call(Long aLong) {
+                    public void accept(Long aLong) throws Exception {
                         if (isStopScroll) {
                             return;
                         }
                         isStopScroll = true;
                         viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
                     }
+
                 });
         compositeSubscription.add(subscription);
     }
@@ -215,7 +217,7 @@ public class BannerView extends RelativeLayout {
 
     public void destroy() {
         if (compositeSubscription != null) {
-            compositeSubscription.unsubscribe();
+            compositeSubscription.clear();
         }
     }
 

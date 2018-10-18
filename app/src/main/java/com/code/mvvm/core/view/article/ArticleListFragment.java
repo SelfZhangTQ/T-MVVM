@@ -1,12 +1,14 @@
 package com.code.mvvm.core.view.article;
 
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
+import com.code.mvvm.core.data.pojo.article.ArticleVo;
 import com.code.mvvm.core.vm.ArticleViewModel;
 import com.code.mvvm.util.AdapterPool;
+import com.mvvm.event.LiveBus;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -21,16 +23,22 @@ public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
     }
 
     @Override
-    public void initView(Bundle state) {
-        super.initView(state);
-        if (getArguments() != null) {
-            typeId = getArguments().getString("type_id");
-        }
+    protected Object getStateEventKey() {
+        return Constants.EVENT_KEY_ARTICLE_LIST_STATE;
+    }
+
+    @Override
+    protected String getStateEventTag() {
+        return typeId;
     }
 
     @Override
     protected void dataObserver() {
-        mViewModel.getArticleList().observe(this, articleVo -> {
+        if (getArguments() != null) {
+            typeId = getArguments().getString("type_id");
+        }
+
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_ARTICLE_LIST,typeId, ArticleVo.class).observe(this, articleVo -> {
             if (articleVo != null) {
                 lastId = articleVo.data.list.get(articleVo.data.list.size() - 1).newsid;
                 setData(articleVo.data.list);

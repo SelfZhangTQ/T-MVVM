@@ -12,36 +12,30 @@ import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
-import io.reactivex.subscribers.DisposableSubscriber;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import retrofit2.HttpException;
 
 /**
  * @author tqzhang
  */
-public abstract class RxSubscriber<T> extends DisposableSubscriber<T> {
+public abstract class RxSubscriber2<T> implements Observer<T> {
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        showLoading();
+//        if (!NetworkUtils.isNetworkAvailable(App.instance())) {
+//            onNoNetWork();
+//            if (!isUnsubscribed()) {
+//                unsubscribe();
+//            }
+//            return;
+//        }
+//    }
 
-
-    public RxSubscriber() {
-        super();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        showLoading();
-        if (!NetworkUtils.isNetworkAvailable(App.instance())) {
-            onNoNetWork();
-            cancel();
-            return;
-        }
-    }
 
     @Override
     public void onComplete() {
-
-    }
-
-    protected void showLoading() {
 
     }
 

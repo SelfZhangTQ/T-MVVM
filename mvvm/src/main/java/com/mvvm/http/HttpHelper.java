@@ -8,7 +8,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.mvvm.util.TUtil.checkNotNull;
@@ -105,7 +105,7 @@ public class HttpHelper {
         public Builder createRetrofit(String baseUrl) {
             checkNotNull(baseUrl);
             Retrofit.Builder builder = new Retrofit.Builder()
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl(baseUrl);
             BASE_URL = baseUrl;

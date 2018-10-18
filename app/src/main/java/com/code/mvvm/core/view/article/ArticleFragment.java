@@ -4,16 +4,18 @@ import android.os.Bundle;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseViewPagerFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.article.ArticleTypeVo;
 import com.code.mvvm.core.vm.ArticleViewModel;
 import com.mvvm.base.BaseFragment;
+import com.mvvm.event.LiveBus;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * @author：tqzhang  on 18/7/2 14:24
+ * @author：tqzhang on 18/7/2 14:24
  */
 public class ArticleFragment extends BaseViewPagerFragment<ArticleViewModel> {
     private List<ArticleTypeVo.DataBean> titleName = new ArrayList<>();
@@ -29,8 +31,14 @@ public class ArticleFragment extends BaseViewPagerFragment<ArticleViewModel> {
     }
 
     @Override
+    protected Object getStateEventKey() {
+        return Constants.EVENT_KEY_ARTICLE_STATE;
+    }
+
+    @Override
     protected void dataObserver() {
-        mViewModel.getArticleType().observe(this, articleTypeVo -> {
+
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_ARTICLE, ArticleTypeVo.class).observe(this, articleTypeVo -> {
             if (articleTypeVo != null) {
                 setData(articleTypeVo);
             }

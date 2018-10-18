@@ -25,6 +25,11 @@ public class App extends Application implements ComponentCallbacks2 {
         MultiDex.install(this);
     }
 
+
+    public static App instance() {
+        return mInstance;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -40,9 +45,6 @@ public class App extends Application implements ComponentCallbacks2 {
                 .build();
     }
 
-    public static App instance() {
-        return mInstance;
-    }
 
     @Override
     public void onTrimMemory(int level) {

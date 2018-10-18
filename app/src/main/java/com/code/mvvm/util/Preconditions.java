@@ -9,8 +9,9 @@ public class Preconditions {
     public static @NonNull
     <T> T checkNotNull(final T reference) {
         if (reference == null) {
-            throw new NullPointerException();
+            return null;
         }
         return reference;
     }
+
 }

@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initViews(Bundle savedInstanceState) {
         loadManager.showSuccess();
-        //int Bottom tabBar
+        //init Bottom tabBar
         initNavBar();
         //init fragment
         initFragment(0);

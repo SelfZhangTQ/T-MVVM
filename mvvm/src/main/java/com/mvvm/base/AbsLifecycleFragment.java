@@ -8,11 +8,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
+import com.mvvm.event.LiveBus;
 import com.mvvm.stateview.ErrorState;
 import com.mvvm.stateview.LoadingState;
 import com.mvvm.stateview.StateConstants;
 import com.mvvm.util.TUtil;
 import com.tqzhang.stateview.stateview.BaseStateControl;
+
 
 /**
  * @author：tqzhang on 18/7/10 16:20
@@ -25,17 +27,35 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
     public void initView(Bundle state) {
         mViewModel = VMProviders(this, (Class<T>) TUtil.getInstance(this, 0));
         if (null != mViewModel) {
-            mViewModel.loadState.observe(this, observer);
             dataObserver();
+            LiveBus.getDefault().subscribe(getStateEventKey(), getStateEventTag()).observe(this, observer);
+
         }
     }
+
+    /**
+     * ViewPager +fragment tag
+     *
+     * @return
+     */
+    protected String getStateEventTag() {
+        return "";
+    }
+
+    /**
+     * get state page event key
+     *
+     * @return
+     */
+    protected abstract Object getStateEventKey();
 
     /**
      * create ViewModelProviders
      *
      * @return ViewModel
      */
-    protected <T extends ViewModel> T VMProviders(BaseFragment fragment, @NonNull Class<T> modelClass) {
+    protected <T extends ViewModel> T VMProviders(BaseFragment
+                                                          fragment, @NonNull Class<T> modelClass) {
         return ViewModelProviders.of(fragment).get(modelClass);
 
     }

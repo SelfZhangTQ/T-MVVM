@@ -11,10 +11,10 @@ import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
 import com.code.mvvm.core.view.course.holder.CourseRecommendHolder;
-import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.network.ApiService;
+import com.code.mvvm.network.rx.RxSubscriber;
 import com.code.mvvm.util.DisplayUtil;
-import com.mvvm.base.AbsLifecycleActivity;
+import com.mvvm.base.BaseActivity;
 import com.mvvm.http.HttpHelper;
 import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
@@ -23,20 +23,20 @@ import com.trecyclerview.TRecyclerView;
 import com.trecyclerview.multitype.Items;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * @author：tqzhang on 18/7/7 15:09
  */
-public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> {
-    StandardGSYVideoPlayer mVideoPlayer;
-    OrientationUtils mOrientationUtils;
+public class VideoDetailsActivity extends BaseActivity {
+    private StandardGSYVideoPlayer mVideoPlayer;
+    private OrientationUtils mOrientationUtils;
 
     protected TRecyclerView mRecyclerView;
 
-    String lessonId;
+    private String lessonId;
     private String teacherId;
     private String fCatalogId;
     private String sCatalogId;
@@ -54,7 +54,6 @@ public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> 
 
     @Override
     public void initViews(Bundle savedInstanceState) {
-       super.initViews(savedInstanceState);
         lessonId = getIntent().getStringExtra("course_id");
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -102,10 +101,6 @@ public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> 
     }
 
 
-    @Override
-    protected void dataObserver() {
-
-    }
 
     private void getNetWorkData() {
         if (TextUtils.isEmpty(lessonId)) {
@@ -114,37 +109,30 @@ public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> 
         }
         HttpHelper.getInstance().create(ApiService.class).getVideoDetailsData(lessonId, "")
                 .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<CourseDetailVo>() {
+                .subscribeWith(new RxSubscriber<CourseDetailVo>() {
 
                     @Override
-                    public void onStart() {
-                        super.onStart();
-                    }
-
-                    @Override
-                    public void onCompleted() {
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                    }
-
-                    @Override
-                    public void onNext(final CourseDetailVo lessonDetailObject) {
-                        lessonData = lessonDetailObject.data;
+                    public void onSuccess(CourseDetailVo courseDetailVo) {
+                        lessonData = courseDetailVo.data;
                         fCatalogId = lessonData.f_catalog_id;
                         sCatalogId = lessonData.s_catalog_id;
                         teacherId = lessonData.teacheruid;
                         ImageView imageView = new ImageView(VideoDetailsActivity.this);
                         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                        Glide.with(VideoDetailsActivity.this).load(lessonDetailObject.data.thumb_url).into(imageView);
+                        Glide.with(VideoDetailsActivity.this).load(courseDetailVo.data.thumb_url).into(imageView);
                         mVideoPlayer.setThumbImageView(imageView);
-                        mVideoPlayer.setUp(lessonDetailObject.data.sectioin.get(0).videos.get(0).video_info.m3u8url, false, lessonDetailObject.data.sectioin.get(0).videos.get(0).title);
+                        mVideoPlayer.setUp(courseDetailVo.data.sectioin.get(0).videos.get(0).video_info.m3u8url, false, courseDetailVo.data.sectioin.get(0).videos.get(0).title);
                         mVideoPlayer.startPlayLogic();
                         getAboutData();
                     }
+
+                    @Override
+                    public void onFailure(String msg) {
+
+                    }
+
+
                 });
 
 
@@ -155,31 +143,21 @@ public class VideoDetailsActivity extends AbsLifecycleActivity<CourseViewModel> 
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<CourseDetailRemVideoVo>() {
+                .subscribeWith(new RxSubscriber<CourseDetailRemVideoVo>() {
 
                     @Override
-                    public void onStart() {
-                        super.onStart();
-                    }
-
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
-                        if (lessonDetailAboutVideoBean != null && lessonDetailAboutVideoBean.errno == 0) {
-                            setData(lessonDetailAboutVideoBean);
-
+                    public void onSuccess(CourseDetailRemVideoVo courseDetailRemVideoVo) {
+                        if (courseDetailRemVideoVo != null && courseDetailRemVideoVo.errno == 0) {
+                            setData(courseDetailRemVideoVo);
+                            loadManager.showSuccess();
                         }
-                        loadManager.showSuccess();
                     }
+
+                    @Override
+                    public void onFailure(String msg) {
+
+                    }
+
                 });
     }
 

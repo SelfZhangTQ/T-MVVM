@@ -1,7 +1,6 @@
 package com.code.mvvm.core.view.course.holder;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,11 +10,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
-import com.code.mvvm.core.view.course.VideoDetailsActivity;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.listener.OnItemClickListener;
 
 /**
  * @author：tqzhang on 18/6/19 15:00
@@ -36,7 +35,7 @@ public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHold
 
     @Override
     public ViewHolder createViewHolder(View view) {
-        return new ViewHolder(view);
+        return new ViewHolder(view,mOnItemClickListener);
     }
 
 
@@ -48,11 +47,6 @@ public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHold
         holder.mVideoImage.setScaleType(ImageView.ScaleType.FIT_XY);
         Glide.with(mContext).load(courseListBean.thumb_url).placeholder(R.color.black_e8e8e8).into(holder.mVideoImage);
         Glide.with(mContext).load(courseListBean.userinfo.avatar).transform(new GlideCircleTransform(mContext)).into(holder.mUserIcon);
-        holder.mVideoImage.setOnClickListener(v -> {
-            Intent intent = new Intent(mContext, VideoDetailsActivity.class);
-            intent.putExtra("course_id", courseListBean.courseid);
-            mContext.startActivity(intent);
-        });
         holder.mUserName.setText(courseListBean.userinfo.sname);
         holder.mVideoTitle.setText(courseListBean.title);
         holder.mLookNum.setText(new StringBuilder(String.valueOf(courseListBean.hits)).append("人看过"));
@@ -64,13 +58,19 @@ public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHold
         private ImageView mVideoImage, mUserIcon;
         private TextView mLookNum, mVideoTitle, mUserName;
 
-        ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView, final OnItemClickListener mOnItemClickListener) {
             super(itemView);
             mVideoImage = getViewById(R.id.iv_video_image);
             mUserIcon = getViewById(R.id.iv_user_icon);
             mLookNum = getViewById(R.id.tv_look_num);
             mVideoTitle = getViewById(R.id.tv_video_title);
             mUserName = getViewById(R.id.tv_user_name);
+            itemView.setOnClickListener(v -> {
+                if (null!=mOnItemClickListener){
+                    mOnItemClickListener.onItemClick(v,getAdapterPosition(),itemView.getTag());
+                }
+
+            });
         }
     }
 

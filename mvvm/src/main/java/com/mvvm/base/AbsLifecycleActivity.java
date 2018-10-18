@@ -29,7 +29,6 @@ public abstract class AbsLifecycleActivity<T extends AbsViewModel> extends BaseA
     @Override
     public void initViews(Bundle savedInstanceState) {
         mViewModel = VMProviders(this, (Class<T>) TUtil.getInstance(this, 0));
-        mViewModel.loadState.observe(this, observer);
         dataObserver();
     }
 
@@ -41,6 +40,11 @@ public abstract class AbsLifecycleActivity<T extends AbsViewModel> extends BaseA
 
     protected void dataObserver() {
 
+    }
+
+    @Override
+    protected void onStateRefresh() {
+        showLoading();
     }
 
     protected void showError(Class<? extends BaseStateControl> stateView, Object tag) {

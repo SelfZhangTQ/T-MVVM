@@ -1,23 +1,28 @@
 package com.code.mvvm.core.view.course;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
+import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.util.AdapterPool;
+import com.mvvm.event.LiveBus;
+import com.trecyclerview.listener.OnItemClickListener;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.pojo.HeaderVo;
 
 /**
  * @author：tqzhang on 18/5/2 19:40
  */
-public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
+public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> implements OnItemClickListener {
     public static CourseRecommendFragment newInstance() {
         return new CourseRecommendFragment();
     }
@@ -28,8 +33,13 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
     }
 
     @Override
+    protected Object getStateEventKey() {
+        return Constants.EVENT_KEY_COURSE_RED_STATE;
+    }
+
+    @Override
     protected void dataObserver() {
-        mViewModel.getCourseRemList().observe(this, courseRemVo -> {
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_COURSE_RED, CourseRemVo.class).observe(this, courseRemVo -> {
             if (courseRemVo != null) {
                 setData(courseRemVo);
             }
@@ -54,7 +64,9 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
 
     @Override
     protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getCourseRemAdapter(activity);
+        MultiTypeAdapter adapter=AdapterPool.newInstance().getCourseRemAdapter(activity);
+        adapter.setOnItemClickListener(this);
+        return adapter;
     }
 
     @Override
@@ -91,9 +103,20 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> {
         }
         oldItems.clear();
         oldItems.addAll(newItems);
-        mRecyclerView.refreshComplete(oldItems,true);
+        mRecyclerView.refreshComplete(oldItems, true);
         newItems.clear();
     }
 
 
+    @Override
+    public void onItemClick(View view, int i, Object object) {
+        if (object != null) {
+            if (object instanceof CourseInfoVo) {
+                Intent intent = new Intent(activity, VideoDetailsActivity.class);
+                intent.putExtra("course_id", ((CourseInfoVo) object).courseid);
+                activity.startActivity(intent);
+            }
+
+        }
+    }
 }

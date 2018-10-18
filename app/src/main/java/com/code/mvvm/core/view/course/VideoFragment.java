@@ -4,9 +4,11 @@ import android.os.Bundle;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseViewPagerFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.mvvm.base.BaseFragment;
+import com.mvvm.event.LiveBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
  * @author：tqzhang on 18/5/2 19:20
  */
 public class VideoFragment extends BaseViewPagerFragment<CourseViewModel> {
+
     private List<CourseTypeVo.DataBean> titleName = new ArrayList<>();
 
     public static VideoFragment newInstance() {
@@ -29,8 +32,14 @@ public class VideoFragment extends BaseViewPagerFragment<CourseViewModel> {
     }
 
     @Override
+    protected Object getStateEventKey() {
+        return Constants.EVENT_KEY_COURSE_STATE;
+    }
+
+    @Override
     protected void dataObserver() {
-        mViewModel.getCourseType().observe(this, courseTypeVo -> {
+
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_COURSE, CourseTypeVo.class).observe(this, courseTypeVo -> {
             if (courseTypeVo == null) {
                 return;
             }

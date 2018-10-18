@@ -1,6 +1,6 @@
 package com.code.mvvm.core.data.source;
 
-import com.code.mvvm.callback.CallBack;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.BaseRepository;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
 import com.code.mvvm.core.data.pojo.course.CourseDetailVo;
@@ -9,8 +9,10 @@ import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
 import com.code.mvvm.network.rx.RxSubscriber;
 import com.mvvm.http.rx.RxSchedulers;
+import com.mvvm.stateview.StateConstants;
 
-import rx.Observable;
+import io.reactivex.Flowable;
+
 
 /**
  * @author：tqzhang  on 18/7/31 15:14
@@ -18,72 +20,69 @@ import rx.Observable;
 public class CourseRepository extends BaseRepository {
 
 
-    private Observable<CourseDetailVo> mCourseDetailDataObservable;
+    private Flowable<CourseDetailVo> mCourseDetailDataObservable;
 
-    private Observable<CourseDetailRemVideoVo> mCourseDetailRemVideoObservable;
+    private Flowable<CourseDetailRemVideoVo> mCourseDetailRemVideoObservable;
 
-    public void loadCourseList(String fCatalogId,String lastId, String rn, final CallBack<CourseListVo> onResultCallBack) {
-        addSubscribe(apiService.getCourseList(fCatalogId,lastId,rn)
+    public void loadCourseList(String fCatalogId,String lastId, String rn) {
+        addDisposable(apiService.getCourseList(fCatalogId,lastId,rn)
                 .compose(RxSchedulers.io_main())
-                .subscribe(new RxSubscriber<CourseListVo>() {
+                .subscribeWith(new RxSubscriber<CourseListVo>() {
                     @Override
                     protected void onNoNetWork() {
                         super.onNoNetWork();
-                        onResultCallBack.onNoNetWork();
                     }
 
                     @Override
                     public void onSuccess(CourseListVo courseListVo) {
-                        onResultCallBack.onNext(courseListVo);
+                        sendData(Constants.EVENT_KEY_COURSE_LIDT,fCatalogId, courseListVo);
+                        showPageState(Constants.EVENT_KEY_COURSE_LIDT_STATE,fCatalogId, StateConstants.SUCCESS_STATE);
                     }
 
                     @Override
                     public void onFailure(String msg) {
-                        onResultCallBack.onError(msg);
                     }
                 }));
     }
 
-    public void loadCourseRemList(final CallBack<CourseRemVo> onResultCallBack) {
-        addSubscribe(apiService.getCourseRemList()
+    public void loadCourseRemList() {
+        addDisposable(apiService.getCourseRemList()
                 .compose(RxSchedulers.io_main())
-                .subscribe(new RxSubscriber<CourseRemVo>() {
+                .subscribeWith(new RxSubscriber<CourseRemVo>() {
                     @Override
                     protected void onNoNetWork() {
                         super.onNoNetWork();
-                        onResultCallBack.onNoNetWork();
                     }
 
                     @Override
                     public void onSuccess(CourseRemVo courseRemVo) {
-                        onResultCallBack.onNext(courseRemVo);
+                        sendData(Constants.EVENT_KEY_COURSE_RED, courseRemVo);
+                        showPageState(Constants.EVENT_KEY_COURSE_RED_STATE, StateConstants.SUCCESS_STATE);
                     }
 
                     @Override
                     public void onFailure(String msg) {
-                        onResultCallBack.onError(msg);
                     }
                 }));
     }
 
-    public void loadCourseType(final CallBack<CourseTypeVo> listener) {
-        addSubscribe(apiService.getCourseType()
+    public void loadCourseType() {
+        addDisposable(apiService.getCourseType()
                 .compose(RxSchedulers.io_main())
-                .subscribe(new RxSubscriber<CourseTypeVo>() {
+                .subscribeWith(new RxSubscriber<CourseTypeVo>() {
                     @Override
                     protected void onNoNetWork() {
                         super.onNoNetWork();
-                        listener.onNoNetWork();
                     }
 
                     @Override
                     public void onSuccess(CourseTypeVo courseTypeVo) {
-                        listener.onNext(courseTypeVo);
+                        sendData(Constants.EVENT_KEY_COURSE, courseTypeVo);
+                        showPageState(Constants.EVENT_KEY_COURSE_STATE, StateConstants.SUCCESS_STATE);
                     }
 
                     @Override
                     public void onFailure(String msg) {
-                        listener.onError(msg);
                     }
                 }));
     }

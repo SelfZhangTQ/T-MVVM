@@ -24,8 +24,9 @@ import com.trecyclerview.TRecyclerView;
 import com.trecyclerview.multitype.Items;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
 
 /**
  * @author：tqzhang on 18/7/7 15:09
@@ -109,16 +110,16 @@ public class LiveDetailsActivity extends BaseActivity {
         }
         HttpHelper.getInstance().create(ApiService.class).getLiveData(liveId)
                 .compose(RxSchedulers.<LiveDetailsVo>io_main())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<LiveDetailsVo>() {
 
                     @Override
-                    public void onStart() {
-                        super.onStart();
+                    public void onSubscribe(Subscription s) {
+
                     }
 
                     @Override
-                    public void onCompleted() {
+                    public void onComplete() {
+
                     }
 
                     @Override

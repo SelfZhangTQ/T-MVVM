@@ -4,9 +4,11 @@ import android.os.Bundle;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseViewPagerFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawTypeVo;
 import com.code.mvvm.core.vm.FollowDrawViewModel;
 import com.mvvm.base.BaseFragment;
+import com.mvvm.event.LiveBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +33,14 @@ public class FollowDrawFragment extends BaseViewPagerFragment<FollowDrawViewMode
     }
 
     @Override
+    protected Object getStateEventKey() {
+        return Constants.EVENT_KEY_FD_STATE;
+    }
+
+    @Override
     protected void dataObserver() {
-        mViewModel.getFollowDrawType().observe(this, followDrawTypeVo -> {
+
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_FD, FollowDrawTypeVo.class).observe(this, followDrawTypeVo -> {
             if (followDrawTypeVo != null) {
                 setData(followDrawTypeVo);
             }

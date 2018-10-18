@@ -68,6 +68,11 @@ public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {
     }
 
     @Override
+    protected Object getStateEventKey() {
+        return null;
+    }
+
+    @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
         return new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
     }
@@ -82,14 +87,14 @@ public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {
         super.lazyLoad();
         getAdData();
         getCorrectData();
-        mViewModel.getRequestMerge();
+//        mViewModel.getRequestMerge();
     }
 
     @Override
     protected void onRefreshAction() {
         getAdData();
         getCorrectData();
-        mViewModel.getRequestMerge();
+//        mViewModel.getRequestMerge();
     }
 
     @Override

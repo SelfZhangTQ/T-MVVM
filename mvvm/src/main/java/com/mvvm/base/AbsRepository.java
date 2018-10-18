@@ -1,31 +1,32 @@
 package com.mvvm.base;
 
 
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
+
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * @author：tqzhang on 18/7/26 16:15
  */
 public abstract class AbsRepository {
 
-    private CompositeSubscription mCompositeSubscription;
+    private CompositeDisposable mCompositeDisposable;
 
 
     public AbsRepository() {
 
     }
 
-    protected void addSubscribe(Subscription subscription) {
-        if (mCompositeSubscription == null) {
-            mCompositeSubscription = new CompositeSubscription();
+    protected void addDisposable(Disposable disposable) {
+        if (mCompositeDisposable == null) {
+            mCompositeDisposable = new CompositeDisposable();
         }
-        mCompositeSubscription.add(subscription);
+        mCompositeDisposable.add(disposable);
     }
 
-    public void unSubscribe() {
-        if (mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions()) {
-            mCompositeSubscription.clear();
+    public void unDisposable() {
+        if (mCompositeDisposable != null && mCompositeDisposable.isDisposed()) {
+            mCompositeDisposable.clear();
         }
     }
 }

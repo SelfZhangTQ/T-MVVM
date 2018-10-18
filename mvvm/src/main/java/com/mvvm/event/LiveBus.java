@@ -1,4 +1,4 @@
-package com.code.mvvm.event;
+package com.mvvm.event;
 
 
 import android.arch.lifecycle.LifecycleOwner;
@@ -6,26 +6,27 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.code.mvvm.util.Preconditions.checkNotNull;
+import static com.mvvm.util.TUtil.checkNotNull;
+
 
 /**
  * 事件总线
+ * <p>
+ * <p>
+ * LiveBus.getDefault().postEvent("LiveData","hi LiveData");
+ * <p>
+ * <p>
+ * LiveBus.getDefault().subscribe("LiveData").observe(this, new Observer<Object>() {
  *
- *
- *  LiveBus.getDefault().postEvent("LiveData","hi LiveData");
- *
- *
- *  LiveBus.getDefault().subscribe("LiveData").observe(this, new Observer<Object>() {
- * @Override
- *     public void onChanged(@Nullable Object o) {
- *         Log.e("onChanged",((String)o));
- *       }
+ * @Override public void onChanged(@Nullable Object o) {
+ * Log.e("onChanged",((String)o));
+ * }
  * });
- *
  * @author：tqzhang on 18/9/11 17:22
  */
 public class LiveBus {
@@ -52,25 +53,52 @@ public class LiveBus {
 
     public <T> MutableLiveData<T> subscribe(Object eventKey) {
         checkNotNull(eventKey);
-        return (MutableLiveData<T>) subscribe(eventKey, Object.class);
+        return subscribe(eventKey, "");
     }
 
-    public <T> MutableLiveData<T> subscribe(Object eventKey, Class<T> tMutableLiveData) {
+    public <T> MutableLiveData<T> subscribe(Object eventKey, String tag) {
         checkNotNull(eventKey);
-        checkNotNull(tMutableLiveData);
-        if (!mLiveBus.containsKey(eventKey)) {
-            mLiveBus.put(eventKey, new LiveBusData<>(true));
+        return (MutableLiveData<T>) subscribe(eventKey, tag, Object.class);
+    }
+
+    public <T> MutableLiveData<T> subscribe(Object eventKey, Class<T> tClass) {
+        return subscribe(eventKey, null, tClass);
+    }
+
+    public <T> MutableLiveData<T> subscribe(Object eventKey, String tag, Class<T> tClass) {
+        checkNotNull(eventKey);
+        checkNotNull(tClass);
+        String key;
+        if (!TextUtils.isEmpty(tag)) {
+            key = eventKey + tag;
         } else {
-            LiveBusData liveBusData = mLiveBus.get(eventKey);
+            key = (String) eventKey;
+        }
+
+        if (!mLiveBus.containsKey(key)) {
+            mLiveBus.put(key, new LiveBusData<>(true));
+        } else {
+            LiveBusData liveBusData = mLiveBus.get(key);
             liveBusData.isFirstSubscribe = false;
         }
 
-        return (MutableLiveData<T>) mLiveBus.get(eventKey);
+        return (MutableLiveData<T>) mLiveBus.get(key);
     }
 
     public <T> MutableLiveData<T> postEvent(Object eventKey, T value) {
         checkNotNull(eventKey);
-        MutableLiveData<T> mutableLiveData = subscribe(eventKey);
+        return postEvent(eventKey, null, value);
+    }
+
+    public <T> MutableLiveData<T> postEvent(Object eventKey, String tag, T value) {
+        checkNotNull(eventKey);
+        String key;
+        if (!TextUtils.isEmpty(tag)) {
+            key = eventKey + tag;
+        } else {
+            key = (String) eventKey;
+        }
+        MutableLiveData<T> mutableLiveData = subscribe(key);
         mutableLiveData.postValue(value);
         return mutableLiveData;
     }
@@ -114,5 +142,11 @@ public class LiveBus {
 
     }
 
+    public void clear() {
+        if (mLiveBus != null && mLiveBus.size() > 0) {
+            mLiveBus.clear();
+        }
+
+    }
 
 }

@@ -4,9 +4,11 @@ import android.os.Bundle;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseViewPagerFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
 import com.code.mvvm.core.vm.MaterialViewModel;
 import com.mvvm.base.BaseFragment;
+import com.mvvm.event.LiveBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +31,14 @@ public class MaterialFragment extends BaseViewPagerFragment<MaterialViewModel> {
     }
 
     @Override
+    protected Object getStateEventKey() {
+        return Constants.EVENT_KEY_MT_STATE;
+    }
+
+    @Override
     protected void dataObserver() {
-        mViewModel.getMaterialType().observe(this, materialTypeVo -> {
+
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_MT, MaterialTypeVo.class).observe(this, materialTypeVo -> {
             if (materialTypeVo != null) {
                 setData(materialTypeVo);
             }

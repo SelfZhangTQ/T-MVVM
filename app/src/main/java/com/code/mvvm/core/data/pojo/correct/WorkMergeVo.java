@@ -10,4 +10,8 @@ public class WorkMergeVo {
     public BannerListVo bannerListVo;
 
     public WorksListVo worksListVo;
+
+    public WorkDetailVo workDetailVo;
+
+    public WorkRecommentVo workRecommentVo;
 }

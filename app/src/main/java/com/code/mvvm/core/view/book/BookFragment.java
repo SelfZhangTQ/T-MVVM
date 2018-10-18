@@ -3,9 +3,11 @@ package com.code.mvvm.core.view.book;
 import android.os.Bundle;
 
 import com.code.mvvm.base.BaseViewPagerFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.book.BookTypeVo;
 import com.code.mvvm.core.vm.BookViewModel;
 import com.mvvm.base.BaseFragment;
+import com.mvvm.event.LiveBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
  * @author：tqzhang on 18/6/30 11:13
  */
 public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
+
     private List<BookTypeVo.ClassContent> titleName = new ArrayList<>();
 
     public static BookFragment newInstance() {
@@ -27,8 +30,13 @@ public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
     }
 
     @Override
+    protected Object getStateEventKey() {
+        return Constants.EVENT_KEY_BOOK_STATE;
+    }
+
+    @Override
     protected void dataObserver() {
-        mViewModel.getBookType().observe(this, bookTypeVo -> {
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_BOOK, BookTypeVo.class).observe(this, bookTypeVo -> {
             if (bookTypeVo == null) {
                 return;
             }
@@ -67,6 +75,7 @@ public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
         }
         initFragment();
         setAdapter();
+
     }
 
     private void initFragment() {

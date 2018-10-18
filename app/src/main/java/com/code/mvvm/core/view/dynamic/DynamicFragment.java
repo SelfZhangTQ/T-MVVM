@@ -4,8 +4,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.code.mvvm.base.BaseListFragment;
+import com.code.mvvm.config.Constants;
+import com.code.mvvm.core.data.pojo.dynamic.DynamicListVo;
 import com.code.mvvm.core.vm.DynamicViewModel;
 import com.code.mvvm.util.AdapterPool;
+import com.mvvm.event.LiveBus;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -18,8 +21,14 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
     }
 
     @Override
+    protected Object getStateEventKey() {
+        return Constants.EVENT_KEY_DYNAMIC_STATE;
+    }
+
+    @Override
     protected void dataObserver() {
-        mViewModel.getDynamicList().observe(this, dynamicListVo -> {
+
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_DYNAMIC, DynamicListVo.class).observe(this, dynamicListVo -> {
             if (dynamicListVo != null&&dynamicListVo.data!=null) {
                 lastId = dynamicListVo.data.get(dynamicListVo.data.size() - 1).feedid;
                 setData(dynamicListVo.data);

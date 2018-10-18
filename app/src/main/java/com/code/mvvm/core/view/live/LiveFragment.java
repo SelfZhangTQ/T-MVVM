@@ -3,9 +3,11 @@ package com.code.mvvm.core.view.live;
 import android.os.Bundle;
 
 import com.code.mvvm.base.BaseViewPagerFragment;
+import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.live.LiveTypeVo;
 import com.code.mvvm.core.vm.LiveViewModel;
 import com.mvvm.base.BaseFragment;
+import com.mvvm.event.LiveBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +32,14 @@ public class LiveFragment extends BaseViewPagerFragment<LiveViewModel> {
     }
 
     @Override
+    protected Object getStateEventKey() {
+        return Constants.EVENT_KEY_LIVE_STATE;
+    }
+
+    @Override
     protected void dataObserver() {
-        mViewModel.getLiveType().observe(this, liveTypeVo -> {
+
+        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_LIVE, LiveTypeVo.class).observe(this, liveTypeVo -> {
             if (liveTypeVo!=null) {
                 setData(liveTypeVo);
             }

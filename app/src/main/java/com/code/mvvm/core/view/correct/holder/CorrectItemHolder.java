@@ -19,7 +19,7 @@ import com.trecyclerview.holder.AbsViewHolder;
 import com.trecyclerview.holder.BaseHolder;
 
 /**
- * @author：tqzhang  on 18/6/27 19:14
+ * @author：tqzhang on 18/6/27 19:14
  */
 public class CorrectItemHolder extends AbsViewHolder<WorksListVo.Works, CorrectItemHolder.ViewHolder> {
     private int commonWidth;
