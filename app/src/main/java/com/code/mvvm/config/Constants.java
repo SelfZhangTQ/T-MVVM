@@ -28,6 +28,7 @@ public class Constants {
 
     public static final String PAGE_RN = "20";
 
+
     private static final int MAX_HEAP_SIZE = (int) Runtime.getRuntime().maxMemory();
     public static final int MAX_CACHE_MEMORY_SIZE = MAX_HEAP_SIZE / 4;
     public static final int MAX_CACHE_DISK_SIZE = 250 * 1024 * 1024;
@@ -51,7 +52,7 @@ public class Constants {
     public static final Object EVENT_KEY_FD_LIST = "EVENT_KEY_FD_LIST";
     public static final Object EVENT_KEY_FD_LIST_STATE = "EVENT_KEY_FD_LIST_STATE";
     public static final Object EVENT_KEY_FD_RED = "EVENT_KEY_FD_RED";
-    public static final Object EVENT_KEY_FD_RED_STATE ="EVENT_KEY_FD_RED_STATE" ;
+    public static final Object EVENT_KEY_FD_RED_STATE = "EVENT_KEY_FD_RED_STATE";
     public static final Object EVENT_KEY_QA_STATE = "EVENT_KEY_QA_STATE";
     public static final Object EVENT_KEY_QA = "EVENT_KEY_QA";
     public static final Object EVENT_KEY_MT_STATE = "EVENT_KEY_MT_STATE";
@@ -75,7 +76,7 @@ public class Constants {
     public static final Object EVENT_KEY_LIVE_RED = "EVENT_KEY_LIVE_RED";
     public static final Object EVENT_KEY_WORK = "EVENT_KEY_WORK";
     public static final Object EVENT_KEY_WORK_STATE = "EVENT_KEY_WORK_STATE";
-    public static final Object EVENT_KEY_WORK_LIST ="EVENT_KEY_WORK_LIST" ;
+    public static final Object EVENT_KEY_WORK_LIST = "EVENT_KEY_WORK_LIST";
     public static final Object EVENT_KEY_WORK_LIST_STATE = "EVENT_KEY_WORK_LIST_STATE";
     public static final Object EVENT_KEY_WORK_MORE = "EVENT_KEY_WORK_MORE";
 }

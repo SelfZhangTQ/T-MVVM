@@ -1,12 +1,9 @@
 package com.code.mvvm.core.vm;
 
 import android.app.Application;
-import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.live.LiveListVo;
-import com.code.mvvm.core.data.pojo.live.LiveTypeVo;
 import com.code.mvvm.core.data.source.LiveRepository;
 import com.mvvm.base.AbsViewModel;
 

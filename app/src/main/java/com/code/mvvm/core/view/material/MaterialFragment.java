@@ -8,7 +8,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
 import com.code.mvvm.core.vm.MaterialViewModel;
 import com.mvvm.base.BaseFragment;
-import com.mvvm.event.LiveBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +37,7 @@ public class MaterialFragment extends BaseViewPagerFragment<MaterialViewModel> {
     @Override
     protected void dataObserver() {
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_MT, MaterialTypeVo.class).observe(this, materialTypeVo -> {
+        registerObserver(Constants.EVENT_KEY_MT, MaterialTypeVo.class).observe(this, materialTypeVo -> {
             if (materialTypeVo != null) {
                 setData(materialTypeVo);
             }

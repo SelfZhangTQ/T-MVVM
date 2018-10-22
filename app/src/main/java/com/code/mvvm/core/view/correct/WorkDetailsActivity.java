@@ -23,7 +23,6 @@ import com.code.mvvm.core.view.home.holder.HomeLiveItemView;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.mvvm.base.AbsLifecycleActivity;
 import com.mvvm.event.LiveBus;
-import com.mvvm.stateview.StateConstants;
 import com.trecyclerview.TRecyclerView;
 import com.trecyclerview.multitype.Items;
 import com.trecyclerview.multitype.MultiTypeAdapter;

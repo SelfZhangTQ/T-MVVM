@@ -39,8 +39,6 @@ public class MainActivity extends BaseActivity {
         initNavBar();
         //init fragment
         initFragment(0);
-
-
     }
 
     private void initNavBar() {

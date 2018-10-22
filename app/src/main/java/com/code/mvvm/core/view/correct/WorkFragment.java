@@ -11,8 +11,6 @@ import com.code.mvvm.core.data.pojo.correct.WorkMergeVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.mvvm.event.LiveBus;
-import com.mvvm.stateview.StateConstants;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 
@@ -39,7 +37,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
 
     @Override
     protected void dataObserver() {
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_WORK_LIST, WorkMergeVo.class).observe(this, workMergeVo -> {
+        registerObserver(Constants.EVENT_KEY_WORK_LIST, WorkMergeVo.class).observe(this, workMergeVo -> {
             if (workMergeVo != null) {
                 newItems.clear();
                 newItems.add(workMergeVo.bannerListVo);
@@ -49,7 +47,7 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
             }
         });
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_WORK_MORE, WorksListVo.class).observe(this, worksListVo -> {
+        registerObserver(Constants.EVENT_KEY_WORK_MORE, WorksListVo.class).observe(this, worksListVo -> {
             if (worksListVo != null) {
                 lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
                 uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;

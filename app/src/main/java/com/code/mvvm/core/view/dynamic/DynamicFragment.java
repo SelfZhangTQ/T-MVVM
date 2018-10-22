@@ -8,7 +8,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.dynamic.DynamicListVo;
 import com.code.mvvm.core.vm.DynamicViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.mvvm.event.LiveBus;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -28,7 +27,7 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
     @Override
     protected void dataObserver() {
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_DYNAMIC, DynamicListVo.class).observe(this, dynamicListVo -> {
+        registerObserver(Constants.EVENT_KEY_DYNAMIC, DynamicListVo.class).observe(this, dynamicListVo -> {
             if (dynamicListVo != null&&dynamicListVo.data!=null) {
                 lastId = dynamicListVo.data.get(dynamicListVo.data.size() - 1).feedid;
                 setData(dynamicListVo.data);

@@ -8,7 +8,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.material.MaterialVo;
 import com.code.mvvm.core.vm.MaterialViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.mvvm.event.LiveBus;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -39,13 +38,13 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
         }
 
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_MT_LIST, subId, MaterialVo.class).observe(this, materialListVo -> {
+        registerObserver(Constants.EVENT_KEY_MT_LIST, subId, MaterialVo.class).observe(this, materialListVo -> {
             if (materialListVo != null) {
                 lastId = materialListVo.data.content.get(materialListVo.data.content.size() - 1).tid;
                 setData(materialListVo.data.content);
             }
         });
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_MT_MORE_LIST, subId, MaterialVo.class).observe(this, materialListVo -> {
+        registerObserver(Constants.EVENT_KEY_MT_MORE_LIST, subId, MaterialVo.class).observe(this, materialListVo -> {
             if (materialListVo != null && materialListVo.data != null && materialListVo.data.content.size() > 0) {
                 lastId = materialListVo.data.content.get(materialListVo.data.content.size() - 1).tid;
                 setData(materialListVo.data.content);

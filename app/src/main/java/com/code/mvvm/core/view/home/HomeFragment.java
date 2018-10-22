@@ -17,7 +17,6 @@ import com.code.mvvm.core.data.pojo.home.HomeMergeVo;
 import com.code.mvvm.core.view.course.VideoDetailsActivity;
 import com.code.mvvm.core.vm.HomeViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.mvvm.event.LiveBus;
 import com.trecyclerview.listener.OnItemClickListener;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
@@ -44,7 +43,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> implements OnI
 
     @Override
     protected void dataObserver() {
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_HOME, HomeMergeVo.class).observe(this, homeMergeVo -> {
+        registerObserver(Constants.EVENT_KEY_HOME, HomeMergeVo.class).observe(this, homeMergeVo -> {
             if (homeMergeVo != null) {
                 addItems(homeMergeVo);
             }

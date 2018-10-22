@@ -14,7 +14,6 @@ import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.mvvm.event.LiveBus;
 import com.trecyclerview.listener.OnItemClickListener;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.pojo.HeaderVo;
@@ -39,7 +38,7 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> i
 
     @Override
     protected void dataObserver() {
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_COURSE_RED, CourseRemVo.class).observe(this, courseRemVo -> {
+       registerObserver(Constants.EVENT_KEY_COURSE_RED, CourseRemVo.class).observe(this, courseRemVo -> {
             if (courseRemVo != null) {
                 setData(courseRemVo);
             }

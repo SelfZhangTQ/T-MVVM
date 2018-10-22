@@ -8,7 +8,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.book.BookListVo;
 import com.code.mvvm.core.vm.BookViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.mvvm.event.LiveBus;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -37,7 +36,7 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
             typeId = getArguments().getString("type_id");
         }
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_BOOK_LIST,typeId, BookListVo.class).observe(this, bookListVo -> {
+       registerObserver(Constants.EVENT_KEY_BOOK_LIST,typeId, BookListVo.class).observe(this, bookListVo -> {
             if (bookListVo == null) {
                 return;
             }

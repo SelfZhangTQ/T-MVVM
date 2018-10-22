@@ -7,7 +7,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.book.BookTypeVo;
 import com.code.mvvm.core.vm.BookViewModel;
 import com.mvvm.base.BaseFragment;
-import com.mvvm.event.LiveBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +35,7 @@ public class BookFragment extends BaseViewPagerFragment<BookViewModel> {
 
     @Override
     protected void dataObserver() {
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_BOOK, BookTypeVo.class).observe(this, bookTypeVo -> {
+       registerObserver(Constants.EVENT_KEY_BOOK, BookTypeVo.class).observe(this, bookTypeVo -> {
             if (bookTypeVo == null) {
                 return;
             }

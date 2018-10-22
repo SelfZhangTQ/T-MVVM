@@ -2,12 +2,8 @@ package com.mvvm.base;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
-import com.mvvm.event.LiveBus;
-import com.mvvm.stateview.StateConstants;
 import com.mvvm.util.TUtil;
 
 
@@ -32,7 +28,4 @@ public class AbsViewModel<T extends AbsRepository> extends AndroidViewModel {
         }
     }
 
-    public void showPageState(String s){
-
-    }
 }

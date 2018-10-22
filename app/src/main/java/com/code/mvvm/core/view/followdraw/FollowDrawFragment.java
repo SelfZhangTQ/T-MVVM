@@ -8,7 +8,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawTypeVo;
 import com.code.mvvm.core.vm.FollowDrawViewModel;
 import com.mvvm.base.BaseFragment;
-import com.mvvm.event.LiveBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +39,7 @@ public class FollowDrawFragment extends BaseViewPagerFragment<FollowDrawViewMode
     @Override
     protected void dataObserver() {
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_FD, FollowDrawTypeVo.class).observe(this, followDrawTypeVo -> {
+        registerObserver(Constants.EVENT_KEY_FD, FollowDrawTypeVo.class).observe(this, followDrawTypeVo -> {
             if (followDrawTypeVo != null) {
                 setData(followDrawTypeVo);
             }

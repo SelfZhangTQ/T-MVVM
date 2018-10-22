@@ -10,7 +10,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.vm.ActivityViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.mvvm.event.LiveBus;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -29,7 +28,7 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
     @Override
     protected void dataObserver() {
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_ACTIVITY, ActivityListVo.class).observe(this, new Observer<ActivityListVo>() {
+        registerObserver(Constants.EVENT_KEY_ACTIVITY, ActivityListVo.class).observe(this, new Observer<ActivityListVo>() {
             @Override
             public void onChanged(@Nullable ActivityListVo activityListVo) {
                 if (activityListVo != null) {

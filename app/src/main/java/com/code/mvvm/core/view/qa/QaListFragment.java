@@ -8,7 +8,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
 import com.code.mvvm.core.vm.QaViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.mvvm.event.LiveBus;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -28,7 +27,7 @@ public class QaListFragment extends BaseListFragment<QaViewModel> {
     @Override
     protected void dataObserver() {
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_QA, QaListVo.class).observe(this, qaListVo -> {
+        registerObserver(Constants.EVENT_KEY_QA, QaListVo.class).observe(this, qaListVo -> {
             if (qaListVo == null && qaListVo.data != null && qaListVo.data.size() == 0) {
                 return;
             }

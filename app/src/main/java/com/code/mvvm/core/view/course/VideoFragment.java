@@ -8,7 +8,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.mvvm.base.BaseFragment;
-import com.mvvm.event.LiveBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,7 @@ public class VideoFragment extends BaseViewPagerFragment<CourseViewModel> {
     @Override
     protected void dataObserver() {
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_COURSE, CourseTypeVo.class).observe(this, courseTypeVo -> {
+        registerObserver(Constants.EVENT_KEY_COURSE, CourseTypeVo.class).observe(this, courseTypeVo -> {
             if (courseTypeVo == null) {
                 return;
             }

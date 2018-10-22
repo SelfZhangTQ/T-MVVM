@@ -8,7 +8,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawRecommendVo;
 import com.code.mvvm.core.vm.FollowDrawViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.mvvm.event.LiveBus;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -38,7 +37,7 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
         }
 
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_FD_LIST,typeId, FollowDrawRecommendVo.class).observe(this, followDrawRecommendObject -> {
+       registerObserver(Constants.EVENT_KEY_FD_LIST,typeId, FollowDrawRecommendVo.class).observe(this, followDrawRecommendObject -> {
             if (followDrawRecommendObject == null) {
                 return;
             }

@@ -1,5 +1,6 @@
 package com.mvvm.base;
 
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
@@ -23,13 +24,19 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
 
     protected T mViewModel;
 
+    protected Object mStateEventKey;
+
+    protected String mStateEventTag;
+
+
     @Override
     public void initView(Bundle state) {
         mViewModel = VMProviders(this, (Class<T>) TUtil.getInstance(this, 0));
         if (null != mViewModel) {
             dataObserver();
-            LiveBus.getDefault().subscribe(getStateEventKey(), getStateEventTag()).observe(this, observer);
-
+            mStateEventKey = getStateEventKey();
+            mStateEventTag = getStateEventTag();
+            LiveBus.getDefault().subscribe(mStateEventKey, mStateEventTag).observe(this, observer);
         }
     }
 
@@ -63,6 +70,17 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
     protected void dataObserver() {
 
     }
+
+    protected <T> MutableLiveData<T> registerObserver(Object eventKey, Class<T> tClass) {
+
+        return registerObserver(eventKey, null, tClass);
+    }
+
+    protected <T> MutableLiveData<T> registerObserver(Object eventKey, String tag, Class<T> tClass) {
+
+        return LiveBus.getDefault().subscribe(eventKey, tag, tClass);
+    }
+
 
     @Override
     protected void onStateRefresh() {

@@ -11,7 +11,6 @@ import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
 import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.mvvm.event.LiveBus;
 import com.trecyclerview.listener.OnItemClickListener;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.pojo.FootVo;
@@ -43,7 +42,7 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> implem
             mCatalogId = getArguments().getString("f_catalog_id", null);
         }
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_COURSE_LIDT,mCatalogId, CourseListVo.class).observe(this, courseListVo -> {
+        registerObserver(Constants.EVENT_KEY_COURSE_LIDT,mCatalogId, CourseListVo.class).observe(this, courseListVo -> {
             if (courseListVo != null && courseListVo.data != null) {
                 lastId = courseListVo.data.get(courseListVo.data.size() - 1).courseid;
                 setData(courseListVo.data);

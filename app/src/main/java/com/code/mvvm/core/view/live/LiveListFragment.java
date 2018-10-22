@@ -8,7 +8,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.live.LiveListVo;
 import com.code.mvvm.core.vm.LiveViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.mvvm.event.LiveBus;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -40,7 +39,7 @@ public class LiveListFragment extends BaseListFragment<LiveViewModel> {
         }
 
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_LIVE_LIST, typeId, LiveListVo.class).observe(this, liveListVo -> {
+        registerObserver(Constants.EVENT_KEY_LIVE_LIST, typeId, LiveListVo.class).observe(this, liveListVo -> {
             if (liveListVo != null && liveListVo.data != null) {
                 lastId = liveListVo.data.get(liveListVo.data.size() - 1).liveid;
                 setData(liveListVo.data);

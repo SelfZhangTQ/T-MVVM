@@ -8,7 +8,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.article.ArticleVo;
 import com.code.mvvm.core.vm.ArticleViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.mvvm.event.LiveBus;
 import com.trecyclerview.multitype.MultiTypeAdapter;
 
 /**
@@ -38,7 +37,7 @@ public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
             typeId = getArguments().getString("type_id");
         }
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_ARTICLE_LIST,typeId, ArticleVo.class).observe(this, articleVo -> {
+        registerObserver(Constants.EVENT_KEY_ARTICLE_LIST,typeId, ArticleVo.class).observe(this, articleVo -> {
             if (articleVo != null) {
                 lastId = articleVo.data.list.get(articleVo.data.list.size() - 1).newsid;
                 setData(articleVo.data.list);

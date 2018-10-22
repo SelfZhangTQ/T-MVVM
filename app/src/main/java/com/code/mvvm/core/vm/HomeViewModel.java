@@ -35,5 +35,4 @@ public class HomeViewModel extends AbsViewModel<HomeRepository> {
         mRepository.loadHomeData();
     }
 
-
 }

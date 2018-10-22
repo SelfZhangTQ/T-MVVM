@@ -8,7 +8,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.article.ArticleTypeVo;
 import com.code.mvvm.core.vm.ArticleViewModel;
 import com.mvvm.base.BaseFragment;
-import com.mvvm.event.LiveBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +37,7 @@ public class ArticleFragment extends BaseViewPagerFragment<ArticleViewModel> {
     @Override
     protected void dataObserver() {
 
-        LiveBus.getDefault().subscribe(Constants.EVENT_KEY_ARTICLE, ArticleTypeVo.class).observe(this, articleTypeVo -> {
+        registerObserver(Constants.EVENT_KEY_ARTICLE, ArticleTypeVo.class).observe(this, articleTypeVo -> {
             if (articleTypeVo != null) {
                 setData(articleTypeVo);
             }

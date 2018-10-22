@@ -142,9 +142,20 @@ public class LiveBus {
 
     }
 
-    public void clear() {
+
+    public void clear(Object eventKey) {
+        clear(eventKey, null);
+    }
+
+    public void clear(Object eventKey, String tag) {
         if (mLiveBus != null && mLiveBus.size() > 0) {
-            mLiveBus.clear();
+            String clearkey;
+            if (!TextUtils.isEmpty(tag)) {
+                clearkey = eventKey + tag;
+            } else {
+                clearkey = (String) eventKey;
+            }
+            mLiveBus.remove(clearkey);
         }
 
     }
