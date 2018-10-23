@@ -2,8 +2,12 @@ package com.mvvm.http;
 
 
 
+import android.content.Context;
+
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -42,8 +46,8 @@ public class HttpHelper {
         return mHttpHelper;
     }
 
-    public static void init(String baseUrl) {
-        new HttpHelper.Builder()
+    public static void init(Context context,String baseUrl) {
+        new HttpHelper.Builder(context)
                 .initOkHttp()
                 .createRetrofit(baseUrl)
                 .build();
@@ -57,7 +61,9 @@ public class HttpHelper {
 
         private Retrofit mRetrofit;
 
-        public Builder() {
+        private Context mContext;
+        public Builder(Context context) {
+            this.mContext=context;
         }
 
         /**
@@ -71,7 +77,9 @@ public class HttpHelper {
             if (mBuilder == null) {
                 synchronized (HttpHelper.class) {
                     if (mBuilder == null) {
+                        Cache cache = new Cache(new File(mContext.getCacheDir(), "HttpCache"), 1024 * 1024 * 10);
                         mBuilder = new OkHttpClient.Builder()
+                                .cache(cache)
                                 .addInterceptor(interceptor)
                                 .connectTimeout(30, TimeUnit.SECONDS)
                                 .writeTimeout(30, TimeUnit.SECONDS)

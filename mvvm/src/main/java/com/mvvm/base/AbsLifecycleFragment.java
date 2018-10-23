@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.mvvm.event.LiveBus;
 import com.mvvm.stateview.ErrorState;
@@ -15,6 +16,9 @@ import com.mvvm.stateview.LoadingState;
 import com.mvvm.stateview.StateConstants;
 import com.mvvm.util.TUtil;
 import com.tqzhang.stateview.stateview.BaseStateControl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,6 +32,7 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
 
     protected String mStateEventTag;
 
+    private List<Object> events = new ArrayList<>();
 
     @Override
     public void initView(Bundle state) {
@@ -36,6 +41,7 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
             dataObserver();
             mStateEventKey = getStateEventKey();
             mStateEventTag = getStateEventTag();
+            events.add(new StringBuilder((String) mStateEventKey).append(mStateEventTag).toString());
             LiveBus.getDefault().subscribe(mStateEventKey, mStateEventTag).observe(this, observer);
         }
     }
@@ -77,7 +83,13 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
     }
 
     protected <T> MutableLiveData<T> registerObserver(Object eventKey, String tag, Class<T> tClass) {
-
+        String event;
+        if (TextUtils.isEmpty(tag)) {
+            event = (String) eventKey;
+        } else {
+            event = eventKey + tag;
+        }
+        events.add(event);
         return LiveBus.getDefault().subscribe(eventKey, tag, tClass);
     }
 
@@ -129,4 +141,13 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
         }
     };
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (events != null && events.size() > 0) {
+            for (int i = 0; i < events.size(); i++) {
+                LiveBus.getDefault().clear(events.get(i));
+            }
+        }
+    }
 }

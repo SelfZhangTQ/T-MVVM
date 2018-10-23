@@ -10,6 +10,7 @@ import android.text.TextUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static com.mvvm.util.TUtil.checkNotNull;
 
@@ -33,10 +34,10 @@ public class LiveBus {
 
     private static volatile LiveBus instance;
 
-    private final Map<Object, LiveBusData<Object>> mLiveBus;
+    private final ConcurrentHashMap<Object, LiveBusData<Object>> mLiveBus;
 
     private LiveBus() {
-        mLiveBus = new HashMap<>();
+        mLiveBus = new ConcurrentHashMap<>();
     }
 
     public static LiveBus getDefault() {

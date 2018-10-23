@@ -28,13 +28,10 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
     @Override
     protected void dataObserver() {
 
-        registerObserver(Constants.EVENT_KEY_ACTIVITY, ActivityListVo.class).observe(this, new Observer<ActivityListVo>() {
-            @Override
-            public void onChanged(@Nullable ActivityListVo activityListVo) {
-                if (activityListVo != null) {
-                    lastId = activityListVo.data.get(activityListVo.data.size() - 1).newsid;
-                    setData(activityListVo.data);
-                }
+        registerObserver(Constants.EVENT_KEY_ACTIVITY, ActivityListVo.class).observe(this, activityListVo -> {
+            if (activityListVo != null) {
+                lastId = activityListVo.data.get(activityListVo.data.size() - 1).newsid;
+                setData(activityListVo.data);
             }
         });
     }

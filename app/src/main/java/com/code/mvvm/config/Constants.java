@@ -33,14 +33,14 @@ public class Constants {
     public static final int MAX_CACHE_MEMORY_SIZE = MAX_HEAP_SIZE / 4;
     public static final int MAX_CACHE_DISK_SIZE = 250 * 1024 * 1024;
 
-    public static final String EVENT_KEY_HOME = "EVENT_KEY_HOME";
-    public static final String EVENT_KEY_ACTIVITY = "EVENT_KEY_ACTIVITY";
-    public static final String EVENT_KEY_HOME_STATE = "EVENT_KEY_HOME_STATE";
-    public static final String EVENT_KEY_ACTIVITY_STATE = "EVENT_KEY_ACTIVITY_STATE";
-    public static final String EVENT_KEY_ARTICLE = "EVENT_KEY_ARTICLE";
-    public static final String EVENT_KEY_ARTICLE_STATE = "EVENT_KEY_ARTICLE_STATE";
-    public static final String EVENT_KEY_ARTICLE_LIST = "EVENT_KEY_ARTICLE_LIST";
-    public static final String EVENT_KEY_ARTICLE_LIST_STATE = "EVENT_KEY_ARTICLE_LIST_STATE";
+    public static final Object EVENT_KEY_HOME = "EVENT_KEY_HOME";
+    public static final Object EVENT_KEY_ACTIVITY = "EVENT_KEY_ACTIVITY";
+    public static final Object EVENT_KEY_HOME_STATE = "EVENT_KEY_HOME_STATE";
+    public static final Object EVENT_KEY_ACTIVITY_STATE = "EVENT_KEY_ACTIVITY_STATE";
+    public static final Object EVENT_KEY_ARTICLE = "EVENT_KEY_ARTICLE";
+    public static final Object EVENT_KEY_ARTICLE_STATE = "EVENT_KEY_ARTICLE_STATE";
+    public static final Object EVENT_KEY_ARTICLE_LIST = "EVENT_KEY_ARTICLE_LIST";
+    public static final Object EVENT_KEY_ARTICLE_LIST_STATE = "EVENT_KEY_ARTICLE_LIST_STATE";
     public static final Object EVENT_KEY_BOOK_STATE = "EVENT_KEY_BOOK_STATE";
     public static final Object EVENT_KEY_BOOK = "EVENT_KEY_BOOK";
     public static final Object EVENT_KEY_BOOK_LIST_STATE = "EVENT_KEY_BOOK_LIST_STATE";
