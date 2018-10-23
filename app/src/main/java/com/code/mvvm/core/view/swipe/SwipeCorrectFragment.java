@@ -24,6 +24,11 @@ public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {
 
 
     @Override
+    public int getContentResId() {
+        return 0;
+    }
+
+    @Override
     public void initView(Bundle state) {
         super.initView(state);
 //        mViewModel.getBannerData().observe(this, new Observer<BannerListVo>() {

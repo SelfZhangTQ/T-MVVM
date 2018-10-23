@@ -50,6 +50,12 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
         return R.layout.fragment_list;
     }
 
+
+    @Override
+    public int getContentResId(){
+        return R.id.content_layout;
+    }
+
     @Override
     public void initView(Bundle state) {
         super.initView(state);

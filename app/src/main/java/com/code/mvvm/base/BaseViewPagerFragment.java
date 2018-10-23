@@ -45,6 +45,11 @@ public abstract class BaseViewPagerFragment<T extends AbsViewModel> extends AbsL
     }
 
     @Override
+    public int getContentResId(){
+        return R.id.content_layout;
+    }
+
+    @Override
     public void initView(Bundle state) {
         super.initView(state);
         loadManager.showStateView(LoadingState.class);

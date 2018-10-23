@@ -69,7 +69,7 @@ public class FollowDrawRepository extends BaseRepository {
                 .subscribeWith(new RxSubscriber<FollowDrawTypeVo>() {
                     @Override
                     protected void onNoNetWork() {
-                        showPageState(Constants.EVENT_KEY_FD, StateConstants.NET_WORK_STATE);
+                        showPageState(Constants.EVENT_KEY_FD_STATE, StateConstants.NET_WORK_STATE);
 
                     }
 

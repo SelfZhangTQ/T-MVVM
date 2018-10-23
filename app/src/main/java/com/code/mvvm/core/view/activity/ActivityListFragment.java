@@ -1,7 +1,5 @@
 package com.code.mvvm.core.view.activity;
 
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -11,6 +9,7 @@ import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.vm.ActivityViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.multitype.MultiTypeAdapter;
+
 
 /**
  * @author：tqzhang on 18/7/4 14:10

@@ -25,6 +25,10 @@ public class MineFragment extends BaseFragment {
     }
 
     @Override
+    public int getContentResId(){
+        return R.id.content_layout;
+    }
+    @Override
     public void initView(Bundle state) {
         loadManager.showStateView(LoadingState.class);
         webView = getViewById(R.id.web_view);

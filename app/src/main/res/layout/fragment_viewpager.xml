@@ -4,42 +4,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <include layout="@layout/item_title_layout" />
-    <RelativeLayout
+
+    <LinearLayout
+        android:id="@+id/content_layout"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:background="@color/white">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.flyco.tablayout.SlidingTabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            tl:tl_indicator_anim_enable="true"
-            tl:tl_indicator_color="@color/color_ffca00"
-            tl:tl_indicator_height="3dp"
-            tl:tl_indicator_style="NORMAL"
-            tl:tl_indicator_width="30dp"
-            tl:tl_textSelectColor="#000000"
-            tl:tl_textUnselectColor="#666666"
-            tl:tl_textsize="14sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@color/white">
 
-        <ImageView
-            android:id="@+id/tab_menu_right_more_imv"
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/tab_menu_right_more_icon" />
-    </RelativeLayout>
+            <com.flyco.tablayout.SlidingTabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                tl:tl_indicator_anim_enable="true"
+                tl:tl_indicator_color="@color/color_ffca00"
+                tl:tl_indicator_height="3dp"
+                tl:tl_indicator_style="NORMAL"
+                tl:tl_indicator_width="30dp"
+                tl:tl_textSelectColor="#000000"
+                tl:tl_textUnselectColor="#666666"
+                tl:tl_textsize="14sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/line_hight"
-        android:background="@color/line_color" />
+            <ImageView
+                android:id="@+id/tab_menu_right_more_imv"
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/tab_menu_right_more_icon" />
+        </RelativeLayout>
 
-    <com.code.mvvm.widget.NestedViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_hight"
+            android:background="@color/line_color" />
+
+        <com.code.mvvm.widget.NestedViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </LinearLayout>

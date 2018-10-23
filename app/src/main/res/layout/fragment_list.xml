@@ -8,10 +8,17 @@
 
     <include layout="@layout/item_title_layout" />
 
-    <com.trecyclerview.TRecyclerView
-        android:id="@+id/recycler_view"
+    <LinearLayout
+        android:id="@+id/content_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffffff"
-        android:scrollbars="none" />
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <com.trecyclerview.TRecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:scrollbars="none" />
+    </LinearLayout>
 </LinearLayout>

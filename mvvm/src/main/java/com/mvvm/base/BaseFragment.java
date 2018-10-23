@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.tqzhang.stateview.core.LoadManager;
 import com.tqzhang.stateview.stateview.BaseStateControl;
 
+import trecyclerview.com.mvvm.R;
+
 /**
  * @author：tqzhang on 18/3/12 19:25
  */
@@ -26,8 +28,9 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
         rootView = inflater.inflate(getLayoutResId(), null, false);
+        View contentLayout = rootView.findViewById(getContentResId());
         loadManager = new LoadManager.Builder()
-                .setViewParams(rootView)
+                .setViewParams(contentLayout == null ? rootView : contentLayout)
                 .setListener(new BaseStateControl.OnRefreshListener() {
                     @Override
                     public void onRefresh(View v) {
@@ -36,8 +39,9 @@ public abstract class BaseFragment extends Fragment {
                 })
                 .build();
         initView(state);
-        return loadManager.getLoadLayout();
+        return rootView;
     }
+
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -49,10 +53,13 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
+
     /**
      * @return
      */
     public abstract int getLayoutResId();
+
+    public abstract int getContentResId();
 
     /**
      * 初始化views
@@ -129,6 +136,7 @@ public abstract class BaseFragment extends Fragment {
         super.onDetach();
         this.activity = null;
     }
+
     @SuppressWarnings("unchecked")
     protected <T extends View> T getViewById(int id) {
         return (T) rootView.findViewById(id);

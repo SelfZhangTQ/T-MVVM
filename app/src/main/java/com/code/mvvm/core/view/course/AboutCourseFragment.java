@@ -15,6 +15,11 @@ public class AboutCourseFragment extends BaseFragment {
     }
 
     @Override
+    public int getContentResId() {
+        return 0;
+    }
+
+    @Override
     public void initView(Bundle state) {
 
     }
