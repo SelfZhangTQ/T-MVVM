@@ -8,7 +8,7 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawRecommendVo;
 import com.code.mvvm.core.vm.FollowDrawViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.adapter.DelegateAdapter;
 
 /**
  * @author：tqzhang  on 18/7/2 14:39
@@ -42,8 +42,8 @@ public class FollowDrawRecommendFragment extends BaseListFragment<FollowDrawView
     }
 
     @Override
-    protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getFollowAdapter(activity);
+    protected DelegateAdapter createAdapter() {
+        return AdapterPool.newInstance().getFollowAdapter(activity).build();
     }
 
     @Override

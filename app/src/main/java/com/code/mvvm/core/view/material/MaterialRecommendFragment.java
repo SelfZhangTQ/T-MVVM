@@ -8,7 +8,7 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
 import com.code.mvvm.core.vm.MaterialViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.adapter.DelegateAdapter;
 
 
 /**
@@ -44,8 +44,8 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
     }
 
     @Override
-    protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getMaterialRemAdapter(activity);
+    protected DelegateAdapter createAdapter() {
+        return AdapterPool.newInstance().getMaterialRemAdapter(activity).build();
     }
 
     @Override

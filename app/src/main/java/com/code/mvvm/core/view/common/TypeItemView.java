@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang on 18/6/20 13:41
  */
-public class TypeItemView extends AbsViewHolder<TypeVo, TypeItemView.ViewHolder> {
+public class TypeItemView extends AbsItemHolder<TypeVo, TypeItemView.ViewHolder> {
 
     public TypeItemView(Context context) {
         super(context);
@@ -47,7 +47,7 @@ public class TypeItemView extends AbsViewHolder<TypeVo, TypeItemView.ViewHolder>
         }
     }
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
 
         private TextView mClassifyType;
         private LinearLayout mRootLayout;

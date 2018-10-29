@@ -15,13 +15,13 @@ import com.code.mvvm.core.data.pojo.dynamic.DynamicInfoVo;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.util.ViewUtils;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang on 18/7/4 15:35
  */
-public class DynamicSubjectHolder extends AbsViewHolder<DynamicInfoVo, DynamicSubjectHolder.ViewHolder> {
+public class DynamicSubjectHolder extends AbsItemHolder<DynamicInfoVo, DynamicSubjectHolder.ViewHolder> {
     private int contentWidth;
 
     public DynamicSubjectHolder(Context context) {
@@ -69,7 +69,7 @@ public class DynamicSubjectHolder extends AbsViewHolder<DynamicInfoVo, DynamicSu
     }
 
 
-    public static class ViewHolder extends BaseHolder {
+    public static class ViewHolder extends AbsHolder {
 
         private TextView tvUserName, userType, dynamicTitle, lookNum;
         private ImageView ivUserPic, dynamicPic;

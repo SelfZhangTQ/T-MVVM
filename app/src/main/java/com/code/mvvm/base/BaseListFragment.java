@@ -12,9 +12,9 @@ import com.code.mvvm.core.data.pojo.banner.BannerListVo;
 import com.mvvm.base.AbsLifecycleFragment;
 import com.mvvm.base.AbsViewModel;
 import com.trecyclerview.TRecyclerView;
+import com.trecyclerview.adapter.DelegateAdapter;
+import com.trecyclerview.adapter.ItemData;
 import com.trecyclerview.listener.OnRefreshListener;
-import com.trecyclerview.multitype.Items;
-import com.trecyclerview.multitype.MultiTypeAdapter;
 
 import java.util.Collection;
 import java.util.List;
@@ -31,7 +31,7 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
 
     protected RecyclerView.LayoutManager layoutManager;
 
-    protected MultiTypeAdapter adapter;
+    protected DelegateAdapter adapter;
 
     protected String lastId = null;
 
@@ -41,9 +41,9 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
 
     protected boolean isRefresh = false;
 
-    protected Items oldItems;
+    protected ItemData oldItems;
 
-    protected Items newItems;
+    protected ItemData newItems;
 
     @Override
     public int getLayoutResId() {
@@ -62,8 +62,8 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
         mRecyclerView = getViewById(R.id.recycler_view);
         mTitleBar = getViewById(R.id.rl_title_bar);
         mTitle = getViewById(R.id.tv_title);
-        oldItems = new Items();
-        newItems = new Items();
+        oldItems = new ItemData();
+        newItems = new ItemData();
         adapter = createAdapter();
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(createLayoutManager());
@@ -136,9 +136,9 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
 
     /**
      * adapter
-     * @return MultiTypeAdapter
+     * @return DelegateAdapter
      */
-    protected abstract MultiTypeAdapter createAdapter();
+    protected abstract DelegateAdapter createAdapter();
 
     /**
      * LayoutManager

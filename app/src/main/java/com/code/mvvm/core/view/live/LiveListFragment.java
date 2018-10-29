@@ -8,7 +8,7 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.live.LiveListVo;
 import com.code.mvvm.core.vm.LiveViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.adapter.DelegateAdapter;
 
 /**
  * @author：tqzhang on 18/6/30 18:36
@@ -54,8 +54,8 @@ public class LiveListFragment extends BaseListFragment<LiveViewModel> {
     }
 
     @Override
-    protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getLiveAdapter(activity);
+    protected DelegateAdapter createAdapter() {
+        return AdapterPool.newInstance().getLiveAdapter(activity).build();
     }
 
 

@@ -2,7 +2,7 @@ package com.code.mvvm.util;
 
 import android.support.v7.util.DiffUtil;
 
-import com.trecyclerview.multitype.Items;
+import com.trecyclerview.adapter.ItemData;
 
 
 /**
@@ -11,9 +11,9 @@ import com.trecyclerview.multitype.Items;
 
 public class DiffCallback extends DiffUtil.Callback {
 
-    private final Items mOldItems, mNewItems;
+    private final ItemData mOldItems, mNewItems;
 
-    public DiffCallback(Items oldItems, Items mNewItems) {
+    public DiffCallback(ItemData oldItems, ItemData mNewItems) {
         this.mOldItems = oldItems;
         this.mNewItems = mNewItems;
     }

@@ -8,7 +8,7 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.dynamic.DynamicListVo;
 import com.code.mvvm.core.vm.DynamicViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.adapter.DelegateAdapter;
 
 /**
  * @author：tqzhang on 18/6/30 11:13
@@ -42,8 +42,8 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
     }
 
     @Override
-    protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getDynamicAdapter(activity);
+    protected DelegateAdapter createAdapter() {
+        return AdapterPool.newInstance().getDynamicAdapter(activity).build();
     }
 
     @Override

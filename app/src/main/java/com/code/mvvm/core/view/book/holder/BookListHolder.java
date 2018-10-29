@@ -9,13 +9,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.book.BookVo;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang on 18/6/20 13:41
  */
-public class BookListHolder extends AbsViewHolder<BookVo, BookListHolder.ViewHolder> {
+public class BookListHolder extends AbsItemHolder<BookVo, BookListHolder.ViewHolder> {
 
     public BookListHolder(Context context) {
         super(context);
@@ -41,7 +41,7 @@ public class BookListHolder extends AbsViewHolder<BookVo, BookListHolder.ViewHol
     }
 
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
 
         private TextView bookName, pressName, price;
         private ImageView bookImg;

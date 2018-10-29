@@ -11,8 +11,8 @@ import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
 import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.util.AdapterPool;
+import com.trecyclerview.adapter.DelegateAdapter;
 import com.trecyclerview.listener.OnItemClickListener;
-import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.pojo.FootVo;
 import com.trecyclerview.pojo.HeaderVo;
 
@@ -67,9 +67,9 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> implem
     }
 
     @Override
-    protected MultiTypeAdapter createAdapter() {
-        MultiTypeAdapter adapter=AdapterPool.newInstance().getCourseListAdapter(getActivity());
-        adapter.setOnItemClickListener(this);
+    protected DelegateAdapter createAdapter() {
+        DelegateAdapter adapter=AdapterPool.newInstance().getCourseListAdapter(getActivity())
+                .setOnItemClickListener(this).build();
         return adapter;
     }
 

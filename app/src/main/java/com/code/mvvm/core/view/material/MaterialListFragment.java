@@ -8,7 +8,7 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.material.MaterialVo;
 import com.code.mvvm.core.vm.MaterialViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.adapter.DelegateAdapter;
 
 /**
  * @author：tqzhang on 18/7/2 14:40
@@ -59,8 +59,8 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
     }
 
     @Override
-    protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getMaterialListAdapter(activity);
+    protected DelegateAdapter createAdapter() {
+        return AdapterPool.newInstance().getMaterialListAdapter(activity).build();
     }
 
     @Override

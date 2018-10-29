@@ -19,13 +19,13 @@ import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.util.ViewUtils;
 import com.code.mvvm.widget.CustomHeightImageView;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang on 18/7/4 15:35
  */
-public class DynamicFollowHolder extends AbsViewHolder<DynamicInfoVo, DynamicFollowHolder.ViewHolder> {
+public class DynamicFollowHolder extends AbsItemHolder<DynamicInfoVo, DynamicFollowHolder.ViewHolder> {
     private int contentWidth;
 
     public DynamicFollowHolder(Context context) {
@@ -82,7 +82,7 @@ public class DynamicFollowHolder extends AbsViewHolder<DynamicInfoVo, DynamicFol
         }
     }
 
-    public static class ViewHolder extends BaseHolder {
+    public static class ViewHolder extends AbsHolder {
         private CustomHeightImageView ImagePic;
         private View img_content_layout;
         private TextView tvUserName, userType, dynamicTitle, lookNum;

@@ -12,13 +12,13 @@ import com.code.mvvm.core.data.pojo.material.MatreialSubjectVo;
 import com.code.mvvm.glide.GlideRoundTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.widget.CustomHeightImageView;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang on 18/6/19 15:16
  */
-public class HomeMaterialItemView extends AbsViewHolder<MatreialSubjectVo, HomeMaterialItemView.ViewHolder> {
+public class HomeMaterialItemView extends AbsItemHolder<MatreialSubjectVo, HomeMaterialItemView.ViewHolder> {
 
     private int commonWidth ;
     public HomeMaterialItemView(Context context) {
@@ -58,7 +58,7 @@ public class HomeMaterialItemView extends AbsViewHolder<MatreialSubjectVo, HomeM
         holder.videoTitle.setText(matreialsubject.title);
     }
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
 
          CustomHeightImageView videoImg;
          TextView videoTitle;

@@ -168,7 +168,7 @@ BaseViewModel通过泛型类型参数BaseRepository子类初始化Repository数�
     public class ArticleFragment extends AbsLifecycleFragment<ArticleViewModel> {
      protected TRecyclerView mRecyclerView;
      protected StaggeredGridLayoutManager layoutManager;
-     protected MultiTypeAdapter adapter;
+     protected DelegateAdapter adapter;
 
      public static ArticleFragment newInstance() {
         return new ArticleFragment();
@@ -189,7 +189,7 @@ BaseViewModel通过泛型类型参数BaseRepository子类初始化Repository数�
 
      //初始化adapter
      public void initAdapter(){
-       adapter= new MultiTypeAdapter.Builder<>()
+       adapter= new DelegateAdapter.Builder<>()
                .bindArray(ArticleInfoVo.class, new ArticleRem1ItemHolder(context)
                 , new ArticleRem2ItemHolder(context)
                 , new ArticleRem3ItemHolder(context))

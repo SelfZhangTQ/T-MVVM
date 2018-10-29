@@ -20,8 +20,8 @@ import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 import com.trecyclerview.TRecyclerView;
-import com.trecyclerview.multitype.Items;
-import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.adapter.DelegateAdapter;
+import com.trecyclerview.adapter.ItemData;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -163,8 +163,8 @@ public class VideoDetailsActivity extends BaseActivity {
 
 
     private void setData(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
-        Items items = new Items();
-        MultiTypeAdapter adapter = new MultiTypeAdapter.Builder<>()
+        ItemData items = new ItemData();
+        DelegateAdapter adapter = new DelegateAdapter.Builder<>()
         .bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendHolder(VideoDetailsActivity.this)).build();
         mRecyclerView.setAdapter(adapter);
         items.addAll(lessonDetailAboutVideoBean.getData().getCourse_list());

@@ -17,8 +17,8 @@ import com.code.mvvm.core.data.pojo.home.HomeMergeVo;
 import com.code.mvvm.core.view.course.VideoDetailsActivity;
 import com.code.mvvm.core.vm.HomeViewModel;
 import com.code.mvvm.util.AdapterPool;
+import com.trecyclerview.adapter.DelegateAdapter;
 import com.trecyclerview.listener.OnItemClickListener;
-import com.trecyclerview.multitype.MultiTypeAdapter;
 
 
 /**
@@ -77,9 +77,10 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> implements OnI
     }
 
     @Override
-    protected MultiTypeAdapter createAdapter() {
-        MultiTypeAdapter adapter = AdapterPool.newInstance().getHomeAdapter(getActivity());
-        adapter.setOnItemClickListener(this);
+    protected DelegateAdapter createAdapter() {
+        DelegateAdapter adapter = AdapterPool.newInstance().getHomeAdapter(getActivity())
+                .setOnItemClickListener(this)
+                .build();
         return adapter;
     }
 

@@ -14,8 +14,8 @@ import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
 import com.code.mvvm.core.data.pojo.course.CourseRemVo;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.code.mvvm.util.AdapterPool;
+import com.trecyclerview.adapter.DelegateAdapter;
 import com.trecyclerview.listener.OnItemClickListener;
-import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.pojo.HeaderVo;
 
 /**
@@ -62,9 +62,9 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> i
     }
 
     @Override
-    protected MultiTypeAdapter createAdapter() {
-        MultiTypeAdapter adapter=AdapterPool.newInstance().getCourseRemAdapter(activity);
-        adapter.setOnItemClickListener(this);
+    protected DelegateAdapter createAdapter() {
+        DelegateAdapter adapter=AdapterPool.newInstance().getCourseRemAdapter(activity)
+                .setOnItemClickListener(this).build();
         return adapter;
     }
 

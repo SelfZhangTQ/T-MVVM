@@ -10,13 +10,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang on 18/7/16 17:37
  */
-public class CourseRecommendHolder extends AbsViewHolder<CourseDetailRemVideoVo.DataBean.CourseListBean, CourseRecommendHolder.ViewHolder> {
+public class CourseRecommendHolder extends AbsItemHolder<CourseDetailRemVideoVo.DataBean.CourseListBean, CourseRecommendHolder.ViewHolder> {
 
     public CourseRecommendHolder(Context context) {
         super(context);
@@ -49,7 +49,7 @@ public class CourseRecommendHolder extends AbsViewHolder<CourseDetailRemVideoVo.
 
     }
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
 
         private ImageView lessonPic;
 

@@ -14,8 +14,8 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.home.CatagoryInfoVo;
 import com.code.mvvm.core.data.pojo.home.CatagoryVo;
 import com.code.mvvm.core.view.common.CommonActivity;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * @author：tqzhang on 18/6/20 13:41
  */
-public class CategoryItemView extends AbsViewHolder<CatagoryVo, CategoryItemView.ViewHolder> {
+public class CategoryItemView extends AbsItemHolder<CatagoryVo, CategoryItemView.ViewHolder> {
     private String[] tvNames;
     private int[] tvIcons;
     private List<CatagoryInfoVo> list = new ArrayList<>();
@@ -95,7 +95,7 @@ public class CategoryItemView extends AbsViewHolder<CatagoryVo, CategoryItemView
         }
     }
 
-    public static class ViewHolder extends BaseHolder {
+    public static class ViewHolder extends AbsHolder {
 
         private RecyclerView recyclerView;
 

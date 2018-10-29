@@ -9,7 +9,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.adapter.DelegateAdapter;
 
 /**
  * @author：tqzhang on 18/6/26 17:02
@@ -83,8 +83,8 @@ public class SwipeCorrectFragment extends SwipeListFragment<WorkViewModel> {
     }
 
     @Override
-    protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getSwipeCorrectAdapter(getActivity());
+    protected DelegateAdapter createAdapter() {
+        return AdapterPool.newInstance().getSwipeCorrectAdapter(getActivity()).build();
     }
 
     @Override

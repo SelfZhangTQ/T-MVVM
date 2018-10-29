@@ -12,14 +12,13 @@ import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.util.DisplayUtil;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
-import com.trecyclerview.listener.OnItemClickListener;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang on 18/6/19 15:00
  */
-public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHolder.ViewHolder> {
+public class CourseItemHolder extends AbsItemHolder<CourseInfoVo, CourseItemHolder.ViewHolder> {
     private int commonWidth;
 
     public CourseItemHolder(Context context) {
@@ -35,7 +34,7 @@ public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHold
 
     @Override
     public ViewHolder createViewHolder(View view) {
-        return new ViewHolder(view,mOnItemClickListener);
+        return new ViewHolder(view);
     }
 
 
@@ -53,24 +52,18 @@ public class CourseItemHolder extends AbsViewHolder<CourseInfoVo, CourseItemHold
     }
 
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
 
         private ImageView mVideoImage, mUserIcon;
         private TextView mLookNum, mVideoTitle, mUserName;
 
-        ViewHolder(@NonNull View itemView, final OnItemClickListener mOnItemClickListener) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             mVideoImage = getViewById(R.id.iv_video_image);
             mUserIcon = getViewById(R.id.iv_user_icon);
             mLookNum = getViewById(R.id.tv_look_num);
             mVideoTitle = getViewById(R.id.tv_video_title);
             mUserName = getViewById(R.id.tv_user_name);
-            itemView.setOnClickListener(v -> {
-                if (null!=mOnItemClickListener){
-                    mOnItemClickListener.onItemClick(v,getAdapterPosition(),itemView.getTag());
-                }
-
-            });
         }
     }
 

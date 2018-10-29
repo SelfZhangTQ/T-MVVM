@@ -13,13 +13,13 @@ import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.live.LiveRecommendVo;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.util.DisplayUtil;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang on 18/6/19 15:00
  */
-public class HomeLiveItemView extends AbsViewHolder<LiveRecommendVo, HomeLiveItemView.ViewHolder> {
+public class HomeLiveItemView extends AbsItemHolder<LiveRecommendVo, HomeLiveItemView.ViewHolder> {
 
     private int commonWidth;
 
@@ -68,7 +68,7 @@ public class HomeLiveItemView extends AbsViewHolder<LiveRecommendVo, HomeLiveIte
     }
 
 
-    public static class ViewHolder extends BaseHolder {
+    public static class ViewHolder extends AbsHolder {
 
         private ImageView mLiveState;
         private ImageView mUserIcon;

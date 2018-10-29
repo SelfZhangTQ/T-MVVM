@@ -18,13 +18,13 @@ import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.util.ViewUtils;
 import com.code.mvvm.widget.CustomHeightImageView;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang  on 18/6/27 19:14
  */
-public class CorrectPicHolder extends AbsViewHolder<WorkDetailVo, CorrectPicHolder.ViewHolder> {
+public class CorrectPicHolder extends AbsItemHolder<WorkDetailVo, CorrectPicHolder.ViewHolder> {
 
     public CorrectPicHolder(Context context) {
         super(context);
@@ -79,7 +79,7 @@ public class CorrectPicHolder extends AbsViewHolder<WorkDetailVo, CorrectPicHold
         }
     }
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
         private CustomHeightImageView imagePic;
         private ImageView workPic, teacherIcon;
         private TextView teacherName, userName;

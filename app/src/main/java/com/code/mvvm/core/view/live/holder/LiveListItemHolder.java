@@ -11,13 +11,13 @@ import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.live.LiveRecommendVo;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.widget.CropImageView;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang  on 18/6/19 15:00
  */
-public class LiveListItemHolder extends AbsViewHolder<LiveRecommendVo, LiveListItemHolder.ViewHolder> {
+public class LiveListItemHolder extends AbsItemHolder<LiveRecommendVo, LiveListItemHolder.ViewHolder> {
 
     public LiveListItemHolder(Context context) {
         super(context);
@@ -58,7 +58,7 @@ public class LiveListItemHolder extends AbsViewHolder<LiveRecommendVo, LiveListI
     }
 
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
 
         private CropImageView livePic;
 

@@ -60,7 +60,6 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onTabUnselected(int position) {
-
             }
 
             @Override

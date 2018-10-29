@@ -13,13 +13,13 @@ import com.code.mvvm.App;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.article.ArticleInfoVo;
 import com.code.mvvm.util.DisplayUtil;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang  on 18/6/19 15:16
  */
-public class ArticleRem3ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleRem3ItemHolder.ViewHolder> {
+public class ArticleRem3ItemHolder extends AbsItemHolder<ArticleInfoVo, ArticleRem3ItemHolder.ViewHolder> {
     private int commonWidth;
 
     public ArticleRem3ItemHolder(Context context) {
@@ -79,7 +79,7 @@ public class ArticleRem3ItemHolder extends AbsViewHolder<ArticleInfoVo, ArticleR
         }
     }
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
         public ImageView iv_pic;
 
         public ImageView iv_pic2;

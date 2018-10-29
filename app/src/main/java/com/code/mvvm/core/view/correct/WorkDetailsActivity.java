@@ -24,8 +24,8 @@ import com.code.mvvm.core.vm.WorkViewModel;
 import com.mvvm.base.AbsLifecycleActivity;
 import com.mvvm.event.LiveBus;
 import com.trecyclerview.TRecyclerView;
-import com.trecyclerview.multitype.Items;
-import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.adapter.DelegateAdapter;
+import com.trecyclerview.adapter.ItemData;
 
 import java.lang.ref.WeakReference;
 
@@ -36,8 +36,8 @@ import java.lang.ref.WeakReference;
 public class WorkDetailsActivity extends AbsLifecycleActivity<WorkViewModel> {
 
     protected TRecyclerView mRecyclerView;
-    private MultiTypeAdapter adapter;
-    protected Items items = new Items();
+    private DelegateAdapter adapter;
+    protected ItemData items = new ItemData();
     private String correctId;
 
     private WeakReference<WorkDetailsActivity> weakReference;
@@ -74,7 +74,7 @@ public class WorkDetailsActivity extends AbsLifecycleActivity<WorkViewModel> {
     }
 
     private void initAdapter() {
-        adapter = new MultiTypeAdapter.Builder<>()
+        adapter = new DelegateAdapter.Builder<>()
                 .bind(WorkDetailVo.class, new CorrectPicHolder(weakReference.get()))
                 .bind(CourseInfoVo.class, new CourseItemHolder(weakReference.get()))
                 .bind(LiveRecommendVo.class, new HomeLiveItemView(weakReference.get()))
@@ -107,7 +107,7 @@ public class WorkDetailsActivity extends AbsLifecycleActivity<WorkViewModel> {
                         items.addAll(workMergeVo.workRecommentVo.data.content);
                     }
                 }
-                adapter.setItems(items);
+                adapter.setDatas(items);
                 mRecyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

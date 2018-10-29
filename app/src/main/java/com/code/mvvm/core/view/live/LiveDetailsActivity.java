@@ -21,8 +21,8 @@ import com.mvvm.http.rx.RxSchedulers;
 import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.trecyclerview.TRecyclerView;
-import com.trecyclerview.multitype.Items;
-import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.adapter.DelegateAdapter;
+import com.trecyclerview.adapter.ItemData;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
@@ -160,14 +160,14 @@ public class LiveDetailsActivity extends BaseActivity {
 
 
     private void setData(CourseDetailRemVideoVo lessonDetailAboutVideoBean) {
-        Items items = new Items();
-        MultiTypeAdapter adapter = new MultiTypeAdapter.Builder<>()
+        ItemData items = new ItemData();
+        DelegateAdapter adapter = new DelegateAdapter.Builder<>()
                 .bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendHolder(LiveDetailsActivity.this)).build();
         mRecyclerView.setAdapter(adapter);
         for (int i = 0; i < lessonDetailAboutVideoBean.getData().getCourse_list().size(); i++) {
             items.add(lessonDetailAboutVideoBean.getData().getCourse_list().get(i));
         }
-        adapter.setItems(items);
+        adapter.setDatas(items);
         adapter.notifyDataSetChanged();
     }
 

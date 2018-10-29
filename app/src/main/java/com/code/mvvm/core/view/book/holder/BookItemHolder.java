@@ -13,13 +13,13 @@ import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.book.BookList;
 import com.code.mvvm.util.DisplayUtil;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang on 18/6/20 13:41
  */
-public class BookItemHolder extends AbsViewHolder<BookList, BookItemHolder.ViewHolder> {
+public class BookItemHolder extends AbsItemHolder<BookList, BookItemHolder.ViewHolder> {
     private int commonWidth;
 
     public BookItemHolder(Context context) {
@@ -69,7 +69,7 @@ public class BookItemHolder extends AbsViewHolder<BookList, BookItemHolder.ViewH
         }
     }
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
 
         private ImageView book1, book2, book3;
         private TextView bookName1, bookName2, bookName3;

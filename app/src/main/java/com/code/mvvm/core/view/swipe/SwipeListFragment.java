@@ -2,25 +2,23 @@ package com.code.mvvm.core.view.swipe;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
-import com.code.mvvm.util.DiffCallback;
 import com.code.mvvm.util.DisplayUtil;
 import com.mvvm.base.AbsLifecycleFragment;
 import com.mvvm.base.AbsViewModel;
 import com.trecyclerview.SwipeRecyclerView;
+import com.trecyclerview.adapter.DelegateAdapter;
+import com.trecyclerview.adapter.ItemData;
 import com.trecyclerview.listener.OnLoadMoreListener;
-import com.trecyclerview.multitype.Items;
-import com.trecyclerview.multitype.MultiTypeAdapter;
 import com.trecyclerview.pojo.FootVo;
 
 import java.util.Collection;
 import java.util.List;
 
-import static com.trecyclerview.view.LoadingMoreFooter.STATE_LOADING;
+import static com.trecyclerview.footview.LoadingMoreFooter.STATE_LOADING;
 
 
 /**
@@ -33,7 +31,7 @@ public abstract class SwipeListFragment<T extends AbsViewModel> extends AbsLifec
 
     protected RecyclerView.LayoutManager layoutManager;
 
-    protected MultiTypeAdapter adapter;
+    protected DelegateAdapter adapter;
 
     protected String lastId = null;
 
@@ -43,9 +41,9 @@ public abstract class SwipeListFragment<T extends AbsViewModel> extends AbsLifec
 
     protected boolean isRefresh = false;
 
-    protected Items oldItems;
+    protected ItemData oldItems;
 
-    protected Items newItems;
+    protected ItemData newItems;
 
     @Override
     public int getLayoutResId() {
@@ -71,8 +69,8 @@ public abstract class SwipeListFragment<T extends AbsViewModel> extends AbsLifec
                 onRefreshAction();
             }
         });
-        oldItems = new Items();
-        newItems = new Items();
+        oldItems = new ItemData();
+        newItems = new ItemData();
         adapter = createAdapter();
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(createLayoutManager());
@@ -127,7 +125,7 @@ public abstract class SwipeListFragment<T extends AbsViewModel> extends AbsLifec
 
     protected void onDefaultSuccess(Collection<?> collection) {
         oldItems.addAll(collection);
-        adapter.setItems(oldItems);
+        adapter.setDatas(oldItems);
         notifyDataSetChanged();
     }
 
@@ -152,11 +150,11 @@ public abstract class SwipeListFragment<T extends AbsViewModel> extends AbsLifec
 
 
     protected void diffNotifyDataChanged() {
-        DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffCallback(oldItems, newItems), true);
-        oldItems.clear();
-        oldItems.addAll(newItems);
-        newItems.clear();
-        result.dispatchUpdatesTo(adapter);
+//        DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffCallback(oldItems, newItems), true);
+//        oldItems.clear();
+//        oldItems.addAll(newItems);
+//        newItems.clear();
+//        result.dispatchUpdatesTo(adapter);
     }
 
     protected void notifyDataSetChanged() {
@@ -179,7 +177,7 @@ public abstract class SwipeListFragment<T extends AbsViewModel> extends AbsLifec
     /**
      * @return
      */
-    protected abstract MultiTypeAdapter createAdapter();
+    protected abstract DelegateAdapter createAdapter();
 
     /**
      * @return

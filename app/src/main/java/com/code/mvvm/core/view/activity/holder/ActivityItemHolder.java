@@ -14,13 +14,13 @@ import com.code.mvvm.App;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.util.DisplayUtil;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang  on 18/6/19 15:00
  */
-public class ActivityItemHolder extends AbsViewHolder<ActivityListVo.DataBean, ActivityItemHolder.ViewHolder> {
+public class ActivityItemHolder extends AbsItemHolder<ActivityListVo.DataBean, ActivityItemHolder.ViewHolder> {
     private int commonWidth;
 
     public ActivityItemHolder(Context context) {
@@ -73,7 +73,7 @@ public class ActivityItemHolder extends AbsViewHolder<ActivityListVo.DataBean, A
     }
 
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
         ImageView ivActivityPic;
         TextView tvActivityTitle;
 

@@ -15,13 +15,13 @@ import com.code.mvvm.glide.GlideRoundTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.widget.CustomHeightImageView;
 import com.code.mvvm.widget.CustomHeightRelativeLayout;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang  on 18/6/27 19:14
  */
-public class CorrectRemItemHolder extends AbsViewHolder<WorkInfoVo, CorrectRemItemHolder.ViewHolder> {
+public class CorrectRemItemHolder extends AbsItemHolder<WorkInfoVo, CorrectRemItemHolder.ViewHolder> {
     private int commonwidth;
 
     public CorrectRemItemHolder(Context context) {
@@ -78,7 +78,7 @@ public class CorrectRemItemHolder extends AbsViewHolder<WorkInfoVo, CorrectRemIt
     }
 
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
         private CustomHeightImageView mCHImageView;
         private TextView mTvDesc, mUserName;
         private ImageView mUserIcon;

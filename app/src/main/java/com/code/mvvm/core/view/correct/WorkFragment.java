@@ -11,7 +11,7 @@ import com.code.mvvm.core.data.pojo.correct.WorkMergeVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.multitype.MultiTypeAdapter;
+import com.trecyclerview.adapter.DelegateAdapter;
 
 
 /**
@@ -64,8 +64,8 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
     }
 
     @Override
-    protected MultiTypeAdapter createAdapter() {
-        return AdapterPool.newInstance().getWorkAdapter(getActivity());
+    protected DelegateAdapter createAdapter() {
+        return AdapterPool.newInstance().getWorkAdapter(getActivity()).build();
     }
 
     @Override

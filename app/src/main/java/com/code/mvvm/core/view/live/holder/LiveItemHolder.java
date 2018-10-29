@@ -15,13 +15,13 @@ import com.code.mvvm.core.data.pojo.live.LiveRecommendVo;
 import com.code.mvvm.core.view.live.LiveDetailsActivity;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.util.DisplayUtil;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang on 18/6/19 15:00
  */
-public class LiveItemHolder extends AbsViewHolder<LiveRecommendVo, LiveItemHolder.ViewHolder> {
+public class LiveItemHolder extends AbsItemHolder<LiveRecommendVo, LiveItemHolder.ViewHolder> {
     private int commonwidth;
 
     public LiveItemHolder(Context activity) {
@@ -90,7 +90,7 @@ public class LiveItemHolder extends AbsViewHolder<LiveRecommendVo, LiveItemHolde
     }
 
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
 
         private ImageView livePic;
         private ImageView liveStateBg;

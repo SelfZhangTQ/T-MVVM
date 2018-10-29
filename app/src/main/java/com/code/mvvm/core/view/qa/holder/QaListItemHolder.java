@@ -12,13 +12,13 @@ import com.code.mvvm.App;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
 import com.code.mvvm.util.DisplayUtil;
-import com.trecyclerview.holder.AbsViewHolder;
-import com.trecyclerview.holder.BaseHolder;
+import com.trecyclerview.holder.AbsHolder;
+import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang on 18/6/19 15:00
  */
-public class QaListItemHolder extends AbsViewHolder<QaListVo.DataBean, QaListItemHolder.ViewHolder> {
+public class QaListItemHolder extends AbsItemHolder<QaListVo.DataBean, QaListItemHolder.ViewHolder> {
     private int commonWidth;
 
 
@@ -59,7 +59,7 @@ public class QaListItemHolder extends AbsViewHolder<QaListVo.DataBean, QaListIte
     }
 
 
-    static class ViewHolder extends BaseHolder {
+    static class ViewHolder extends AbsHolder {
         TextView decs;
         TextView lookNum;
         TextView decsType;
