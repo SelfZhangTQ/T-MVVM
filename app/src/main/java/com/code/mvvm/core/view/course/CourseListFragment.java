@@ -42,7 +42,7 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> implem
             mCatalogId = getArguments().getString("f_catalog_id", null);
         }
 
-        registerObserver(Constants.EVENT_KEY_COURSE_LIDT,mCatalogId, CourseListVo.class).observe(this, courseListVo -> {
+        registerObserver(Constants.EVENT_KEY_COURSE_LIDT, mCatalogId, CourseListVo.class).observe(this, courseListVo -> {
             if (courseListVo != null && courseListVo.data != null) {
                 lastId = courseListVo.data.get(courseListVo.data.size() - 1).courseid;
                 setData(courseListVo.data);
@@ -68,15 +68,9 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> implem
 
     @Override
     protected DelegateAdapter createAdapter() {
-        DelegateAdapter adapter=AdapterPool.newInstance().getCourseListAdapter(getActivity())
+        DelegateAdapter adapter = AdapterPool.newInstance().getCourseListAdapter(getActivity())
                 .setOnItemClickListener(this).build();
         return adapter;
-    }
-
-    @Override
-    protected void onStateRefresh() {
-        super.onStateRefresh();
-        getNetWorkData();
     }
 
     @Override

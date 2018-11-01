@@ -49,12 +49,6 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
     }
 
     @Override
-    protected void onStateRefresh() {
-        super.onStateRefresh();
-        getNetWorkData();
-    }
-
-    @Override
     protected void lazyLoad() {
         super.lazyLoad();
         getNetWorkData();

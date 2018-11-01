@@ -55,12 +55,6 @@ public class LiveRecommendFragment extends BaseListFragment<LiveViewModel> {
     }
 
     @Override
-    protected void onStateRefresh() {
-        super.onStateRefresh();
-        getNetWorkData();
-    }
-
-    @Override
     protected void lazyLoad() {
         super.lazyLoad();
         getNetWorkData();

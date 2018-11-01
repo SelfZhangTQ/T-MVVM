@@ -59,12 +59,6 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
     }
 
     @Override
-    protected void onStateRefresh() {
-        super.onStateRefresh();
-        getNetWorkData();
-    }
-
-    @Override
     protected void lazyLoad() {
         super.lazyLoad();
         getNetWorkData();

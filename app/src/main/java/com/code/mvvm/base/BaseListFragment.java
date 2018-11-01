@@ -52,7 +52,7 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
 
 
     @Override
-    public int getContentResId(){
+    public int getContentResId() {
         return R.id.content_layout;
     }
 
@@ -83,8 +83,13 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
 
     @Override
     protected void lazyLoad() {
-        super.lazyLoad();
         isLoadMore = false;
+    }
+
+    @Override
+    protected void onStateRefresh() {
+        super.onStateRefresh();
+        onRefresh();
     }
 
     protected void setData(List<?> collection) {
@@ -128,20 +133,22 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
         isLoadMore = false;
         oldItems.addAll(collection);
         if (collection.size() < 20) {
-            mRecyclerView.loadMoreComplete(collection,true);
+            mRecyclerView.loadMoreComplete(collection, true);
         } else {
-            mRecyclerView.loadMoreComplete(collection,false);
+            mRecyclerView.loadMoreComplete(collection, false);
         }
     }
 
     /**
      * adapter
+     *
      * @return DelegateAdapter
      */
     protected abstract DelegateAdapter createAdapter();
 
     /**
      * LayoutManager
+     *
      * @return LayoutManager
      */
     protected abstract RecyclerView.LayoutManager createLayoutManager();

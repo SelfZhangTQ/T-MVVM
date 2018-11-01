@@ -87,12 +87,6 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
         mViewModel.getWorkMoreData("", lastId, uTime);
     }
 
-    @Override
-    protected void onStateRefresh() {
-        super.onStateRefresh();
-        getNetWorkData();
-    }
-
     private void getNetWorkData() {
         mViewModel.getWorkListData();
     }

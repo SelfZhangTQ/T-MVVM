@@ -69,12 +69,6 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> i
     }
 
     @Override
-    protected void onStateRefresh() {
-        super.onStateRefresh();
-        getRemoteData();
-    }
-
-    @Override
     protected void lazyLoad() {
         super.lazyLoad();
         getRemoteData();

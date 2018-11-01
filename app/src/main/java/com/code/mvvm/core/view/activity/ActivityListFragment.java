@@ -25,19 +25,12 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
 
     @Override
     protected void dataObserver() {
-
         registerObserver(Constants.EVENT_KEY_ACTIVITY, ActivityListVo.class).observe(this, activityListVo -> {
             if (activityListVo != null) {
                 lastId = activityListVo.data.get(activityListVo.data.size() - 1).newsid;
                 setData(activityListVo.data);
             }
         });
-    }
-
-    @Override
-    protected void onStateRefresh() {
-        super.onStateRefresh();
-        getNetWorkData();
     }
 
     @Override

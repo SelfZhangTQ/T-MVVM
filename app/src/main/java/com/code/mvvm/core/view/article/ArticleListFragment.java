@@ -46,12 +46,6 @@ public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
     }
 
     @Override
-    protected void onStateRefresh() {
-        super.onStateRefresh();
-        getRemoteData();
-    }
-
-    @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
         return new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
     }

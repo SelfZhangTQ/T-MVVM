@@ -47,12 +47,6 @@ public class FollowDrawRecommendFragment extends BaseListFragment<FollowDrawView
     }
 
     @Override
-    protected void onStateRefresh() {
-        super.onStateRefresh();
-        getNetWorkData();
-    }
-
-    @Override
     protected void lazyLoad() {
         super.lazyLoad();
         getNetWorkData();

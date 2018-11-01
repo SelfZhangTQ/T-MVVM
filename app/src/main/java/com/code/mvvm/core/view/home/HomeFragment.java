@@ -60,12 +60,6 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> implements OnI
     }
 
     @Override
-    protected void onStateRefresh() {
-        super.onStateRefresh();
-        getNetWorkData();
-    }
-
-    @Override
     public void onRefresh() {
         super.onRefresh();
         getNetWorkData();

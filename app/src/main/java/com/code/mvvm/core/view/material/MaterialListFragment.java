@@ -64,12 +64,6 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
     }
 
     @Override
-    protected void onStateRefresh() {
-        super.onStateRefresh();
-        getNewData();
-    }
-
-    @Override
     protected void lazyLoad() {
         super.lazyLoad();
         getNewData();
