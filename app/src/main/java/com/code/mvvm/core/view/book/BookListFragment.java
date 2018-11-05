@@ -59,26 +59,12 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
     }
 
     @Override
-    protected void lazyLoad() {
-        super.lazyLoad();
-        getNetWorkData();
-    }
-
-    @Override
-    public void onRefresh() {
-        super.onRefresh();
-        getNetWorkData();
-    }
-
-    @Override
-    public void onLoadMore() {
-        super.onLoadMore();
-        getNetWorkData();
-    }
-
-    private void getNetWorkData() {
+    protected void getRemoteData() {
         mViewModel.getBookList(typeId, lastId);
-
     }
 
+    @Override
+    protected void getLoadMoreData(){
+        getRemoteData();
+    }
 }

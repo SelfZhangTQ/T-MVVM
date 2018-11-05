@@ -58,28 +58,13 @@ public class LiveListFragment extends BaseListFragment<LiveViewModel> {
         return AdapterPool.newInstance().getLiveAdapter(activity).build();
     }
 
-
-
     @Override
-    protected void lazyLoad() {
-        super.lazyLoad();
-        getNetWorkData();
-    }
-
-    @Override
-    public void onRefresh() {
-        super.onRefresh();
-        getNetWorkData();
-
-    }
-
-    @Override
-    public void onLoadMore() {
-        super.onLoadMore();
-        getNetWorkData();
-    }
-
-    protected void getNetWorkData() {
+    protected void getRemoteData() {
         mViewModel.getLiveList(typeId, lastId);
+    }
+
+    @Override
+    protected void getLoadMoreData() {
+        getRemoteData();
     }
 }

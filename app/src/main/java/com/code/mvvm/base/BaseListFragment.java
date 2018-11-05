@@ -84,6 +84,7 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
     @Override
     protected void lazyLoad() {
         isLoadMore = false;
+        getRemoteData();
     }
 
     @Override
@@ -105,11 +106,13 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
         lastId = null;
         isRefresh = true;
         isLoadMore = false;
+        getRemoteData();
     }
 
     @Override
     public void onLoadMore() {
         isLoadMore = true;
+        getLoadMoreData();
     }
 
     protected void setBannerData(BannerListVo headAdList) {
@@ -159,5 +162,12 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
         mTitle.setText(titleName);
     }
 
+
+    /**
+     * 获取更多网络数据t
+     */
+    protected void getLoadMoreData() {
+
+    }
 
 }

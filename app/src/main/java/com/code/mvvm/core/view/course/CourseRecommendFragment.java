@@ -69,22 +69,15 @@ public class CourseRecommendFragment extends BaseListFragment<CourseViewModel> i
     }
 
     @Override
-    protected void lazyLoad() {
-        super.lazyLoad();
-        getRemoteData();
-    }
-
-    @Override
-    public void onRefresh() {
-        super.onRefresh();
-        getRemoteData();
-    }
-
-    @Override
     protected void getRemoteData() {
         mViewModel.getCourseRemList(Constants.PAGE_RN);
     }
 
+
+    @Override
+    protected void getLoadMoreData() {
+        getRemoteData();
+    }
 
     private void setData(CourseRemVo courseRemVo) {
         if (courseRemVo.data.top_adv != null) {

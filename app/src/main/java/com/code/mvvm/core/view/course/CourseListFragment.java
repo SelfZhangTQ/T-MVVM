@@ -74,26 +74,16 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> implem
     }
 
     @Override
-    protected void lazyLoad() {
-        super.lazyLoad();
-        getNetWorkData();
-    }
-
-    @Override
-    public void onRefresh() {
-        super.onRefresh();
-        getNetWorkData();
-    }
-
-    @Override
-    public void onLoadMore() {
-        super.onLoadMore();
-        getNetWorkData();
-    }
-
-    public void getNetWorkData() {
+    protected void getRemoteData() {
         mViewModel.getCourseList(mCatalogId, lastId);
     }
+
+    @Override
+    protected void getLoadMoreData() {
+        getRemoteData();
+    }
+
+
 
     @Override
     public void onItemClick(View view, int i, Object object) {

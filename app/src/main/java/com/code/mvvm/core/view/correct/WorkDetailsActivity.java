@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
+import android.view.View;
 
 import com.code.mvvm.R;
 import com.code.mvvm.config.Constants;
@@ -26,6 +28,7 @@ import com.mvvm.event.LiveBus;
 import com.trecyclerview.TRecyclerView;
 import com.trecyclerview.adapter.DelegateAdapter;
 import com.trecyclerview.adapter.ItemData;
+import com.trecyclerview.listener.OnItemClickListener;
 
 import java.lang.ref.WeakReference;
 
@@ -33,7 +36,7 @@ import java.lang.ref.WeakReference;
 /**
  * @author：tqzhang on 18/7/16 18:06
  */
-public class WorkDetailsActivity extends AbsLifecycleActivity<WorkViewModel> {
+public class WorkDetailsActivity extends AbsLifecycleActivity<WorkViewModel> implements OnItemClickListener {
 
     protected TRecyclerView mRecyclerView;
     private DelegateAdapter adapter;
@@ -80,12 +83,14 @@ public class WorkDetailsActivity extends AbsLifecycleActivity<WorkViewModel> {
                 .bind(LiveRecommendVo.class, new HomeLiveItemView(weakReference.get()))
                 .bind(WorkInfoVo.class, new CorrectRemItemHolder(weakReference.get()))
                 .bind(TypeVo.class, new TypeItemView(weakReference.get()))
+                .setOnItemClickListener(this)
                 .build();
 
     }
 
     @Override
     protected void dataObserver() {
+        Log.e("dataObserver", String.valueOf(this.getClass().hashCode()));
         LiveBus.getDefault().subscribe(Constants.EVENT_KEY_WORK_STATE).observe(this, observer);
 
         LiveBus.getDefault().subscribe(Constants.EVENT_KEY_WORK, WorkMergeVo.class).observe(this, new Observer<WorkMergeVo>() {
@@ -120,9 +125,17 @@ public class WorkDetailsActivity extends AbsLifecycleActivity<WorkViewModel> {
         mViewModel.getWorkDetaiMergeData(correctId);
     }
 
-    public static void start(Context context, String correctId) {
-        Intent starter = new Intent(context, WorkDetailsActivity.class);
-        starter.putExtra("correct_id", correctId);
-        context.startActivity(starter);
+    @Override
+    public void onItemClick(View view, int i, Object o) {
+        if (o != null) {
+            if (o instanceof WorkInfoVo) {
+                WorkInfoVo data = (WorkInfoVo) o;
+                Intent starter = new Intent(this, WorkDetailsActivity.class);
+                starter.putExtra("correct_id", data.correctid);
+                startActivity(starter);
+                finish();
+            }
+
+        }
     }
 }

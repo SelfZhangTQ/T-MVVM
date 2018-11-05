@@ -47,26 +47,15 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
     }
 
     @Override
-    public void onRefresh() {
-        super.onRefresh();
-        getDynamicListData();
-    }
-
-    @Override
-    protected void lazyLoad() {
-        super.lazyLoad();
-        getDynamicListData();
-    }
-
-
-    @Override
-    public void onLoadMore() {
-        super.onLoadMore();
-        getDynamicListData();
-    }
-
-    private void getDynamicListData() {
+    protected void getRemoteData() {
         mViewModel.getDynamicList( "45ca1f01417c758505e2919e701c3f99", lastId);
 
     }
+
+    @Override
+    protected void getLoadMoreData() {
+        getRemoteData();
+    }
+
+
 }

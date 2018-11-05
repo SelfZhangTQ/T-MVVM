@@ -44,26 +44,13 @@ public class ActivityListFragment extends BaseListFragment<ActivityViewModel> {
     }
 
     @Override
-    protected void lazyLoad() {
-        super.lazyLoad();
-        getNetWorkData();
-
-    }
-
-    @Override
-    public void onRefresh() {
-        super.onRefresh();
-        getNetWorkData();
-    }
-
-    public void getNetWorkData() {
+    protected void getRemoteData() {
         mViewModel.getActivityList(lastId);
     }
 
-    @Override
-    public void onLoadMore() {
-        super.onLoadMore();
-        mViewModel.getActivityList(lastId);
-    }
 
+    @Override
+    protected void getLoadMoreData(){
+        getRemoteData();
+    }
 }

@@ -55,20 +55,14 @@ public class ArticleListFragment extends BaseListFragment<ArticleViewModel> {
         return AdapterPool.newInstance().getArticleAdapter(activity).build();
     }
 
-    @Override
-    protected void lazyLoad() {
-        super.lazyLoad();
-        getRemoteData();
-    }
-
-    @Override
-    public void onRefresh() {
-        super.onRefresh();
-        getRemoteData();
-    }
 
     @Override
     protected void getRemoteData() {
         mViewModel.getArticleList(typeId, lastId);
+    }
+
+    @Override
+    protected void getLoadMoreData(){
+        getRemoteData();
     }
 }

@@ -27,7 +27,6 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
 
     @Override
     protected void dataObserver() {
-
         registerObserver(Constants.EVENT_KEY_MT_RED, MaterialRecommendVo.class).observe(this, materialRecommendVo -> {
             if (materialRecommendVo != null) {
                 lastId = materialRecommendVo.data.content.get(materialRecommendVo.data.content.size() - 1).subjectid;
@@ -36,7 +35,6 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
 
         });
     }
-
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
@@ -49,26 +47,12 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
     }
 
     @Override
-    protected void lazyLoad() {
-        super.lazyLoad();
-        getNetWorkData();
-    }
-
-    @Override
-    public void onRefresh() {
-        super.onRefresh();
-        getNetWorkData();
-    }
-
-    @Override
-    public void onLoadMore() {
-        super.onLoadMore();
-        getNetWorkData();
-    }
-
-    public void getNetWorkData() {
+    protected void getRemoteData() {
         mViewModel.getMaterialRemList("0", lastId);
     }
 
-
+    @Override
+    protected void getLoadMoreData() {
+        getRemoteData();
+    }
 }

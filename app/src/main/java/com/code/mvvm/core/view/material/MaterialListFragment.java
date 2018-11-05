@@ -64,26 +64,13 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
     }
 
     @Override
-    protected void lazyLoad() {
-        super.lazyLoad();
-        getNewData();
-    }
-
-
-    @Override
-    public void onRefresh() {
-        super.onRefresh();
-        getNewData();
-    }
-
-    @Override
-    public void onLoadMore() {
-        super.onLoadMore();
-        mViewModel.getMaterialMoreList("0", subId, lastId);
-    }
-
-    private void getNewData() {
+    protected void getRemoteData() {
         mViewModel.getMaterialList("0", subId);
+    }
 
+
+    @Override
+    protected void getLoadMoreData() {
+        mViewModel.getMaterialMoreList("0", subId, lastId);
     }
 }

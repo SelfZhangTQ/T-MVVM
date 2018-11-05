@@ -53,19 +53,6 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> implements OnI
 
 
     @Override
-    protected void lazyLoad() {
-        super.lazyLoad();
-        getNetWorkData();
-
-    }
-
-    @Override
-    public void onRefresh() {
-        super.onRefresh();
-        getNetWorkData();
-    }
-
-    @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
         return new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
     }
@@ -78,7 +65,8 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> implements OnI
         return adapter;
     }
 
-    protected void getNetWorkData() {
+    @Override
+    protected void getRemoteData() {
         mViewModel.getHomeData();
     }
 

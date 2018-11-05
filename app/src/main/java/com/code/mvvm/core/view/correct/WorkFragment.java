@@ -1,23 +1,27 @@
 package com.code.mvvm.core.view.correct;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
+import com.code.mvvm.core.data.pojo.correct.WorkInfoVo;
 import com.code.mvvm.core.data.pojo.correct.WorkMergeVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.code.mvvm.util.AdapterPool;
 import com.trecyclerview.adapter.DelegateAdapter;
+import com.trecyclerview.listener.OnItemClickListener;
 
 
 /**
  * @author：tqzhang on 18/5/2 19:30
  */
-public class WorkFragment extends BaseListFragment<WorkViewModel> {
+public class WorkFragment extends BaseListFragment<WorkViewModel> implements OnItemClickListener {
     private String uTime;
 
     public static WorkFragment newInstance() {
@@ -65,30 +69,31 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> {
 
     @Override
     protected DelegateAdapter createAdapter() {
-        return AdapterPool.newInstance().getWorkAdapter(getActivity()).build();
+        return AdapterPool.newInstance().getWorkAdapter(getActivity())
+                .setOnItemClickListener(this)
+                .build();
     }
 
     @Override
-    protected void lazyLoad() {
-        super.lazyLoad();
-        getNetWorkData();
-
-    }
-
-    @Override
-    public void onRefresh() {
-        super.onRefresh();
-        getNetWorkData();
-    }
-
-    @Override
-    public void onLoadMore() {
-        super.onLoadMore();
-        mViewModel.getWorkMoreData("", lastId, uTime);
-    }
-
-    private void getNetWorkData() {
+    protected void getRemoteData() {
         mViewModel.getWorkListData();
     }
 
+    @Override
+    protected void getLoadMoreData() {
+        mViewModel.getWorkMoreData("", lastId, uTime);
+    }
+
+    @Override
+    public void onItemClick(View view, int i, Object o) {
+        if (o != null) {
+            if (o instanceof WorksListVo.Works) {
+                WorksListVo.Works data = (WorksListVo.Works) o;
+                Intent starter = new Intent(getActivity(), WorkDetailsActivity.class);
+                starter.putExtra("correct_id", data.correct.correctid);
+                startActivity(starter);
+            }
+
+        }
+    }
 }

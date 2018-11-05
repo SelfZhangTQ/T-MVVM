@@ -59,24 +59,12 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
     }
 
     @Override
-    protected void lazyLoad() {
-        super.lazyLoad();
-        getNetWorkData();
-    }
-
-    @Override
-    public void onRefresh() {
-        super.onRefresh();
-        getNetWorkData();
-    }
-
-    @Override
-    public void onLoadMore() {
-        super.onLoadMore();
-        getNetWorkData();
-    }
-
-    private void getNetWorkData() {
+    protected void getRemoteData() {
         mViewModel.getFollowDrawList(typeId, lastId);
+    }
+
+    @Override
+    protected void getLoadMoreData() {
+        getRemoteData();
     }
 }

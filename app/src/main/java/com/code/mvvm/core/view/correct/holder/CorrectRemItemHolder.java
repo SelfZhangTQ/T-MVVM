@@ -74,7 +74,7 @@ public class CorrectRemItemHolder extends AbsItemHolder<WorkInfoVo, CorrectRemIt
         holder.mTvDesc.setText(data.content);
         holder.mUserName.setText(data.teacher_info.sname);
         Glide.with(mContext).load(data.teacher_info.avatar).transform(new GlideCircleTransform(mContext)).into(holder.mUserIcon);
-        holder.mCHRootLayout.setOnClickListener(v -> WorkDetailsActivity.start(mContext, data.correctid));
+
     }
 
 

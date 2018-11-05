@@ -71,7 +71,6 @@ public class CorrectItemHolder extends AbsItemHolder<WorksListVo.Works, CorrectI
         holder.mTvDesc.setText(data.correct.content);
         holder.mUserName.setText(data.correct.teacher_info.sname);
         Glide.with(mContext).load(data.correct.teacher_info.avatar).transform(new GlideCircleTransform(mContext)).into(holder.mUserIcon);
-        holder.mCHRootLayout.setOnClickListener(v -> WorkDetailsActivity.start(mContext, data.correct.correctid));
     }
 
     public class ViewHolder extends AbsHolder {
