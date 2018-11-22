@@ -8,8 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static com.mvvm.util.TUtil.checkNotNull;
@@ -53,12 +51,10 @@ public class LiveBus {
 
 
     public <T> MutableLiveData<T> subscribe(Object eventKey) {
-        checkNotNull(eventKey);
         return subscribe(eventKey, "");
     }
 
     public <T> MutableLiveData<T> subscribe(Object eventKey, String tag) {
-        checkNotNull(eventKey);
         return (MutableLiveData<T>) subscribe(eventKey, tag, Object.class);
     }
 
@@ -67,15 +63,7 @@ public class LiveBus {
     }
 
     public <T> MutableLiveData<T> subscribe(Object eventKey, String tag, Class<T> tClass) {
-        checkNotNull(eventKey);
-        checkNotNull(tClass);
-        String key;
-        if (!TextUtils.isEmpty(tag)) {
-            key = eventKey + tag;
-        } else {
-            key = (String) eventKey;
-        }
-
+        String key = mergeEventKey(eventKey, tag);
         if (!mLiveBus.containsKey(key)) {
             mLiveBus.put(key, new LiveBusData<>(true));
         } else {
@@ -87,19 +75,11 @@ public class LiveBus {
     }
 
     public <T> MutableLiveData<T> postEvent(Object eventKey, T value) {
-        checkNotNull(eventKey);
         return postEvent(eventKey, null, value);
     }
 
     public <T> MutableLiveData<T> postEvent(Object eventKey, String tag, T value) {
-        checkNotNull(eventKey);
-        String key;
-        if (!TextUtils.isEmpty(tag)) {
-            key = eventKey + tag;
-        } else {
-            key = (String) eventKey;
-        }
-        MutableLiveData<T> mutableLiveData = subscribe(key);
+        MutableLiveData<T> mutableLiveData = subscribe(mergeEventKey(eventKey, tag));
         mutableLiveData.postValue(value);
         return mutableLiveData;
     }
@@ -109,7 +89,7 @@ public class LiveBus {
 
         private boolean isFirstSubscribe;
 
-        public LiveBusData(boolean isFirstSubscribe) {
+        LiveBusData(boolean isFirstSubscribe) {
             this.isFirstSubscribe = isFirstSubscribe;
         }
 
@@ -144,19 +124,25 @@ public class LiveBus {
     }
 
 
+    private String mergeEventKey(Object eventKey, String tag) {
+        String mEventkey;
+        if (!TextUtils.isEmpty(tag)) {
+            mEventkey = eventKey + tag;
+        } else {
+            mEventkey = (String) eventKey;
+        }
+        return mEventkey;
+    }
+
+
     public void clear(Object eventKey) {
         clear(eventKey, null);
     }
 
     public void clear(Object eventKey, String tag) {
-        if (mLiveBus != null && mLiveBus.size() > 0) {
-            String clearkey;
-            if (!TextUtils.isEmpty(tag)) {
-                clearkey = eventKey + tag;
-            } else {
-                clearkey = (String) eventKey;
-            }
-            mLiveBus.remove(clearkey);
+        if (mLiveBus.size() > 0) {
+            String mEventkey = mergeEventKey(eventKey, tag);
+            mLiveBus.remove(mEventkey);
         }
 
     }

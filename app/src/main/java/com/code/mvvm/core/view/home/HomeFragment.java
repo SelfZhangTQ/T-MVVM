@@ -51,7 +51,6 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> implements OnI
 
     }
 
-
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
         return new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
@@ -59,10 +58,9 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> implements OnI
 
     @Override
     protected DelegateAdapter createAdapter() {
-        DelegateAdapter adapter = AdapterPool.newInstance().getHomeAdapter(getActivity())
+        return AdapterPool.newInstance().getHomeAdapter(getActivity())
                 .setOnItemClickListener(this)
                 .build();
-        return adapter;
     }
 
     @Override

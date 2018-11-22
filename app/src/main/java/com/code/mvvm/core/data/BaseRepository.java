@@ -24,9 +24,6 @@ public class BaseRepository extends AbsRepository {
         sendData(eventKey, null, t);
     }
 
-    protected void sendData(Object eventKey, String tag, Object t) {
-        LiveBus.getDefault().postEvent(eventKey, tag, t);
-    }
 
     protected void showPageState(Object eventKey, String state) {
         sendData(eventKey, state);
@@ -36,5 +33,8 @@ public class BaseRepository extends AbsRepository {
         sendData(eventKey, tag, state);
     }
 
+    protected void sendData(Object eventKey, String tag, Object t) {
+        LiveBus.getDefault().postEvent(eventKey, tag, t);
+    }
 
 }

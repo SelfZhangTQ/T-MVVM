@@ -32,7 +32,7 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
 
     protected String mStateEventTag;
 
-    private List<Object> events = new ArrayList<>();
+    private List<Object> eventKeys = new ArrayList<>();
 
     @Override
     public void initView(Bundle state) {
@@ -41,7 +41,7 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
             dataObserver();
             mStateEventKey = getStateEventKey();
             mStateEventTag = getStateEventTag();
-            events.add(new StringBuilder((String) mStateEventKey).append(mStateEventTag).toString());
+            eventKeys.add(new StringBuilder((String) mStateEventKey).append(mStateEventTag).toString());
             LiveBus.getDefault().subscribe(mStateEventKey, mStateEventTag).observe(this, observer);
         }
     }
@@ -89,7 +89,7 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
         } else {
             event = eventKey + tag;
         }
-        events.add(event);
+        eventKeys.add(event);
         return LiveBus.getDefault().subscribe(eventKey, tag, tClass);
     }
 
@@ -144,9 +144,9 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (events != null && events.size() > 0) {
-            for (int i = 0; i < events.size(); i++) {
-                LiveBus.getDefault().clear(events.get(i));
+        if (eventKeys != null && eventKeys.size() > 0) {
+            for (int i = 0; i < eventKeys.size(); i++) {
+                LiveBus.getDefault().clear(eventKeys.get(i));
             }
         }
     }

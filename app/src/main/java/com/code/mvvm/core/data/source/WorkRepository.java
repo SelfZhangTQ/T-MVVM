@@ -98,7 +98,7 @@ public class WorkRepository extends BaseRepository {
     }
 
     public void loadWorkMergeData() {
-        addDisposable(Flowable.concat(mWorkDetail, mWorkRecommend)
+        addDisposable(Flowable.concatArrayDelayError(mWorkDetail, mWorkRecommend)
                 .compose(RxSchedulers.<Object>io_main())
                 .subscribeWith(new RxSubscriber<Object>() {
                     @Override

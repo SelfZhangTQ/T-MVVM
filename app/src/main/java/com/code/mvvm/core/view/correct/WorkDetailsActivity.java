@@ -90,7 +90,6 @@ public class WorkDetailsActivity extends AbsLifecycleActivity<WorkViewModel> imp
 
     @Override
     protected void dataObserver() {
-        Log.e("dataObserver", String.valueOf(this.getClass().hashCode()));
         LiveBus.getDefault().subscribe(Constants.EVENT_KEY_WORK_STATE).observe(this, observer);
 
         LiveBus.getDefault().subscribe(Constants.EVENT_KEY_WORK, WorkMergeVo.class).observe(this, new Observer<WorkMergeVo>() {

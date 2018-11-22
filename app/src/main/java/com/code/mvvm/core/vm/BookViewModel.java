@@ -19,7 +19,6 @@ public class BookViewModel extends AbsViewModel<BookRepository> {
     }
 
     public void getBookList(String mCatalogId, String lastId) {
-        checkNotNull(mCatalogId);
         mRepository.loadBookList(mCatalogId, lastId, Constants.PAGE_RN);
     }
 

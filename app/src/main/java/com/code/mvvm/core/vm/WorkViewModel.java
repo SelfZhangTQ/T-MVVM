@@ -58,15 +58,10 @@ public class WorkViewModel extends AbsViewModel<WorkRepository> {
     }
 
     public void getWorkMoreData(String corrected, String lastId, String utime) {
-        checkNotNull(corrected);
-        checkNotNull(lastId);
-        checkNotNull(utime);
         mRepository.loadWorkMoreData(corrected, lastId, utime, Constants.PAGE_RN);
     }
 
     public void getWorkData(String corrected, String rn) {
-        checkNotNull(corrected);
-        checkNotNull(rn);
         mRepository.loadWorkData(corrected, rn);
 
     }

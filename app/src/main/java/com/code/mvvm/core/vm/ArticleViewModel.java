@@ -19,7 +19,6 @@ public class ArticleViewModel extends AbsViewModel<ArticleRepository> {
     }
 
     public void getArticleList(String lectureLevel1, String lastId) {
-        checkNotNull(lectureLevel1);
         mRepository.loadArticleRemList(lectureLevel1, lastId, Constants.PAGE_RN);
     }
 

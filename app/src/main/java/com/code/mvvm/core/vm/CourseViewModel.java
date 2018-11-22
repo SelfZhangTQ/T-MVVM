@@ -32,7 +32,6 @@ public class CourseViewModel extends AbsViewModel<CourseRepository> {
     }
 
     public void getCourseList(String fCatalogId, String lastId) {
-        checkNotNull(fCatalogId);
         mRepository.loadCourseList(fCatalogId, lastId, Constants.PAGE_RN);
     }
 

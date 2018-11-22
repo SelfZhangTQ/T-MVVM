@@ -21,7 +21,6 @@ public class DynamicViewModel extends AbsViewModel<DynamicRepository> {
 
 
     public void getDynamicList(String token, String lastId) {
-        checkNotNull(token);
         mRepository.loadDynamicList(Constants.PAGE_RN, token, lastId);
 
     }
