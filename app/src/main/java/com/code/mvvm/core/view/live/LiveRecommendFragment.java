@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.adapter.adapter.DelegateAdapter;
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.live.LiveListVo;
+import com.code.mvvm.core.data.source.LiveRepository;
 import com.code.mvvm.core.vm.LiveViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.adapter.DelegateAdapter;
 
 /**
  * @author：tqzhang on 18/6/30 18:36
@@ -25,22 +25,17 @@ public class LiveRecommendFragment extends BaseListFragment<LiveViewModel> {
         super.initView(state);
     }
 
-    @Override
-    protected Object getStateEventKey() {
-        return Constants.EVENT_KEY_LIVE_RED_STATE;
-    }
 
     @Override
     protected void dataObserver() {
-        registerObserver(Constants.EVENT_KEY_LIVE_RED, LiveListVo.class).observe(this, liveListVo -> {
-            if (liveListVo != null) {
-
-                lastId = liveListVo.
-                        data.get(liveListVo.data.size() - 1).liveid;
-                setData(liveListVo.data);
-
-            }
-        });
+        registerSubscriber(LiveRepository.EVENT_KEY_LIVE_RED, LiveListVo.class)
+                .observe(this, liveListVo -> {
+                    if (liveListVo != null) {
+                        lastId = liveListVo.
+                                data.get(liveListVo.data.size() - 1).liveid;
+                        setUiData(liveListVo.data);
+                    }
+                });
     }
 
 
@@ -60,8 +55,8 @@ public class LiveRecommendFragment extends BaseListFragment<LiveViewModel> {
     }
 
     @Override
-    protected void getLoadMoreData() {
+    public void onLoadMore(boolean isLoadMore, int pageIndex) {
+        super.onLoadMore(isLoadMore, pageIndex);
         getRemoteData();
     }
-
 }

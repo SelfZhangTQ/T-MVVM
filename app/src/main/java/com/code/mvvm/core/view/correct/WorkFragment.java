@@ -6,22 +6,23 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
+import com.adapter.adapter.DelegateAdapter;
+import com.adapter.listener.OnItemClickListener;
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
-import com.code.mvvm.core.data.pojo.correct.WorkInfoVo;
 import com.code.mvvm.core.data.pojo.correct.WorkMergeVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
+import com.code.mvvm.core.data.source.WorkRepository;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.adapter.DelegateAdapter;
-import com.trecyclerview.listener.OnItemClickListener;
 
 
 /**
  * @author：tqzhang on 18/5/2 19:30
  */
 public class WorkFragment extends BaseListFragment<WorkViewModel> implements OnItemClickListener {
+
     private String uTime;
 
     public static WorkFragment newInstance() {
@@ -34,28 +35,26 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> implements OnI
         setTitle(getResources().getString(R.string.work_title_name));
     }
 
-    @Override
-    protected Object getStateEventKey() {
-        return Constants.EVENT_KEY_WORK_LIST_STATE;
-    }
 
     @Override
     protected void dataObserver() {
-        registerObserver(Constants.EVENT_KEY_WORK_LIST, WorkMergeVo.class).observe(this, workMergeVo -> {
+        registerSubscriber(WorkRepository.EVENT_KEY_WORK_LIST, WorkMergeVo.class).observe(this, workMergeVo -> {
             if (workMergeVo != null) {
-                newItems.clear();
-                newItems.add(workMergeVo.bannerListVo);
+                mItems.clear();
+                mItems.add(workMergeVo.bannerListVo);
                 lastId = workMergeVo.worksListVo.data.content.get(workMergeVo.worksListVo.data.content.size() - 1).tid;
                 uTime = workMergeVo.worksListVo.data.content.get(workMergeVo.worksListVo.data.content.size() - 1).utime;
-                setData(workMergeVo.worksListVo.data.content);
+                mItems.addAll(workMergeVo.worksListVo.data.content);
+                setData();
             }
         });
 
-        registerObserver(Constants.EVENT_KEY_WORK_MORE, WorksListVo.class).observe(this, worksListVo -> {
+        registerSubscriber(WorkRepository.EVENT_KEY_WORK_MORE, WorksListVo.class).observe(this, worksListVo -> {
             if (worksListVo != null) {
                 lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
                 uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
-                setData(worksListVo.data.content);
+                mItems.addAll(worksListVo.data.content);
+                setMoreData();
             }
 
         });
@@ -79,18 +78,20 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> implements OnI
         mViewModel.getWorkListData();
     }
 
+
     @Override
-    protected void getLoadMoreData() {
+    public void onLoadMore(boolean isLoadMore, int pageIndex) {
+        super.onLoadMore(isLoadMore, pageIndex);
         mViewModel.getWorkMoreData("", lastId, uTime);
     }
 
     @Override
-    public void onItemClick(View view, int i, Object o) {
-        if (o != null) {
-            if (o instanceof WorksListVo.Works) {
-                WorksListVo.Works data = (WorksListVo.Works) o;
+    public void onItemClick(View view, int i, Object obj) {
+        if (obj != null) {
+            if (obj instanceof WorksListVo.Works) {
+                WorksListVo.Works data = (WorksListVo.Works) obj;
                 Intent starter = new Intent(getActivity(), WorkDetailsActivity.class);
-                starter.putExtra("correct_id", data.correct.correctid);
+                starter.putExtra(Constants.CORRECT_ID, data.correct.correctid);
                 startActivity(starter);
             }
 

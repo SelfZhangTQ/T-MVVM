@@ -2,6 +2,8 @@ package com.code.mvvm.util;
 
 import android.content.Context;
 
+import com.adapter.adapter.DelegateAdapter;
+import com.adapter.adapter.OneToMany;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.activity.ActivityListVo;
 import com.code.mvvm.core.data.pojo.article.ArticleInfoVo;
@@ -13,7 +15,7 @@ import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.data.pojo.course.CourseInfoVo;
 import com.code.mvvm.core.data.pojo.dynamic.DynamicInfoVo;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawInfoVo;
-import com.code.mvvm.core.data.pojo.home.CatagoryVo;
+import com.code.mvvm.core.data.pojo.home.CategoryVo;
 import com.code.mvvm.core.data.pojo.live.LiveRecommendVo;
 import com.code.mvvm.core.data.pojo.material.MaterialInfoVo;
 import com.code.mvvm.core.data.pojo.material.MatreialSubjectVo;
@@ -44,14 +46,6 @@ import com.code.mvvm.core.view.material.holder.MaterialItemHolder;
 import com.code.mvvm.core.view.material.holder.MaterialListHolder;
 import com.code.mvvm.core.view.qa.holder.QaListItemHolder;
 import com.code.mvvm.widget.banner.BannerItemView;
-import com.trecyclerview.adapter.DelegateAdapter;
-import com.trecyclerview.adapter.OneToMany;
-import com.trecyclerview.adapter.VHolder;
-import com.trecyclerview.footview.FootViewHolder;
-import com.trecyclerview.headview.HeaderViewHolder;
-import com.trecyclerview.pojo.FootVo;
-import com.trecyclerview.pojo.HeaderVo;
-import com.trecyclerview.progressindicator.ProgressStyle;
 
 /**
  * @author：tqzhang on 18/8/3 16:25
@@ -73,34 +67,25 @@ public class AdapterPool {
     }
 
 
-    private DelegateAdapter.Builder getNoFootAdapter(DelegateAdapter.Builder builder, Context context, int mProgressStyle) {
-        return builder.bind(HeaderVo.class, new HeaderViewHolder(context, mProgressStyle));
-    }
-
-    private DelegateAdapter.Builder getAdapter(DelegateAdapter.Builder builder, Context context, int mProgressStyle) {
-        return builder.bind(HeaderVo.class, new HeaderViewHolder(context, mProgressStyle)).bind(FootVo.class, new FootViewHolder(context, mProgressStyle));
-    }
 
     public DelegateAdapter.Builder getWorkAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>().bind(BannerListVo.class, new BannerItemView(context)).bind(WorksListVo.Works.class, new CorrectItemHolder(context)), context, ProgressStyle.SysProgress);
-    }
-
-    public DelegateAdapter.Builder getSwipeCorrectAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>().bind(BannerListVo.class, new BannerItemView(context)).bind(WorksListVo.Works.class, new CorrectItemHolder(context)), context, ProgressStyle.SysProgress);
+        return new DelegateAdapter.Builder<>()
+                .bind(BannerListVo.class, new BannerItemView(context))
+                .bind(WorksListVo.Works.class, new CorrectItemHolder(context));
     }
 
     public DelegateAdapter.Builder getBookAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>()
-                .bind(BookVo.class, new BookListHolder(context)), context, ProgressStyle.BallScaleMultiple);
+        return new DelegateAdapter.Builder<>()
+                .bind(BookVo.class, new BookListHolder(context));
     }
 
     public DelegateAdapter.Builder getActivityAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>()
-                .bind(ActivityListVo.DataBean.class, new ActivityItemHolder(context)), context, ProgressStyle.BallRotate);
+        return new DelegateAdapter.Builder<>()
+                .bind(ActivityListVo.DataBean.class, new ActivityItemHolder(context));
     }
 
     public DelegateAdapter.Builder getArticleAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>()
+        return new DelegateAdapter.Builder<>()
                 .bindArray(ArticleInfoVo.class, new ArticleRem1ItemHolder(context), new ArticleRem2ItemHolder(context), new ArticleRem3ItemHolder(context))
                 .withClass((OneToMany<ArticleInfoVo>) (position, listBean) -> {
                     if ("1".equals(listBean.thumbtype)) {
@@ -111,67 +96,67 @@ public class AdapterPool {
                         return ArticleRem3ItemHolder.class;
                     }
                     return null;
-                }), context, ProgressStyle.BallPulseSync);
+                });
     }
 
     public DelegateAdapter.Builder getCourseRemAdapter(Context context) {
-        return getNoFootAdapter(new DelegateAdapter.Builder<>()
+        return new DelegateAdapter.Builder<>()
                 .bind(TypeVo.class, new TypeItemView(context))
                 .bind(BannerListVo.class, new BannerItemView(context))
                 .bind(CourseInfoVo.class, new CourseItemHolder(context))
-                .bind(LiveRecommendVo.class, new HomeLiveItemView(context)), context, ProgressStyle.BallPulseRise);
+                .bind(LiveRecommendVo.class, new HomeLiveItemView(context));
 
     }
 
     public DelegateAdapter.Builder getCourseListAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>()
-                .bind(CourseInfoVo.class, new CourseItemHolder(context)), context, ProgressStyle.BallPulse);
+        return new DelegateAdapter.Builder<>()
+                .bind(CourseInfoVo.class, new CourseItemHolder(context));
 
     }
 
     public DelegateAdapter.Builder getFollowAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>()
-                .bind(FollowDrawInfoVo.class, new FollowDrawListHolder(context)), context, ProgressStyle.BallGridPulse);
+        return new DelegateAdapter.Builder<>()
+                .bind(FollowDrawInfoVo.class, new FollowDrawListHolder(context));
     }
 
     public DelegateAdapter.Builder getQaAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>()
-                .bind(QaListVo.DataBean.class, new QaListItemHolder(context)), context, ProgressStyle.BallGridBeat);
+        return new DelegateAdapter.Builder<>()
+                .bind(QaListVo.DataBean.class, new QaListItemHolder(context));
     }
 
     public DelegateAdapter.Builder getMaterialListAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>()
-                .bind(MaterialInfoVo.class, new MaterialListHolder(context)), context, ProgressStyle.BallClipRotatePulse);
+        return new DelegateAdapter.Builder<>()
+                .bind(MaterialInfoVo.class, new MaterialListHolder(context));
     }
 
     public DelegateAdapter.Builder getMaterialRemAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>()
-                .bind(MatreialSubjectVo.class, new MaterialItemHolder(context)), context, ProgressStyle.BallClipRotateMultiple);
+        return new DelegateAdapter.Builder<>()
+                .bind(MatreialSubjectVo.class, new MaterialItemHolder(context));
     }
 
     public DelegateAdapter.Builder getLiveAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>()
-                .bind(LiveRecommendVo.class, new LiveListItemHolder(context)), context, ProgressStyle.BallClipRotate);
+        return new DelegateAdapter.Builder<>()
+                .bind(LiveRecommendVo.class, new LiveListItemHolder(context));
     }
 
     public DelegateAdapter.Builder getLiveRemAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>()
-                .bind(LiveRecommendVo.class, new LiveItemHolder(context)), context, ProgressStyle.BallBeat);
+        return new DelegateAdapter.Builder<>()
+                .bind(LiveRecommendVo.class, new LiveItemHolder(context));
     }
 
     public DelegateAdapter.Builder getHomeAdapter(Context context) {
-        return getNoFootAdapter(new DelegateAdapter.Builder<>()
+        return new DelegateAdapter.Builder<>()
                 .bind(BannerListVo.class, new BannerItemView(context))
                 .bind(TypeVo.class, new TypeItemView(context))
-                .bind(CatagoryVo.class, new CategoryItemView(context))
+                .bind(CategoryVo.class, new CategoryItemView(context))
                 .bind(BookList.class, new BookItemHolder(context))
                 .bind(CourseInfoVo.class, new CourseItemHolder(context))
                 .bind(LiveRecommendVo.class, new HomeLiveItemView(context))
-                .bind(MatreialSubjectVo.class, new HomeMaterialItemView(context)), context, ProgressStyle.Pacman);
+                .bind(MatreialSubjectVo.class, new HomeMaterialItemView(context));
     }
 
     public DelegateAdapter.Builder getDynamicAdapter(Context context) {
-        return getAdapter(new DelegateAdapter.Builder<>()
+        return new DelegateAdapter.Builder<>()
                 .bindArray(DynamicInfoVo.class, new DynamicCorrectHolder(context),
                         new DynamicWorkHolder(context),
                         new DynamicSubjectHolder(context),
@@ -196,6 +181,6 @@ public class AdapterPool {
                         return DynamicCourseHolder.class;
                     }
                     return null;
-                }), context, ProgressStyle.BallSpinFadeLoader);
+                });
     }
 }

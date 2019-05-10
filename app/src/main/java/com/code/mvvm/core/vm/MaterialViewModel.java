@@ -16,7 +16,6 @@ public class MaterialViewModel extends AbsViewModel<MaterialRepository> {
         super(application);
 
     }
-
     public void getMaterialList(String fCatalogId, String level) {
         mRepository.loadMaterialList(fCatalogId, level, Constants.PAGE_RN);
     }

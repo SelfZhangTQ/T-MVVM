@@ -16,7 +16,7 @@ public class QaViewModel extends AbsViewModel<QaRepository> {
         super(application);
     }
 
-    public void getQAList(String lastId, String rn) {
-        mRepository.loadQAList(lastId, rn);
+    public void getQAList(String lastId) {
+        mRepository.loadQAList(lastId);
     }
 }

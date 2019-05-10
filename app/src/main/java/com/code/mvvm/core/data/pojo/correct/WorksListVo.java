@@ -32,5 +32,7 @@ public class WorksListVo {
         public String correctid;
         public WorkInfoVo correct;
 
+        public boolean isCollection=false;
+
     }
 }

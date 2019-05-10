@@ -5,9 +5,13 @@
    [apk下载地址](https://github.com/SelfZhangTQ/T-MVVM/raw/master/screenshots/app.apk)
 
 
+
+
+
+
 #### T-MVVM 2.0版本更新说明<br/>
      * 基于LiveBus事件除去ViewModel和Repository接口耦合。
-
+     
 
 
 

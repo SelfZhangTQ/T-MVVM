@@ -13,6 +13,7 @@ public class BaseRepository extends AbsRepository {
 
     protected ApiService apiService;
 
+
     public BaseRepository() {
         if (null == apiService) {
             apiService = HttpHelper.getInstance().create(ApiService.class);
@@ -20,20 +21,20 @@ public class BaseRepository extends AbsRepository {
     }
 
 
-    protected void sendData(Object eventKey, Object t) {
-        sendData(eventKey, null, t);
+    protected void postData(Object eventKey, Object t) {
+        postData(eventKey, null, t);
     }
 
 
     protected void showPageState(Object eventKey, String state) {
-        sendData(eventKey, state);
+        postData(eventKey, state);
     }
 
     protected void showPageState(Object eventKey, String tag, String state) {
-        sendData(eventKey, tag, state);
+        postData(eventKey, tag, state);
     }
 
-    protected void sendData(Object eventKey, String tag, Object t) {
+    protected void postData(Object eventKey, String tag, Object t) {
         LiveBus.getDefault().postEvent(eventKey, tag, t);
     }
 

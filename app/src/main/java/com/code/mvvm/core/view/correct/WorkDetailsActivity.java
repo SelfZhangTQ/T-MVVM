@@ -1,14 +1,16 @@
 package com.code.mvvm.core.view.correct;
 
 import android.arch.lifecycle.Observer;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.View;
 
+import com.adapter.adapter.DelegateAdapter;
+import com.adapter.adapter.ItemData;
+import com.adapter.listener.OnItemClickListener;
 import com.code.mvvm.R;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.common.TypeVo;
@@ -25,10 +27,6 @@ import com.code.mvvm.core.view.home.holder.HomeLiveItemView;
 import com.code.mvvm.core.vm.WorkViewModel;
 import com.mvvm.base.AbsLifecycleActivity;
 import com.mvvm.event.LiveBus;
-import com.trecyclerview.TRecyclerView;
-import com.trecyclerview.adapter.DelegateAdapter;
-import com.trecyclerview.adapter.ItemData;
-import com.trecyclerview.listener.OnItemClickListener;
 
 import java.lang.ref.WeakReference;
 
@@ -38,7 +36,7 @@ import java.lang.ref.WeakReference;
  */
 public class WorkDetailsActivity extends AbsLifecycleActivity<WorkViewModel> implements OnItemClickListener {
 
-    protected TRecyclerView mRecyclerView;
+    protected RecyclerView mRecyclerView;
     private DelegateAdapter adapter;
     protected ItemData items = new ItemData();
     private String correctId;

@@ -10,8 +10,6 @@ import com.code.mvvm.core.data.pojo.course.CourseListVo;
 import com.code.mvvm.core.data.source.CourseRepository;
 import com.mvvm.base.AbsViewModel;
 
-import static com.code.mvvm.util.Preconditions.checkNotNull;
-
 /**
  * @author：tqzhang on 18/7/31 15:13
  */
@@ -35,7 +33,7 @@ public class CourseViewModel extends AbsViewModel<CourseRepository> {
         mRepository.loadCourseList(fCatalogId, lastId, Constants.PAGE_RN);
     }
 
-    public void getCourseRemList(String rn) {
+    public void getCourseRemList() {
         mRepository.loadCourseRemList();
     }
 

@@ -6,22 +6,21 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.adapter.holder.AbsHolder;
+import com.adapter.holder.AbsItemHolder;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
-import com.code.mvvm.core.view.correct.WorkDetailsActivity;
 import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.glide.GlideRoundTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.widget.CustomHeightImageView;
-import com.code.mvvm.widget.CustomHeightRelativeLayout;
-import com.trecyclerview.holder.AbsHolder;
-import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang on 18/6/27 19:14
  */
 public class CorrectItemHolder extends AbsItemHolder<WorksListVo.Works, CorrectItemHolder.ViewHolder> {
+
     private int commonWidth;
 
     public CorrectItemHolder(Context context) {
@@ -40,7 +39,6 @@ public class CorrectItemHolder extends AbsItemHolder<WorksListVo.Works, CorrectI
     public ViewHolder createViewHolder(View view) {
         return new ViewHolder(view);
     }
-
 
     @Override
     protected void onBindViewHolder(@NonNull CorrectItemHolder.ViewHolder holder, @NonNull final WorksListVo.Works data) {
@@ -68,22 +66,21 @@ public class CorrectItemHolder extends AbsItemHolder<WorksListVo.Works, CorrectI
             }
         }
 
+        Glide.with(mContext).load(data.correct.teacher_info.avatar).transform(new GlideCircleTransform(mContext)).into(holder.mUserIcon);
         holder.mTvDesc.setText(data.correct.content);
         holder.mUserName.setText(data.correct.teacher_info.sname);
-        Glide.with(mContext).load(data.correct.teacher_info.avatar).transform(new GlideCircleTransform(mContext)).into(holder.mUserIcon);
+
     }
 
     public class ViewHolder extends AbsHolder {
         private CustomHeightImageView mCHImageView;
         private TextView mTvDesc, mUserName;
         private ImageView mUserIcon;
-        private CustomHeightRelativeLayout mCHRootLayout;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             mCHImageView = getViewById(R.id.iv_custom_image);
             mTvDesc = getViewById(R.id.tv_desc);
-            mCHRootLayout = getViewById(R.id.custom_root_layout);
             mUserName = getViewById(R.id.tv_user_name);
             mUserIcon = getViewById(R.id.iv_user_icon);
         }

@@ -5,14 +5,14 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 
+import com.adapter.holder.AbsHolder;
+import com.adapter.holder.AbsItemHolder;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawInfoVo;
 import com.code.mvvm.glide.GlideRoundTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.widget.CustomHeightImageView;
-import com.trecyclerview.holder.AbsHolder;
-import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang  on 18/6/19 15:16

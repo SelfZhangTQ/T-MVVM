@@ -27,8 +27,11 @@ import com.mvvm.base.BaseFragment;
  * @author：tqzhang on 18/7/2 14:17
  */
 public class CommonActivity extends BaseActivity implements View.OnClickListener {
+
     private String typeFragment;
+
     private FragmentTransaction ft;
+
     private TextView barTitle;
 
     @Override
@@ -53,10 +56,7 @@ public class CommonActivity extends BaseActivity implements View.OnClickListener
         FragmentManager fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
         showFragment();
-
         barBack.setOnClickListener(this);
-
-
     }
 
     private void getIntentData() {

@@ -7,7 +7,6 @@ import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.source.BookRepository;
 import com.mvvm.base.AbsViewModel;
 
-import static com.code.mvvm.util.Preconditions.checkNotNull;
 
 /**
  * @author：tqzhang on 18/7/28 13:32

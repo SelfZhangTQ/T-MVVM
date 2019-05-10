@@ -6,6 +6,7 @@ import com.code.mvvm.R;
 import com.code.mvvm.base.BaseViewPagerFragment;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.course.CourseTypeVo;
+import com.code.mvvm.core.data.source.CourseRepository;
 import com.code.mvvm.core.vm.CourseViewModel;
 import com.mvvm.base.BaseFragment;
 
@@ -31,14 +32,8 @@ public class VideoFragment extends BaseViewPagerFragment<CourseViewModel> {
     }
 
     @Override
-    protected Object getStateEventKey() {
-        return Constants.EVENT_KEY_COURSE_STATE;
-    }
-
-    @Override
     protected void dataObserver() {
-
-        registerObserver(Constants.EVENT_KEY_COURSE, CourseTypeVo.class).observe(this, courseTypeVo -> {
+        registerSubscriber(CourseRepository.EVENT_KEY_COURSE, CourseTypeVo.class).observe(this, courseTypeVo -> {
             if (courseTypeVo == null) {
                 return;
             }
@@ -90,8 +85,8 @@ public class VideoFragment extends BaseViewPagerFragment<CourseViewModel> {
             } else {
                 CourseListFragment courseListFragment = CourseListFragment.newInstance();
                 Bundle bundle = new Bundle();
-                bundle.putString("f_catalog_id", titleName.get(i).id);
-                bundle.putSerializable("s_catalog", titleName.get(i).s_catalog);
+                bundle.putString(Constants.F_CATALOG_ID, titleName.get(i).id);
+                bundle.putSerializable(Constants.S_CATALOG, titleName.get(i).s_catalog);
                 courseListFragment.setArguments(bundle);
                 mFragments.add(courseListFragment);
             }

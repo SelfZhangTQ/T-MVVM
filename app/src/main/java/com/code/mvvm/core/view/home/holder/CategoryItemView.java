@@ -7,15 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
+import com.adapter.holder.AbsHolder;
+import com.adapter.holder.AbsItemHolder;
 import com.code.mvvm.R;
-import com.code.mvvm.adapter.BaseRecyclerAdapter;
 import com.code.mvvm.adapter.HomeCategoryAdapter;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.home.CatagoryInfoVo;
-import com.code.mvvm.core.data.pojo.home.CatagoryVo;
+import com.code.mvvm.core.data.pojo.home.CategoryVo;
 import com.code.mvvm.core.view.common.CommonActivity;
-import com.trecyclerview.holder.AbsHolder;
-import com.trecyclerview.holder.AbsItemHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,7 @@ import java.util.List;
 /**
  * @author：tqzhang on 18/6/20 13:41
  */
-public class CategoryItemView extends AbsItemHolder<CatagoryVo, CategoryItemView.ViewHolder> {
+public class CategoryItemView extends AbsItemHolder<CategoryVo, CategoryItemView.ViewHolder> {
     private String[] tvNames;
     private int[] tvIcons;
     private List<CatagoryInfoVo> list = new ArrayList<>();
@@ -56,32 +55,29 @@ public class CategoryItemView extends AbsItemHolder<CatagoryVo, CategoryItemView
 
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull CatagoryVo categoryTop) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull CategoryVo categoryTop) {
         GridLayoutManager layoutManager = new GridLayoutManager(mContext, 4);
         holder.recyclerView.setLayoutManager(layoutManager);
         holder.recyclerView.setAdapter(adapter);
         holder.recyclerView.setNestedScrollingEnabled(false);
         adapter.notifyDataSetChanged();
-        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClickListener(View v, int position) {
-                if (list.get(position).title.equals(mContext.getResources().getString(R.string.material_title_name))) {
-                    CommonActivity.start(mContext, Constants.MATERIAL, mContext.getResources().getString(R.string.material_title_name));
-                } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.article_title_name))) {
-                    CommonActivity.start(mContext, Constants.ARTICLE, mContext.getResources().getString(R.string.article_title_name));
-                } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.follow_draw_title_name))) {
-                    CommonActivity.start(mContext, Constants.FOLLOW_DRAW, mContext.getResources().getString(R.string.follow_draw_title_name));
-                } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.live_title_name))) {
-                    CommonActivity.start(mContext, Constants.LIVE, mContext.getResources().getString(R.string.live_title_name));
-                } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.book_title_name))) {
-                    CommonActivity.start(mContext, Constants.BOOK, mContext.getResources().getString(R.string.book_title_name));
-                } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.dynamic_title_name))) {
-                    CommonActivity.start(mContext, Constants.DYNAMIC, mContext.getResources().getString(R.string.dynamic_title_name));
-                } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.qa_title_name))) {
-                    CommonActivity.start(mContext, Constants.QA, mContext.getResources().getString(R.string.qa_title_name));
-                } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.activity_title_name))) {
-                    CommonActivity.start(mContext, Constants.ACTIVITY, mContext.getResources().getString(R.string.activity_title_name));
-                }
+        adapter.setOnItemClickListener((v, position) -> {
+            if (list.get(position).title.equals(mContext.getResources().getString(R.string.material_title_name))) {
+                CommonActivity.start(mContext, Constants.MATERIAL, mContext.getResources().getString(R.string.material_title_name));
+            } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.article_title_name))) {
+                CommonActivity.start(mContext, Constants.ARTICLE, mContext.getResources().getString(R.string.article_title_name));
+            } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.follow_draw_title_name))) {
+                CommonActivity.start(mContext, Constants.FOLLOW_DRAW, mContext.getResources().getString(R.string.follow_draw_title_name));
+            } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.live_title_name))) {
+                CommonActivity.start(mContext, Constants.LIVE, mContext.getResources().getString(R.string.live_title_name));
+            } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.book_title_name))) {
+                CommonActivity.start(mContext, Constants.BOOK, mContext.getResources().getString(R.string.book_title_name));
+            } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.dynamic_title_name))) {
+                CommonActivity.start(mContext, Constants.DYNAMIC, mContext.getResources().getString(R.string.dynamic_title_name));
+            } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.qa_title_name))) {
+                CommonActivity.start(mContext, Constants.QA, mContext.getResources().getString(R.string.qa_title_name));
+            } else if (list.get(position).title.equals(mContext.getResources().getString(R.string.activity_title_name))) {
+                CommonActivity.start(mContext, Constants.ACTIVITY, mContext.getResources().getString(R.string.activity_title_name));
             }
         });
     }

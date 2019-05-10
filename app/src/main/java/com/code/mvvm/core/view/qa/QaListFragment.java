@@ -3,12 +3,12 @@ package com.code.mvvm.core.view.qa;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.adapter.adapter.DelegateAdapter;
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.qa.QaListVo;
+import com.code.mvvm.core.data.source.QaRepository;
 import com.code.mvvm.core.vm.QaViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.adapter.DelegateAdapter;
 
 /**
  * @author：tqzhang on 18/7/4 14:10
@@ -19,22 +19,18 @@ public class QaListFragment extends BaseListFragment<QaViewModel> {
         return new QaListFragment();
     }
 
-    @Override
-    protected Object getStateEventKey() {
-        return Constants.EVENT_KEY_QA_STATE;
-    }
 
     @Override
     protected void dataObserver() {
-
-        registerObserver(Constants.EVENT_KEY_QA, QaListVo.class).observe(this, qaListVo -> {
+        registerSubscriber(QaRepository.EVENT_KEY_QA, QaListVo.class).observe(this, qaListVo -> {
             if (qaListVo == null && qaListVo.data != null && qaListVo.data.size() == 0) {
                 return;
             }
             lastId = qaListVo.data.get(qaListVo.data.size() - 1).newsid;
-            setData(qaListVo.data);
+            setUiData(qaListVo.data);
         });
     }
+
 
 
     @Override
@@ -49,11 +45,12 @@ public class QaListFragment extends BaseListFragment<QaViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getQAList(lastId, Constants.PAGE_RN);
+        mViewModel.getQAList(lastId);
     }
 
     @Override
-    protected void getLoadMoreData() {
+    public void onLoadMore(boolean isLoadMore, int pageIndex) {
+        super.onLoadMore(isLoadMore, pageIndex);
         getRemoteData();
     }
 }

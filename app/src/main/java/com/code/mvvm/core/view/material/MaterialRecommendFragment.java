@@ -3,12 +3,12 @@ package com.code.mvvm.core.view.material;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
+import com.adapter.adapter.DelegateAdapter;
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.material.MaterialRecommendVo;
+import com.code.mvvm.core.data.source.MaterialRepository;
 import com.code.mvvm.core.vm.MaterialViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.adapter.DelegateAdapter;
 
 
 /**
@@ -21,16 +21,11 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
     }
 
     @Override
-    protected Object getStateEventKey() {
-        return Constants.EVENT_KEY_MT_RED_STATE;
-    }
-
-    @Override
     protected void dataObserver() {
-        registerObserver(Constants.EVENT_KEY_MT_RED, MaterialRecommendVo.class).observe(this, materialRecommendVo -> {
+        registerSubscriber(MaterialRepository.EVENT_KEY_MT_RED, MaterialRecommendVo.class).observe(this, materialRecommendVo -> {
             if (materialRecommendVo != null) {
                 lastId = materialRecommendVo.data.content.get(materialRecommendVo.data.content.size() - 1).subjectid;
-                setData(materialRecommendVo.data.content);
+                setUiData(materialRecommendVo.data.content);
             }
 
         });
@@ -52,7 +47,8 @@ public class MaterialRecommendFragment extends BaseListFragment<MaterialViewMode
     }
 
     @Override
-    protected void getLoadMoreData() {
+    public void onLoadMore(boolean isLoadMore, int pageIndex) {
+        super.onLoadMore(isLoadMore, pageIndex);
         getRemoteData();
     }
 }

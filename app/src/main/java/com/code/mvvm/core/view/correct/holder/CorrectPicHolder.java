@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.adapter.holder.AbsHolder;
+import com.adapter.holder.AbsItemHolder;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.correct.WorkDetailVo;
@@ -18,8 +20,6 @@ import com.code.mvvm.glide.GlideCircleTransform;
 import com.code.mvvm.util.DisplayUtil;
 import com.code.mvvm.util.ViewUtils;
 import com.code.mvvm.widget.CustomHeightImageView;
-import com.trecyclerview.holder.AbsHolder;
-import com.trecyclerview.holder.AbsItemHolder;
 
 /**
  * @author：tqzhang  on 18/6/27 19:14

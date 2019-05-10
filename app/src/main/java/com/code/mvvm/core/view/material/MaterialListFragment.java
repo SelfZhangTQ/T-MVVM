@@ -3,12 +3,13 @@ package com.code.mvvm.core.view.material;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
+import com.adapter.adapter.DelegateAdapter;
 import com.code.mvvm.base.BaseListFragment;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.material.MaterialVo;
+import com.code.mvvm.core.data.source.MaterialRepository;
 import com.code.mvvm.core.vm.MaterialViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.adapter.DelegateAdapter;
 
 /**
  * @author：tqzhang on 18/7/2 14:40
@@ -22,32 +23,23 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
 
 
     @Override
-    protected Object getStateEventKey() {
-        return Constants.EVENT_KEY_MT_LIST_STATE;
-    }
-
-    @Override
-    protected String getStateEventTag() {
-        return subId;
-    }
-
-    @Override
     protected void dataObserver() {
         if (getArguments() != null) {
-            subId = getArguments().getString("sub_id");
+            subId = getArguments().getString(Constants.SUB_ID);
         }
-
-
-        registerObserver(Constants.EVENT_KEY_MT_LIST, subId, MaterialVo.class).observe(this, materialListVo -> {
+        registerSubscriber(MaterialRepository.EVENT_KEY_MT_LIST,subId, MaterialVo.class).observe(this, materialListVo -> {
             if (materialListVo != null) {
                 lastId = materialListVo.data.content.get(materialListVo.data.content.size() - 1).tid;
-                setData(materialListVo.data.content);
+                mItems.clear();
+                mItems.addAll(materialListVo.data.content);
+                setData();
             }
         });
-        registerObserver(Constants.EVENT_KEY_MT_MORE_LIST, subId, MaterialVo.class).observe(this, materialListVo -> {
+        registerSubscriber(MaterialRepository.EVENT_KEY_MT_MORE_LIST,subId, MaterialVo.class).observe(this, materialListVo -> {
             if (materialListVo != null && materialListVo.data != null && materialListVo.data.content.size() > 0) {
                 lastId = materialListVo.data.content.get(materialListVo.data.content.size() - 1).tid;
-                setData(materialListVo.data.content);
+                mItems.addAll(materialListVo.data.content);
+                setMoreData();
             }
         });
     }
@@ -70,7 +62,8 @@ public class MaterialListFragment extends BaseListFragment<MaterialViewModel> {
 
 
     @Override
-    protected void getLoadMoreData() {
+    public void onLoadMore(boolean isLoadMore, int pageIndex) {
+        super.onLoadMore(isLoadMore, pageIndex);
         mViewModel.getMaterialMoreList("0", subId, lastId);
     }
 }

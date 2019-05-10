@@ -9,6 +9,7 @@ import com.code.mvvm.core.data.pojo.correct.WorkMergeVo;
 import com.code.mvvm.core.data.pojo.correct.WorkRecommentVo;
 import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.network.rx.RxSubscriber;
+import com.code.mvvm.util.StringUtil;
 import com.mvvm.http.rx.RxSchedulers;
 import com.mvvm.stateview.StateConstants;
 
@@ -18,6 +19,11 @@ import io.reactivex.Flowable;
  * @author：tqzhang on 18/7/31 15:32
  */
 public class WorkRepository extends BaseRepository {
+
+
+    public static String EVENT_KEY_WORK_LIST = null;
+
+    public static String EVENT_KEY_WORK_MORE = null;
 
     private Flowable<WorksListVo> mWorkData;
 
@@ -29,6 +35,12 @@ public class WorkRepository extends BaseRepository {
 
     private WorkMergeVo workMergeVo = new WorkMergeVo();
 
+
+    public WorkRepository() {
+        EVENT_KEY_WORK_LIST = StringUtil.getEventKey();
+        EVENT_KEY_WORK_MORE = StringUtil.getEventKey();
+    }
+
     public void loadWorkData(String corrected, String rn) {
         mWorkData = apiService.getWorkData(corrected, rn);
     }
@@ -37,6 +49,7 @@ public class WorkRepository extends BaseRepository {
         addDisposable(apiService.getWorkMoreData(lastId, uTime, rn)
                 .compose(RxSchedulers.io_main())
                 .subscribeWith(new RxSubscriber<WorksListVo>() {
+
                     @Override
                     protected void onNoNetWork() {
                         super.onNoNetWork();
@@ -44,11 +57,11 @@ public class WorkRepository extends BaseRepository {
 
                     @Override
                     public void onSuccess(WorksListVo worksListVo) {
-                        sendData(Constants.EVENT_KEY_WORK_MORE, worksListVo);
+                        postData(EVENT_KEY_WORK_MORE, worksListVo);
                     }
 
                     @Override
-                    public void onFailure(String msg) {
+                    public void onFailure(String msg,int code) {
                     }
                 }));
     }
@@ -65,9 +78,10 @@ public class WorkRepository extends BaseRepository {
         addDisposable(Flowable.concat(mBannerData, mWorkData)
                 .compose(RxSchedulers.io_main())
                 .subscribeWith(new RxSubscriber<Object>() {
+
                     @Override
                     protected void onNoNetWork() {
-                        showPageState(Constants.EVENT_KEY_WORK_LIST_STATE, StateConstants.NET_WORK_STATE);
+                        postState(StateConstants.NET_WORK_STATE);
                     }
 
                     @Override
@@ -76,15 +90,15 @@ public class WorkRepository extends BaseRepository {
                             workMergeVo.bannerListVo = (BannerListVo) object;
                         } else if (object instanceof WorksListVo) {
                             workMergeVo.worksListVo = (WorksListVo) object;
-                            sendData(Constants.EVENT_KEY_WORK_LIST, workMergeVo);
-                            showPageState(Constants.EVENT_KEY_WORK_LIST_STATE, StateConstants.SUCCESS_STATE);
+                            postData(EVENT_KEY_WORK_LIST, workMergeVo);
+                            postState(StateConstants.SUCCESS_STATE);
                         }
 
                     }
 
                     @Override
-                    public void onFailure(String msg) {
-                        showPageState(Constants.EVENT_KEY_WORK_LIST_STATE, StateConstants.ERROR_STATE);
+                    public void onFailure(String msg,int code) {
+                        postState(StateConstants.ERROR_STATE);
                     }
                 }));
     }
@@ -103,7 +117,7 @@ public class WorkRepository extends BaseRepository {
                 .subscribeWith(new RxSubscriber<Object>() {
                     @Override
                     protected void onNoNetWork() {
-                        showPageState(Constants.EVENT_KEY_WORK_STATE, StateConstants.NET_WORK_STATE);
+                        postState(StateConstants.NET_WORK_STATE);
                     }
 
                     @Override
@@ -112,14 +126,14 @@ public class WorkRepository extends BaseRepository {
                             workMergeVo.workDetailVo = (WorkDetailVo) object;
                         } else if (object instanceof WorkRecommentVo) {
                             workMergeVo.workRecommentVo = (WorkRecommentVo) object;
-                            sendData(Constants.EVENT_KEY_WORK, workMergeVo);
-                            showPageState(Constants.EVENT_KEY_WORK_STATE, StateConstants.SUCCESS_STATE);
+                            postData(Constants.EVENT_KEY_WORK, workMergeVo);
+                            postState(StateConstants.SUCCESS_STATE);
                         }
                     }
 
                     @Override
-                    public void onFailure(String msg) {
-                        showPageState(Constants.EVENT_KEY_WORK_STATE, StateConstants.ERROR_STATE);
+                    public void onFailure(String msg,int code) {
+                        postState(StateConstants.ERROR_STATE);
 
                     }
                 }));

@@ -6,6 +6,7 @@ import com.code.mvvm.R;
 import com.code.mvvm.base.BaseViewPagerFragment;
 import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.material.MaterialTypeVo;
+import com.code.mvvm.core.data.source.MaterialRepository;
 import com.code.mvvm.core.vm.MaterialViewModel;
 import com.mvvm.base.BaseFragment;
 
@@ -29,15 +30,10 @@ public class MaterialFragment extends BaseViewPagerFragment<MaterialViewModel> {
         getTabData();
     }
 
-    @Override
-    protected Object getStateEventKey() {
-        return Constants.EVENT_KEY_MT_STATE;
-    }
 
     @Override
     protected void dataObserver() {
-
-        registerObserver(Constants.EVENT_KEY_MT, MaterialTypeVo.class).observe(this, materialTypeVo -> {
+        registerSubscriber(MaterialRepository.EVENT_KEY_MT, MaterialTypeVo.class).observe(this, materialTypeVo -> {
             if (materialTypeVo != null) {
                 setData(materialTypeVo);
             }
@@ -90,7 +86,7 @@ public class MaterialFragment extends BaseViewPagerFragment<MaterialViewModel> {
             } else {
                 MaterialListFragment materialListFragment = MaterialListFragment.newInstance();
                 Bundle bundle = new Bundle();
-                bundle.putString("sub_id", titleName.get(i).subid);
+                bundle.putString(Constants.SUB_ID, titleName.get(i).subid);
                 materialListFragment.setArguments(bundle);
                 mFragments.add(materialListFragment);
             }

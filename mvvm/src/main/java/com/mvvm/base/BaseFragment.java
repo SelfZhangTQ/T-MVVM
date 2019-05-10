@@ -29,15 +29,17 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
         rootView = inflater.inflate(getLayoutResId(), null, false);
         View contentLayout = rootView.findViewById(getContentResId());
-        loadManager = new LoadManager.Builder()
-                .setViewParams(contentLayout == null ? rootView : contentLayout)
-                .setListener(new BaseStateControl.OnRefreshListener() {
-                    @Override
-                    public void onRefresh(View v) {
-                        onStateRefresh();
-                    }
-                })
-                .build();
+        if (contentLayout != null) {
+            loadManager = new LoadManager.Builder()
+                    .setViewParams(contentLayout == null ? rootView : contentLayout)
+                    .setListener(new BaseStateControl.OnRefreshListener() {
+                        @Override
+                        public void onRefresh(View v) {
+                            onStateRefresh();
+                        }
+                    })
+                    .build();
+        }
         initView(state);
         return rootView;
     }
@@ -59,7 +61,11 @@ public abstract class BaseFragment extends Fragment {
      */
     public abstract int getLayoutResId();
 
-    public abstract int getContentResId();
+
+    protected int getContentResId() {
+
+        return -1;
+    }
 
     /**
      * 初始化views

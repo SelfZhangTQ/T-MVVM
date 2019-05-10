@@ -3,12 +3,12 @@ package com.code.mvvm.core.view.followdraw;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
+import com.adapter.adapter.DelegateAdapter;
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.followdraw.FollowDrawRecommendVo;
+import com.code.mvvm.core.data.source.FollowDrawRepository;
 import com.code.mvvm.core.vm.FollowDrawViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.adapter.DelegateAdapter;
 
 /**
  * @author：tqzhang on 18/7/2 14:40
@@ -20,30 +20,19 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
         return new FollowDrawListFragment();
     }
 
-    @Override
-    protected Object getStateEventKey() {
-        return Constants.EVENT_KEY_FD_LIST_STATE;
-    }
-
-    @Override
-    protected String getStateEventTag() {
-        return typeId;
-    }
 
     @Override
     protected void dataObserver() {
         if (getArguments() != null) {
             typeId = getArguments().getString("type_id");
         }
-
-
-       registerObserver(Constants.EVENT_KEY_FD_LIST,typeId, FollowDrawRecommendVo.class).observe(this, followDrawRecommendObject -> {
+        registerSubscriber(FollowDrawRepository.EVENT_KEY_FD_LIST, FollowDrawRecommendVo.class).observe(this, followDrawRecommendObject -> {
             if (followDrawRecommendObject == null) {
                 return;
             }
             lastId = followDrawRecommendObject.
                     data.get(followDrawRecommendObject.data.size() - 1).lessonid;
-            setData(followDrawRecommendObject.data);
+            setUiData(followDrawRecommendObject.data);
         });
     }
 
@@ -64,7 +53,8 @@ public class FollowDrawListFragment extends BaseListFragment<FollowDrawViewModel
     }
 
     @Override
-    protected void getLoadMoreData() {
+    public void onLoadMore(boolean isLoadMore, int pageIndex) {
+        super.onLoadMore(isLoadMore, pageIndex);
         getRemoteData();
     }
 }

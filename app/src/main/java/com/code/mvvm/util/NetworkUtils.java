@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.code.mvvm.App;
+
 /**
  * @author：tqzhang  on 18/7/23 11:33
  */
@@ -28,5 +30,9 @@ public class NetworkUtils {
         }
         return false;
     }
+    public static boolean isNetworkAvailable(){
+        return isNetworkAvailable(App.instance());
+    }
+
 
 }

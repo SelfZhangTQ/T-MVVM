@@ -4,8 +4,8 @@ import android.os.Bundle;
 
 import com.code.mvvm.R;
 import com.code.mvvm.base.BaseViewPagerFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.article.ArticleTypeVo;
+import com.code.mvvm.core.data.source.ArticleRepository;
 import com.code.mvvm.core.vm.ArticleViewModel;
 import com.mvvm.base.BaseFragment;
 
@@ -30,14 +30,8 @@ public class ArticleFragment extends BaseViewPagerFragment<ArticleViewModel> {
     }
 
     @Override
-    protected Object getStateEventKey() {
-        return Constants.EVENT_KEY_ARTICLE_STATE;
-    }
-
-    @Override
     protected void dataObserver() {
-
-        registerObserver(Constants.EVENT_KEY_ARTICLE, ArticleTypeVo.class).observe(this, articleTypeVo -> {
+        registerSubscriber(ArticleRepository.EVENT_KEY_ARTICLE, ArticleTypeVo.class).observe(this, articleTypeVo -> {
             if (articleTypeVo != null) {
                 setData(articleTypeVo);
             }

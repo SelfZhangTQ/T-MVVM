@@ -2,7 +2,7 @@ package com.code.mvvm.util;
 
 import android.support.v7.util.DiffUtil;
 
-import com.trecyclerview.adapter.ItemData;
+import com.adapter.adapter.ItemData;
 
 
 /**

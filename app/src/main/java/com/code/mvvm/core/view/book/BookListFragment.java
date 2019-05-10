@@ -3,12 +3,12 @@ package com.code.mvvm.core.view.book;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.adapter.adapter.DelegateAdapter;
 import com.code.mvvm.base.BaseListFragment;
-import com.code.mvvm.config.Constants;
 import com.code.mvvm.core.data.pojo.book.BookListVo;
+import com.code.mvvm.core.data.source.BookRepository;
 import com.code.mvvm.core.vm.BookViewModel;
 import com.code.mvvm.util.AdapterPool;
-import com.trecyclerview.adapter.DelegateAdapter;
 
 /**
  * @author：tqzhang on 18/7/2 14:40
@@ -20,15 +20,6 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
         return new BookListFragment();
     }
 
-    @Override
-    protected Object getStateEventKey() {
-        return Constants.EVENT_KEY_BOOK_LIST_STATE;
-    }
-
-    @Override
-    protected String getStateEventTag() {
-        return typeId;
-    }
 
     @Override
     protected void dataObserver() {
@@ -36,13 +27,13 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
             typeId = getArguments().getString("type_id");
         }
 
-       registerObserver(Constants.EVENT_KEY_BOOK_LIST,typeId, BookListVo.class).observe(this, bookListVo -> {
+       registerSubscriber(BookRepository.EVENT_KEY_BOOK_LIST,typeId, BookListVo.class).observe(this, bookListVo -> {
             if (bookListVo == null) {
                 return;
             }
             if (bookListVo.data.content.size() > 0) {
                 lastId = bookListVo.data.content.get(bookListVo.data.content.size() - 1).bookid;
-                BookListFragment.this.setData(bookListVo.data.content);
+                setUiData(bookListVo.data.content);
             }
         });
     }
@@ -63,8 +54,10 @@ public class BookListFragment extends BaseListFragment<BookViewModel> {
         mViewModel.getBookList(typeId, lastId);
     }
 
+
     @Override
-    protected void getLoadMoreData(){
+    public void onLoadMore(boolean isLoadMore, int pageIndex) {
+        super.onLoadMore(isLoadMore, pageIndex);
         getRemoteData();
     }
 }

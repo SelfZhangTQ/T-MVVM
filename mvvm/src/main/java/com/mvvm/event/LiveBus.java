@@ -140,9 +140,9 @@ public class LiveBus {
     }
 
     public void clear(Object eventKey, String tag) {
-        if (mLiveBus.size() > 0) {
-            String mEventkey = mergeEventKey(eventKey, tag);
-            mLiveBus.remove(mEventkey);
+        if (mLiveBus != null && mLiveBus.size() > 0) {
+            String mEventKey = mergeEventKey(eventKey, tag);
+            mLiveBus.remove(mEventKey);
         }
 
     }

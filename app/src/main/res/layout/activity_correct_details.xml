@@ -2,5 +2,5 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include layout="@layout/fragment_list" />
+    <include layout="@layout/fragment_list_common" />
 </android.support.constraint.ConstraintLayout>

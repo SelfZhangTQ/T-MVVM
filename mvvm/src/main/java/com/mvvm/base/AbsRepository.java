@@ -2,6 +2,8 @@ package com.mvvm.base;
 
 
 
+import android.arch.lifecycle.MutableLiveData;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -12,10 +14,20 @@ public abstract class AbsRepository {
 
     private CompositeDisposable mCompositeDisposable;
 
+    public MutableLiveData<String> loadState;
+
 
     public AbsRepository() {
+        loadState = new MutableLiveData<>();
+    }
+
+    protected void postState(String state) {
+        if (loadState != null) {
+            loadState.postValue(state);
+        }
 
     }
+
 
     protected void addDisposable(Disposable disposable) {
         if (mCompositeDisposable == null) {

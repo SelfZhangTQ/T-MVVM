@@ -29,6 +29,9 @@ public class ErrorState extends BaseStateControl {
             } else if (view.getTag().equals("2")) {
                 errorDesc.setText("服务器异常");
                 errorIcon.setImageResource(R.mipmap.empty_server);
+            } else if (view.getTag().equals("0")) {
+                errorDesc.setText("没有数据～_~");
+                errorIcon.setImageResource(R.mipmap.empty_server);
             }
 
         }

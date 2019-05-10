@@ -1,9 +1,9 @@
 package com.code.mvvm.network.rx;
 
 
-import com.code.mvvm.App;
 import com.code.mvvm.network.ServerException;
 import com.code.mvvm.util.NetworkUtils;
+import com.code.mvvm.util.ToastUtils;
 import com.google.gson.JsonParseException;
 
 import org.json.JSONException;
@@ -29,12 +29,14 @@ public abstract class RxSubscriber<T> extends DisposableSubscriber<T> {
     protected void onStart() {
         super.onStart();
         showLoading();
-        if (!NetworkUtils.isNetworkAvailable(App.instance())) {
+        if (!NetworkUtils.isNetworkAvailable()) {
             onNoNetWork();
             cancel();
+            ToastUtils.showToast("网络状态异常");
             return;
         }
     }
+
 
     @Override
     public void onComplete() {
@@ -45,13 +47,18 @@ public abstract class RxSubscriber<T> extends DisposableSubscriber<T> {
 
     }
 
+    protected void showProgress() {
+
+    }
+
     protected void onNoNetWork() {
 
     }
 
     @Override
     public void onError(Throwable e) {
-        String message = null;
+        String message;
+        int code = -1;
         if (e instanceof UnknownHostException) {
             message = "没有网络";
         } else if (e instanceof HttpException) {
@@ -65,8 +72,12 @@ public abstract class RxSubscriber<T> extends DisposableSubscriber<T> {
             message = "连接失败";
         } else if (e instanceof ServerException) {
             message = ((ServerException) e).message;
+            code = ((ServerException) e).code;
+        } else {
+            message = "未知错误";
         }
-        onFailure(message);
+        ToastUtils.showToast(message);
+        onFailure(message, code);
     }
 
     @Override
@@ -86,5 +97,5 @@ public abstract class RxSubscriber<T> extends DisposableSubscriber<T> {
      *
      * @param msg
      */
-    public abstract void onFailure(String msg);
+    public abstract void onFailure(String msg, int code);
 }

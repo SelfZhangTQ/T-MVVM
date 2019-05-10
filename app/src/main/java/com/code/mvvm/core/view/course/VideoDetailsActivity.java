@@ -2,10 +2,12 @@ package com.code.mvvm.core.view.course;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.ImageView;
 
+import com.adapter.adapter.DelegateAdapter;
+import com.adapter.adapter.ItemData;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
@@ -19,9 +21,6 @@ import com.mvvm.http.HttpHelper;
 import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
-import com.trecyclerview.TRecyclerView;
-import com.trecyclerview.adapter.DelegateAdapter;
-import com.trecyclerview.adapter.ItemData;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -34,7 +33,7 @@ public class VideoDetailsActivity extends BaseActivity {
     private StandardGSYVideoPlayer mVideoPlayer;
     private OrientationUtils mOrientationUtils;
 
-    protected TRecyclerView mRecyclerView;
+    protected RecyclerView mRecyclerView;
 
     private String lessonId;
     private String teacherId;
@@ -71,13 +70,10 @@ public class VideoDetailsActivity extends BaseActivity {
         mVideoPlayer.setNeedLockFull(true);
         mVideoPlayer.setEnlargeImageRes(R.drawable.player_controller_full_screen);
         mVideoPlayer.setShrinkImageRes(R.drawable.player_controller_small_screen);
-        mVideoPlayer.getFullscreenButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //直接横屏
-                mOrientationUtils.resolveByClick();
-                mVideoPlayer.startWindowFullscreen(VideoDetailsActivity.this, true, true);
-            }
+        mVideoPlayer.getFullscreenButton().setOnClickListener(v -> {
+            //直接横屏
+            mOrientationUtils.resolveByClick();
+            mVideoPlayer.startWindowFullscreen(VideoDetailsActivity.this, true, true);
         });
 
         mVideoPlayer.setVideoAllCallBack(new GSYSampleCallBack() {
@@ -128,7 +124,7 @@ public class VideoDetailsActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onFailure(String msg) {
+                    public void onFailure(String msg,int code) {
 
                     }
 
@@ -154,7 +150,7 @@ public class VideoDetailsActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onFailure(String msg) {
+                    public void onFailure(String msg,int code) {
 
                     }
 
@@ -168,7 +164,9 @@ public class VideoDetailsActivity extends BaseActivity {
         .bind(CourseDetailRemVideoVo.DataBean.CourseListBean.class, new CourseRecommendHolder(VideoDetailsActivity.this)).build();
         mRecyclerView.setAdapter(adapter);
         items.addAll(lessonDetailAboutVideoBean.getData().getCourse_list());
-        mRecyclerView.refreshComplete(items, false);
+//        mRecyclerView.refreshComplete(items, false);
+        adapter.setDatas(items);
+        adapter.notifyDataSetChanged();
     }
 
 

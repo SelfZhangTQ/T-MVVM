@@ -6,24 +6,25 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.adapter.adapter.DelegateAdapter;
+import com.adapter.adapter.ItemData;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
-import com.code.mvvm.core.data.pojo.banner.BannerListVo;
+import com.code.mvvm.util.RefreshHelper;
 import com.mvvm.base.AbsLifecycleFragment;
 import com.mvvm.base.AbsViewModel;
-import com.trecyclerview.TRecyclerView;
-import com.trecyclerview.adapter.DelegateAdapter;
-import com.trecyclerview.adapter.ItemData;
-import com.trecyclerview.listener.OnRefreshListener;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @author：tqzhang on 18/7/10 16:20
  */
-public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecycleFragment<T> implements OnRefreshListener {
-    protected TRecyclerView mRecyclerView;
+public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecycleFragment<T> implements RefreshHelper.OnHelperRefreshListener, RefreshHelper.OnHelperLoadMoreListener {
+
+    protected SmartRefreshLayout mSmartRefreshLayout;
+
+    protected RecyclerView mRecyclerView;
 
     protected RelativeLayout mTitleBar;
 
@@ -35,112 +36,83 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
 
     protected String lastId = null;
 
-    protected boolean isLoadMore = true;
+    protected ItemData mItems;
 
-    protected boolean isLoading = true;
+    protected RefreshHelper refreshHelper;
+
+    protected boolean isLoadMore = false;
 
     protected boolean isRefresh = false;
 
-    protected ItemData oldItems;
-
-    protected ItemData newItems;
-
     @Override
     public int getLayoutResId() {
-        return R.layout.fragment_list;
+        return R.layout.fragment_list_common;
     }
-
 
     @Override
     public int getContentResId() {
-        return R.id.content_layout;
+        return R.id.refresh_layout;
     }
 
     @Override
     public void initView(Bundle state) {
         super.initView(state);
         mRecyclerView = getViewById(R.id.recycler_view);
+        mSmartRefreshLayout = getViewById(R.id.refresh_layout);
         mTitleBar = getViewById(R.id.rl_title_bar);
         mTitle = getViewById(R.id.tv_title);
-        oldItems = new ItemData();
-        newItems = new ItemData();
+        mItems = new ItemData();
+        refreshHelper = new RefreshHelper.Builder()
+                .setRefreshLayout(mSmartRefreshLayout)
+                .setOnRefreshListener(this)
+                .setOnLoadMoreListener(this)
+                .build();
         adapter = createAdapter();
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(createLayoutManager());
-        mRecyclerView.addOnRefreshListener(this);
-        mRecyclerView.addOnScrollStateListener(state1 -> {
-            if (state1 == RecyclerView.SCROLL_STATE_IDLE) {
-                if (activity != null) {
-                    Glide.with(activity).resumeRequests();
-                }
-            } else {
-                if (activity != null) {
-                    Glide.with(activity).pauseRequests();
-                }
-            }
-        });
+        mRecyclerView.addOnScrollListener(onScrollListener);
+
     }
 
     @Override
     protected void lazyLoad() {
-        isLoadMore = false;
         getRemoteData();
     }
 
     @Override
     protected void onStateRefresh() {
         super.onStateRefresh();
-        onRefresh();
     }
 
-    protected void setData(List<?> collection) {
+
+    protected void setUiData(Collection<?> data) {
+        if (!isLoadMore) {
+            mItems.clear();
+            isLoadMore = false;
+            mItems.addAll(data);
+            setData();
+        } else {
+            mItems.addAll(data);
+            setMoreData();
+        }
+    }
+
+    protected void setData() {
+        adapter.setDatas(mItems);
+        adapter.notifyDataSetChanged();
+        if (isRefresh) {
+            refreshHelper.refreshComplete();
+        }
+    }
+
+    protected void setMoreData() {
+        adapter.notifyDataSetChanged();
         if (isLoadMore) {
-            onLoadMoreSuccess(collection);
-        } else {
-            onRefreshSuccess(collection);
+            refreshHelper.loadMoreComplete();
         }
-    }
-
-    @Override
-    public void onRefresh() {
-        lastId = null;
-        isRefresh = true;
         isLoadMore = false;
-        getRemoteData();
     }
 
-    @Override
-    public void onLoadMore() {
-        isLoadMore = true;
-        getLoadMoreData();
-    }
-
-    protected void setBannerData(BannerListVo headAdList) {
-        newItems.add(headAdList);
-    }
-
-    protected void onRefreshSuccess(Collection<?> collection) {
-        newItems.addAll(collection);
-        oldItems.clear();
-        oldItems.addAll(newItems);
-        if (collection.size() < 20) {
-            mRecyclerView.refreshComplete(oldItems, true);
-        } else {
-            mRecyclerView.refreshComplete(oldItems, false);
-        }
-        isRefresh = false;
-    }
-
-    protected void onLoadMoreSuccess(List<?> collection) {
-        isLoading = true;
-        isLoadMore = false;
-        oldItems.addAll(collection);
-        if (collection.size() < 20) {
-            mRecyclerView.loadMoreComplete(collection, true);
-        } else {
-            mRecyclerView.loadMoreComplete(collection, false);
-        }
-    }
 
     /**
      * adapter
@@ -163,11 +135,31 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
     }
 
 
-    /**
-     * 获取更多网络数据t
-     */
-    protected void getLoadMoreData() {
-
+    @Override
+    public void onLoadMore(boolean isLoadMore, int pageIndex) {
+        this.isLoadMore = isLoadMore;
     }
 
+    @Override
+    public void onRefresh(boolean isRefresh) {
+        this.isRefresh = isRefresh;
+        lastId = null;
+        getRemoteData();
+    }
+
+    private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                if (activity != null) {
+                    Glide.with(activity).resumeRequests();
+                }
+            } else {
+                if (activity != null) {
+                    Glide.with(activity).pauseRequests();
+                }
+            }
+        }
+    };
 }

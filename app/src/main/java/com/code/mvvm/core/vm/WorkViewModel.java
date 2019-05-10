@@ -13,8 +13,6 @@ import com.code.mvvm.core.data.pojo.correct.WorksListVo;
 import com.code.mvvm.core.data.source.WorkRepository;
 import com.mvvm.base.AbsViewModel;
 
-import static com.code.mvvm.util.Preconditions.checkNotNull;
-
 
 /**
  * @author：tqzhang on 18/7/31 15:32
@@ -33,7 +31,6 @@ public class WorkViewModel extends AbsViewModel<WorkRepository> {
     public WorkViewModel(@NonNull Application application) {
         super(application);
     }
-
 
 
     public LiveData<WorksListVo> getWorkMoreData() {

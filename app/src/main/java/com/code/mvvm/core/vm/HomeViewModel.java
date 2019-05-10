@@ -29,7 +29,7 @@ public class HomeViewModel extends AbsViewModel<HomeRepository> {
 
     }
 
-    public void getHomeData() {
+    public void getHomeListData() {
         getBannerData("1", "4", "109", "", null);
         getHomeListData("0");
         mRepository.loadHomeData();

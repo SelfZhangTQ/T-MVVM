@@ -2,10 +2,13 @@ package com.code.mvvm.core.view.live;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.adapter.adapter.DelegateAdapter;
+import com.adapter.adapter.ItemData;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.course.CourseDetailRemVideoVo;
@@ -20,9 +23,6 @@ import com.mvvm.http.HttpHelper;
 import com.mvvm.http.rx.RxSchedulers;
 import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
-import com.trecyclerview.TRecyclerView;
-import com.trecyclerview.adapter.DelegateAdapter;
-import com.trecyclerview.adapter.ItemData;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
@@ -35,7 +35,7 @@ public class LiveDetailsActivity extends BaseActivity {
     LiveVideoPlayer mVideoPlayer;
     OrientationUtils mOrientationUtils;
 
-    protected TRecyclerView mRecyclerView;
+    protected RecyclerView mRecyclerView;
 
     String liveId;
     String liveUrl;
@@ -54,7 +54,7 @@ public class LiveDetailsActivity extends BaseActivity {
     @Override
     public void initViews(Bundle savedInstanceState) {
         liveId = getIntent().getStringExtra("liveId");
-        mRecyclerView = (TRecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView =  findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mVideoPlayer = findViewById(R.id.video_player);

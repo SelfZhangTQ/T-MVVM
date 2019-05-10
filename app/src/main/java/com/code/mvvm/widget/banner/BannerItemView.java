@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.adapter.holder.AbsHolder;
+import com.adapter.holder.AbsItemHolder;
 import com.bumptech.glide.Glide;
 import com.code.mvvm.R;
 import com.code.mvvm.core.data.pojo.banner.BannerListVo;
-import com.trecyclerview.holder.AbsHolder;
-import com.trecyclerview.holder.AbsItemHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,18 +40,15 @@ public class BannerItemView extends AbsItemHolder<BannerListVo, BannerItemView.V
 
     @Override
     protected void onBindViewHolder(@NonNull BannerItemView.ViewHolder holder, @NonNull final BannerListVo bannerAdListVo) {
-        holder.mBannerView.delayTime(5).setBannerView(new BannerView.OnBindView() {
-            @Override
-            public List<ImageView> bindView() {
-                List<ImageView> imageViewList = new ArrayList<>();
-                for (int i = 0; i < bannerAdListVo.data.size(); i++) {
-                    ImageView mImageView = new ImageView(mContext);
-                    mImageView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                    Glide.with(mContext).load(bannerAdListVo.data.get(i).topimage1 == null ? bannerAdListVo.data.get(i).topimage : bannerAdListVo.data.get(i).topimage1).centerCrop().into(mImageView);
-                    imageViewList.add(mImageView);
-                }
-                return imageViewList;
+        holder.mBannerView.delayTime(5).setBannerView(() -> {
+            List<ImageView> imageViewList = new ArrayList<>();
+            for (int i = 0; i < bannerAdListVo.data.size(); i++) {
+                ImageView mImageView = new ImageView(mContext);
+                mImageView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                Glide.with(mContext).load(bannerAdListVo.data.get(i).topimage1 == null ? bannerAdListVo.data.get(i).topimage : bannerAdListVo.data.get(i).topimage1).centerCrop().into(mImageView);
+                imageViewList.add(mImageView);
             }
+            return imageViewList;
         }).build(bannerAdListVo.data);
 
     }

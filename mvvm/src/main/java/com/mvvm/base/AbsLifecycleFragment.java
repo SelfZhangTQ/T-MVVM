@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.mvvm.event.LiveBus;
 import com.mvvm.stateview.ErrorState;
@@ -28,10 +27,6 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
 
     protected T mViewModel;
 
-    protected Object mStateEventKey;
-
-    protected String mStateEventTag;
-
     private List<Object> eventKeys = new ArrayList<>();
 
     @Override
@@ -39,28 +34,9 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
         mViewModel = VMProviders(this, (Class<T>) TUtil.getInstance(this, 0));
         if (null != mViewModel) {
             dataObserver();
-            mStateEventKey = getStateEventKey();
-            mStateEventTag = getStateEventTag();
-            eventKeys.add(new StringBuilder((String) mStateEventKey).append(mStateEventTag).toString());
-            LiveBus.getDefault().subscribe(mStateEventKey, mStateEventTag).observe(this, observer);
+            mViewModel.mRepository.loadState.observe(this, observer);
         }
     }
-
-    /**
-     * ViewPager +fragment tag
-     *
-     * @return
-     */
-    protected String getStateEventTag() {
-        return "";
-    }
-
-    /**
-     * get state page event key
-     *
-     * @return
-     */
-    protected abstract Object getStateEventKey();
 
     /**
      * create ViewModelProviders
@@ -77,12 +53,12 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
 
     }
 
-    protected <T> MutableLiveData<T> registerObserver(Object eventKey, Class<T> tClass) {
+    protected <T> MutableLiveData<T> registerSubscriber(Object eventKey, Class<T> tClass) {
 
-        return registerObserver(eventKey, null, tClass);
+        return registerSubscriber(eventKey, null, tClass);
     }
 
-    protected <T> MutableLiveData<T> registerObserver(Object eventKey, String tag, Class<T> tClass) {
+    protected <T> MutableLiveData<T> registerSubscriber(Object eventKey, String tag, Class<T> tClass) {
         String event;
         if (TextUtils.isEmpty(tag)) {
             event = (String) eventKey;
@@ -124,6 +100,9 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
     }
 
 
+    /**
+     * 状态页面监听
+     */
     protected Observer observer = new Observer<String>() {
         @Override
         public void onChanged(@Nullable String state) {
@@ -136,6 +115,8 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
                     showLoading();
                 } else if (StateConstants.SUCCESS_STATE.equals(state)) {
                     showSuccess();
+                } else if (StateConstants.NOT_DATA_STATE.equals(state)) {
+                    showError(ErrorState.class, "0");
                 }
             }
         }
@@ -144,6 +125,10 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        clearEvent();
+    }
+
+    private void clearEvent() {
         if (eventKeys != null && eventKeys.size() > 0) {
             for (int i = 0; i < eventKeys.size(); i++) {
                 LiveBus.getDefault().clear(eventKeys.get(i));
