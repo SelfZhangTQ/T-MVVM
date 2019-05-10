@@ -43,7 +43,7 @@ public class DynamicFragment extends BaseListFragment<DynamicViewModel> {
 
     @Override
     protected void getRemoteData() {
-        mViewModel.getDynamicList("45ca1f01417c758505e2919e701c3f99", lastId);
+        mViewModel.getDynamicList("e25af8d190ede08f60f2d8bb8dcd229b", lastId);
 
     }
 
