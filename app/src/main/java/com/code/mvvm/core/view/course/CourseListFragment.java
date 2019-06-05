@@ -44,17 +44,7 @@ public class CourseListFragment extends BaseListFragment<CourseViewModel> implem
         registerSubscriber(CourseRepository.EVENT_KEY_COURSE_LIDT, mCatalogId, CourseListVo.class).observe(this, courseListVo -> {
             if (courseListVo != null && courseListVo.data != null) {
                 lastId = courseListVo.data.get(courseListVo.data.size() - 1).courseid;
-                if (!loadMore) {
-                    mItems.clear();
-                    loadMore = false;
-                    mItems.addAll(courseListVo.data);
-                    setData();
-                } else {
-                    mItems.addAll(courseListVo.data);
-                    setMoreData();
-                }
-
-
+                setUiData(courseListVo.data);
             }
 
         });

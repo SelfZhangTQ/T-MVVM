@@ -37,8 +37,12 @@ public class WorkRepository extends BaseRepository {
 
 
     public WorkRepository() {
-        EVENT_KEY_WORK_LIST = StringUtil.getEventKey();
-        EVENT_KEY_WORK_MORE = StringUtil.getEventKey();
+        if (EVENT_KEY_WORK_LIST==null) {
+            EVENT_KEY_WORK_LIST = StringUtil.getEventKey();
+        }
+        if (EVENT_KEY_WORK_LIST==null) {
+            EVENT_KEY_WORK_MORE = StringUtil.getEventKey();
+        }
     }
 
     public void loadWorkData(String corrected, String rn) {

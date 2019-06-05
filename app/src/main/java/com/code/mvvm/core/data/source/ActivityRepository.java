@@ -15,7 +15,9 @@ public class ActivityRepository extends BaseRepository {
 
 
     public ActivityRepository() {
-        EVENT_KEY_ACTIVITY = StringUtil.getEventKey();
+        if (EVENT_KEY_ACTIVITY==null) {
+            EVENT_KEY_ACTIVITY = StringUtil.getEventKey();
+        }
     }
 
     public void loadActivityList(String lastId, String rn) {
@@ -34,7 +36,7 @@ public class ActivityRepository extends BaseRepository {
                     }
 
                     @Override
-                    public void onFailure(String msg,int code) {
+                    public void onFailure(String msg, int code) {
                         postState(StateConstants.ERROR_STATE);
                     }
                 }));

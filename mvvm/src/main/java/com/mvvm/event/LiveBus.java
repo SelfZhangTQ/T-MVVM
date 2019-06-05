@@ -10,8 +10,6 @@ import android.text.TextUtils;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import static com.mvvm.util.TUtil.checkNotNull;
-
 
 /**
  * 事件总线

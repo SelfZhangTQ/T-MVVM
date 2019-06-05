@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import com.tqzhang.stateview.core.LoadManager;
 import com.tqzhang.stateview.stateview.BaseStateControl;
 
-import trecyclerview.com.mvvm.R;
-
 /**
  * @author：tqzhang on 18/3/12 19:25
  */
